@@ -1,11 +1,323 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import SearchFilter from '../components/SearchFilter.astro';
+import RoadmapCard from '../components/RoadmapCard.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import AdSlot from '../components/AdSlot.astro';
+import { getCollection } from 'astro:content';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const roadmaps = (await getCollection('roadmaps')).sort((a, b) => a.data.order - b.data.order);
+
+const faqList = [
+  {
+    q: 'What is a good roadmap for learning Python from scratch?',
+    a: 'A good Python learning roadmap starts with core syntax (variables, loops, functions), advances to Object-Oriented Programming (OOP) and data structures, and then branches into specialization paths: Web Backend Development (Django or FastAPI), Data Science & Machine Learning, or Automation Scripting. Following a structured roadmap ensures you build real-world applications step-by-step.',
+  },
+  {
+    q: 'How to become a professional Python developer in 2026?',
+    a: 'To become a professional Python developer: (1) Master Python fundamentals and OOP principles; (2) Learn Git version control and GitHub; (3) Choose a backend framework like Django, FastAPI, or Flask alongside relational databases (PostgreSQL/SQL); (4) Learn RESTful API design and authentication (JWT/OAuth2); and (5) Build 3 production-ready projects and deploy them to cloud platforms.',
+  },
+  {
+    q: 'What is the roadmap of a full stack developer?',
+    a: 'A full stack developer roadmap covers both client-side and server-side software engineering. Essential components include: Frontend (HTML5, CSS3, JavaScript ES6+, React or Vue), Backend (Node.js/Express, Python/FastAPI, or Java/Spring Boot), Database Management (PostgreSQL, MongoDB), REST/GraphQL API integration, and Cloud Infrastructure (Docker, CI/CD, AWS/Vercel).',
+  },
+  {
+    q: 'Can I learn full stack development in 3 months?',
+    a: 'While 3 months (90 days) is enough time to master frontend basics (HTML, CSS, fundamental JavaScript) and build simple CRUD applications, becoming a job-ready full stack engineer typically requires 6 to 9 months of consistent study (15–20 hours per week) to deeply understand backend databases, authentication, security, and cloud deployments.',
+  },
+  {
+    q: 'Is full stack development worth it in 2026?',
+    a: 'Yes! Full stack development remains one of the highest-demanded and most versatile career paths in 2026. Tech companies value full stack engineers because they understand end-to-end software architecture, prototype features rapidly, and easily integrate AI services, APIs, and cloud infrastructure into modern web applications.',
+  },
+  {
+    q: 'How to become an AI engineer in 2026 roadmap?',
+    a: 'The 2026 AI Engineer roadmap involves: (1) Strong Python programming and linear algebra/statistics fundamentals; (2) Understanding LLM APIs and prompt engineering; (3) Mastering RAG (Retrieval-Augmented Generation) architecture using vector databases (Pinecone, Qdrant); (4) Frameworks like LangChain and LlamaIndex; and (5) Fine-tuning and deploying AI microservices at scale.',
+  },
+  {
+    q: 'What is the best cybersecurity roadmap for beginners?',
+    a: 'The best cybersecurity roadmap begins with computer networking fundamentals (TCP/IP, DNS, OSI model) and Linux operating system administration. From there, learn security principles (encryption, IAM, firewalls), web security vulnerabilities (OWASP Top 10), and progress into specialized roles like Ethical Hacking/Penetration Testing or Defensive SOC Analysis.',
+  },
+  {
+    q: 'Is data science very hard to learn?',
+    a: 'Data science is not inherently hard, but it requires learning three distinct disciplines: Python/R programming, applied statistics/mathematics, and domain-specific business analysis. By following a structured step-by-step data science roadmap—starting with Python libraries like Pandas, NumPy, and Matplotlib before moving to Machine Learning—learning data science becomes manageable and structured.',
+  },
+  {
+    q: 'Why track an interactive developer roadmap online instead of downloading a static PDF?',
+    a: 'Tracking your developer roadmap online directly in your browser allows you to check off completed topics, monitor real-time completion percentages, complete embedded hands-on mini-projects, and resume your learning path across devices—eliminating outdated static PDF downloads that get lost in your files.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqList.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="Developer Roadmap Library — Interactive Coding & Software Engineering Paths (2026)"
+  description="Explore interactive developer roadmaps for 2026. Step-by-step learning paths for AI engineer roadmap 2026, full stack developer roadmap, cybersecurity roadmap, roadmap Python, roadmap Java, roadmap JavaScript, and roadmap backend framework engineering."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+  <!-- Hero Section -->
+  <section class="section-hero">
+    <div class="mesh-gradient"></div>
+    <div class="container animate-fade-in-up" style="position: relative; z-index: 1;">
+      <span class="badge-mono" style="margin-bottom: 16px; display: inline-block;">
+        ⚡ Interactive Learning Paths
+      </span>
+
+      <h1 class="text-display-xl" style="margin: 0 0 20px; max-width: 860px;">
+        Master any tech skill with an interactive developer roadmap.
+      </h1>
+
+      <p class="text-body-lg" style="color: var(--color-body); margin: 0 0 32px; max-width: 720px; line-height: 30px;">
+        Bookmark this site and track your interactive developer roadmap directly online. Check off topics, complete hands-on mini-projects, and resume your learning anytime — eliminating the need for cluttering static PDFs or lost file downloads.
+      </p>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <a class="btn-primary" href="#roadmaps">
+          Explore Interactive Roadmaps
+        </a>
+        <span class="text-caption-mono" style="color: var(--color-mute); padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-full); border: 1px solid var(--color-hairline);">
+          📌 Tip: Press Cmd/Ctrl + D to Bookmark
+        </span>
+      </div>
+
+      <!-- Hero Quick Links for Legal & Company pages -->
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--color-hairline);">
+        <span class="text-caption-mono" style="color: var(--color-mute);">Quick Links:</span>
+        <a href="/privacy" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--color-ink); text-decoration: none;">
+          🔒 Privacy Policy
+        </a>
+        <a href="/terms" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--color-ink); text-decoration: none;">
+          📜 Terms & Conditions
+        </a>
+        <a href="/about" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--color-ink); text-decoration: none;">
+          ℹ️ About Us
+        </a>
+        <a href="/contact" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--color-ink); text-decoration: none;">
+          📩 Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Banner Ad -->
+  <AdSlot type="banner" />
+
+  <!-- Roadmaps Grid Section -->
+  <section class="section-sm" id="roadmaps">
+    <div class="container">
+      <div style="margin-bottom: 24px;">
+        <span class="text-caption-mono" style="color: var(--color-mute);">Roadmaps</span>
+        <h2 class="text-display-lg" style="margin: 4px 0 0;">Find your developer roadmap path.</h2>
+      </div>
+
+      <SearchFilter />
+
+      <div class="roadmap-grid stagger-children" id="roadmap-grid">
+        {roadmaps.map((roadmap) => (
+          <RoadmapCard
+            title={roadmap.data.title}
+            description={roadmap.data.description}
+            category={roadmap.data.category}
+            estimatedTime={roadmap.data.estimatedTime}
+            topicCount={roadmap.data.topicCount}
+            slug={roadmap.id}
+            icon={roadmap.data.icon}
+            thumbnail={roadmap.data.thumbnail}
+          />
+        ))}
+      </div>
+
+      <div class="no-results" id="no-results" style="display: none;">
+        <div class="no-results-icon">🔍</div>
+        <p class="text-body-md">No roadmaps found. Try a different search term or category filter.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mid-content Ad -->
+  <AdSlot type="mid-content" />
+
+  <!-- Features Section -->
+  <section class="section section-soft" id="features">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 48px;">
+        <span class="text-caption-mono" style="color: var(--color-mute);">Features</span>
+        <h2 class="text-display-lg" style="margin: 4px 0 0;">Everything you need to learn effectively.</h2>
+      </div>
+
+      <div class="features-grid">
+        <FeatureCard
+          icon="📌"
+          title="Bookmark & Track Online."
+          description="Never lose your spot. Bookmark the site and track your interactive developer roadmap directly online without needing static PDF files."
+        />
+        <FeatureCard
+          icon="✅"
+          title="Interactive Milestones."
+          description="Check off coding roadmap topics as you master them. Your progress saves automatically in your browser and persists across your visits."
+        />
+        <FeatureCard
+          icon="🛠️"
+          title="Practical Mini-Projects."
+          description="Reinforce theory with hands-on coding mini-projects embedded directly into every section of your roadmap path."
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO Content Guide Section (600+ Words for Search Engines & Users) -->
+  <section class="section" id="seo-guide" style="border-top: 1px solid var(--color-hairline);">
+    <div class="container" style="max-width: 920px;">
+      <span class="text-caption-mono" style="color: var(--color-mute);">Developer Guide</span>
+      <h2 class="text-display-lg" style="margin: 8px 0 24px;">
+        The Ultimate Developer Roadmap Platform for 2026
+      </h2>
+
+      <article class="seo-article-body" style="color: var(--color-body); font-size: 16px; line-height: 28px;">
+        <p style="margin-bottom: 20px;">
+          Navigating a modern software engineering career requires clarity, direction, and structured progression. Whether you are a beginner taking your first steps in a <strong>coding roadmap</strong> or an experienced engineer transitioning into specialized disciplines, having a clear <strong>developer roadmap</strong> is the key to mastering high-demand technical skills efficiently without feeling overwhelmed.
+        </p>
+
+        <h3 class="text-display-sm" style="color: var(--color-ink); margin: 32px 0 12px;">
+          Why Following a Developer Roadmap Matters for Software Engineers
+        </h3>
+        <p style="margin-bottom: 20px;">
+          The tech landscape evolves rapidly every year. With thousands of tutorials, documentation sites, and frameworks competing for attention, self-taught developers and computer science students often suffer from tutorial hell. A structured <strong>roadmap developer</strong> path eliminates decision fatigue by organizing essential concepts into sequential milestones. By breaking down complex ecosystems into manageable weekly goals, a <strong>developer roadmap</strong> ensures you build solid foundations before diving into advanced architecture.
+        </p>
+
+        <h3 class="text-display-sm" style="color: var(--color-ink); margin: 32px 0 12px;">
+          Choosing Your Specialization: Web Developer Roadmap vs Full Stack Developer Roadmap
+        </h3>
+        <p style="margin-bottom: 20px;">
+          When launching your software development journey, picking the right specialization is paramount. A <strong>web developer roadmap</strong> introduces foundational internet principles, HTML5 semantic structure, modern CSS layouts (Flexbox and Grid), and client-side scripting. As you progress into frontend mastery, learning modern component-based architecture and build tools becomes essential.
+        </p>
+        <p style="margin-bottom: 20px;">
+          For engineers aiming to build complete end-to-end applications, a <strong>full stack developer roadmap</strong> bridges client-side user interfaces with robust server-side systems. Full stack engineers master API integration, database schema design, authentication mechanisms, and cloud deployments, equipping them to build scalable products independently.
+        </p>
+
+        <h3 class="text-display-sm" style="color: var(--color-ink); margin: 32px 0 12px;">
+          Mastering Server-Side Engineering: Roadmap Backend, Roadmap Python, Roadmap Java & Roadmap JavaScript
+        </h3>
+        <p style="margin-bottom: 20px;">
+          Backend services power data persistence, business logic, security, and cloud scalability. Choosing your backend technology stack is one of the most critical decisions in your career:
+        </p>
+        <ul style="margin-bottom: 24px; padding-left: 24px; display: flex; flex-direction: column; gap: 10px;">
+          <li><strong>Roadmap Backend Engineering:</strong> Fundamentals of HTTP/HTTPS protocols, RESTful API design, database indexing, caching strategies, and containerized microservices.</li>
+          <li><strong>Roadmap Python:</strong> Master Python syntax, object-oriented programming, data structures, and production backend frameworks like Django and FastAPI for rapid high-performance API development.</li>
+          <li><strong>Roadmap Java:</strong> Build enterprise-grade backend microservices with Java fundamentals, object-oriented principles, Spring Boot IoC container, Spring Security, and JPA/Hibernate.</li>
+          <li><strong>Roadmap JavaScript & Node.js:</strong> Leverage JavaScript across the entire stack using Node.js, Express, and NestJS to handle non-blocking asynchronous event-driven server applications.</li>
+        </ul>
+
+        <h3 class="text-display-sm" style="color: var(--color-ink); margin: 32px 0 12px;">
+          Cutting-Edge Horizons: AI Engineer Roadmap 2026, Roadmap AI, DevOps Roadmap & Cybersecurity Roadmap
+        </h3>
+        <p style="margin-bottom: 20px;">
+          As artificial intelligence and cloud infrastructure reshape software engineering, specializing in modern disciplines unlocks incredible career growth:
+        </p>
+        <ul style="margin-bottom: 24px; padding-left: 24px; display: flex; flex-direction: column; gap: 10px;">
+          <li><strong>AI Engineer Roadmap 2026 & Roadmap AI:</strong> Prepare for the generative AI revolution by mastering prompt engineering, LLM orchestration (LangChain & LlamaIndex), RAG architecture, vector databases (Pinecone, Qdrant), and fine-tuning foundation models.</li>
+          <li><strong>DevOps Roadmap:</strong> Automate deployment pipelines with Linux shell scripting, Docker containerization, Kubernetes orchestration, Terraform Infrastructure as Code (IaC), and CI/CD automation.</li>
+          <li><strong>Cybersecurity Roadmap:</strong> Secure production applications by mastering OWASP security threats, OAuth 2.0/JWT authentication, network security, encryption, and DevSecOps compliance.</li>
+        </ul>
+
+        <h3 class="text-display-sm" style="color: var(--color-ink); margin: 32px 0 12px;">
+          Why Track Your Developer Roadmap Directly Online?
+        </h3>
+        <p style="margin-bottom: 20px;">
+          Traditional static PDF roadmaps quickly become outdated and sit forgotten in your downloads folder. Roadmap Library provides interactive online tracking directly in your web browser. Check off completed topics, track your percentage progress in real time, complete practical hands-on mini-projects, and resume your learning path across devices — all without needing manual file downloads or account registrations.
+        </p>
+      </article>
+
+      <!-- Interactive FAQ Section sorted by SEO Popularity -->
+      <div style="margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--color-hairline);" id="faq">
+        <span class="text-caption-mono" style="color: var(--color-mute);">FAQ</span>
+        <h3 class="text-display-md" style="margin: 4px 0 24px;">Frequently Asked Questions & Career Answers</h3>
+
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          {faqList.map((item) => (
+            <details class="faq-item" style="background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-md); padding: 16px 20px; transition: border-color 0.2s ease;">
+              <summary style="font-weight: 600; font-size: 17px; cursor: pointer; color: var(--color-ink); display: flex; align-items: center; justify-content: space-between;">
+                <span>{item.q}</span>
+              </summary>
+              <p style="margin-top: 12px; color: var(--color-body); font-size: 15px; line-height: 26px;">
+                {item.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section section-dark">
+    <div class="container" style="text-align: center;">
+      <h2 class="text-display-lg" style="color: var(--color-on-primary); margin: 0 0 16px;">
+        Start tracking your developer roadmap online today.
+      </h2>
+      <p class="text-body-lg" style="color: rgba(255, 255, 255, 0.7); margin: 0 0 32px; max-width: 620px; margin-left: auto; margin-right: auto;">
+        Bookmark Roadmap Library now and master programming languages, frameworks, and cloud engineering at your own pace.
+      </p>
+      <a class="btn-secondary" href="#roadmaps" style="background: white; color: var(--color-ink); border-color: white;">
+        Browse Interactive Roadmaps
+      </a>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  const searchInput = document.getElementById('roadmap-search') as HTMLInputElement | null;
+  const filterPills = document.querySelectorAll('.filter-pill');
+  const roadmapGrid = document.getElementById('roadmap-grid');
+  const noResults = document.getElementById('no-results');
+  const cards = roadmapGrid?.querySelectorAll('.roadmap-card');
+
+  let activeFilter = 'all';
+  let searchQuery = '';
+
+  function filterCards() {
+    let visibleCount = 0;
+    cards?.forEach((card) => {
+      const category = card.getAttribute('data-category') || '';
+      const title = (card.getAttribute('data-title') || '').toLowerCase();
+      const matchesFilter = activeFilter === 'all' || category === activeFilter;
+      const matchesSearch = !searchQuery || title.includes(searchQuery.toLowerCase());
+      const isVisible = matchesFilter && matchesSearch;
+      (card as HTMLElement).style.display = isVisible ? '' : 'none';
+      if (isVisible) visibleCount++;
+    });
+    if (noResults) {
+      noResults.style.display = visibleCount === 0 ? '' : 'none';
+    }
+  }
+
+  let debounceTimer: number;
+  searchInput?.addEventListener('input', (e) => {
+    clearTimeout(debounceTimer);
+    debounceTimer = window.setTimeout(() => {
+      searchQuery = (e.target as HTMLInputElement).value;
+      filterCards();
+    }, 150);
+  });
+
+  filterPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      filterPills.forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeFilter = pill.getAttribute('data-filter') || 'all';
+      filterCards();
+    });
+  });
+</script>

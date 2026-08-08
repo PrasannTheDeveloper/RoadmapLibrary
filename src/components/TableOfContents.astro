@@ -1,0 +1,23 @@
+---
+interface Props {
+  sections: Array<{ title: string }>;
+  roadmapId: string;
+}
+
+const { sections, roadmapId } = Astro.props;
+---
+
+<aside class="toc-sidebar" aria-label="Table of contents">
+  <p class="toc-label">Contents</p>
+  <ul class="toc-list">
+    {sections.map((section: any, i: number) => (
+      <li class="toc-item">
+        <a class="toc-link" href={`#section-${i}`} data-section-index={i}>
+          <span>{section.title}</span>
+          <span class="toc-progress" data-toc-progress={i}></span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <div class="ad-slot ad-slot-sidebar" data-ad-slot="sidebar" data-placeholder="Ad — 300×250" role="complementary" aria-label="Advertisement"></div>
+</aside>

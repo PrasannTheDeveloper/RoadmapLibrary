@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  estimatedTime: string;
+  topicCount: number;
+  slug: string;
+  icon: string;
+  thumbnail?: string;
+}
+
+const { title, description, category, estimatedTime, topicCount, slug, icon, thumbnail } = Astro.props;
+
+const badgeClass = `badge badge-${category.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+---
+
+<a class="roadmap-card" href={`/roadmaps/${slug}`} data-category={category} data-title={title.toLowerCase()}>
+  <div class="roadmap-card-header">
+    <div class="roadmap-card-logo-wrapper">
+      {thumbnail ? (
+        <img src={thumbnail} alt={`${title} Framework Logo`} class="roadmap-card-logo" loading="lazy" width="28" height="28" />
+      ) : (
+        <span class="roadmap-card-icon" style="font-size: 24px; line-height: 1;">{icon}</span>
+      )}
+    </div>
+    <span class={badgeClass}>{category}</span>
+  </div>
+
+  <h3 class="roadmap-card-title" style="margin-top: 12px;">{title}</h3>
+  <p class="roadmap-card-desc">{description}</p>
+
+  <div class="roadmap-card-meta">
+    <span class="roadmap-card-meta-item">⏱ {estimatedTime}</span>
+    <span class="roadmap-card-meta-item">📚 {topicCount} topics</span>
+    <span class="roadmap-card-arrow">&rarr;</span>
+  </div>
+</a>

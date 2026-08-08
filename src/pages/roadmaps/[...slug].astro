@@ -1,0 +1,202 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RoadmapHeader from '../../components/RoadmapHeader.astro';
+import ProgressBar from '../../components/ProgressBar.astro';
+import RoadmapTree from '../../components/RoadmapTree.astro';
+import RoadmapListView from '../../components/RoadmapListView.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import AdSlot from '../../components/AdSlot.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const roadmaps = await getCollection('roadmaps');
+  return roadmaps.map((roadmap) => ({
+    params: { slug: roadmap.id },
+    props: { roadmap },
+  }));
+}
+
+const { roadmap } = Astro.props;
+const { Content } = await render(roadmap);
+const { title, description, category, estimatedTime, difficulty, topicCount, icon, sections } = roadmap.data;
+---
+
+<Layout title={`${title} Roadmap — Roadmap Library`} description={description}>
+  <AdSlot type="banner" />
+
+  <div class="container" id="roadmap-container">
+    <RoadmapHeader
+      title={title}
+      description={description}
+      category={category}
+      estimatedTime={estimatedTime}
+      difficulty={difficulty}
+      topicCount={topicCount}
+      icon={icon}
+      thumbnail={roadmap.data.thumbnail}
+    />
+
+    <ProgressBar roadmapId={roadmap.id} topicCount={topicCount} />
+
+    <div class="text-body-md" style="color: var(--color-body); margin-bottom: 32px;">
+      <Content />
+    </div>
+
+    <div class="roadmap-detail-layout" id="roadmap-layout">
+      <div>
+        <RoadmapTree sections={sections} roadmapId={roadmap.id} estimatedTime={estimatedTime} />
+        <RoadmapListView sections={sections} roadmapId={roadmap.id} estimatedTime={estimatedTime} />
+        <AdSlot type="mid-content" />
+      </div>
+      <TableOfContents sections={sections} roadmapId={roadmap.id} />
+    </div>
+  </div>
+
+  <div
+    id="roadmap-data"
+    data-roadmap-id={roadmap.id}
+    data-topic-count={String(topicCount)}
+    style="display:none"
+  ></div>
+
+  <script>
+    const dataEl = document.getElementById('roadmap-data');
+    const roadmapId = dataEl?.getAttribute('data-roadmap-id') || '';
+    const topicCount = parseInt(dataEl?.getAttribute('data-topic-count') || '0', 10);
+    const STORAGE_KEY = 'roadmap-progress';
+    const TIMELINE_KEY = 'roadmap-timeline-pref';
+
+    function getProgress() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+      } catch {
+        return {};
+      }
+    }
+
+    function saveProgress(progress: any) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+    }
+
+    function updateUI() {
+      const progress = getProgress();
+      const roadmapProgress = progress[roadmapId] || {};
+      const checked = Object.values(roadmapProgress).filter(Boolean).length;
+      const pct = topicCount > 0 ? Math.round((checked / topicCount) * 100) : 0;
+
+      const fill = document.getElementById('progress-fill');
+      const label = document.getElementById('progress-label');
+      if (fill) fill.style.width = `${pct}%`;
+      if (label) label.textContent = `${pct}%`;
+
+      document.querySelectorAll('.tree-node-check').forEach((cb) => {
+        const topicId = cb.getAttribute('data-topic');
+        if (topicId && roadmapProgress[topicId]) {
+          (cb as HTMLInputElement).checked = true;
+          cb.closest('.tree-node, .list-topic')?.classList.add('is-checked');
+        }
+      });
+
+      const sections = document.querySelectorAll('.tree-section');
+      sections.forEach((section, i) => {
+        const sectionTopics = section.querySelectorAll('.tree-node-check');
+        const sectionChecked = Array.from(sectionTopics).filter(
+          (cb) => (cb as HTMLInputElement).checked
+        ).length;
+        const tocProgress = document.querySelector(`[data-toc-progress="${i}"]`);
+        if (tocProgress) {
+          tocProgress.textContent =
+            sectionTopics.length > 0 ? `${sectionChecked}/${sectionTopics.length}` : '';
+        }
+      });
+    }
+
+    // Checkbox change listener
+    document.querySelectorAll('.tree-node-check').forEach((cb) => {
+      cb.addEventListener('change', (e) => {
+        const checkbox = e.target as HTMLInputElement;
+        const topicId = checkbox.getAttribute('data-topic');
+        if (!topicId) return;
+
+        const progress = getProgress();
+        if (!progress[roadmapId]) progress[roadmapId] = {};
+        progress[roadmapId][topicId] = checkbox.checked;
+        saveProgress(progress);
+
+        document.querySelectorAll(`.tree-node-check[data-topic="${topicId}"]`).forEach((other) => {
+          if (other !== checkbox) (other as HTMLInputElement).checked = checkbox.checked;
+        });
+
+        checkbox.closest('.tree-node, .list-topic')?.classList.toggle('is-checked', checkbox.checked);
+
+        updateUI();
+      });
+    });
+
+    // View toggle
+    const viewToggleBtns = document.querySelectorAll('.view-toggle-btn[data-view]');
+    const treeView = document.getElementById('tree-view');
+    const listView = document.getElementById('list-view');
+
+    viewToggleBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const view = btn.getAttribute('data-view');
+        viewToggleBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        if (treeView) treeView.style.display = view === 'tree' ? '' : 'none';
+        if (listView) listView.style.display = view === 'list' ? '' : 'none';
+
+        localStorage.setItem('roadmap-view-pref', view || 'tree');
+      });
+    });
+
+    const savedView = localStorage.getItem('roadmap-view-pref');
+    if (savedView === 'list') {
+      if (treeView) treeView.style.display = 'none';
+      if (listView) listView.style.display = '';
+      viewToggleBtns.forEach((b) => {
+        b.classList.toggle('active', b.getAttribute('data-view') === 'list');
+      });
+    }
+
+    // Timeline toggle
+    const timelineBtn = document.getElementById('toggle-timeline');
+    const roadmapContainer = document.getElementById('roadmap-container');
+    const timelineTextSpan = timelineBtn?.querySelector('span');
+
+    function applyTimelineState(showTimeline: boolean) {
+      if (showTimeline) {
+        roadmapContainer?.classList.remove('hide-timeline');
+        timelineBtn?.classList.add('active');
+        if (timelineTextSpan) timelineTextSpan.textContent = 'Timeline: On';
+      } else {
+        roadmapContainer?.classList.add('hide-timeline');
+        timelineBtn?.classList.remove('active');
+        if (timelineTextSpan) timelineTextSpan.textContent = 'Timeline: Off';
+      }
+    }
+
+    timelineBtn?.addEventListener('click', () => {
+      const isCurrentlyHidden = roadmapContainer?.classList.contains('hide-timeline');
+      const newState = Boolean(isCurrentlyHidden); // if currently hidden, new state is show=true
+      applyTimelineState(newState);
+      localStorage.setItem(TIMELINE_KEY, newState ? 'on' : 'off');
+    });
+
+    // Restore timeline preference
+    const savedTimeline = localStorage.getItem(TIMELINE_KEY);
+    if (savedTimeline === 'off') {
+      applyTimelineState(false);
+    } else {
+      applyTimelineState(true);
+    }
+
+    // PDF download
+    document.getElementById('download-pdf')?.addEventListener('click', () => {
+      window.print();
+    });
+
+    updateUI();
+  </script>
+</Layout>

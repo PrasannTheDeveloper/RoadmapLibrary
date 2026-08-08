@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="404 — Page Not Found | Roadmap Library"
+  description="Sorry, the roadmap or page you were looking for could not be found. Explore our interactive developer roadmaps for Node.js, Python, Java, and .NET."
+>
+  <div class="container section" style="text-align: center; max-width: 720px; padding-top: 96px; padding-bottom: 96px;">
+    <span class="badge-mono" style="margin-bottom: 20px; display: inline-block; font-size: 13px; padding: 4px 12px; color: var(--color-error); border-color: var(--color-error-soft); background: var(--color-error-soft);">
+      404 ERROR
+    </span>
+
+    <h1 class="text-display-xl" style="margin: 0 0 16px;">
+      Page not found.
+    </h1>
+
+    <p class="text-body-lg" style="color: var(--color-body); margin: 0 0 32px; line-height: 28px;">
+      Sorry, the page or developer roadmap you are looking for doesn't exist, has been moved, or may have been renamed.
+    </p>
+
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px;">
+      <a class="btn-primary" href="/">
+        &larr; Back to Home
+      </a>
+      <a class="btn-secondary" href="/#roadmaps">
+        Browse All Roadmaps
+      </a>
+    </div>
+
+    <!-- Quick Links Box -->
+    <div style="background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-md); padding: 24px; text-align: left; box-shadow: var(--shadow-level-2);">
+      <p class="text-caption-mono" style="color: var(--color-mute); margin-bottom: 12px;">Popular Roadmaps You Might Like:</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px;">
+        <a href="/roadmaps/nodejs-express-backend" style="padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-sm); font-size: 14px; color: var(--color-ink); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+          <span>🟢</span> Node.js + Express
+        </a>
+        <a href="/roadmaps/django-backend" style="padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-sm); font-size: 14px; color: var(--color-ink); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+          <span>🎸</span> Django Backend
+        </a>
+        <a href="/roadmaps/fastapi-backend" style="padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-sm); font-size: 14px; color: var(--color-ink); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+          <span>⚡</span> FastAPI Backend
+        </a>
+        <a href="/roadmaps/nestjs-backend" style="padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-sm); font-size: 14px; color: var(--color-ink); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+          <span>🐈</span> NestJS Backend
+        </a>
+        <a href="/roadmaps/dotnet-backend" style="padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-sm); font-size: 14px; color: var(--color-ink); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+          <span>🔷</span> .NET Core Backend
+        </a>
+        <a href="/roadmaps/springboot-backend" style="padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-sm); font-size: 14px; color: var(--color-ink); text-decoration: none; display: flex; align-items: center; gap: 8px;">
+          <span>🍃</span> Spring Boot Backend
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

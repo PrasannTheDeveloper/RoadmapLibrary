@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import AdSlot from '../components/AdSlot.astro';
+---
+
+<Layout
+  title="About Us — Developer Roadmap Library"
+  description="Learn about Roadmap Library, our mission to empower software engineers with free interactive developer roadmaps, real-time progress tracking, and hands-on coding projects."
+>
+  <div class="container section-sm" style="max-width: 900px;">
+    <span class="text-caption-mono" style="color: var(--color-mute);">Company & Mission</span>
+    <h1 class="text-display-lg" style="margin: 8px 0 24px;">About Roadmap Library</h1>
+
+    <div class="seo-article-body" style="color: var(--color-body); font-size: 16px; line-height: 28px;">
+      <p style="margin-bottom: 20px; font-size: 18px; line-height: 30px; color: var(--color-ink);">
+        <strong>Roadmap Library</strong> is an open educational platform designed to help software engineers, computer science students, and self-taught developers navigate technical career paths with clarity and confidence.
+      </p>
+
+      <h2 class="text-display-sm" style="color: var(--color-ink); margin: 36px 0 16px;">Our Mission</h2>
+      <p style="margin-bottom: 20px;">
+        Learning to code in the modern tech ecosystem can feel overwhelming. With thousands of frameworks, libraries, and conflicting tutorials, developers often fall into tutorial hell or waste months studying outdated skills. Our mission is to eliminate decision fatigue by building free, structured, and interactive learning paths for every major technology stack.
+      </p>
+
+      <h2 class="text-display-sm" style="color: var(--color-ink); margin: 36px 0 16px;">Why Interactive Online Tracking?</h2>
+      <p style="margin-bottom: 20px;">
+        Traditional developer roadmaps are often distributed as static PDF images that quickly get buried in your downloads folder. At Roadmap Library, we believe learning should be active, measurable, and accessible directly in your web browser:
+      </p>
+      <ul style="margin-bottom: 24px; padding-left: 24px; display: flex; flex-direction: column; gap: 10px;">
+        <li><strong>Interactive Milestone Checklists:</strong> Mark topics as complete and track your real-time progress percentage.</li>
+        <li><strong>Local Storage Privacy:</strong> Your learning progress saves automatically inside your browser — no account creation or tracking cookies required.</li>
+        <li><strong>Curated Documentation Links:</strong> Every topic includes direct links to official documentation, high-quality video tutorials, and hands-on courses.</li>
+        <li><strong>Practical Mini-Projects:</strong> Embedded coding mini-projects reinforce theoretical concepts with real-world building experience.</li>
+      </ul>
+
+      <AdSlot type="mid-content" />
+
+      <h2 class="text-display-sm" style="color: var(--color-ink); margin: 36px 0 16px;">Built for the 2026 Tech Ecosystem</h2>
+      <p style="margin-bottom: 20px;">
+        Technology moves fast. Our roadmaps are continuously reviewed and updated to reflect modern 2026 industry standards, whether you are following a <strong>Node.js backend roadmap</strong>, <strong>Django roadmap</strong>, <strong>FastAPI roadmap</strong>, <strong>.NET Core roadmap</strong>, <strong>Spring Boot roadmap</strong>, or an <strong>AI Engineer 2026 roadmap</strong>.
+      </p>
+
+      <div style="margin-top: 48px; padding: 24px; background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-md);">
+        <h3 class="text-display-sm" style="margin-top: 0;">Have Feedback or Ideas?</h3>
+        <p style="margin-bottom: 16px;">
+          We are constantly expanding our roadmap library. If you have suggestions for new framework roadmaps or content improvements, reach out to our team.
+        </p>
+        <a class="btn-primary btn-sm" href="/contact">Contact Us &rarr;</a>
+      </div>
+    </div>
+  </div>
+</Layout>

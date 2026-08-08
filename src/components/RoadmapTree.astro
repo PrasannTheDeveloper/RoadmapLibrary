@@ -1,0 +1,98 @@
+---
+interface Props {
+  sections: any[];
+  roadmapId: string;
+  estimatedTime?: string;
+}
+
+const { sections, roadmapId, estimatedTime = '16 weeks' } = Astro.props;
+
+const totalWeeks = parseInt(estimatedTime, 10) || 16;
+const weeksPerSection = Math.max(1, Math.round(totalWeeks / Math.max(1, sections.length)));
+
+function getWeekLabel(section: any, index: number) {
+  if (section.weekLabel) return section.weekLabel;
+  const startWeek = index * weeksPerSection + 1;
+  const endWeek = (index + 1) * weeksPerSection;
+  return `Weeks ${startWeek}–${endWeek}`;
+}
+---
+
+<div class="roadmap-tree" id="tree-view">
+  {sections.map((section, i) => {
+    const weekText = getWeekLabel(section, i);
+    return (
+      <div class="tree-section" id={`section-${i}`}>
+        <div class="tree-section-header">
+          <div class="tree-section-header-left">
+            <span class="tree-section-number">{String(i + 1).padStart(2, '0')}</span>
+            <h2 class="tree-section-title">{section.title}</h2>
+          </div>
+          <span class="week-tag badge-mono">{weekText}</span>
+        </div>
+
+        <div class="tree-topics">
+          {section.topics.map((topic: any) => (
+            <div class="tree-node" data-topic-id={topic.id} id={`topic-${topic.id}`}>
+              <div class="tree-node-content">
+                <div class="tree-node-header">
+                  <input
+                    type="checkbox"
+                    class="tree-node-check"
+                    data-roadmap={roadmapId}
+                    data-topic={topic.id}
+                    aria-label={`Mark ${topic.title} as complete`}
+                  />
+                  <span class="tree-node-title">{topic.title}</span>
+                </div>
+
+                {topic.description && <p class="tree-node-desc">{topic.description}</p>}
+
+                {topic.subtopics && topic.subtopics.length > 0 && (
+                  <div class="tree-subtopics">
+                    {topic.subtopics.map((sub: any) => (
+                      <span class="tree-subtopic">{sub.title}</span>
+                    ))}
+                  </div>
+                )}
+
+                {topic.resources && topic.resources.length > 0 && (
+                  <div class="tree-resources">
+                    {topic.resources.map((res: any) => (
+                      <a
+                        class="tree-resource-link"
+                        href={res.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span class="tree-resource-icon">
+                          {res.type === 'video' ? '▶' : res.type === 'course' ? '🎓' : res.type === 'project' ? '🔧' : res.type === 'docs' ? '📖' : '📄'}
+                        </span>
+                        {res.title}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+
+          {section.projects && section.projects.length > 0 && (
+            <div class="mini-projects-wrapper" style="margin-top: 16px;">
+              {section.projects.map((proj: any) => (
+                <div class="mini-project-card" data-project-id={proj.id}>
+                  <div class="mini-project-header">
+                    <span style="font-size: 16px;">🛠️</span>
+                    <h3 class="mini-project-title">{proj.title}</h3>
+                    <span class="mini-project-badge">Mini-Project</span>
+                  </div>
+                  <p class="mini-project-desc">{proj.description}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  })}
+</div>

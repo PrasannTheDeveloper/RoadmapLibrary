@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  error?: unknown;
+}
+
+const { error } = Astro.props;
+const errorMessage = error instanceof Error ? error.message : 'An unexpected server error occurred.';
+---
+
+<Layout
+  title="500 — Server Error | Roadmap Library"
+  description="Something went wrong on our server. Please try refreshing the page or return to the home page."
+>
+  <div class="container section" style="text-align: center; max-width: 720px; padding-top: 96px; padding-bottom: 96px;">
+    <span class="badge-mono" style="margin-bottom: 20px; display: inline-block; font-size: 13px; padding: 4px 12px; color: var(--color-warning); border-color: var(--color-warning-soft); background: var(--color-warning-soft);">
+      500 SERVER ERROR
+    </span>
+
+    <h1 class="text-display-xl" style="margin: 0 0 16px;">
+      Something went wrong.
+    </h1>
+
+    <p class="text-body-lg" style="color: var(--color-body); margin: 0 0 32px; line-height: 28px;">
+      An unexpected error occurred on our server while processing your request. Please try refreshing the page or returning home.
+    </p>
+
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px;">
+      <a class="btn-primary" href="/">
+        &larr; Return to Home
+      </a>
+      <a class="btn-secondary" href="/contact">
+        Contact Support
+      </a>
+    </div>
+
+    {errorMessage && (
+      <div style="background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-md); padding: 16px 20px; text-align: left; max-width: 600px; margin: 0 auto;">
+        <p class="text-caption-mono" style="color: var(--color-mute); margin-bottom: 4px;">Technical Details:</p>
+        <code class="text-code" style="color: var(--color-body); font-size: 13px; word-break: break-all;">{errorMessage}</code>
+      </div>
+    )}
+  </div>
+</Layout>

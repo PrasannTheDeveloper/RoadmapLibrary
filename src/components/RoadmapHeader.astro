@@ -1,0 +1,83 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  estimatedTime?: string;
+  difficulty: string;
+  topicCount: number;
+  icon: string;
+  thumbnail?: string;
+}
+
+const { title, description, category, estimatedTime, difficulty, topicCount, icon, thumbnail } = Astro.props;
+const categoryBadgeClass = `badge badge-${category.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+---
+
+<header class="roadmap-header">
+  <div class="print-header">
+    <div class="print-header-title">{title} Roadmap</div>
+    <div class="print-header-url">roadmaplibrary.com</div>
+  </div>
+
+  <span class={categoryBadgeClass}>{category}</span>
+  <h1 class="text-display-lg" style="margin: 12px 0 8px; display: flex; align-items: center; gap: 12px;">
+    {thumbnail ? (
+      <img src={thumbnail} alt={`${title} Framework Logo`} class="roadmap-header-logo" width="36" height="36" />
+    ) : (
+      <span>{icon}</span>
+    )}
+    <span>{title}</span>
+  </h1>
+  <p class="text-body-lg" style="color: var(--color-body); margin: 0; max-width: 800px;">{description}</p>
+
+  <div class="roadmap-header-meta">
+    {estimatedTime && <span class="roadmap-header-meta-item">⏱ {estimatedTime}</span>}
+    <span class="roadmap-header-meta-item">📚 {topicCount} topics</span>
+    <span class="roadmap-header-meta-item">📊 {difficulty} level</span>
+    <span class="roadmap-header-meta-item">⚡ Self-paced learning</span>
+  </div>
+
+  <div class="roadmap-header-actions">
+    <button class="btn-primary btn-sm" id="download-pdf" aria-label="Download this roadmap as PDF">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      Download PDF
+    </button>
+
+    <div class="view-toggle" role="group" aria-label="Timeline and View options">
+      <button class="view-toggle-btn active" id="toggle-timeline" aria-label="Toggle week timeline visibility">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <span>Timeline: On</span>
+      </button>
+
+      <button class="view-toggle-btn active" data-view="tree" aria-label="Tree view">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="5" r="3"></circle>
+          <line x1="12" y1="8" x2="12" y2="13"></line>
+          <line x1="12" y1="13" x2="6" y2="18"></line>
+          <line x1="12" y1="13" x2="18" y2="18"></line>
+        </svg>
+        Tree
+      </button>
+
+      <button class="view-toggle-btn" data-view="list" aria-label="List view">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="8" y1="6" x2="21" y2="6"></line>
+          <line x1="8" y1="12" x2="21" y2="12"></line>
+          <line x1="8" y1="18" x2="21" y2="18"></line>
+          <line x1="3" y1="6" x2="3.01" y2="6"></line>
+          <line x1="3" y1="12" x2="3.01" y2="12"></line>
+          <line x1="3" y1="18" x2="3.01" y2="18"></line>
+        </svg>
+        List
+      </button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,12 @@
+---
+interface Props {
+  type: 'banner' | 'sidebar' | 'mid-content';
+  id?: string;
+}
+
+const { type, id } = Astro.props;
+const slotClass = `ad-slot ad-slot-${type}`;
+const placeholder = `Ad — ${type === 'banner' ? '728×90' : type === 'sidebar' ? '300×250' : '728×90'}`;
+---
+
+<div class={slotClass} data-ad-slot={id || type} data-placeholder={placeholder} role="complementary" aria-label="Advertisement"></div>

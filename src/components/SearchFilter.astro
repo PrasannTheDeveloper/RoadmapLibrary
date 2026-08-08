@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  categories?: string[];
+}
+
+const roadmaps = await getCollection('roadmaps');
+const extractedCategories = Array.from(new Set(roadmaps.map((r) => r.data.category))).sort();
+const categories = Astro.props.categories || extractedCategories;
+---
+
+<div class="search-bar">
+  <input
+    type="search"
+    class="form-input form-input-lg form-input-search"
+    placeholder="Search framework roadmaps (e.g. NestJS, Django, FastAPI, .NET, Spring)…"
+    id="roadmap-search"
+    aria-label="Search roadmaps"
+    autocomplete="off"
+  />
+  <div class="filter-pills" role="group" aria-label="Filter by category">
+    <button class="filter-pill active" data-filter="all">All</button>
+    {categories.map((cat) => (
+      <button class="filter-pill" data-filter={cat}>{cat}</button>
+    ))}
+  </div>
+</div>

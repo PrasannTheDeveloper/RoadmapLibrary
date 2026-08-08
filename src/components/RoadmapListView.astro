@@ -1,0 +1,82 @@
+---
+interface Props {
+  sections: any[];
+  roadmapId: string;
+  estimatedTime?: string;
+}
+
+const { sections, roadmapId, estimatedTime = '16 weeks' } = Astro.props;
+
+const totalWeeks = parseInt(estimatedTime, 10) || 16;
+const weeksPerSection = Math.max(1, Math.round(totalWeeks / Math.max(1, sections.length)));
+
+function getWeekLabel(section: any, index: number) {
+  if (section.weekLabel) return section.weekLabel;
+  const startWeek = index * weeksPerSection + 1;
+  const endWeek = (index + 1) * weeksPerSection;
+  return `Weeks ${startWeek}–${endWeek}`;
+}
+---
+
+<div class="roadmap-list" id="list-view" style="display: none;">
+  {sections.map((section, i) => {
+    const weekText = getWeekLabel(section, i);
+    return (
+      <div class="list-section" id={`list-section-${i}`}>
+        <div class="list-section-title">
+          <div class="list-section-title-left">
+            <span>{section.title}</span>
+          </div>
+          <span class="week-tag badge-mono">{weekText}</span>
+        </div>
+
+        <ul class="list-topics">
+          {section.topics.map((topic: any) => (
+            <li class="list-topic" data-topic-id={topic.id}>
+              <input
+                type="checkbox"
+                class="tree-node-check"
+                data-roadmap={roadmapId}
+                data-topic={topic.id}
+                aria-label={`Mark ${topic.title} as complete`}
+              />
+              <div style="flex: 1;">
+                <div class="list-topic-title">{topic.title}</div>
+                {topic.description && <div class="list-topic-desc">{topic.description}</div>}
+                {topic.resources && topic.resources.length > 0 && (
+                  <div class="tree-resources" style="margin-top: 8px; padding-left: 0;">
+                    {topic.resources.map((res: any) => (
+                      <a
+                        class="tree-resource-link"
+                        href={res.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {res.title}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        {section.projects && section.projects.length > 0 && (
+          <div style="margin-top: 16px;">
+            {section.projects.map((proj: any) => (
+              <div class="mini-project-card" style="margin-left: 0;">
+                <div class="mini-project-header">
+                  <span style="font-size: 16px;">🛠️</span>
+                  <h3 class="mini-project-title">{proj.title}</h3>
+                  <span class="mini-project-badge">Mini-Project</span>
+                </div>
+                <p class="mini-project-desc" style="padding-left: 0;">{proj.description}</p>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  })}
+</div>

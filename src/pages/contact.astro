@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact Us — Developer Roadmap Library"
+  description="Get in touch with the Roadmap Library team. Send us feedback, suggest new developer roadmaps, or report content updates."
+>
+  <div class="container section-sm" style="max-width: 800px;">
+    <span class="text-caption-mono" style="color: var(--color-mute);">Get in Touch</span>
+    <h1 class="text-display-lg" style="margin: 8px 0 12px;">Contact Us</h1>
+    <p class="text-body-lg" style="color: var(--color-body); margin-bottom: 40px;">
+      Have a question, feedback, or a suggestion for a new framework roadmap? We would love to hear from you.
+    </p>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: 32px;">
+      <div style="background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-md); padding: 32px; box-shadow: var(--shadow-level-2);">
+        <form id="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <label for="name" style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; color: var(--color-ink);">Your Name</label>
+            <input type="text" id="name" name="name" required class="form-input" placeholder="e.g. Alex Johnson" />
+          </div>
+
+          <div>
+            <label for="email" style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; color: var(--color-ink);">Email Address</label>
+            <input type="email" id="email" name="email" required class="form-input" placeholder="e.g. alex@example.com" />
+          </div>
+
+          <div>
+            <label for="subject" style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; color: var(--color-ink);">Subject</label>
+            <input type="text" id="subject" name="subject" required class="form-input" placeholder="e.g. Suggestion for Vue 3 Roadmap" />
+          </div>
+
+          <div>
+            <label for="message" style="display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; color: var(--color-ink);">Message</label>
+            <textarea id="message" name="message" rows="5" required class="form-input" style="height: auto; padding: 12px;" placeholder="Tell us how we can help..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary" style="margin-top: 8px;">Send Message &rarr;</button>
+        </form>
+
+        <div id="contact-success" style="display: none; padding: 20px; background: var(--color-canvas-soft-2); border: 1px solid var(--color-hairline); border-radius: var(--radius-sm); margin-top: 20px; text-align: center;">
+          <p style="font-size: 18px; margin: 0 0 4px; font-weight: 600; color: var(--color-ink);">Thank you!</p>
+          <p style="margin: 0; color: var(--color-body); font-size: 14px;">Your message has been received. Our team will get back to you shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successBox = document.getElementById('contact-success');
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (form && successBox) {
+      form.style.display = 'none';
+      successBox.style.display = 'block';
+    }
+  });
+</script>
