@@ -1,0 +1,133 @@
+---
+title: TypeScript Programming
+description: An intensive 4-week roadmap for developers who already know JavaScript and want to get fluent in TypeScript fast — static typing, interfaces, generics, unions, utility types, and the compiler config that ties it all together in real projects.
+category: Programming Languages
+estimatedTime: 4 weeks
+difficulty: Intermediate
+topicCount: 8
+order: 3
+icon: 🔷
+thumbnail: /thumbnails/icons/TypeScript.svg
+sections:
+  - title: 01. Foundations & Primitive Types
+    topics:
+      - id: ts-foundations
+        title: Type Annotations & Primitive Types
+        description: >-
+          This is where the JavaScript-to-TypeScript mental shift happens. TypeScript doesn't replace JavaScript — it layers a type checker on top that catches mistakes before your code ever runs. The goal here is learning when to let TypeScript infer a type on its own versus when to spell it out explicitly, and getting comfortable with the primitives (string, number, boolean) plus the odd trio of any, unknown, and never — each of which quietly shapes how safe your code actually is.
+        subtopics:
+          - title: Type Inference vs Explicit Annotations
+            dayLabel: Days 1–2
+            description: >-
+              Write plain variables and let TypeScript guess their types, then compare that against annotating everything by hand. Inference turns out to be smart enough on its own most of the time, and over-annotating can actually clutter code. The real skill is recognizing the handful of situations — function parameters, empty arrays, complex return types — where an explicit annotation saves you from a bug two files away.
+          - title: Primitive Types & Special Types
+            dayLabel: Days 3–4
+            description: >-
+              The standard primitives go quickly; most of the time here goes to the types that trip people up: any (which turns off type checking entirely — use sparingly), unknown (the safer alternative that forces you to check before using a value), void (for functions that return nothing), and never (for code paths that should be unreachable, like an exhaustive switch or a function that always throws).
+  - title: 02. Compound Types & Enums
+    topics:
+      - id: ts-compound
+        title: Arrays, Tuples, Enums & Literals
+        description: >-
+          Real data isn't just single values — it's lists, fixed-shape records, and closed sets of options. This section covers the tools for describing that structure precisely, so your editor and compiler can catch things like "someone passed a string where a status code was expected" long before a user does.
+        subtopics:
+          - title: Typed Arrays & Fixed Tuples
+            dayLabel: Days 1–2
+            description: >-
+              Typed arrays (string[], number[]) are the easy part — those take minutes to pick up. Tuples are the interesting bit: a fixed-length array where each position has its own type, like [string, number] for a name paired with an age. A few small examples (coordinate pairs, key-value entries) make it clear why tuples matter for functions that return multiple values.
+          - title: Enums & Literal Types
+            dayLabel: Days 3–4
+            description: >-
+              Enums give you a named set of constants (Status.Active, Status.Archived) instead of scattering magic strings through your codebase. Literal types do something similar but lighter-weight — restricting a variable to an exact set of string or number values without needing a separate enum declaration. Comparing both side by side builds a feel for when each one fits better.
+  - title: 03. Interfaces & Type Aliases
+    topics:
+      - id: ts-interfaces
+        title: Object Types, Interfaces & Type Aliases
+        description: >-
+          This is arguably the most-used part of TypeScript day to day — describing the shape of objects. Expect to cover interfaces (and how they extend one another and merge declarations), type aliases as a more flexible alternative, and the union (|) and intersection (&) operators that let you combine types the way you'd combine sets.
+        subtopics:
+          - title: Interfaces & Extends
+            dayLabel: Days 1–2
+            description: >-
+              Define interfaces for real domain objects — a User, a Product, an API response — and practice extending one interface from another to avoid repeating fields. Declaration merging shows up naturally here too: TypeScript's quirky feature where two interfaces with the same name automatically combine, useful (and occasionally confusing) when working with third-party type definitions.
+          - title: Type Aliases, Unions & Intersections
+            dayLabel: Days 3–4
+            description: >-
+              Type aliases can name anything — objects, primitives, unions, tuples — which makes them more flexible than interfaces in some cases. Most of the session goes to union types (a value that could be one of several types) and intersection types (combining multiple types into one), since these show up constantly in real-world code like handling API responses that can succeed or fail.
+  - title: 04. Generics & Generic Constraints
+    topics:
+      - id: ts-generics
+        title: Generics, Functions & Constraints
+        description: >-
+          Generics are how you write a function or component once and have it work correctly with any type, without losing type safety. This is the concept that usually separates "I know some TypeScript" from "I can read a typed library's source code," so take your time here — it clicks with repetition, not memorization.
+        subtopics:
+          - title: Generic Functions & Interfaces
+            dayLabel: Days 1–2
+            description: >-
+              Start with a generic identity function, then a generic wrapper (like a Box<T> or a Result<T>), watching how the type parameter flows through automatically based on what you pass in. A generic interface or two rounds this out, showing how the same idea applies to data structures, not just functions.
+          - title: Generic Constraints (extends)
+            dayLabel: Days 3–4
+            description: >-
+              An unconstrained generic can be anything, which is sometimes too loose — you might need to guarantee the type has a .length property or an id field. That's what constraints (T extends SomethingWithLength) are for. Constrain a few generics against interfaces and pair that with default type parameters for a more forgiving API.
+  - title: 05. Advanced Utility Types
+    topics:
+      - id: ts-utility
+        title: Built-in Utility Types & Mapped Types
+        description: >-
+          TypeScript ships with a small toolbox of built-in types that transform other types instead of describing new data from scratch. Once these become second nature, near-duplicate interfaces stop piling up and new types get derived directly from existing ones — which keeps your codebase in sync as it evolves.
+        subtopics:
+          - title: Object Utility Types
+            dayLabel: Days 1–2
+            description: >-
+              Work through Partial (make every field optional — handy for update payloads), Required (the opposite), Readonly (lock a type against mutation), Record (build an object type from a set of keys and a value type), Pick (grab a subset of fields), and Omit (exclude specific fields). Applying each one to a shared User type makes the differences obvious side by side.
+          - title: Function & Conditional Utility Types
+            dayLabel: Days 3–4
+            description: >-
+              Shift from object-shaped utilities to function-related ones — ReturnType (extract what a function returns), Parameters (extract its argument types) — before a short introduction to conditional types, TypeScript's version of an if/else at the type level. This is more advanced territory, so a couple of small, deliberately simple examples go a long way.
+  - title: 06. Type Guards & Narrowing
+    topics:
+      - id: ts-typeguards
+        title: Type Guard Narrowing & Discriminated Unions
+        description: >-
+          When a value could be one of several types, TypeScript needs a way to figure out which one you're actually dealing with at a given point in the code — that's narrowing. Start with the built-in checks the compiler already understands, then move on to writing your own, more expressive versions for complex data shapes.
+        subtopics:
+          - title: Built-in Type Guards
+            dayLabel: Days 1–2
+            description: >-
+              Narrow values with typeof (for primitives), instanceof (for class instances), and the in operator (for checking whether a property exists on an object). A small function that accepts a union type and branches its logic safely based on these checks — without a single type assertion — ties the three together.
+          - title: User-Defined Type Predicates & Discriminated Unions
+            dayLabel: Days 3–4
+            description: >-
+              Sometimes the built-in checks aren't enough, which is where a custom type guard comes in, written with the "is" keyword (function isCat(pet): pet is Cat). From there, build a discriminated union — a set of types that all share a common literal field like kind: 'circle' | 'square' — and see how a single switch statement on that field gives you full, exhaustive type safety with zero manual casting.
+  - title: 07. TSConfig & Compiler Options
+    topics:
+      - id: ts-config
+        title: TSConfig Configuration & Modules
+        description: >-
+          The tsconfig.json file is where you decide how strict TypeScript should be and how it should compile your code for a specific runtime. Getting this right early saves a lot of pain later — a loosely configured project lets bugs slip through that a stricter one would have caught on save.
+        subtopics:
+          - title: Strict Mode Flags
+            dayLabel: Days 1–2
+            description: >-
+              Turn on strict mode and walk through what it actually enables — strictNullChecks (no more silent null/undefined bugs), noImplicitAny (forces you to type things instead of falling back to any), and a few of the other flags bundled under "strict". Deliberately break a small project without strict mode, then fix it with strict mode on, to feel the difference directly instead of just reading about it.
+          - title: Module Resolution & Path Mapping
+            dayLabel: Days 3–4
+            description: >-
+              Figure out how TypeScript resolves where an import actually points to, then set up path aliases (like @/components instead of ../../../components) using the paths option. Generating .d.ts declaration files is worth a look too, since it matters if you ever publish a package or share types across a monorepo.
+  - title: 08. Framework & Library Integration
+    topics:
+      - id: ts-integration
+        title: TypeScript with Runtimes & Testing
+        description: >-
+          Types matter most when they meet the messy, real-world code they're supposed to protect — a Node backend, a React frontend, a test suite. This closing section is about wiring TypeScript into the tools you'll actually use daily, rather than treating it as an isolated language exercise.
+        subtopics:
+          - title: Node.js & React Integration
+            dayLabel: Days 1–2
+            description: >-
+              Set up TypeScript in a Node.js project and a React project side by side, and see how @types packages fill in type definitions for libraries that weren't originally written in TypeScript. React adds its own trio worth mastering — typing component props, useState, and event handlers, the three things you'll do in nearly every component you ever write.
+          - title: Testing & Code Quality
+            dayLabel: Days 3–4
+            description: >-
+              Configure Vitest (or Jest, if that's what your project uses) to run against TypeScript files directly, and write a handful of typed unit tests. Finish by connecting ESLint's TypeScript plugin so type-aware linting catches issues that the compiler alone might miss — a good habit to carry into any real project from here.
+---
+TypeScript is a strongly typed programming language developed by Microsoft that builds on JavaScript by adding compile-time static type definitions. Rather than replacing JavaScript, it compiles down to plain JavaScript — so everything you already know still applies, TypeScript just adds a safety net around it. By the end of this roadmap, you should be able to read most typed codebases comfortably, set up a new project with a sensible tsconfig, and reach for the right TypeScript feature (a generic, a union, a utility type) without having to look it up every time.

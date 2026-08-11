@@ -1,0 +1,629 @@
+---
+title: Spring Boot Backend Development
+description: A structured 20-week roadmap for becoming a skilled Spring Boot backend developer — covering Java fundamentals, Spring's IoC container and auto-configuration, Spring Data JPA/Hibernate, REST and GraphQL API design, Spring Security, caching, testing, microservices with Spring Cloud, message queues, and containerized deployment.
+category: Java Frameworks
+estimatedTime: 20 weeks
+difficulty: Intermediate
+topicCount: 30
+order: 8
+icon: 🍃
+thumbnail: /thumbnails/icons/Springboot.svg
+sections:
+  - title: Programming Fundamentals
+    topics:
+      - id: java-fundamentals
+        title: Java Fundamentals
+        description: Java is a statically-typed, object-oriented language, and its class-based structure and annotation syntax are what the entire Spring ecosystem is built on top of.
+        resources:
+          - title: Java Documentation - Oracle
+            url: https://docs.oracle.com/en/java/javase/21/
+            type: docs
+          - title: Java Tutorials - Oracle
+            url: https://docs.oracle.com/javase/tutorial/
+            type: course
+          - title: Java Streams - Baeldung
+            url: https://www.baeldung.com/java-8-streams
+            type: article
+        subtopics:
+          - title: 'Java Fundamentals: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: Cover classes, interfaces, and generics, and see how Java's object model maps onto beans managed by Spring's IoC container.
+          - title: 'Java Fundamentals: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: Practice annotations and the Streams API, the syntax patterns you'll rely on constantly when writing Spring Data queries and security config.
+      - id: data-structures
+        title: Data Structures
+        description: The Java Collections Framework — lists, sets, maps, and queues — underpins how you model and manipulate data throughout a Spring Boot application.
+        resources:
+          - title: Java Collections Framework - Oracle Docs
+            url: https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html
+            type: docs
+          - title: Data Structures Easy to Advanced - freeCodeCamp
+            url: https://www.youtube.com/watch?v=RBSGKlAvoiM
+            type: video
+        subtopics:
+          - title: 'Data Structures: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Compare ArrayList, LinkedList, HashMap, and HashSet, and learn the time complexity of common operations on each.
+          - title: 'Data Structures: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Apply the right collection type to real backend problems like caching lookups, deduplication, and ordered processing.
+      - id: algorithms-basics
+        title: Algorithms Basics
+        description: Understanding time and space complexity helps you reason about whether a service or query will hold up under real traffic, not just pass a small test case.
+        resources:
+          - title: Introduction to Algorithms - MIT OpenCourseWare
+            url: https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/
+            type: course
+          - title: Big-O Cheat Sheet
+            url: https://www.bigocheatsheet.com/
+            type: article
+        subtopics:
+          - title: 'Algorithms Basics: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn Big-O notation and practice analyzing the time and space complexity of common algorithms.
+          - title: 'Algorithms Basics: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Apply sorting and searching algorithms to practical problems, and recognize when a naive approach won't scale.
+  - title: Version Control
+    topics:
+      - id: git
+        title: Git
+        description: Git tracks every change to your codebase locally, letting you experiment, branch, and roll back safely before code ever reaches a shared remote repository.
+        resources:
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Learn init, add, commit, log, and diff, and practice writing a clean, meaningful commit history.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Create and switch branches, resolve merge conflicts, and prepare a clean set of changes for review.
+      - id: github-gitlab
+        title: GitHub/GitLab
+        description: GitHub and GitLab host your Git repositories remotely and layer collaboration tools — pull requests, issues, and CI runners — on top of core Git.
+        resources:
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitLab Documentation
+            url: https://docs.gitlab.com/
+            type: docs
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Push and pull against a remote, configure SSH keys, and manage forks and upstream syncing.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Open pull/merge requests, respond to review comments, and work with protected branches and required status checks.
+  - title: Spring Core Concepts
+    topics:
+      - id: ioc-dependency-injection
+        title: IoC Container & Dependency Injection
+        description: Spring's IoC container creates and wires your objects (beans) for you, so classes declare what they need instead of constructing their own dependencies.
+        resources:
+          - title: Spring Framework Documentation - IoC Container
+            url: https://docs.spring.io/spring-framework/reference/core/beans.html
+            type: docs
+          - title: Spring Boot Reference Documentation
+            url: https://docs.spring.io/spring-boot/reference/
+            type: docs
+        subtopics:
+          - title: 'IoC Container & Dependency Injection: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn how @Component, @Service, and @Repository register beans, and how constructor injection resolves them.
+          - title: 'IoC Container & Dependency Injection: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Explore bean scopes, qualifier annotations for disambiguating beans, and how the application context wires everything at startup.
+      - id: spring-boot-starters-autoconfig
+        title: Starters & Auto-Configuration
+        description: Spring Boot starters bundle common dependencies together, and auto-configuration wires up sensible defaults based on what's on the classpath — cutting down boilerplate setup.
+        resources:
+          - title: Spring Boot Auto-Configuration
+            url: https://docs.spring.io/spring-boot/reference/using/auto-configuration.html
+            type: docs
+        subtopics:
+          - title: 'Starters & Auto-Configuration: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Add starters like spring-boot-starter-web and spring-boot-starter-data-jpa, and see what each auto-configures.
+          - title: 'Starters & Auto-Configuration: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Override default auto-configuration with your own beans, and use @ConditionalOnProperty to control what gets configured.
+      - id: application-properties
+        title: Application Configuration
+        description: application.properties/yml files externalize settings like database URLs and ports, letting the same JAR run differently across dev, test, and production profiles.
+        resources:
+          - title: Externalized Configuration - Spring Boot Docs
+            url: https://docs.spring.io/spring-boot/reference/features/external-config.html
+            type: docs
+        subtopics:
+          - title: 'Application Configuration: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set properties in application.yml, and bind them into typed configuration classes with @ConfigurationProperties.
+          - title: 'Application Configuration: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Set up Spring profiles (dev, test, prod) with profile-specific property files that load automatically per environment.
+      - id: aop-interceptors
+        title: AOP & Interceptors
+        description: Aspect-oriented programming lets you attach cross-cutting logic — like logging or transaction management — to methods without modifying the methods themselves.
+        resources:
+          - title: Aspect Oriented Programming with Spring
+            url: https://docs.spring.io/spring-framework/reference/core/aop.html
+            type: docs
+        subtopics:
+          - title: 'AOP & Interceptors: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand join points, advice, and pointcuts, and write a simple @Around aspect for logging method calls.
+          - title: 'AOP & Interceptors: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Build a custom annotation-driven aspect (e.g. for timing or auditing) and register a web interceptor for request-level logic.
+  - title: Databases
+    topics:
+      - id: sql-fundamentals
+        title: SQL Fundamentals
+        description: Relational databases store data in tables with defined relationships, and SQL is the language for querying, joining, and modifying that data reliably.
+        resources:
+          - title: SQL Tutorial - W3Schools
+            url: https://www.w3schools.com/sql/
+            type: article
+          - title: SQLBolt - Interactive SQL Lessons
+            url: https://sqlbolt.com/
+            type: course
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Design normalized tables with primary/foreign keys, and model one-to-many and many-to-many relationships for a real domain.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Write joins and aggregations, wrap related writes in transactions, and learn how indexes affect query speed.
+      - id: postgresql-mysql
+        title: PostgreSQL / MySQL
+        description: PostgreSQL and MySQL are the two most common production relational databases behind Spring Boot apps, each with its own data types, tooling, and performance quirks.
+        resources:
+          - title: PostgreSQL Official Documentation
+            url: https://www.postgresql.org/docs/current/
+            type: docs
+          - title: MySQL Reference Manual
+            url: https://dev.mysql.com/doc/refman/en/
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Set up a local Postgres or MySQL instance and design tables using each database's specific data types and constraints.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Write more advanced queries and use each database's query planner (EXPLAIN) to diagnose slow queries.
+      - id: spring-data-jpa-hibernate
+        title: Spring Data JPA & Hibernate
+        description: Spring Data JPA, backed by Hibernate, maps Java entities to database tables and generates common queries automatically from repository method names.
+        resources:
+          - title: Spring Data JPA Documentation
+            url: https://docs.spring.io/spring-data/jpa/reference/
+            type: docs
+          - title: Hibernate ORM Documentation
+            url: https://hibernate.org/orm/documentation/
+            type: docs
+        subtopics:
+          - title: 'Spring Data JPA & Hibernate: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: Define @Entity classes with JPA annotations, and create repository interfaces that extend JpaRepository.
+          - title: 'Spring Data JPA & Hibernate: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: Write custom queries with @Query, manage entity relationships and fetch types, and understand Hibernate's first-level cache.
+      - id: flyway-liquibase
+        title: Database Migrations
+        description: Flyway and Liquibase version-control your database schema, letting you apply, track, and roll back structural changes the same way Git tracks code.
+        resources:
+          - title: Flyway Documentation
+            url: https://documentation.red-gate.com/fd
+            type: docs
+          - title: Liquibase Documentation
+            url: https://docs.liquibase.com/
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Write versioned SQL migration scripts with Flyway and let it apply them automatically on application startup.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Handle migration rollbacks, baseline an existing database, and manage schema changes across multiple environments.
+  - title: API Development
+    topics:
+      - id: spring-web-mvc
+        title: Spring Web MVC / REST Controllers
+        description: Spring Web MVC handles incoming HTTP requests through @RestController classes, mapping routes to Java methods and serializing responses to JSON automatically.
+        resources:
+          - title: Building a RESTful Web Service - Spring Guides
+            url: https://spring.io/guides/gs/rest-service
+            type: course
+          - title: Spring Web MVC Documentation
+            url: https://docs.spring.io/spring-framework/reference/web/webmvc.html
+            type: docs
+        subtopics:
+          - title: 'Spring Web MVC / REST Controllers: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: Build @RestController classes with @GetMapping/@PostMapping, and bind path variables and request parameters.
+          - title: 'Spring Web MVC / REST Controllers: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: Return proper HTTP status codes with ResponseEntity, and connect controllers to service and repository layers.
+      - id: dto-validation
+        title: DTOs & Bean Validation
+        description: DTOs decouple your API's request/response shape from your JPA entities, and Bean Validation annotations reject malformed input before it reaches your service layer.
+        resources:
+          - title: Validation - Spring Framework Docs
+            url: https://docs.spring.io/spring-framework/reference/core/validation/beanvalidation.html
+            type: docs
+        subtopics:
+          - title: 'DTOs & Bean Validation: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Define DTO classes with @NotNull, @Size, and @Email, and enable validation with @Valid on controller methods.
+          - title: 'DTOs & Bean Validation: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Map between entities and DTOs, write custom validation constraints, and return structured validation error responses.
+      - id: api-design-principles
+        title: API Design Principles
+        description: Consistent resource naming, status codes, and error handling make a Spring Boot API predictable to use and easier to evolve without breaking existing clients.
+        resources:
+          - title: springdoc-openapi Documentation
+            url: https://springdoc.org/
+            type: docs
+          - title: Error Handling for REST with Spring - Baeldung
+            url: https://www.baeldung.com/exception-handling-for-rest-with-spring
+            type: article
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Design resource-oriented routes, choose correct HTTP methods and status codes, and structure clean request/response payloads.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Build a global @ControllerAdvice exception handler and generate OpenAPI docs with springdoc-openapi.
+      - id: graphql
+        title: GraphQL
+        description: GraphQL lets clients request exactly the fields they need through a single typed endpoint, and Spring for GraphQL wires resolvers to your existing service layer.
+        resources:
+          - title: Spring for GraphQL Documentation
+            url: https://docs.spring.io/spring-graphql/reference/
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Define a GraphQL schema and write @QueryMapping/@MutationMapping controller methods to resolve it.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Add field-level authorization to resolvers and guard against overly expensive nested queries.
+  - title: Authentication & Security
+    topics:
+      - id: spring-security-fundamentals
+        title: Spring Security Fundamentals
+        description: Spring Security is a filter-chain-based framework that handles authentication and authorization for a Spring Boot app, from login forms to stateless API tokens.
+        resources:
+          - title: Spring Security Documentation
+            url: https://docs.spring.io/spring-security/reference/
+            type: docs
+        subtopics:
+          - title: 'Spring Security Fundamentals: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: Understand the security filter chain and configure a basic SecurityFilterChain bean to protect routes.
+          - title: 'Spring Security Fundamentals: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: Implement a UserDetailsService backed by your database, and configure role-based access rules on endpoints.
+      - id: jwt
+        title: JWT Authentication
+        description: JSON Web Tokens let a Spring Boot API verify a user's identity on every request via a signed token, without maintaining server-side session state.
+        resources:
+          - title: Spring Security OAuth2 Resource Server (JWT)
+            url: https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html
+            type: docs
+          - title: Introduction to JSON Web Tokens
+            url: https://jwt.io/introduction
+            type: article
+        subtopics:
+          - title: Authentication & Token Credentials
+            dayLabel: Days 1–2
+            description: Issue signed JWTs on login and configure Spring Security to validate them as an OAuth2 resource server.
+          - title: Authorization & OWASP Vulnerability Defense
+            dayLabel: Days 3–4
+            description: Add role/authority claims to tokens, implement refresh tokens, and handle expired or tampered tokens safely.
+      - id: oauth2-oidc
+        title: OAuth 2.0 & OpenID Connect
+        description: OAuth 2.0 delegates authentication to an external provider (like Google), and OpenID Connect adds an identity layer on top so your app can trust who a user is.
+        resources:
+          - title: Spring Security OAuth2
+            url: https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html
+            type: docs
+        subtopics:
+          - title: Authentication & Token Credentials
+            dayLabel: Days 1–2
+            description: Configure Spring Security as an OAuth2 client to log users in via an external identity provider.
+          - title: Authorization & OWASP Vulnerability Defense
+            dayLabel: Days 3–4
+            description: Validate ID tokens, map external claims to internal roles, and secure endpoints against misconfigured redirect URIs.
+      - id: password-hashing
+        title: Password Hashing
+        description: Passwords must never be stored in plain text — Spring Security's PasswordEncoder hashes them with bcrypt so a database breach doesn't expose real credentials.
+        resources:
+          - title: Password Storage - Spring Security Docs
+            url: https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html
+            type: docs
+          - title: Password Storage Cheat Sheet - OWASP
+            url: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+            type: article
+        subtopics:
+          - title: 'Password Hashing: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand hashing vs encryption, salting, and why bcrypt's configurable work factor matters for security.
+          - title: 'Password Hashing: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Register a BCryptPasswordEncoder bean and use it to hash passwords on registration and verify them on login.
+      - id: owasp-top-10
+        title: OWASP Top 10
+        description: The OWASP Top 10 catalogs the most common and impactful web application vulnerabilities, giving you a checklist to defend a Spring Boot API against real-world attacks.
+        resources:
+          - title: OWASP Top 10
+            url: https://owasp.org/www-project-top-ten/
+            type: docs
+        subtopics:
+          - title: 'OWASP Top 10: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Walk through injection, broken access control, and other top vulnerabilities, and see how each applies to a Spring Boot app.
+          - title: 'OWASP Top 10: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Configure CSRF protection, secure headers, and CORS policy in Spring Security to mitigate common attack vectors.
+  - title: Caching & Performance
+    topics:
+      - id: spring-cache-abstraction
+        title: Spring Cache Abstraction
+        description: Spring's cache abstraction lets you cache method results with a single @Cacheable annotation, independent of which caching provider sits underneath.
+        resources:
+          - title: Caching - Spring Framework Docs
+            url: https://docs.spring.io/spring-framework/reference/integration/cache.html
+            type: docs
+        subtopics:
+          - title: 'Spring Cache Abstraction: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: Enable caching with @EnableCaching and annotate service methods with @Cacheable to cache their return values.
+          - title: 'Spring Cache Abstraction: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: Use @CacheEvict and @CachePut to keep cached data in sync with underlying database writes.
+      - id: redis
+        title: Redis
+        description: Redis is an in-memory key-value store commonly plugged in as Spring's cache provider, and also used directly for session storage and pub/sub messaging.
+        resources:
+          - title: Spring Data Redis Documentation
+            url: https://docs.spring.io/spring-data/redis/reference/
+            type: docs
+          - title: Redis Documentation
+            url: https://redis.io/docs/
+            type: docs
+        subtopics:
+          - title: 'Redis: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn Redis's core data structures — strings, hashes, sets, and sorted sets — and the commands that operate on them.
+          - title: 'Redis: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Wire Redis in as Spring's cache backend via spring-boot-starter-data-redis, and use it for distributed session storage.
+      - id: connection-pooling
+        title: Connection Pooling & JVM Tuning
+        description: Database connections are expensive to open, so HikariCP pools and reuses them, and JVM tuning controls how the runtime manages memory and threads under load.
+        resources:
+          - title: HikariCP Documentation
+            url: https://github.com/brettwooldridge/HikariCP
+            type: docs
+        subtopics:
+          - title: 'Connection Pooling & JVM Tuning: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand how HikariCP (Spring Boot's default pool) manages connection lifecycle and pool sizing.
+          - title: 'Connection Pooling & JVM Tuning: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Tune pool size and timeouts for expected load, and get familiar with basic JVM heap and garbage collection settings.
+  - title: Testing
+    topics:
+      - id: unit-tests-junit
+        title: Unit Tests (JUnit 5)
+        description: Unit tests verify individual classes and methods in isolation, and JUnit 5 combined with Mockito is the standard toolkit for testing Spring Boot services.
+        resources:
+          - title: Testing - Spring Boot Reference Docs
+            url: https://docs.spring.io/spring-boot/reference/testing/
+            type: docs
+          - title: JUnit 5 User Guide
+            url: https://junit.org/junit5/docs/current/user-guide/
+            type: docs
+        subtopics:
+          - title: 'Unit Tests (JUnit 5): Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Write JUnit 5 test classes with @Test, assertions, and lifecycle annotations like @BeforeEach.
+          - title: 'Unit Tests (JUnit 5): Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Mock dependencies with Mockito, test service classes in isolation, and check coverage across a growing codebase.
+      - id: integration-tests
+        title: Integration Tests
+        description: Integration tests boot a real (or containerized) Spring context to verify controllers, repositories, and the database work correctly together.
+        resources:
+          - title: Testcontainers Documentation
+            url: https://java.testcontainers.org/
+            type: docs
+          - title: Spring Boot Testing - Auto-configured Tests
+            url: https://docs.spring.io/spring-boot/reference/testing/spring-boot-applications.html
+            type: docs
+        subtopics:
+          - title: 'Integration Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Use @SpringBootTest to load the full application context and test end-to-end request handling.
+          - title: 'Integration Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Spin up a real database in a Testcontainer for integration tests, avoiding mismatches with an in-memory database.
+      - id: api-testing
+        title: API Testing
+        description: Tools like REST Assured and Postman let you exercise a running API's endpoints directly, useful for exploratory testing and validating real HTTP behavior.
+        resources:
+          - title: REST Assured Documentation
+            url: https://rest-assured.io/
+            type: docs
+          - title: Postman Learning Center
+            url: https://learning.postman.com/docs/introduction/overview/
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Write REST Assured tests that hit real endpoints and assert on status codes and response bodies.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Test authenticated endpoints with bearer tokens, and build a Postman collection from your OpenAPI spec.
+  - title: Architecture Patterns
+    topics:
+      - id: layered-architecture
+        title: Layered Architecture
+        description: Splitting a Spring Boot app into controller, service, and repository layers keeps business logic independent of the web layer and easier to test in isolation.
+        resources:
+          - title: Spring Boot Application Structuring - Baeldung
+            url: https://www.baeldung.com/spring-boot-app-structuring
+            type: article
+        subtopics:
+          - title: 'Layered Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn the controller-service-repository split and what responsibility belongs in each layer.
+          - title: 'Layered Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Refactor a feature into distinct layers, with controllers depending on services rather than repositories directly.
+      - id: hexagonal-clean-architecture
+        title: Hexagonal / Clean Architecture
+        description: Hexagonal architecture isolates core business logic behind ports and adapters, so your domain doesn't depend directly on Spring, JPA, or any specific framework.
+        resources:
+          - title: Hexagonal Architecture with Spring Boot - Baeldung
+            url: https://www.baeldung.com/hexagonal-architecture-ddd-spring
+            type: article
+        subtopics:
+          - title: 'Hexagonal / Clean Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand ports and adapters, and why keeping domain logic framework-agnostic improves testability.
+          - title: 'Hexagonal / Clean Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Restructure a feature so its core logic depends on interfaces (ports) implemented by Spring-specific adapters.
+      - id: microservices-spring-cloud
+        title: Microservices with Spring Cloud
+        description: Spring Cloud adds service discovery, config management, and resilience patterns (via Resilience4j) on top of Spring Boot for building distributed microservices.
+        resources:
+          - title: Spring Cloud Documentation
+            url: https://spring.io/projects/spring-cloud
+            type: docs
+          - title: Resilience4j Documentation
+            url: https://resilience4j.readme.io/docs
+            type: docs
+        subtopics:
+          - title: 'Microservices with Spring Cloud: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: Set up service discovery and a config server so multiple Spring Boot services can find each other and share configuration.
+          - title: 'Microservices with Spring Cloud: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: Add circuit breakers and retries with Resilience4j to handle failures gracefully between services.
+      - id: event-driven
+        title: Event-Driven Architecture
+        description: Event-driven architecture decouples services by having them emit and react to events rather than calling each other directly, improving scalability and fault isolation.
+        resources:
+          - title: Spring Framework Events
+            url: https://docs.spring.io/spring-framework/reference/core/beans/context-introduction.html#context-functionality-events
+            type: docs
+          - title: Event-Driven Architecture - AWS
+            url: https://aws.amazon.com/event-driven-architecture/
+            type: article
+        subtopics:
+          - title: 'Event-Driven Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Use Spring's ApplicationEventPublisher and @EventListener to emit and handle events within a single application.
+          - title: 'Event-Driven Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Design event schemas and handlers for cross-service communication in a distributed system.
+  - title: Message Queues
+    topics:
+      - id: rabbitmq
+        title: RabbitMQ
+        description: RabbitMQ is a message broker that queues and routes messages between services, and Spring AMQP gives Spring Boot apps reliable asynchronous communication with delivery guarantees.
+        resources:
+          - title: Spring AMQP Documentation
+            url: https://docs.spring.io/spring-amqp/reference/
+            type: docs
+          - title: RabbitMQ Tutorials
+            url: https://www.rabbitmq.com/tutorials
+            type: docs
+        subtopics:
+          - title: 'RabbitMQ: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand exchanges, queues, and routing keys, and connect Spring Boot to RabbitMQ via Spring AMQP.
+          - title: 'RabbitMQ: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Implement message acknowledgments, retries, and dead-letter queues for messages that fail processing.
+      - id: apache-kafka
+        title: Apache Kafka
+        description: Kafka is a distributed event-streaming platform built for high-throughput, ordered message processing across many consumers, and Spring for Apache Kafka integrates it directly with Spring Boot.
+        resources:
+          - title: Spring for Apache Kafka Documentation
+            url: https://docs.spring.io/spring-kafka/reference/
+            type: docs
+          - title: 'Kafka: The Definitive Guide (Confluent)'
+            url: https://www.confluent.io/resources/kafka-the-definitive-guide-v2/
+            type: article
+        subtopics:
+          - title: 'Apache Kafka: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn Kafka's topic, partition, and consumer-group model, and connect Spring Boot using Spring for Apache Kafka.
+          - title: 'Apache Kafka: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Design consumer groups for parallel processing, and handle offset management and message replay.
+  - title: Containerization & DevOps Basics
+    topics:
+      - id: docker
+        title: Docker
+        description: Docker packages a Spring Boot app and its dependencies into a portable container, ensuring it runs identically across development, staging, and production.
+        resources:
+          - title: Container Images - Spring Boot Docs
+            url: https://docs.spring.io/spring-boot/reference/packaging/container-images/index.html
+            type: docs
+          - title: Docker Get Started
+            url: https://docs.docker.com/get-started/
+            type: docs
+        subtopics:
+          - title: 'Docker: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Write a Dockerfile for a Spring Boot JAR, understand image layers, and build and run a container locally.
+          - title: 'Docker: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Use docker-compose to run Spring Boot alongside a database and Redis in a local multi-container setup.
+      - id: ci-cd-pipelines
+        title: CI/CD Pipelines
+        description: CI/CD pipelines automatically test, build, and deploy your Spring Boot app on every push, catching regressions before they ever reach users.
+        resources:
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+          - title: CI/CD Explained - GitLab
+            url: https://about.gitlab.com/topics/ci-cd/
+            type: article
+        subtopics:
+          - title: 'CI/CD Pipelines: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set up a GitHub Actions workflow that builds with Maven/Gradle, runs tests, and reports failures on every pull request.
+          - title: 'CI/CD Pipelines: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Extend the pipeline to build a Docker image and deploy it automatically on merge to main.
+      - id: actuator-observability
+        title: Actuator & Observability
+        description: Spring Boot Actuator exposes health, metrics, and info endpoints out of the box, giving you visibility into a running application's internals without extra code.
+        resources:
+          - title: Spring Boot Actuator Documentation
+            url: https://docs.spring.io/spring-boot/reference/actuator/index.html
+            type: docs
+        subtopics:
+          - title: 'Actuator & Observability: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Enable Actuator and explore the /health, /info, and /metrics endpoints it exposes automatically.
+          - title: 'Actuator & Observability: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Secure Actuator endpoints, expose custom metrics, and wire them into a monitoring dashboard.
+---
+
+Dive into Spring Boot backend development with this 20-week structured learning path designed for developers with some Java experience. You'll build a solid foundation in Spring's IoC container, Spring Data JPA, and relational databases, then move into Spring Security, caching, and testing, before advancing to microservices with Spring Cloud, message queues, and containerized deployment. By the end, you'll be equipped to design, build, and deploy production-ready, enterprise-grade Spring Boot backend systems.

@@ -125,18 +125,23 @@ const faqSchema = {
       <SearchFilter />
 
       <div class="roadmap-grid stagger-children" id="roadmap-grid">
-        {roadmaps.map((roadmap) => (
-          <RoadmapCard
-            title={roadmap.data.title}
-            description={roadmap.data.description}
-            category={roadmap.data.category}
-            estimatedTime={roadmap.data.estimatedTime}
-            topicCount={roadmap.data.topicCount}
-            slug={roadmap.id}
-            icon={roadmap.data.icon}
-            thumbnail={roadmap.data.thumbnail}
-          />
-        ))}
+        {roadmaps.map((roadmap) => {
+          const cleanSlug = (roadmap.id.split('/').pop() || roadmap.id).replace(/\.mdx?$/, '');
+          const computedCount = roadmap.data.sections?.reduce((acc: number, sec: any) => acc + (sec.topics?.length || 0), 0) || 0;
+          const topicCount = computedCount > 0 ? computedCount : roadmap.data.topicCount;
+          return (
+            <RoadmapCard
+              title={roadmap.data.title}
+              description={roadmap.data.description}
+              category={roadmap.data.category}
+              estimatedTime={roadmap.data.estimatedTime}
+              topicCount={topicCount}
+              slug={cleanSlug}
+              icon={roadmap.data.icon}
+              thumbnail={roadmap.data.thumbnail}
+            />
+          );
+        })}
       </div>
 
       <div class="no-results" id="no-results" style="display: none;">

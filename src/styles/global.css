@@ -1684,127 +1684,513 @@ html.dark .mesh-gradient {
    ================================================================ */
 
 @media print {
+  @page {
+    size: A4;
+    margin: 1.2cm;
+  }
+
   * {
-    color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
+    color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-sizing: border-box !important;
   }
 
   body {
     background: #ffffff !important;
-    color: #000000 !important;
-    font-size: 12px;
-    line-height: 1.5;
+    color: #0f172a !important;
+    font-family: 'Geist', 'Inter', system-ui, sans-serif !important;
+    font-size: 11.5px !important;
+    line-height: 1.5 !important;
   }
 
+  /* Hide screen-only web app UI elements */
   .nav-bar,
   .footer,
   .ad-slot,
   .skip-link,
   .progress-bar-container,
-  .roadmap-header-actions,
-  .view-toggle,
+  .roadmap-header,
+  .roadmap-detail-layout,
+  #roadmap-layout,
+  .roadmap-tree,
+  .roadmap-list,
   .toc-sidebar,
   .filter-pills,
   .search-bar,
   .nav-hamburger,
   .nav-mobile-overlay,
-  #toggle-timeline {
+  #toggle-timeline,
+  .print-header {
     display: none !important;
   }
 
-  .container,
-  .container-wide {
+  /* ── ELEGANT OUTER BORDER FRAME FOR PRINT PDF DOCUMENT ── */
+  .container#roadmap-container {
     max-width: 100% !important;
-    padding: 0 !important;
+    padding: 24px !important;
     margin: 0 !important;
-  }
-
-  .section,
-  .section-sm,
-  .section-hero {
-    padding: 16px 0 !important;
-  }
-
-  .roadmap-detail-layout {
-    display: block !important;
-    grid-template-columns: 1fr !important;
-  }
-
-  .roadmap-header {
-    padding-top: 0 !important;
-    padding-bottom: 16px !important;
-    margin-bottom: 24px !important;
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-
-  .tree-section,
-  .list-section,
-  .tree-node,
-  .tree-node-content,
-  .list-topic,
-  .mini-project-card,
-  .roadmap-card,
-  .card,
-  .feature-card {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-    margin-bottom: 16px !important;
-  }
-
-  .tree-section-header,
-  .list-section-title,
-  h1, h2, h3, h4 {
-    break-after: avoid !important;
-    page-break-after: avoid !important;
-  }
-
-  .tree-node-content,
-  .mini-project-card,
-  .card,
-  .feature-card,
-  .roadmap-card {
-    box-shadow: none !important;
-    border: 1px solid #d1d5db !important;
+    border: 2px solid #0f172a !important;
+    border-radius: 8px !important;
     background: #ffffff !important;
   }
 
-  .tree-node::before,
-  .tree-topics::before {
-    background-color: #9ca3af !important;
+  /* ── PAGE 1: COVER & OVERVIEW ── */
+  .print-only-cover {
+    display: block !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    padding-bottom: 20px;
+  }
+
+  .print-brand-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-bottom: 10px !important;
+    border-bottom: 2px solid #0f172a !important;
+    margin-bottom: 20px !important;
+  }
+
+  .print-brand-title {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .print-brand-url {
+    font-size: 11px !important;
+    font-family: monospace !important;
+    color: #0284c7 !important;
+    font-weight: 700 !important;
+  }
+
+  .print-cover-category {
+    display: inline-block !important;
+    padding: 3px 10px !important;
+    background: #f1f5f9 !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 9999px !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    margin-bottom: 10px !important;
+    color: #334155 !important;
+  }
+
+  .print-cover-title {
+    font-size: 26px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin: 0 0 10px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.8px !important;
+  }
+
+  .print-cover-desc {
+    font-size: 13.5px !important;
+    color: #334155 !important;
+    line-height: 1.6 !important;
+    margin: 0 0 18px !important;
+  }
+
+  .print-cover-meta-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 10px !important;
+    padding: 12px 14px !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 6px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .print-meta-item {
+    font-size: 11.5px !important;
+    color: #334155 !important;
+  }
+
+  .print-cover-intro {
+    margin-top: 20px !important;
+    padding-top: 14px !important;
+    border-top: 1px solid #e2e8f0 !important;
+  }
+
+  .print-cover-intro h2 {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin-bottom: 10px !important;
+  }
+
+  .print-cover-intro p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    color: #334155 !important;
+  }
+
+  /* ── PAGE 2: CURRICULUM INDEX ── */
+  .print-only-index {
+    display: block !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    padding-bottom: 20px;
+  }
+
+  .print-index-h2 {
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    margin-bottom: 16px !important;
+    padding-bottom: 8px !important;
+    border-bottom: 1.5px solid #0f172a !important;
+  }
+
+  .print-index-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .print-index-item {
+    padding: 10px 14px !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 6px !important;
+    break-inside: avoid !important;
+  }
+
+  .print-index-item-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .print-index-num {
+    font-family: monospace !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    color: #0284c7 !important;
+  }
+
+  .print-index-sec-title {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    flex: 1 !important;
+  }
+
+  .print-index-tag {
+    font-size: 10.5px !important;
+    font-family: monospace !important;
+    background: #e2e8f0 !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+    color: #334155 !important;
+  }
+
+  .print-index-topics-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3px !important;
+  }
+
+  .print-index-topics-list li {
+    font-size: 11.5px !important;
+    color: #334155 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    padding-left: 6px !important;
+  }
+
+  .print-bullet {
+    color: #0284c7 !important;
+  }
+
+  .print-subcount {
+    font-size: 10.5px !important;
+    color: #64748b !important;
+  }
+
+  /* ── PAGE 3+: DEDICATED DOCUMENT CONTENT (MODULE BY MODULE) ── */
+  .print-only-body {
+    display: block !important;
+    break-inside: auto !important;
+  }
+
+  .print-module-block {
+    margin-bottom: 24px !important;
+    break-inside: auto !important;
+  }
+
+  .print-module-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 10px 14px !important;
+    background: #0f172a !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    margin-bottom: 14px !important;
+    break-after: avoid !important;
+  }
+
+  .print-module-badge {
+    font-family: monospace !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+  }
+
+  .print-module-title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+    flex: 1 !important;
+  }
+
+  .print-module-time {
+    font-family: monospace !important;
+    font-size: 11px !important;
+    color: #cbd5e1 !important;
+  }
+
+  .print-topic-card {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    padding: 14px 16px !important;
+    margin-bottom: 14px !important;
+    break-inside: auto !important;
+  }
+
+  .print-topic-title {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin: 0 0 6px !important;
+    break-after: avoid !important;
+  }
+
+  .print-topic-num {
+    color: #0284c7 !important;
+    font-family: monospace !important;
+    margin-right: 4px !important;
+  }
+
+  .print-topic-desc {
+    font-size: 12px !important;
+    color: #334155 !important;
+    line-height: 1.55 !important;
+    margin: 0 0 10px !important;
+  }
+
+  .print-topic-resources {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin-bottom: 12px !important;
+    padding: 6px 10px !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 4px !important;
+  }
+
+  .print-res-label {
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    color: #475569 !important;
+    align-self: center !important;
+  }
+
+  .print-res-item {
+    font-size: 11px !important;
+    color: #0369a1 !important;
+    background: #f0f9ff !important;
+    padding: 2px 8px !important;
+    border-radius: 4px !important;
+    border: 1px solid #bae6fd !important;
+  }
+
+  .print-subtopics-wrapper {
+    margin-top: 10px !important;
+  }
+
+  .print-subtopics-header {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    color: #475569 !important;
+    margin-bottom: 6px !important;
+  }
+
+  .print-subtopic-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
+  .print-subtopic-box {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 6px !important;
+    padding: 10px 12px !important;
+    break-inside: avoid !important;
+  }
+
+  .print-subtopic-top {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    margin-bottom: 4px !important;
+  }
+
+  .print-subtopic-name {
+    font-size: 12.5px !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+  }
+
+  .print-subtopic-day {
+    font-family: monospace !important;
+    font-size: 10.5px !important;
+    background: #e2e8f0 !important;
+    color: #334155 !important;
+    padding: 1px 6px !important;
+    border-radius: 4px !important;
+  }
+
+  .print-subtopic-desc {
+    font-size: 11.5px !important;
+    color: #334155 !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+  }
+
+  .print-subtopic-res {
+    margin-top: 6px !important;
+    font-size: 10.5px !important;
+    color: #64748b !important;
+  }
+
+  .print-sub-res-link {
+    color: #0284c7 !important;
+    font-weight: 600 !important;
+    margin-right: 8px !important;
+  }
+
+  .print-projects-wrapper {
+    margin-top: 12px !important;
+  }
+
+  .print-project-card {
+    background: #fefce8 !important;
+    border: 1.5px dashed #ca8a04 !important;
+    border-radius: 6px !important;
+    padding: 10px 14px !important;
+    break-inside: avoid !important;
+  }
+
+  .print-project-header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    font-size: 12px !important;
+    color: #854d0e !important;
+    margin-bottom: 4px !important;
+  }
+
+  .print-project-desc {
+    font-size: 11.5px !important;
+    color: #713f12 !important;
+    margin: 0 !important;
   }
 
   .mesh-gradient {
     display: none !important;
   }
 
-  .print-header {
+  /* ── LAST PAGE: CONTINUE LEARNING FOOTER ── */
+  .print-only-footer {
     display: block !important;
-    text-align: center;
-    padding-bottom: 16px;
-    border-bottom: 2px solid #000000;
-    margin-bottom: 24px;
+    margin-top: 32px !important;
+    padding-top: 20px !important;
+    border-top: 2px dashed #0284c7 !important;
+    break-inside: avoid !important;
   }
 
-  .print-header-title {
-    font-size: 24px;
-    font-weight: 700;
+  .print-closing-card {
+    background: #f0f9ff !important;
+    border: 1.5px solid #0284c7 !important;
+    border-radius: 10px !important;
+    padding: 20px !important;
+    text-align: center !important;
   }
 
-  .print-header-url {
-    font-size: 11px;
-    font-family: monospace;
-    color: #4b5563;
-    margin-top: 4px;
+  .print-closing-header {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-bottom: 8px !important;
   }
 
-  @page {
-    size: A4;
-    margin: 1.5cm 1.2cm;
+  .print-closing-icon {
+    font-size: 22px;
+  }
+
+  .print-closing-card h2 {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #0284c7 !important;
+    margin: 0 !important;
+  }
+
+  .print-closing-msg {
+    font-size: 12.5px !important;
+    color: #0f172a !important;
+    margin: 0 0 6px !important;
+  }
+
+  .print-closing-submsg {
+    font-size: 11.5px !important;
+    color: #475569 !important;
+    margin: 0 0 14px !important;
+  }
+
+  .print-closing-url-box {
+    display: inline-block !important;
+    padding: 8px 18px !important;
+    background: #ffffff !important;
+    border: 1px solid #bae6fd !important;
+    border-radius: 9999px !important;
+  }
+
+  .print-closing-url {
+    font-family: monospace !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #0284c7 !important;
+    text-decoration: underline !important;
   }
 }
 
+/* Hide print-only elements on screen */
+.print-only-cover,
+.print-only-index,
+.print-only-body,
+.print-only-footer,
 .print-header {
   display: none;
 }

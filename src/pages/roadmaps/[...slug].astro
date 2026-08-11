@@ -10,33 +10,211 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const roadmaps = await getCollection('roadmaps');
-  return roadmaps.map((roadmap) => ({
-    params: { slug: roadmap.id },
-    props: { roadmap },
-  }));
+  const paths: Array<{ params: { slug: string }; props: { roadmap: any } }> = [];
+
+  roadmaps.forEach((roadmap) => {
+    // 1. Full path ID from loader (e.g. "Backend/django-backend")
+    paths.push({
+      params: { slug: roadmap.id },
+      props: { roadmap },
+    });
+
+    // 2. Lowercase full path ID (e.g. "backend/django-backend")
+    const lowerId = roadmap.id.toLowerCase();
+    if (lowerId !== roadmap.id) {
+      paths.push({
+        params: { slug: lowerId },
+        props: { roadmap },
+      });
+    }
+
+    // 3. Short clean slug (e.g. "django-backend", "python", "cybersecurity")
+    const cleanSlug = (roadmap.id.split('/').pop() || roadmap.id).replace(/\.mdx?$/, '');
+    if (cleanSlug !== roadmap.id && cleanSlug !== lowerId) {
+      paths.push({
+        params: { slug: cleanSlug },
+        props: { roadmap },
+      });
+    }
+  });
+
+  return paths;
 }
 
 const { roadmap } = Astro.props;
 const { Content } = await render(roadmap);
 const { title, description, category, estimatedTime, difficulty, topicCount, icon, sections } = roadmap.data;
+const cleanId = (roadmap.id.split('/').pop() || roadmap.id).replace(/\.mdx?$/, '');
+const computedTopicCount = sections.reduce((acc: number, sec: any) => acc + (sec.topics?.length || 0), 0);
+const actualTopicCount = computedTopicCount > 0 ? computedTopicCount : topicCount;
+function formatTimeWithMonths(timeStr: string) {
+  const weeks = parseInt(timeStr, 10);
+  if (!weeks || isNaN(weeks)) return timeStr;
+  const months = (weeks / 4).toFixed(1).replace(/\.0$/, '');
+  return `${months} months (${weeks} weeks)`;
+}
+
+const formattedTime = formatTimeWithMonths(estimatedTime);
 ---
 
 <Layout title={`${title} Roadmap — Roadmap Library`} description={description}>
   <AdSlot type="banner" />
 
   <div class="container" id="roadmap-container">
+    {/* PDF Page 1: Cover & Introduction Page (visible only in print) */}
+    <div class="print-only-cover">
+      <div class="print-brand-header">
+        <span class="print-brand-title">Roadmap Library</span>
+        <span class="print-brand-url">www.roadmaplibrary.com</span>
+      </div>
+      <div class="print-cover-body">
+        <span class="print-cover-category">{category}</span>
+        <h1 class="print-cover-title">{title} Roadmap</h1>
+        <p class="print-cover-desc">{description}</p>
+        <div class="print-cover-meta-grid">
+          <div class="print-meta-item">⏱ <strong>Duration:</strong> {formattedTime}</div>
+          <div class="print-meta-item">📚 <strong>Topics:</strong> {actualTopicCount} topics</div>
+          <div class="print-meta-item">📊 <strong>Level:</strong> {difficulty}</div>
+          <div class="print-meta-item">⚡ <strong>Pace:</strong> Self-paced learning</div>
+        </div>
+        <div class="print-cover-intro">
+          <h2>Overview & Introduction</h2>
+          <div class="print-intro-content">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* PDF Page 2: Index / Table of Contents Page (visible only in print) */}
+    <div class="print-only-index">
+      <div class="print-brand-header">
+        <span class="print-brand-title">{title} Roadmap</span>
+        <span class="print-brand-url">www.roadmaplibrary.com</span>
+      </div>
+      <h2 class="print-index-h2">Roadmap Index & Table of Contents</h2>
+      <div class="print-index-list">
+        {sections.map((sec: any, i: number) => (
+          <div class="print-index-item">
+            <div class="print-index-item-header">
+              <span class="print-index-num">{String(i + 1).padStart(2, '0')}.</span>
+              <strong class="print-index-sec-title">{sec.title}</strong>
+              {sec.weekLabel && <span class="print-index-tag">{sec.weekLabel}</span>}
+            </div>
+            <ul class="print-index-topics-list">
+              {sec.topics.map((top: any) => (
+                <li>
+                  <span class="print-bullet">•</span>
+                  <span>{top.title}</span>
+                  {top.subtopics && top.subtopics.length > 0 && (
+                    <span class="print-subcount">({top.subtopics.length} subtopics)</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* PDF Pages 3+: Dedicated Document Body (Clean Published Guide Format, NO Web Tree UI) */}
+    <div class="print-only-body">
+      {sections.map((sec: any, secIdx: number) => (
+        <div class="print-module-block">
+          <div class="print-module-header">
+            <div class="print-module-badge">Module {String(secIdx + 1).padStart(2, '0')}</div>
+            <h2 class="print-module-title">{sec.title}</h2>
+            {sec.weekLabel && <span class="print-module-time">{sec.weekLabel}</span>}
+          </div>
+
+          <div class="print-module-topics">
+            {sec.topics.map((top: any, topIdx: number) => (
+              <div class="print-topic-card">
+                <h3 class="print-topic-title">
+                  <span class="print-topic-num">{secIdx + 1}.{topIdx + 1}</span> {top.title}
+                </h3>
+
+                {top.description && (
+                  <p class="print-topic-desc">{top.description}</p>
+                )}
+
+                {top.resources && top.resources.length > 0 && (
+                  <div class="print-topic-resources">
+                    <span class="print-res-label">Key Resources:</span>
+                    {top.resources.map((res: any) => (
+                      <span class="print-res-item">🔗 {res.title}</span>
+                    ))}
+                  </div>
+                )}
+
+                {top.subtopics && top.subtopics.length > 0 && (
+                  <div class="print-subtopics-wrapper">
+                    <div class="print-subtopics-header">Subtopic Learning Milestones</div>
+                    <div class="print-subtopic-list">
+                      {top.subtopics.map((sub: any, subIdx: number) => {
+                        const subTitle = typeof sub === 'string' ? sub : sub.title;
+                        const subDesc = typeof sub === 'string' ? null : sub.description;
+                        const dayTag = (typeof sub === 'object' && sub.dayLabel) ? sub.dayLabel : `Days ${subIdx * 2 + 1}–${subIdx * 2 + 2}`;
+                        const subRes = typeof sub === 'object' ? sub.resources : null;
+
+                        return (
+                          <div class="print-subtopic-box">
+                            <div class="print-subtopic-top">
+                              <span class="print-subtopic-name">{subTitle}</span>
+                              <span class="print-subtopic-day">{dayTag}</span>
+                            </div>
+                            <div class="print-subtopic-body">
+                              <p class="print-subtopic-desc">
+                                {subDesc || `In-depth learning milestone for ${subTitle}. Understand core principles, common use cases, syntax, and production best practices.`}
+                              </p>
+                              {subRes && subRes.length > 0 && (
+                                <div class="print-subtopic-res">
+                                  <span>Resources: </span>
+                                  {subRes.map((r: any) => (
+                                    <span class="print-sub-res-link">{r.title}</span>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {sec.projects && sec.projects.length > 0 && topIdx === sec.topics.length - 1 && (
+                  <div class="print-projects-wrapper">
+                    {sec.projects.map((proj: any) => (
+                      <div class="print-project-card">
+                        <div class="print-project-header">
+                          <span>🛠️</span>
+                          <strong>Practical Mini-Project: {proj.title}</strong>
+                        </div>
+                        <p class="print-project-desc">{proj.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
     <RoadmapHeader
       title={title}
       description={description}
       category={category}
       estimatedTime={estimatedTime}
       difficulty={difficulty}
-      topicCount={topicCount}
+      topicCount={actualTopicCount}
       icon={icon}
       thumbnail={roadmap.data.thumbnail}
     />
 
-    <ProgressBar roadmapId={roadmap.id} topicCount={topicCount} />
+    <ProgressBar roadmapId={cleanId} topicCount={actualTopicCount} />
 
     <div class="text-body-md" style="color: var(--color-body); margin-bottom: 32px;">
       <Content />
@@ -44,18 +222,37 @@ const { title, description, category, estimatedTime, difficulty, topicCount, ico
 
     <div class="roadmap-detail-layout" id="roadmap-layout">
       <div>
-        <RoadmapTree sections={sections} roadmapId={roadmap.id} estimatedTime={estimatedTime} />
-        <RoadmapListView sections={sections} roadmapId={roadmap.id} estimatedTime={estimatedTime} />
+        <RoadmapTree sections={sections} roadmapId={cleanId} estimatedTime={estimatedTime} />
+        <RoadmapListView sections={sections} roadmapId={cleanId} estimatedTime={estimatedTime} />
         <AdSlot type="mid-content" />
       </div>
-      <TableOfContents sections={sections} roadmapId={roadmap.id} />
+      <TableOfContents sections={sections} roadmapId={cleanId} />
+    </div>
+
+    {/* PDF Last Page: Continue Learning Footer (visible only in print) */}
+    <div class="print-only-footer">
+      <div class="print-closing-card">
+        <div class="print-closing-header">
+          <span class="print-closing-icon">🚀</span>
+          <h2>Continue Learning</h2>
+        </div>
+        <p class="print-closing-msg">
+          You have reviewed the <strong>{title} Roadmap</strong>.
+        </p>
+        <p class="print-closing-submsg">
+          Track your interactive completion progress, attempt hands-on mini-projects, and explore 20+ developer roadmaps online at:
+        </p>
+        <div class="print-closing-url-box">
+          <a href="http://roadmaplibrary.com/#roadmaps" class="print-closing-url">http://roadmaplibrary.com/#roadmaps</a>
+        </div>
+      </div>
     </div>
   </div>
 
   <div
     id="roadmap-data"
-    data-roadmap-id={roadmap.id}
-    data-topic-count={String(topicCount)}
+    data-roadmap-id={cleanId}
+    data-topic-count={String(actualTopicCount)}
     style="display:none"
   ></div>
 
@@ -192,8 +389,31 @@ const { title, description, category, estimatedTime, difficulty, topicCount, ico
       applyTimelineState(true);
     }
 
-    // PDF download
+    // Expand all subtopic accordions before printing for PDF export, then restore state after
+    function prepareForPrint() {
+      const detailsElements = document.querySelectorAll('details.subtopic-accordion');
+      detailsElements.forEach((el) => {
+        if (!el.hasAttribute('open')) {
+          el.setAttribute('open', '');
+          el.setAttribute('data-opened-by-print', 'true');
+        }
+      });
+    }
+
+    function restoreAfterPrint() {
+      const detailsElements = document.querySelectorAll('details.subtopic-accordion[data-opened-by-print="true"]');
+      detailsElements.forEach((el) => {
+        el.removeAttribute('open');
+        el.removeAttribute('data-opened-by-print');
+      });
+    }
+
+    window.addEventListener('beforeprint', prepareForPrint);
+    window.addEventListener('afterprint', restoreAfterPrint);
+
+    // PDF download button click handler
     document.getElementById('download-pdf')?.addEventListener('click', () => {
+      prepareForPrint();
       window.print();
     });
 

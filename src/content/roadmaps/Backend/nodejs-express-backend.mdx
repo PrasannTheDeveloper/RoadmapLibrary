@@ -1,0 +1,668 @@
+---
+title: Node.js + Express Backend Development
+description: A structured 16-week roadmap for becoming a skilled Node.js backend developer — covering JavaScript/TypeScript fundamentals, the Node runtime, Express, SQL/NoSQL databases and ORMs, API design, authentication and security, caching and performance, testing, architecture patterns, message queues, and containerized deployment.
+category: Node.js Frameworks
+estimatedTime: 16 weeks
+difficulty: Intermediate
+topicCount: 30
+order: 4
+icon: 🟢
+thumbnail: /thumbnails/icons/Nodejs.svg
+sections:
+  - title: Programming Fundamentals
+    topics:
+      - id: javascript-fundamentals
+        title: JavaScript Fundamentals
+        description: JavaScript is the language Node.js and Express run on, so fluency with its syntax, closures, and asynchronous behavior is the foundation everything else in this roadmap builds on.
+        resources:
+          - title: JavaScript Guide - MDN
+            url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+            type: docs
+          - title: The Modern JavaScript Tutorial
+            url: https://javascript.info/
+            type: course
+          - title: Understanding the Event Loop - Node.js Docs
+            url: https://nodejs.org/en/learn/asynchronous-work/event-loop-timers-and-nexttick
+            type: docs
+        subtopics:
+          - title: 'JavaScript Fundamentals: Core Language & Runtime Basics'
+            dayLabel: Days 1–2
+            description: Cover variables, scope, closures, and prototypal inheritance, then see how Node's event loop schedules asynchronous work.
+          - title: 'JavaScript Fundamentals: API Design & Middleware Pipeline'
+            dayLabel: Days 3–4
+            description: Practice writing higher-order functions and callback-based code, the pattern Express handlers and middleware are built on.
+          - title: 'JavaScript Fundamentals: Security & Production Deployment'
+            dayLabel: Days 5–6
+            description: Learn common JavaScript pitfalls — type coercion bugs, unhandled exceptions — that cause production incidents if left unchecked.
+      - id: typescript-fundamentals
+        title: TypeScript Fundamentals
+        description: TypeScript layers static types over JavaScript, catching bugs at compile time and making larger Express codebases easier to navigate and refactor safely.
+        resources:
+          - title: TypeScript Documentation
+            url: https://www.typescriptlang.org/docs/
+            type: docs
+          - title: TypeScript for JS Programmers
+            url: https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
+            type: article
+        subtopics:
+          - title: 'TypeScript Fundamentals: Core Language & Runtime Basics'
+            dayLabel: Days 1–2
+            description: Learn interfaces, type unions, and generics, and how the TypeScript compiler transpiles code down to plain JavaScript.
+          - title: 'TypeScript Fundamentals: API Design & Middleware Pipeline'
+            dayLabel: Days 3–4
+            description: Type Express request/response objects and middleware functions so route handlers get compile-time safety.
+          - title: 'TypeScript Fundamentals: Security & Production Deployment'
+            dayLabel: Days 5–6
+            description: Configure tsconfig with strict mode for production builds, reducing the runtime type errors that slip through untyped code.
+      - id: data-structures
+        title: Data Structures
+        description: Arrays, objects, maps, and sets each have different performance trade-offs, and picking the right one directly affects how fast your backend code runs.
+        resources:
+          - title: Data Structures Easy to Advanced - freeCodeCamp
+            url: https://www.youtube.com/watch?v=RBSGKlAvoiM
+            type: video
+          - title: JavaScript Data Structures - JavaScript.info
+            url: https://javascript.info/data-types
+            type: article
+        subtopics:
+          - title: 'Data Structures: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Compare arrays, objects, Maps, and Sets, and learn the time complexity of common operations on each.
+          - title: 'Data Structures: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Apply the right data structure to real backend problems like deduplication, caching lookups, and request queuing.
+  - title: Version Control
+    topics:
+      - id: git
+        title: Git
+        description: Git tracks every change to your codebase locally, letting you experiment, branch, and roll back safely before code ever reaches a shared remote repository.
+        resources:
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Learn init, add, commit, log, and diff, and practice writing a clean, meaningful commit history.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Create and switch branches, resolve merge conflicts, and prepare a clean set of changes for review.
+      - id: github-gitlab
+        title: GitHub/GitLab
+        description: GitHub and GitLab host your Git repositories remotely and layer collaboration tools — pull requests, issues, and CI runners — on top of core Git.
+        resources:
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitLab Documentation
+            url: https://docs.gitlab.com/
+            type: docs
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Push and pull against a remote, configure SSH keys, and manage forks and upstream syncing.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Open pull/merge requests, respond to review comments, and work with protected branches and required status checks.
+  - title: Node.js Runtime & Ecosystem
+    topics:
+      - id: nodejs-runtime
+        title: Node.js Runtime
+        description: Node.js runs JavaScript outside the browser using the V8 engine and libuv, giving you a non-blocking, single-threaded runtime built for I/O-heavy backend workloads.
+        resources:
+          - title: Node.js Documentation
+            url: https://nodejs.org/en/docs
+            type: docs
+          - title: Node.js Modules - Node.js Docs
+            url: https://nodejs.org/api/modules.html
+            type: docs
+        subtopics:
+          - title: 'Node.js Runtime: Core Language & Runtime Basics'
+            dayLabel: Days 1–2
+            description: Understand the event loop phases, libuv's thread pool, and how Node handles non-blocking I/O under the hood.
+          - title: 'Node.js Runtime: API Design & Middleware Pipeline'
+            dayLabel: Days 3–4
+            description: Work with core modules like fs, http, and path, and compare CommonJS require() with ES module imports.
+          - title: 'Node.js Runtime: Security & Production Deployment'
+            dayLabel: Days 5–6
+            description: Learn process management basics — environment signals, graceful shutdown, and uncaught exception handling — for running Node reliably in production.
+      - id: npm-package-management
+        title: npm & Package Management
+        description: npm (and alternatives like pnpm) install and manage the third-party packages every Node project depends on, and understanding versioning prevents dependency headaches later.
+        resources:
+          - title: npm Documentation
+            url: https://docs.npmjs.com/
+            type: docs
+          - title: pnpm Documentation
+            url: https://pnpm.io/motivation
+            type: docs
+        subtopics:
+          - title: 'npm & Package Management: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn package.json, semantic versioning, and the difference between dependencies and devDependencies.
+          - title: 'npm & Package Management: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Use lockfiles for reproducible installs, audit for vulnerable packages, and compare npm, pnpm, and yarn workflows.
+      - id: environment-config
+        title: Environment & Configuration
+        description: Keeping secrets and environment-specific settings out of your codebase — using .env files and config layers — is what lets the same code run safely across dev, staging, and production.
+        resources:
+          - title: dotenv - npm
+            url: https://www.npmjs.com/package/dotenv
+            type: docs
+          - title: The Twelve-Factor App
+            url: https://12factor.net/config
+            type: article
+        subtopics:
+          - title: 'Environment & Configuration: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set up dotenv for local development and understand the twelve-factor app's approach to config as environment variables.
+          - title: 'Environment & Configuration: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Build a config module that validates required environment variables at startup and fails fast if any are missing.
+  - title: Databases
+    topics:
+      - id: sql-fundamentals
+        title: SQL Fundamentals
+        description: Relational databases store data in tables with defined relationships, and SQL is the language for querying, joining, and modifying that data reliably.
+        resources:
+          - title: SQL Tutorial - W3Schools
+            url: https://www.w3schools.com/sql/
+            type: article
+          - title: SQLBolt - Interactive SQL Lessons
+            url: https://sqlbolt.com/
+            type: course
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Design normalized tables with primary/foreign keys, and model one-to-many and many-to-many relationships for a real domain.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Write joins and aggregations, wrap related writes in transactions, and learn how indexes affect query speed.
+      - id: postgresql
+        title: PostgreSQL
+        description: PostgreSQL is a production-grade open-source relational database with strong support for constraints, JSON columns, and full-text search — a common default choice for Node backends.
+        resources:
+          - title: PostgreSQL Official Documentation
+            url: https://www.postgresql.org/docs/current/
+            type: docs
+          - title: PostgreSQL Tutorial
+            url: https://www.postgresqltutorial.com/
+            type: article
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Set up a local Postgres instance and design tables using its data types, constraints, and JSONB columns.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Write more advanced queries with window functions and CTEs, and use EXPLAIN ANALYZE to diagnose slow queries.
+      - id: mongodb
+        title: MongoDB
+        description: MongoDB stores data as flexible, JSON-like documents instead of rigid tables, which suits data with varying shapes or deeply nested structures.
+        resources:
+          - title: MongoDB Documentation
+            url: https://www.mongodb.com/docs/manual/
+            type: docs
+          - title: MongoDB University
+            url: https://learn.mongodb.com/
+            type: course
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Design collections and documents, and decide when to embed related data versus reference it across collections.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Practice the aggregation pipeline, index common query patterns, and use multi-document transactions where needed.
+      - id: orms
+        title: ORMs & Query Builders
+        description: ORMs and query builders like Prisma, Drizzle, and Mongoose let you interact with a database through typed JavaScript/TypeScript instead of hand-written query strings.
+        resources:
+          - title: Prisma Documentation
+            url: https://www.prisma.io/docs
+            type: docs
+          - title: Drizzle ORM Documentation
+            url: https://orm.drizzle.team/docs/overview
+            type: docs
+          - title: Mongoose Documentation
+            url: https://mongoosejs.com/docs/guide.html
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Define models/schemas in Prisma, Drizzle, or Mongoose, and generate or run migrations against your database.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Write typed queries, handle relations and transactions, and compare each tool's approach to eager vs lazy loading.
+  - title: API Development
+    topics:
+      - id: express-fundamentals
+        title: Express Fundamentals
+        description: Express is the minimal, unopinionated web framework this roadmap centers on — it handles routing, middleware, and request/response objects for building HTTP APIs in Node.
+        resources:
+          - title: Express.js Documentation
+            url: https://expressjs.com/en/guide/routing.html
+            type: docs
+          - title: Build a REST API with Node.js - freeCodeCamp
+            url: https://www.youtube.com/watch?v=fgTGADljAeg
+            type: video
+        subtopics:
+          - title: 'Express Fundamentals: Core Language & Runtime Basics'
+            dayLabel: Days 1–2
+            description: Set up an Express app, define routes with route parameters and query strings, and understand the request/response cycle.
+          - title: 'Express Fundamentals: API Design & Middleware Pipeline'
+            dayLabel: Days 3–4
+            description: Chain middleware functions, understand next(), and organize routes with the Express Router.
+          - title: 'Express Fundamentals: Security & Production Deployment'
+            dayLabel: Days 5–6
+            description: Add centralized error handling and structured logging so an Express app fails predictably in production.
+      - id: middleware-patterns
+        title: Middleware Patterns
+        description: Middleware functions run between the request and your route handler, and structuring them well is how Express apps share logic like logging, auth checks, and error handling.
+        resources:
+          - title: Using Express Middleware
+            url: https://expressjs.com/en/guide/using-middleware.html
+            type: docs
+          - title: Express Error Handling
+            url: https://expressjs.com/en/guide/error-handling.html
+            type: docs
+        subtopics:
+          - title: 'Middleware Patterns: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Write application-level and router-level middleware, and understand execution order in the middleware stack.
+          - title: 'Middleware Patterns: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Build reusable middleware for request logging, and a centralized error-handling middleware that catches thrown errors.
+      - id: request-validation
+        title: Request Validation
+        description: Validating incoming request bodies before they reach your logic — with libraries like Zod or express-validator — stops malformed or malicious data early.
+        resources:
+          - title: Zod Documentation
+            url: https://zod.dev/
+            type: docs
+          - title: express-validator Documentation
+            url: https://express-validator.github.io/docs/
+            type: docs
+        subtopics:
+          - title: 'Request Validation: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Define request schemas with Zod and validate body, query, and param data before it reaches a route handler.
+          - title: 'Request Validation: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Build validation middleware that returns consistent error messages, and handle nested and conditional validation rules.
+      - id: api-design-principles
+        title: API Design Principles
+        description: Consistent resource naming, status codes, and versioning make an API predictable to use and easier to evolve without breaking existing clients.
+        resources:
+          - title: OpenAPI Specification
+            url: https://swagger.io/specification/
+            type: docs
+          - title: API Design Guide - Google Cloud
+            url: https://cloud.google.com/apis/design
+            type: article
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Design resource-oriented routes, choose correct HTTP methods and status codes, and structure clean request/response payloads.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Add API versioning strategies and document your endpoints using the OpenAPI specification.
+      - id: graphql
+        title: GraphQL
+        description: GraphQL lets clients request exactly the fields they need through a single typed endpoint, avoiding the over- or under-fetching common with REST.
+        resources:
+          - title: GraphQL Official Documentation
+            url: https://graphql.org/learn/
+            type: docs
+          - title: Apollo Server Documentation
+            url: https://www.apollographql.com/docs/apollo-server
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Define a GraphQL schema with types, queries, and mutations, and set up Apollo Server on top of Express.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Add field-level authorization to resolvers and guard against overly expensive nested queries.
+  - title: Authentication & Security
+    topics:
+      - id: jwt
+        title: JWT
+        description: JSON Web Tokens let a server issue a signed, self-contained token that proves a user's identity on later requests without needing a server-side session store.
+        resources:
+          - title: Introduction to JSON Web Tokens
+            url: https://jwt.io/introduction
+            type: article
+          - title: jsonwebtoken - npm
+            url: https://www.npmjs.com/package/jsonwebtoken
+            type: docs
+        subtopics:
+          - title: 'JWT: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand a JWT's header, payload, and signature, and how to sign and verify tokens with the jsonwebtoken package.
+          - title: 'JWT: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Build an auth middleware that verifies tokens on protected routes, and implement token expiry and refresh tokens.
+      - id: passportjs
+        title: Passport.js
+        description: Passport.js is a pluggable authentication library for Express, offering strategies for local username/password login as well as OAuth providers like Google or GitHub.
+        resources:
+          - title: Passport.js Documentation
+            url: https://www.passportjs.org/docs/
+            type: docs
+        subtopics:
+          - title: 'Passport.js: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set up the local strategy for username/password login and understand how Passport serializes users into a session.
+          - title: 'Passport.js: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Add an OAuth strategy (e.g. Google) and combine Passport with JWT issuance for a stateless API.
+      - id: password-hashing
+        title: Password Hashing
+        description: Passwords must never be stored in plain text — bcrypt hashes them with a salt so that even a database breach doesn't expose real user credentials.
+        resources:
+          - title: bcrypt - npm
+            url: https://www.npmjs.com/package/bcrypt
+            type: docs
+          - title: Password Storage Cheat Sheet - OWASP
+            url: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+            type: article
+        subtopics:
+          - title: 'Password Hashing: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand hashing vs encryption, salting, and why bcrypt's configurable work factor matters for security.
+          - title: 'Password Hashing: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Hash passwords on registration and safely compare them at login using bcrypt.compare.
+      - id: owasp-top-10
+        title: OWASP Top 10
+        description: The OWASP Top 10 catalogs the most common and impactful web application vulnerabilities, giving you a checklist to defend an Express API against real-world attacks.
+        resources:
+          - title: OWASP Top 10
+            url: https://owasp.org/www-project-top-ten/
+            type: docs
+          - title: Helmet.js Documentation
+            url: https://helmetjs.github.io/
+            type: docs
+        subtopics:
+          - title: 'OWASP Top 10: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Walk through injection, broken access control, and other top vulnerabilities, and see how each applies to a Node/Express app.
+          - title: 'OWASP Top 10: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Apply Helmet.js for secure headers and rate limiting to mitigate the risks covered in the OWASP list.
+  - title: Caching & Performance
+    topics:
+      - id: redis
+        title: Redis
+        description: Redis is an in-memory key-value store commonly used from Node for caching, session storage, and pub/sub messaging thanks to its speed.
+        resources:
+          - title: Redis Documentation
+            url: https://redis.io/docs/
+            type: docs
+          - title: node-redis Documentation
+            url: https://github.com/redis/node-redis
+            type: docs
+        subtopics:
+          - title: 'Redis: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn Redis's core data structures — strings, hashes, sets, and sorted sets — and the commands that operate on them.
+          - title: 'Redis: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Connect Redis from Node with node-redis, and use it for caching database results or storing sessions.
+      - id: clustering-workers
+        title: Clustering & Worker Threads
+        description: Node runs on a single thread by default, so clustering and worker threads are how you use multiple CPU cores to handle more traffic or offload CPU-heavy work.
+        resources:
+          - title: Cluster - Node.js Docs
+            url: https://nodejs.org/api/cluster.html
+            type: docs
+          - title: PM2 Documentation
+            url: https://pm2.keymetrics.io/docs/usage/quick-start/
+            type: docs
+        subtopics:
+          - title: 'Clustering & Worker Threads: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand the difference between the cluster module (multiple processes) and worker_threads (multiple threads sharing memory).
+          - title: 'Clustering & Worker Threads: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Run a clustered Express app with PM2, and offload a CPU-intensive task to a worker thread.
+      - id: cdn
+        title: CDN
+        description: A CDN caches static assets across edge servers worldwide, reducing latency and offloading traffic your Node backend would otherwise have to serve directly.
+        resources:
+          - title: What is a CDN? - Cloudflare
+            url: https://www.cloudflare.com/learning/cdn/what-is-a-cdn/
+            type: article
+        subtopics:
+          - title: 'CDN: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand edge caching, cache-control headers, and how a CDN decides what to serve from the edge vs the origin server.
+          - title: 'CDN: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Configure cache-control headers on API responses and serve static files through a CDN placed in front of Express.
+  - title: Testing
+    topics:
+      - id: unit-tests
+        title: Unit Tests
+        description: Unit tests verify individual functions and modules in isolation, and Jest or Vitest make it fast to write and run them alongside your Node code.
+        resources:
+          - title: Jest Documentation
+            url: https://jestjs.io/docs/getting-started
+            type: docs
+          - title: Vitest Documentation
+            url: https://vitest.dev/guide/
+            type: docs
+        subtopics:
+          - title: 'Unit Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set up Jest or Vitest, write your first test suite, and learn assertions, matchers, and mocking basics.
+          - title: 'Unit Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Mock external dependencies and database calls, and measure coverage across a growing codebase.
+      - id: integration-tests
+        title: Integration Tests
+        description: Integration tests check that multiple parts of your app — routes, middleware, and the database — work correctly together, catching bugs unit tests alone would miss.
+        resources:
+          - title: Testing Express APIs with Supertest
+            url: https://github.com/ladjs/supertest
+            type: docs
+          - title: Integration Testing Best Practices
+            url: https://martinfowler.com/bliki/IntegrationTest.html
+            type: article
+        subtopics:
+          - title: 'Integration Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Use Supertest to send real HTTP requests to your Express app in tests and assert on the responses.
+          - title: 'Integration Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Test routes that touch a real or in-memory test database, including authenticated requests and error cases.
+      - id: api-testing
+        title: API Testing
+        description: Tools like Postman let you exercise API endpoints manually and automatically outside your codebase, useful for exploratory testing and sharing collections with a team.
+        resources:
+          - title: Postman Learning Center
+            url: https://learning.postman.com/docs/introduction/overview/
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Build Postman collections covering CRUD endpoints and their expected status codes.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Test authentication flows and import an OpenAPI spec to auto-generate a request collection.
+  - title: Architecture Patterns
+    topics:
+      - id: mvc
+        title: MVC
+        description: The Model-View-Controller pattern separates data (models), request handling (controllers), and presentation, a common way to organize an early-stage Express codebase.
+        resources:
+          - title: MVC Pattern - MDN Glossary
+            url: https://developer.mozilla.org/en-US/docs/Glossary/MVC
+            type: article
+        subtopics:
+          - title: 'MVC: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand the responsibilities of models, views, and controllers, and how requests flow through each.
+          - title: 'MVC: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Restructure an Express app into MVC folders, moving business logic out of route handlers and into controllers.
+      - id: layered-architecture
+        title: Layered / Clean Architecture
+        description: Layered architecture splits an app into routing, service, and data-access layers, keeping business logic independent of Express and easier to test and maintain as it grows.
+        resources:
+          - title: Bulletproof Node.js Project Architecture
+            url: https://blog.logrocket.com/organizing-express-js-project-structure-better-productivity/
+            type: article
+        subtopics:
+          - title: 'Layered / Clean Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn the controller-service-repository split and why keeping business logic out of route handlers improves testability.
+          - title: 'Layered / Clean Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Refactor a feature into distinct layers, with services depending on repository interfaces rather than concrete database calls.
+      - id: microservices
+        title: Microservices
+        description: Microservices split a backend into small, independently deployable services that communicate over the network, trading some complexity for independent scaling and deployment.
+        resources:
+          - title: Microservices - Martin Fowler
+            url: https://martinfowler.com/articles/microservices.html
+            type: article
+          - title: Microservices Patterns
+            url: https://microservices.io/patterns/index.html
+            type: article
+        subtopics:
+          - title: 'Microservices: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand when microservices make sense vs a monolith, and common patterns like API gateways and service discovery.
+          - title: 'Microservices: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Split a small app into two communicating Node services, and handle failures across the network boundary.
+      - id: event-driven
+        title: Event-Driven Architecture
+        description: Event-driven architecture decouples parts of a system by having them emit and react to events rather than calling each other directly, improving scalability and fault isolation.
+        resources:
+          - title: Events - Node.js Docs
+            url: https://nodejs.org/api/events.html
+            type: docs
+          - title: Event-Driven Architecture - AWS
+            url: https://aws.amazon.com/event-driven-architecture/
+            type: article
+        subtopics:
+          - title: 'Event-Driven Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Use Node's built-in EventEmitter to emit and listen for events within a single application.
+          - title: 'Event-Driven Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Design event schemas and handlers for decoupled communication across services or modules.
+      - id: serverless
+        title: Serverless
+        description: Serverless platforms like AWS Lambda run your backend code on demand without managing servers, which changes how you structure and deploy Node functions.
+        resources:
+          - title: AWS Lambda Documentation
+            url: https://docs.aws.amazon.com/lambda/latest/dg/welcome.html
+            type: docs
+          - title: Serverless Framework
+            url: https://www.serverless.com/framework/docs
+            type: docs
+        subtopics:
+          - title: 'Serverless: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand the serverless execution model, cold starts, and how a Lambda function differs from a long-running Express server.
+          - title: 'Serverless: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Deploy a simple API endpoint as a Lambda function using the Serverless Framework.
+  - title: Message Queues
+    topics:
+      - id: rabbitmq
+        title: RabbitMQ
+        description: RabbitMQ is a message broker that queues and routes messages between services, giving Node backends reliable asynchronous communication with delivery guarantees.
+        resources:
+          - title: RabbitMQ Tutorials
+            url: https://www.rabbitmq.com/tutorials
+            type: docs
+          - title: amqplib - npm
+            url: https://www.npmjs.com/package/amqplib
+            type: docs
+        subtopics:
+          - title: 'RabbitMQ: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand exchanges, queues, and routing keys, and connect to RabbitMQ from Node using amqplib.
+          - title: 'RabbitMQ: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Implement message acknowledgments, retries, and dead-letter queues for messages that fail processing.
+      - id: apache-kafka
+        title: Apache Kafka
+        description: Kafka is a distributed event-streaming platform built for high-throughput, ordered message processing across many consumers — a step up from simple queuing.
+        resources:
+          - title: KafkaJS Documentation
+            url: https://kafka.js.org/docs/getting-started
+            type: docs
+          - title: 'Kafka: The Definitive Guide (Confluent)'
+            url: https://www.confluent.io/resources/kafka-the-definitive-guide-v2/
+            type: article
+        subtopics:
+          - title: 'Apache Kafka: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn Kafka's topic, partition, and consumer-group model, and connect to it from Node using KafkaJS.
+          - title: 'Apache Kafka: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Design consumer groups for parallel processing, and handle offset management and message replay.
+  - title: Containerization & DevOps Basics
+    topics:
+      - id: docker
+        title: Docker
+        description: Docker packages a Node app and its dependencies into a portable container, ensuring it runs identically across development, staging, and production.
+        resources:
+          - title: Dockerize a Node.js Web App
+            url: https://nodejs.org/en/docs/guides/nodejs-docker-webapp
+            type: docs
+          - title: Docker Get Started
+            url: https://docs.docker.com/get-started/
+            type: docs
+        subtopics:
+          - title: 'Docker: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Write a Dockerfile for a Node/Express app, understand image layers, and build and run a container locally.
+          - title: 'Docker: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Use docker-compose to run your app alongside a database and Redis in a local multi-container setup.
+      - id: ci-cd-pipelines
+        title: CI/CD Pipelines
+        description: CI/CD pipelines automatically test, build, and deploy your app on every push, catching regressions before they ever reach users.
+        resources:
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+          - title: CI/CD Explained - GitLab
+            url: https://about.gitlab.com/topics/ci-cd/
+            type: article
+        subtopics:
+          - title: 'CI/CD Pipelines: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set up a GitHub Actions workflow that installs dependencies, runs tests, and lints code on every pull request.
+          - title: 'CI/CD Pipelines: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Extend the pipeline to build a Docker image and deploy it automatically on merge to main.
+      - id: deployment-platforms
+        title: Deployment Platforms
+        description: Once built and tested, a Node app needs a hosting platform and usually a process manager and reverse proxy in front of it to stay up and handle real traffic.
+        resources:
+          - title: Nginx as a Reverse Proxy for Node.js
+            url: https://nginx.org/en/docs/http/ngx_http_proxy_module.html
+            type: docs
+          - title: PM2 Documentation
+            url: https://pm2.keymetrics.io/docs/usage/quick-start/
+            type: docs
+        subtopics:
+          - title: Process Management & Environments
+            dayLabel: Days 1–2
+            description: Run a Node app with PM2 for automatic restarts and log management, and configure environment-specific settings.
+          - title: Reverse Proxy, SSL & Scaling
+            dayLabel: Days 3–4
+            description: Set up Nginx as a reverse proxy with SSL termination, and evaluate hosting platforms like Railway, Render, or a plain VPS.
+---
+
+Dive into Node.js and Express backend development with this 16-week structured learning path designed for developers with some JavaScript experience. You'll build a solid foundation in modern JavaScript/TypeScript, Express, and databases, then move into authentication, caching, and testing, before advancing to architecture patterns, message queues, and containerized deployment. By the end, you'll be equipped to design, build, and deploy production-ready Node.js backend systems.

@@ -1,0 +1,742 @@
+---
+title: Django Backend Development
+description: A structured roadmap to becoming a skilled Django backend developer, covering Python, Django's batteries-included architecture, the ORM, API design with DRF, authentication, scaling patterns, and deployment fundamentals.
+category: Python Frameworks
+estimatedTime: 16 weeks
+difficulty: Intermediate
+topicCount: 30
+order: 6
+icon: 🎸
+thumbnail: /thumbnails/icons/Django.svg
+sections:
+  - title: Programming Fundamentals
+    topics:
+      - id: python-fundamentals
+        title: Python Fundamentals
+        description: >-
+          Before touching Django, you need Python itself to be second nature — its data types, control flow, functions, and the object model that everything in the framework (models, views, serializers) is built on top of. This module builds that base deliberately, so later sections can focus on Django's own concepts instead of fighting basic Python syntax.
+        resources:
+          - title: Python Official Tutorial
+            url: https://docs.python.org/3/tutorial/
+            type: docs
+          - title: Real Python - Python Basics
+            url: https://realpython.com/tutorials/basics/
+            type: course
+        subtopics:
+          - title: 'Python Fundamentals: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Cover variables, the built-in data types (strings, lists, dicts, tuples, sets), control flow with if/for/while, and how to write and call functions with default and keyword arguments. You'll also get comfortable with Python's indentation-based block structure and its dynamic typing model, since both behave differently from most C-family languages and shape how Django code reads.
+          - title: 'Python Fundamentals: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Move into classes and object-oriented Python — attributes, methods, inheritance, and the dunder methods (__init__, __str__, __repr__) that Django's own base classes rely on heavily. You'll also cover decorators, context managers (with statements), list/dict comprehensions, and generators, all of which show up constantly once you start reading Django's own source and third-party packages.
+          - title: 'Python Fundamentals: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Write your first tests with Python's built-in unittest module, then explore virtual environments (venv) and dependency management with pip and a requirements.txt (or pyproject.toml). You'll also touch on exception handling patterns and basic profiling, closing the loop on the habits you'll carry directly into Django project setup.
+      - id: data-structures
+        title: Data Structures
+        description: >-
+          Django backends spend most of their time moving data between a database, business logic, and a client — so knowing which structure fits which job (list vs set vs dict, and when a queue or stack actually helps) keeps your code both fast and readable. This module is deliberately Python-native rather than abstract, so every structure gets tied to something you'll actually reach for in a Django view or serializer.
+        resources:
+          - title: Python Data Structures - Official Docs
+            url: https://docs.python.org/3/tutorial/datastructures.html
+            type: docs
+          - title: Data Structures Easy to Advanced - freeCodeCamp
+            url: https://www.youtube.com/watch?v=RBSGKlAvoiM
+            type: video
+        subtopics:
+          - title: 'Data Structures: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Work through lists, tuples, dictionaries, and sets — not just their syntax, but the time complexity of common operations (why dict/set lookups are O(1) while list membership checks are O(n)). You'll also cover nested structures, since JSON payloads and API responses in Django almost always come as dicts of lists of dicts.
+          - title: 'Data Structures: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Apply these structures to realistic backend problems: deduplicating a dataset with a set, grouping records by key with a dict of lists, or using collections.deque for a FIFO queue. You'll also look at Python's collections module (Counter, defaultdict, namedtuple) since it quietly removes a lot of boilerplate from data-heavy Django code.
+      - id: algorithms-basics
+        title: Algorithms Basics
+        description: >-
+          You don't need to be a competitive programmer to build Django backends, but understanding Big-O complexity and a handful of core algorithmic patterns will directly explain why some of your ORM queries or in-memory processing are slow. This module keeps things practical — enough algorithmic literacy to reason about performance, not a full CS-degree deep dive.
+        resources:
+          - title: Introduction to Algorithms - MIT OpenCourseWare
+            url: https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/
+            type: course
+          - title: Big-O Cheat Sheet
+            url: https://www.bigocheatsheet.com/
+            type: article
+        subtopics:
+          - title: 'Algorithms Basics: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Learn to read and estimate Big-O complexity for loops, nested loops, and common built-in operations, then implement basic sorting and searching algorithms by hand to see where that complexity actually comes from. This gives you the vocabulary to reason about "why is this endpoint slow" later instead of guessing.
+          - title: 'Algorithms Basics: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Apply complexity thinking to backend-shaped problems: why an N+1 query pattern is quietly O(n) database calls in disguise, why pagination matters once a dataset grows, and how caching turns an expensive repeated computation into a cheap lookup. These connections are what make the earlier theory worth having learned.
+  - title: Version Control
+    topics:
+      - id: git
+        title: Git
+        description: >-
+          Git is non-negotiable for any real Django project — migrations, settings changes, and collaborative feature work all depend on a version history you can actually trust and roll back. This module builds a working mental model of Git's commit graph so branching, merging, and rebasing stop feeling like magic incantations.
+        resources:
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: >-
+              Practice the daily-driver commands — init, add, commit, status, diff, log — until they're automatic, then build a mental model of the staging area versus the working directory versus the commit history. You'll also learn to write commit messages that actually help future-you (or a teammate) understand why a change was made, not just what changed.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: >-
+              Create feature branches, merge them back with both fast-forward and three-way merges, and resolve a deliberately-triggered merge conflict so it stops being scary. You'll also cover git rebase for cleaning up commit history before a pull request, and the difference between merge and rebase workflows that teams often argue about.
+      - id: github-gitlab
+        title: GitHub/GitLab
+        description: >-
+          Git itself is local — GitHub and GitLab are where your Django project actually becomes a shared, collaborative codebase with code review, issue tracking, and CI hooks attached. This module is about the platform layer on top of Git: how a team actually ships code together, not just how one person tracks changes.
+        resources:
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitLab Documentation
+            url: https://docs.gitlab.com/
+            type: docs
+        subtopics:
+          - title: Remote Repositories & Collaboration Basics
+            dayLabel: Days 1–2
+            description: >-
+              Push a local repository to GitHub or GitLab, set up SSH keys instead of typing your password on every push, and practice the fork-and-clone workflow used by most open-source Django projects. You'll also configure a .gitignore tuned for Django (migrations you want tracked, __pycache__ and .env you don't) so your repo stays clean from day one.
+          - title: Pull Requests, Code Review & CI Hooks
+            dayLabel: Days 3–4
+            description: >-
+              Open a pull/merge request, respond to review comments, and set up branch protection rules so nothing lands on main without review. You'll also wire up a basic status check (like a linter or test run) that blocks a merge on failure — the same mechanism your later CI/CD pipeline will build on directly.
+  - title: Django Core Concepts
+    topics:
+      - id: django-project-structure
+        title: Project & App Structure
+        description: >-
+          Django enforces a specific project/app separation that confuses newcomers coming from smaller frameworks — a project is the overall configuration, while apps are self-contained, reusable pieces of functionality within it. Getting this structure right early prevents the tangled, everything-in-one-folder mess that's painful to untangle later in a real codebase.
+        resources:
+          - title: Django Documentation - Getting Started
+            url: https://docs.djangoproject.com/en/stable/intro/
+            type: docs
+          - title: Django Official Tutorial
+            url: https://docs.djangoproject.com/en/stable/intro/tutorial01/
+            type: course
+        subtopics:
+          - title: 'Project & App Structure: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Run django-admin startproject and startapp, then walk through what each generated file actually does — settings.py, urls.py, wsgi.py/asgi.py, and the per-app models.py/views.py/apps.py scaffold. You'll register your first app in INSTALLED_APPS and understand why that step is easy to forget and confusing to debug when you do.
+          - title: 'Project & App Structure: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Design a multi-app project layout for a realistic domain (say, a blog with separate apps for posts, comments, and users) and wire up project-level URL routing with include() to delegate to each app's own urls.py. You'll also set up environment-specific settings (dev vs production) using a pattern that avoids hardcoding secrets directly into settings.py.
+      - id: views-templates
+        title: Views & Templates
+        description: >-
+          Views are where Django decides what to do with an incoming request, and templates are how it renders a response back as HTML — together they form the "V" and "T" of Django's MVT architecture. This module covers both function-based and class-based views, since real codebases mix the two depending on how much boilerplate a given view needs.
+        resources:
+          - title: Django Views
+            url: https://docs.djangoproject.com/en/stable/topics/http/views/
+            type: docs
+          - title: Django Class-Based Views
+            url: https://docs.djangoproject.com/en/stable/topics/class-based-views/
+            type: docs
+        subtopics:
+          - title: 'Views & Templates: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write function-based views that take a request and return an HttpResponse, then render actual HTML using Django's template language — variables, {% if %}/{% for %} tags, and template inheritance with {% extends %} and {% block %}. You'll build a small multi-page site to see how a base template keeps navigation and layout consistent across pages.
+          - title: 'Views & Templates: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Move to class-based views (ListView, DetailView, CreateView) to see how Django collapses common CRUD patterns into a few lines of configuration instead of repeated boilerplate. You'll also cover template context processors and custom template tags/filters for logic that needs to run on every page without repeating yourself.
+      - id: models-migrations
+        title: Models & Migrations
+        description: >-
+          Models are where Django's "M" lives — Python classes that map directly to database tables — and migrations are the version-controlled history of how that schema changes over time. This is one of Django's biggest productivity wins over writing raw SQL by hand, but only if you understand what a migration is actually doing under the hood.
+        resources:
+          - title: Django Models
+            url: https://docs.djangoproject.com/en/stable/topics/db/models/
+            type: docs
+          - title: Django Migrations
+            url: https://docs.djangoproject.com/en/stable/topics/migrations/
+            type: docs
+        subtopics:
+          - title: 'Models & Migrations: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Define models with field types (CharField, IntegerField, ForeignKey, ManyToManyField) and Meta options, then run makemigrations and migrate to see Django translate your Python classes into actual database tables. You'll also inspect a generated migration file directly so "migrations are just Python describing schema changes" stops being abstract.
+          - title: 'Models & Migrations: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Practice altering an existing model (adding a field, changing a type, adding an index) and handling the resulting migration, including data migrations that transform existing rows rather than just changing schema. You'll also cover migration conflicts from parallel branches and how to resolve them — a near-guaranteed real-world scenario on any team.
+      - id: admin-forms
+        title: Admin Site & Forms
+        description: >-
+          Django's auto-generated admin interface is one of its signature "batteries-included" features — a full CRUD UI for your models with almost no code — and Django Forms handle validated user input everywhere else in your app. This module covers both, since together they handle the majority of data entry in a typical Django project.
+        resources:
+          - title: Django Admin Site
+            url: https://docs.djangoproject.com/en/stable/ref/contrib/admin/
+            type: docs
+          - title: Django Forms
+            url: https://docs.djangoproject.com/en/stable/topics/forms/
+            type: docs
+        subtopics:
+          - title: Django Admin Customization
+            dayLabel: Days 1–2
+            description: >-
+              Register your models with the admin site, then customize the generated interface with ModelAdmin options — list_display, search_fields, list_filter, and inline editing for related models. You'll see how much internal tooling you get for free before writing a single line of custom UI code, which is why the admin is often the first thing built in a new Django project.
+          - title: Forms, ModelForms & Validation
+            dayLabel: Days 3–4
+            description: >-
+              Build a plain Django Form for a contact page, then a ModelForm that generates its fields directly from a model so you're not duplicating field definitions. You'll add custom validation with clean_<field>() methods and clean(), and handle both GET/POST rendering and CSRF protection, which Django enforces on every form submission by default.
+  - title: Databases
+    topics:
+      - id: sql-fundamentals
+        title: SQL Fundamentals
+        description: >-
+          The Django ORM eventually generates SQL under the hood, and debugging a slow query or a wrong result set means being able to read that generated SQL directly. This module builds SQL fluency independent of Django, so the ORM feels like a convenience layer over something you understand rather than a black box you're trusting blindly.
+        resources:
+          - title: SQL Tutorial - W3Schools
+            url: https://www.w3schools.com/sql/
+            type: article
+          - title: SQLBolt - Interactive SQL Lessons
+            url: https://sqlbolt.com/
+            type: course
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: >-
+              Design normalized table schemas with primary keys, foreign keys, and appropriate data types, and understand why normalization (splitting data to avoid repetition) matters for data integrity even though it means more joins later. You'll draw an ER diagram for a small domain before writing a single CREATE TABLE statement.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: >-
+              Write SELECT queries with JOINs, WHERE, GROUP BY, and aggregate functions, then wrap multi-step writes in transactions so a failure partway through doesn't leave your data in an inconsistent state. You'll also get an intro to indexes and EXPLAIN plans — the tools you'll use to actually diagnose a slow query instead of guessing at the fix.
+      - id: postgresql
+        title: PostgreSQL
+        description: >-
+          PostgreSQL is the de facto production database for serious Django applications — more capable than SQLite (Django's quick-start default) and better-supported by the ORM than most alternatives. This module moves you from "SQL in the abstract" to "Postgres specifically," including the features that make it worth choosing over other options.
+        resources:
+          - title: PostgreSQL Official Documentation
+            url: https://www.postgresql.org/docs/current/
+            type: docs
+          - title: Django Database Setup - PostgreSQL Notes
+            url: https://docs.djangoproject.com/en/stable/ref/databases/#postgresql-notes
+            type: docs
+        subtopics:
+          - title: PostgreSQL Setup & Django Configuration
+            dayLabel: Days 1–2
+            description: >-
+              Install PostgreSQL locally, create a database and user, and point a Django project at it through DATABASES in settings.py using psycopg. You'll run your existing migrations against Postgres instead of SQLite and note the differences that actually matter — stricter type checking and better concurrent-write behavior among them.
+          - title: Postgres-Specific Features & Performance
+            dayLabel: Days 3–4
+            description: >-
+              Explore what Postgres offers beyond generic SQL: the JSONB field type for semi-structured data, array fields, full-text search, and Django's ArrayField/JSONField that map directly onto them. You'll also cover indexing strategies (B-tree vs GIN) and connection pooling considerations for when your app has to handle real concurrent load.
+      - id: django-orm-querysets
+        title: Django ORM & QuerySets
+        description: >-
+          The ORM is arguably Django's single biggest advantage over other frameworks — QuerySets let you build complex, lazily-evaluated database queries using Python instead of hand-written SQL strings. This module goes deep, because misusing the ORM (accidental N+1 queries, over-fetching) is the single most common source of slow Django apps in production.
+        resources:
+          - title: Making Queries - Django Docs
+            url: https://docs.djangoproject.com/en/stable/topics/db/queries/
+            type: docs
+          - title: QuerySet API Reference
+            url: https://docs.djangoproject.com/en/stable/ref/models/querysets/
+            type: docs
+        subtopics:
+          - title: 'Django ORM & QuerySets: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Write QuerySets with filter(), exclude(), and get(), and understand lazy evaluation — a QuerySet doesn't hit the database until you actually iterate it, slice it, or call something like list() on it. You'll also cover field lookups (__gt, __contains, __in) and chaining filters, which is how the ORM builds up a single SQL query from multiple Python method calls.
+          - title: 'Django ORM & QuerySets: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Learn select_related() and prefetch_related() to eliminate the N+1 query problem — the single most common Django performance bug — by fetching related objects in one query instead of one-per-row. You'll also cover annotations, aggregations (Count, Sum, Avg), and Q objects for building complex OR/AND filter conditions.
+          - title: 'Django ORM & QuerySets: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Use Django's query logging and the django-debug-toolbar to actually see the SQL your QuerySets generate, then optimize a deliberately slow view using what you've learned. You'll also cover bulk_create()/bulk_update() for batch operations and database-level constraints (unique_together, CheckConstraint) that keep data valid even outside the ORM.
+  - title: API Development
+    topics:
+      - id: drf-fundamentals
+        title: Django REST Framework
+        description: >-
+          Django REST Framework (DRF) is the standard toolkit for turning Django models into a JSON API — it's not part of core Django, but it's so widely adopted it's effectively required knowledge for backend roles. This module covers the core building blocks: serializers, views, and the browsable API that makes DRF pleasant to develop against.
+        resources:
+          - title: Django REST Framework Documentation
+            url: https://www.django-rest-framework.org/
+            type: docs
+          - title: DRF Tutorial
+            url: https://www.django-rest-framework.org/tutorial/quickstart/
+            type: course
+        subtopics:
+          - title: 'Django REST Framework: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Install DRF, build your first APIView returning JSON, and understand how DRF's request/response cycle differs from a plain Django view (content negotiation, automatic parsing of JSON bodies). You'll explore the browsable API in a real browser, which is one of DRF's most underrated developer-experience features.
+          - title: 'Django REST Framework: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Move from APIView to generic views (ListAPIView, RetrieveUpdateDestroyAPIView) and ViewSets paired with Routers, which collapse a full set of CRUD endpoints into a handful of lines. You'll see exactly how much boilerplate this removes compared to hand-writing each endpoint individually.
+          - title: 'Django REST Framework: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Write tests against your API using DRF's APIClient and APITestCase, checking both response status codes and payload shape. You'll also cover versioning strategies and throttling/rate-limiting configuration, since a production API needs both before it's safe to expose publicly.
+      - id: serializers-permissions
+        title: Serializers & Permissions
+        description: >-
+          Serializers are DRF's answer to converting between Python/QuerySet objects and JSON, while permissions decide who's allowed to do what to a given resource. This module treats them together because in practice you're rarely writing one without immediately thinking about the other — data shape and data access are two sides of the same API design decision.
+        resources:
+          - title: DRF Serializers
+            url: https://www.django-rest-framework.org/api-guide/serializers/
+            type: docs
+          - title: DRF Permissions
+            url: https://www.django-rest-framework.org/api-guide/permissions/
+            type: docs
+        subtopics:
+          - title: Serializers & Model Serialization
+            dayLabel: Days 1–2
+            description: >-
+              Write a plain Serializer by hand first, then switch to ModelSerializer to see how much of that gets generated automatically from your model fields. You'll cover nested serializers for related objects, custom field-level validation, and the difference between read-only and write-only fields — a common source of confusion for API payload design.
+          - title: Permission Classes & Access Control
+            dayLabel: Days 3–4
+            description: >-
+              Apply built-in permission classes (IsAuthenticated, IsAdminUser, IsAuthenticatedOrReadOnly) to your views, then write a custom permission class that checks object-level ownership — e.g., only letting a user edit their own posts. You'll wire this together with authentication classes so unauthenticated requests are rejected before permission checks even run.
+      - id: api-design-principles
+        title: API Design Principles
+        description: >-
+          Beyond making an endpoint technically work, good API design is about consistency, discoverability, and not breaking clients when your backend changes. This module covers the conventions experienced teams converge on — RESTful resource naming, pagination, filtering, and documenting your API so other developers (including future you) can actually use it.
+        resources:
+          - title: DRF Pagination
+            url: https://www.django-rest-framework.org/api-guide/pagination/
+            type: docs
+          - title: drf-spectacular Documentation
+            url: https://drf-spectacular.readthedocs.io/en/latest/
+            type: docs
+        subtopics:
+          - title: RESTful Resource Design & Pagination
+            dayLabel: Days 1–2
+            description: >-
+              Design resource-oriented URLs (/posts/, /posts/1/comments/) instead of RPC-style action endpoints, and pick appropriate HTTP methods and status codes for each operation. You'll implement pagination (PageNumber, LimitOffset, Cursor) so a list endpoint doesn't try to return ten thousand rows in one response.
+          - title: Filtering, Versioning & OpenAPI Documentation
+            dayLabel: Days 3–4
+            description: >-
+              Add query-parameter filtering and search to your list endpoints using django-filter, then set up API versioning so you can evolve your backend without breaking existing clients overnight. You'll finish by auto-generating OpenAPI/Swagger documentation with drf-spectacular, so your API is self-documenting instead of relying on a stale wiki page.
+      - id: graphql
+        title: GraphQL
+        description: >-
+          GraphQL is an alternative to REST where the client specifies exactly what data it needs in a single query, instead of the server dictating fixed response shapes across multiple endpoints. This module covers Graphene-Django specifically, so you can compare GraphQL's tradeoffs against the REST APIs you just built directly, on the same underlying models.
+        resources:
+          - title: Graphene-Django Documentation
+            url: https://docs.graphene-python.org/projects/django/en/latest/
+            type: docs
+        subtopics:
+          - title: GraphQL Schema Design & Types
+            dayLabel: Days 1–2
+            description: >-
+              Define a GraphQL schema with Graphene-Django, mapping your existing Django models to GraphQL ObjectTypes, and see how a single /graphql/ endpoint replaces a whole set of REST routes. You'll write your first queries and see the client specify exactly which fields it wants, avoiding both over-fetching and under-fetching in one move.
+          - title: Queries, Mutations & Resolver Logic
+            dayLabel: Days 3–4
+            description: >-
+              Write custom resolvers for queries that need logic beyond a simple model lookup, then implement mutations for creating and updating data (GraphQL's equivalent of POST/PUT). You'll also touch on the N+1 query problem in GraphQL specifically, which shows up differently than in REST and needs tools like DataLoader-style batching to avoid.
+  - title: Authentication & Security
+    topics:
+      - id: django-auth-system
+        title: Django Auth System
+        description: >-
+          Django ships with a complete authentication system out of the box — users, groups, permissions, password hashing — which covers most projects' needs without a third-party package. This module covers that built-in system thoroughly before later modules layer token and OAuth-based auth on top for API use cases.
+        resources:
+          - title: Django Authentication System
+            url: https://docs.djangoproject.com/en/stable/topics/auth/
+            type: docs
+          - title: Customizing the User Model
+            url: https://docs.djangoproject.com/en/stable/topics/auth/customizing/
+            type: docs
+        subtopics:
+          - title: 'Django Auth System: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Use Django's built-in login, logout, and registration flows with the default User model, and understand how session-based authentication actually works — a session cookie tied to server-side session data. You'll wire up login_required and the @login_required decorator to protect views from anonymous access.
+          - title: 'Django Auth System: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Extend or fully replace Django's default User model with a custom user model — something you should decide before your first migration, since swapping it later is painful. You'll also work with Django's built-in Groups and Permissions system for role-based access control across your models.
+          - title: 'Django Auth System: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Write tests that log a test client in and assert on permission-protected views, and configure Django's password validators and hashing settings for production (Argon2 or PBKDF2 with sensible iteration counts). You'll also cover password reset flows end-to-end, including the email-based token system Django provides.
+      - id: drf-jwt-auth
+        title: Token & JWT Authentication
+        description: >-
+          Session-based auth works well for server-rendered Django apps, but a JSON API consumed by a mobile app or a separate frontend usually needs token-based authentication instead. This module covers both DRF's built-in TokenAuthentication and the more widely-used JWT approach via djangorestframework-simplejwt.
+        resources:
+          - title: DRF Authentication
+            url: https://www.django-rest-framework.org/api-guide/authentication/
+            type: docs
+          - title: django-rest-framework-simplejwt
+            url: https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
+            type: docs
+        subtopics:
+          - title: Token Authentication Fundamentals
+            dayLabel: Days 1–2
+            description: >-
+              Set up DRF's built-in TokenAuthentication, generate tokens on login, and require clients to send them in an Authorization header on every request. You'll see the tradeoffs of this simple approach — tokens don't expire by default and there's no built-in refresh mechanism — which motivates the next step.
+          - title: JWT Access/Refresh Tokens & Session Security
+            dayLabel: Days 3–4
+            description: >-
+              Set up djangorestframework-simplejwt for short-lived access tokens paired with longer-lived refresh tokens, and implement the refresh flow so a client can get a new access token without forcing the user to log in again. You'll also cover token blacklisting for logout and secure storage considerations on the client side.
+      - id: oauth-2
+        title: OAuth 2.0
+        description: >-
+          OAuth 2.0 is how your Django app lets users "Sign in with Google" (or GitHub, or any other provider) instead of managing passwords yourself, and it's also the standard for granting third-party apps limited access to your API. This module covers both directions — Django as an OAuth client and, briefly, as a provider.
+        resources:
+          - title: django-allauth Documentation
+            url: https://docs.allauth.org/en/latest/
+            type: docs
+          - title: OAuth 2.0 Simplified
+            url: https://www.oauth.com/
+            type: article
+        subtopics:
+          - title: OAuth 2.0 Flow & Social Login
+            dayLabel: Days 1–2
+            description: >-
+              Walk through the OAuth 2.0 authorization code flow step by step — redirect to provider, user consents, provider redirects back with a code, your server exchanges it for a token — before wiring up django-allauth for "Sign in with Google" style social login. Understanding the flow first makes the library configuration make sense instead of feeling like magic.
+          - title: Scopes, Tokens & API Access Delegation
+            dayLabel: Days 3–4
+            description: >-
+              Configure OAuth scopes to limit exactly what a third-party app can access on a user's behalf, and handle token storage, refresh, and revocation. You'll also briefly cover what it takes for your own Django app to act as an OAuth provider for other applications, using django-oauth-toolkit.
+      - id: owasp-security
+        title: Django Security & OWASP Top 10
+        description: >-
+          Django blocks a lot of common vulnerabilities by default, but understanding what it's protecting you from — and where you can still shoot yourself in the foot — is essential before shipping anything to real users. This module maps Django's built-in protections directly onto the OWASP Top 10, the industry-standard list of the most critical web application security risks.
+        resources:
+          - title: Django Security Overview
+            url: https://docs.djangoproject.com/en/stable/topics/security/
+            type: docs
+          - title: OWASP Top 10
+            url: https://owasp.org/www-project-top-ten/
+            type: docs
+        subtopics:
+          - title: 'Django Security & OWASP Top 10: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Understand how Django's ORM prevents SQL injection by default (as long as you avoid raw SQL string formatting), how its template engine auto-escapes output to prevent XSS, and how CSRF tokens protect form submissions. You'll deliberately try to break each protection to see what it actually prevents, then see how easily bypassing it (e.g. with |safe or raw queries) reopens the hole.
+          - title: 'Django Security & OWASP Top 10: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Cover broken access control (missing object-level permission checks), security misconfiguration (DEBUG=True in production, exposed secret keys), and insecure deserialization — vulnerabilities Django doesn't automatically prevent for you. You'll audit a deliberately vulnerable view and fix each issue one at a time.
+          - title: 'Django Security & OWASP Top 10: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Run Django's deployment checklist (python manage.py check --deploy) against a project and fix every warning it surfaces — HTTPS enforcement, secure cookies, HSTS headers. You'll also set up basic rate limiting and logging for suspicious activity, since detection matters as much as prevention in production.
+  - title: Caching & Performance
+    topics:
+      - id: django-cache-framework
+        title: Django Cache Framework
+        description: >-
+          Django's cache framework gives you a unified API for caching — at the per-view, per-fragment, or low-level key/value stage — regardless of which backend (in-memory, filesystem, Redis) is actually storing the data. This module covers the framework itself before the next module swaps in Redis as a real production backend.
+        resources:
+          - title: Django's Cache Framework
+            url: https://docs.djangoproject.com/en/stable/topics/cache/
+            type: docs
+        subtopics:
+          - title: 'Django Cache Framework: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Configure Django's local-memory cache backend and use the low-level cache API (cache.set(), cache.get()) directly in a view to cache an expensive computation. You'll measure the actual before/after response time difference so caching stops being an abstract "good practice" and becomes something you've seen work.
+          - title: 'Django Cache Framework: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Apply the per-view cache decorator (@cache_page) and template fragment caching ({% cache %}) for pages that are expensive to render but don't change on every request. You'll also cover cache invalidation strategies — the genuinely hard part of caching — including versioned keys and signal-based invalidation on model save.
+          - title: 'Django Cache Framework: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Write tests that verify a cached view actually serves from cache on a second request, and set sensible cache timeouts based on how frequently underlying data changes. You'll also cover cache stampede protection — what happens when a popular cached key expires and many requests hit the database simultaneously.
+      - id: redis
+        title: Redis
+        description: >-
+          Redis is the standard production cache and message-broker backend for Django apps — fast, in-memory, and capable of far more than simple key/value caching (pub/sub, sorted sets, expiring keys). This module gets Redis running alongside Django and shows what it unlocks beyond what the local-memory cache backend can do.
+        resources:
+          - title: django-redis Documentation
+            url: https://github.com/jazzband/django-redis
+            type: docs
+          - title: Redis Documentation
+            url: https://redis.io/docs/
+            type: docs
+        subtopics:
+          - title: 'Redis: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Install Redis and connect Django to it using django-redis as your cache backend, then explore Redis's own CLI to see keys, TTLs, and data types directly rather than only through Django's abstraction. You'll compare its persistence and performance characteristics against the local-memory backend you used previously.
+          - title: 'Redis: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Use Redis for session storage (instead of database-backed sessions) to reduce database load, and set up per-key expiration for time-sensitive data like rate-limit counters or one-time tokens. You'll also get a preview of Redis as a message broker, which becomes directly relevant once you reach Celery.
+      - id: query-optimization
+        title: Query Optimization
+        description: >-
+          Even a well-designed schema and correct ORM usage can end up slow under real traffic — this module is about finding and fixing that slowness systematically instead of guessing. You'll use the same tools working Django engineers reach for daily: the debug toolbar, EXPLAIN plans, and Django's own query logging.
+        resources:
+          - title: Django Debug Toolbar
+            url: https://django-debug-toolbar.readthedocs.io/en/latest/
+            type: docs
+          - title: Database Access Optimization - Django Docs
+            url: https://docs.djangoproject.com/en/stable/topics/db/optimization/
+            type: docs
+        subtopics:
+          - title: 'Query Optimization: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Install django-debug-toolbar and use its SQL panel to see exactly how many queries a given page fires — often a shockingly high number the first time you check. You'll identify N+1 patterns visually before fixing them, which builds the instinct to watch for this pattern in your own future code.
+          - title: 'Query Optimization: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Fix identified problems using select_related/prefetch_related, add database indexes where EXPLAIN shows a sequential scan on a large table, and use only()/defer() to avoid fetching columns you don't need. You'll benchmark before and after each change so the optimization work stays evidence-based rather than guesswork.
+  - title: Testing
+    topics:
+      - id: unit-tests
+        title: Unit Tests
+        description: >-
+          Unit tests check individual pieces of logic in isolation — a model method, a utility function, a serializer's validation — and catch regressions long before they'd otherwise surface in manual testing or, worse, production. This module builds the habit of testing as you go rather than bolting tests on at the end of a project.
+        resources:
+          - title: Testing in Django
+            url: https://docs.djangoproject.com/en/stable/topics/testing/
+            type: docs
+          - title: pytest-django Documentation
+            url: https://pytest-django.readthedocs.io/en/latest/
+            type: docs
+        subtopics:
+          - title: 'Unit Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write your first tests using Django's TestCase, which wraps each test in a transaction that's rolled back afterward so tests don't leak state into each other. You'll test model methods, custom validation logic, and utility functions, and get comfortable with assertEqual, assertRaises, and the other core assertion methods.
+          - title: 'Unit Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Set up pytest-django as an alternative test runner with a more concise syntax and fixture system, and organize a growing test suite into logical modules per app. You'll also cover test factories (via factory_boy) for generating realistic test data without repeating setup code in every single test.
+      - id: integration-tests
+        title: Integration Tests
+        description: >-
+          Where unit tests isolate a single function, integration tests verify that multiple pieces — views, models, the database, middleware — actually work correctly together, which is where a surprising number of real bugs hide. This module covers Django's test client for simulating full request/response cycles against your app.
+        resources:
+          - title: DRF Testing
+            url: https://www.django-rest-framework.org/api-guide/testing/
+            type: docs
+          - title: Integration Testing Best Practices
+            url: https://martinfowler.com/bliki/IntegrationTest.html
+            type: article
+        subtopics:
+          - title: 'Integration Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Use Django's test Client to simulate real HTTP requests against your views — GET, POST with form data, following redirects — and assert on the resulting response, status code, and database state afterward. You'll write a full test for a form submission flow end to end, not just the validation logic in isolation.
+          - title: 'Integration Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Test flows that span multiple views and models — user registration followed by login followed by a permission-gated action — and use Django's test database fixtures to set up realistic starting state. You'll also cover mocking external services (like a third-party payment API) so integration tests stay fast and don't depend on live network calls.
+      - id: api-testing
+        title: API Testing
+        description: >-
+          Your DRF endpoints need their own dedicated testing approach — checking status codes, response payload shape, authentication requirements, and permission enforcement, ideally both automated and manual. This module covers DRF's APIClient for automated tests and Postman for manual/exploratory API testing during development.
+        resources:
+          - title: Postman Learning Center
+            url: https://learning.postman.com/docs/introduction/overview/
+            type: docs
+        subtopics:
+          - title: Automated API Tests with APIClient
+            dayLabel: Days 1–2
+            description: >-
+              Write automated tests using DRF's APIClient and APITestCase, checking that endpoints return correct status codes, that unauthenticated requests are rejected where required, and that response payloads match the expected serializer shape. You'll build a reusable pattern for authenticating a test client so you're not repeating login boilerplate in every test.
+          - title: Manual & Exploratory Testing with Postman
+            dayLabel: Days 3–4
+            description: >-
+              Build a Postman collection covering your API's endpoints, with environment variables for base URLs and auth tokens so you can switch between local and staging environments quickly. You'll use this for exploratory testing during development — the fast manual check that happens before something graduates into a permanent automated test.
+  - title: Architecture Patterns
+    topics:
+      - id: mvt-pattern
+        title: MVT Pattern
+        description: >-
+          Django calls its architecture MVT (Model-View-Template) rather than the more familiar MVC, and understanding exactly how it differs — and where the two overlap — clears up a lot of confusion for developers coming from other frameworks. This module is a deliberate step back to look at the architectural "why" behind everything you've built so far.
+        resources:
+          - title: Django Design Philosophies
+            url: https://docs.djangoproject.com/en/stable/misc/design-philosophies/
+            type: docs
+        subtopics:
+          - title: 'MVT Pattern: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Map Django's Model, View, and Template layers onto the more familiar MVC pattern — Django's "View" is actually closer to a traditional MVC "Controller," while its "Template" plays the role MVC calls "View," a naming mismatch that trips up a lot of newcomers. You'll trace a single request through all three layers explicitly to see the pattern in action rather than just reading about it.
+          - title: 'MVT Pattern: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Evaluate where your own project's logic actually lives — "fat models, thin views" is Django's traditional guidance, but you'll see where that breaks down as business logic grows complex enough to need its own layer. This sets up the next module's service-layer pattern as a direct answer to that tension.
+      - id: reusable-apps-services
+        title: Reusable Apps & Service Layers
+        description: >-
+          As a Django codebase grows, cramming business logic into views or models stops scaling — this module covers two patterns experienced teams use to keep things maintainable: genuinely reusable Django apps, and a dedicated service layer for logic that doesn't belong in either a model or a view.
+        resources:
+          - title: Reusable Apps - Django Docs
+            url: https://docs.djangoproject.com/en/stable/intro/reusable-apps/
+            type: docs
+        subtopics:
+          - title: 'Reusable Apps & Service Layers: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Package one of your existing apps as a genuinely reusable, installable Django app — with its own setup.py/pyproject.toml, no hardcoded references to the parent project — and see what needs to change to make that work. You'll understand why most "apps" in typical Django projects are actually project-specific despite the name.
+          - title: 'Reusable Apps & Service Layers: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Introduce a service layer — plain Python functions or classes that hold business logic outside of models and views — for an operation that currently spans multiple models (like processing an order that touches inventory, payment, and notifications). You'll see how this keeps views thin and testable and models focused on data, not orchestration.
+      - id: microservices
+        title: Microservices
+        description: >-
+          Most Django projects should stay a monolith far longer than teams assume, but understanding microservices — what problem they solve and what they cost — is necessary to know when (and whether) splitting a Django backend apart is actually the right call. This module is deliberately balanced rather than pro-microservices by default.
+        resources:
+          - title: Microservices - Martin Fowler
+            url: https://martinfowler.com/articles/microservices.html
+            type: article
+          - title: Microservices Patterns
+            url: https://microservices.io/patterns/index.html
+            type: article
+        subtopics:
+          - title: 'Microservices: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Compare the monolith you've been building against a microservices architecture — independently deployable services, each with its own database, communicating over the network instead of in-process function calls. You'll weigh the real tradeoffs: independent scaling and deployment versus distributed-systems complexity like network failures and data consistency across services.
+          - title: 'Microservices: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Extract one piece of functionality from a Django monolith (say, notifications) into a separate service communicating via REST or a message queue, and feel firsthand what that extraction actually costs — new deployment pipeline, new failure modes, new debugging complexity. You'll come away with a much more grounded sense of when this tradeoff is actually worth making.
+      - id: async-django
+        title: Async Views & ASGI
+        description: >-
+          Django added native async support (async def views, ASGI) to handle I/O-bound workloads — many concurrent slow network calls — more efficiently than the traditional synchronous WSGI model allows. This module covers when async actually helps in Django specifically, since it's not a universal performance upgrade the way it's sometimes marketed.
+        resources:
+          - title: Asynchronous Support - Django Docs
+            url: https://docs.djangoproject.com/en/stable/topics/async/
+            type: docs
+          - title: Django Channels Documentation
+            url: https://channels.readthedocs.io/en/latest/
+            type: docs
+        subtopics:
+          - title: 'Async Views & ASGI: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write an async def view and understand the shift from WSGI (one worker per request, synchronous) to ASGI (an event loop that can juggle many concurrent requests). You'll see where async genuinely helps — many concurrent slow external API calls — and where it doesn't, since a CPU-bound or ORM-heavy view gains nothing from being async.
+          - title: 'Async Views & ASGI: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Set up Django Channels for WebSocket support — real-time features like live notifications or chat that a request/response cycle can't handle — and understand consumers as the async equivalent of views for persistent connections. You'll build a minimal real-time feature end to end to see the full ASGI stack in action.
+  - title: Background Tasks & Message Queues
+    topics:
+      - id: celery
+        title: Celery
+        description: >-
+          Some work — sending an email, processing an uploaded video, generating a report — takes too long to run inside a request/response cycle without leaving the user staring at a spinner. Celery is Django's standard answer: a distributed task queue that runs that work asynchronously in background worker processes instead.
+        resources:
+          - title: Celery Documentation
+            url: https://docs.celeryq.dev/en/stable/
+            type: docs
+          - title: First Steps with Django - Celery Docs
+            url: https://docs.celeryq.dev/en/stable/django/first-steps-with-django.html
+            type: docs
+        subtopics:
+          - title: 'Celery: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Set up Celery with a Django project, configure a message broker (Redis, which you already have running), and write your first @shared_task — a function that runs in a separate worker process instead of the request/response cycle. You'll call it with .delay() from a view and watch it execute asynchronously in a worker terminal.
+          - title: 'Celery: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Build a realistic background task — sending a confirmation email after signup, or processing an uploaded image — and handle retries for tasks that fail transiently. You'll also set up Celery Beat for scheduled/periodic tasks (like a nightly cleanup job) and monitor task execution with Flower or Celery's own logging.
+      - id: rabbitmq
+        title: RabbitMQ
+        description: >-
+          RabbitMQ is a dedicated, production-grade message broker — an alternative to using Redis for that role — built specifically around message queuing semantics like acknowledgments, dead-letter queues, and complex routing. This module compares it against the Redis broker you've already used with Celery.
+        resources:
+          - title: RabbitMQ Tutorials
+            url: https://www.rabbitmq.com/tutorials
+            type: docs
+        subtopics:
+          - title: 'RabbitMQ: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Install RabbitMQ and connect it to your existing Celery setup as an alternative broker, then explore the management UI to see queues, exchanges, and message flow visually. You'll understand exchanges and routing keys — RabbitMQ's flexible message-routing model — which goes well beyond what a simple Redis list-based queue offers.
+          - title: 'RabbitMQ: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Configure message acknowledgments so a task isn't lost if a worker crashes mid-processing, and set up a dead-letter queue to capture messages that repeatedly fail rather than silently dropping them. You'll compare RabbitMQ against Redis as a broker directly and get a feel for when the added complexity is actually worth it.
+  - title: Containerization & DevOps Basics
+    topics:
+      - id: docker
+        title: Docker
+        description: >-
+          Docker packages your Django app, its dependencies, and its runtime environment into a single portable container — so "works on my machine" stops being a real problem, since the machine is now part of what you ship. This module gets a full Django + Postgres + Redis stack running reproducibly with a single command.
+        resources:
+          - title: Docker Get Started
+            url: https://docs.docker.com/get-started/
+            type: docs
+          - title: Dockerizing Django Applications
+            url: https://docs.docker.com/samples/django/
+            type: docs
+        subtopics:
+          - title: 'Docker: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write a Dockerfile for a Django project — base image, installing dependencies, copying code, running the dev server — and understand images versus containers (an image is the blueprint, a container is a running instance of it). You'll build and run your first container, then poke around inside it with docker exec to see it's a real isolated environment.
+          - title: 'Docker: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Use docker-compose to run Django, Postgres, and Redis together as a coordinated multi-container stack with one command, instead of managing each service separately. You'll set up volumes for persistent database data and environment variables for configuration, matching the pattern real production deployments use.
+      - id: ci-cd-pipelines
+        title: CI/CD Pipelines
+        description: >-
+          Continuous Integration and Continuous Deployment automate what you'd otherwise do by hand every time you ship — running tests, checking code quality, and deploying — so mistakes get caught before they reach users instead of after. This module builds a working pipeline using GitHub Actions against the Django project you've already containerized.
+        resources:
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+          - title: CI/CD Explained - GitLab
+            url: https://about.gitlab.com/topics/ci-cd/
+            type: article
+        subtopics:
+          - title: 'CI/CD Pipelines: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write a GitHub Actions workflow file that runs your Django test suite automatically on every push and pull request, spinning up a Postgres service container for the test database. You'll see a red/green status check appear directly on a pull request, turning "did I break anything" from a manual question into an automated answer.
+          - title: 'CI/CD Pipelines: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Extend the pipeline to build and push a Docker image on a successful merge to main, then trigger an automated deployment step. You'll set up staging vs production environments with separate secrets and deployment targets, so a broken deploy to staging never has the chance to touch real users.
+      - id: deployment-gunicorn-nginx
+        title: Deployment (Gunicorn/Nginx)
+        description: >-
+          Django's built-in development server is explicitly not meant for production — Gunicorn is the WSGI application server that actually runs your Django app under real traffic, and Nginx sits in front of it handling static files, SSL, and load balancing. This module covers the standard production stack from the ground up.
+        resources:
+          - title: Deploying Django - Official Docs
+            url: https://docs.djangoproject.com/en/stable/howto/deployment/
+            type: docs
+          - title: Gunicorn Documentation
+            url: https://docs.gunicorn.org/en/stable/
+            type: docs
+        subtopics:
+          - title: 'Deployment (Gunicorn/Nginx): Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Run your Django app under Gunicorn instead of manage.py runserver, and understand what Gunicorn actually does — manage a pool of worker processes so multiple requests can be handled concurrently. You'll tune the worker count and see the practical difference in how many simultaneous requests your app can now handle.
+          - title: 'Deployment (Gunicorn/Nginx): Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Configure Nginx as a reverse proxy in front of Gunicorn, serving static and media files directly (which Gunicorn shouldn't do) and terminating SSL/TLS so traffic between your users and server is encrypted. You'll put the full stack together — Nginx, Gunicorn, Django, Postgres, Redis — and do a complete production deployment from scratch.
+---
+
+Dive into Django backend development with this 16-week structured learning path designed for developers with some Python experience. You'll build a solid foundation in Django's MVT architecture, the ORM, and Django REST Framework, then move into authentication, caching, and testing, before advancing to async views, background tasks with Celery, and containerized deployment. By the end, you'll be equipped to design, build, and deploy production-ready Django backend systems.

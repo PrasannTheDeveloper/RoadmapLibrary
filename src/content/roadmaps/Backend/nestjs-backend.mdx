@@ -1,0 +1,613 @@
+---
+title: NestJS Backend Development
+description: A structured 16-week roadmap for becoming a production-ready NestJS backend developer — covering TypeScript, Nest's modular architecture and dependency injection, SQL/NoSQL databases, REST/GraphQL API design, authentication and security, caching, testing, microservices, message queues, and containerized deployment.
+category: Node.js Frameworks
+estimatedTime: 16 weeks
+difficulty: Intermediate
+topicCount: 30
+order: 5
+icon: 🐈
+thumbnail: /thumbnails/icons/Nest.js.svg
+sections:
+  - title: Programming Fundamentals
+    topics:
+      - id: typescript-fundamentals
+        title: TypeScript Fundamentals
+        description: TypeScript adds static types, interfaces, generics, and decorators on top of JavaScript — the language every NestJS app is written in. This module builds the type-system fluency and decorator syntax that Nest's entire architecture depends on.
+        resources:
+          - title: TypeScript Documentation
+            url: https://www.typescriptlang.org/docs/
+            type: docs
+          - title: TypeScript Handbook - Decorators
+            url: https://www.typescriptlang.org/docs/handbook/decorators.html
+            type: docs
+        subtopics:
+          - title: 'TypeScript Fundamentals: Core Language & Runtime Basics'
+            dayLabel: Days 1–2
+            description: Learn TypeScript's type system — interfaces, unions, generics, and enums — and how the compiler transpiles typed code into the JavaScript Node.js actually runs.
+          - title: 'TypeScript Fundamentals: API Design & Middleware Pipeline'
+            dayLabel: Days 3–4
+            description: Explore decorators and metadata reflection, the mechanism NestJS uses under the hood to attach behavior to classes, methods, and parameters.
+          - title: 'TypeScript Fundamentals: Security & Production Deployment'
+            dayLabel: Days 5–6
+            description: Configure tsconfig for strict null checks and safer builds, and understand how compiler settings affect runtime error handling in production.
+      - id: javascript-async
+        title: Async JavaScript & Node.js Basics
+        description: Node.js runs on a single-threaded event loop, so understanding callbacks, Promises, and async/await is essential before you can build non-blocking NestJS request handlers.
+        resources:
+          - title: Node.js Documentation
+            url: https://nodejs.org/en/docs
+            type: docs
+          - title: The Modern JavaScript Tutorial
+            url: https://javascript.info/
+            type: course
+        subtopics:
+          - title: 'Async JavaScript & Node.js Basics: Core Language & Runtime Basics'
+            dayLabel: Days 1–2
+            description: Study the event loop, call stack, and microtask queue to see how Node schedules I/O without blocking other requests.
+          - title: 'Async JavaScript & Node.js Basics: API Design & Middleware Pipeline'
+            dayLabel: Days 3–4
+            description: Practice chaining Promises and async/await inside request-handling code, including how errors propagate across async boundaries.
+          - title: 'Async JavaScript & Node.js Basics: Security & Production Deployment'
+            dayLabel: Days 5–6
+            description: Learn to catch unhandled promise rejections and avoid memory leaks that can otherwise crash a running Node process.
+      - id: oop-solid-principles
+        title: OOP & SOLID Principles
+        description: NestJS is built entirely around object-oriented patterns — classes, interfaces, and dependency injection — so a solid grasp of OOP and SOLID keeps services maintainable as an app grows.
+        resources:
+          - title: SOLID Principles - Digital Ocean
+            url: https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design
+            type: article
+        subtopics:
+          - title: 'OOP & SOLID Principles: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Cover encapsulation, inheritance, and interfaces in TypeScript, then walk through each SOLID principle with plain, framework-free examples.
+          - title: 'OOP & SOLID Principles: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Apply SOLID principles to service and repository classes, and see how each one maps directly onto NestJS providers and modules.
+  - title: Version Control
+    topics:
+      - id: git
+        title: Git
+        description: Git tracks every change to your codebase locally, letting you experiment, branch, and roll back safely before code ever reaches a shared remote repository.
+        resources:
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Learn init, add, commit, log, and diff, and practice writing a clean, meaningful commit history.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Create and switch branches, resolve merge conflicts, and prepare a clean set of changes for review.
+      - id: github-gitlab
+        title: GitHub/GitLab
+        description: GitHub and GitLab host your Git repositories remotely and layer collaboration tools — pull requests, issues, and CI runners — on top of core Git.
+        resources:
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitLab Documentation
+            url: https://docs.gitlab.com/
+            type: docs
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Push and pull against a remote, configure SSH keys, and manage forks and upstream syncing.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Open pull/merge requests, respond to review comments, and work with protected branches and required status checks.
+  - title: Nest Core Concepts
+    topics:
+      - id: modules-controllers-providers
+        title: Modules, Controllers & Providers
+        description: Modules, controllers, and providers are the three building blocks of every NestJS app — modules organize features, controllers handle incoming routes, and providers hold business logic.
+        resources:
+          - title: NestJS Documentation - First Steps
+            url: https://docs.nestjs.com/first-steps
+            type: docs
+          - title: NestJS Modules
+            url: https://docs.nestjs.com/modules
+            type: docs
+        subtopics:
+          - title: 'Modules, Controllers & Providers: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand how @Module() wires controllers and providers together, and how Nest's IoC container resolves them at application startup.
+          - title: 'Modules, Controllers & Providers: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Build a feature module with its own controller and service, then register it in the root AppModule.
+      - id: dependency-injection
+        title: Dependency Injection
+        description: Nest's dependency injection container automatically constructs and supplies class instances, removing manual wiring and making services easy to mock and test.
+        resources:
+          - title: NestJS Providers
+            url: https://docs.nestjs.com/providers
+            type: docs
+          - title: NestJS Injection Scopes
+            url: https://docs.nestjs.com/fundamentals/injection-scopes
+            type: docs
+        subtopics:
+          - title: 'Dependency Injection: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn how @Injectable() providers get registered and resolved through constructor-based injection.
+          - title: 'Dependency Injection: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Explore provider scopes (singleton, request, transient) and custom injection tokens for supplying values like configuration objects.
+      - id: pipes-guards-interceptors
+        title: Pipes, Guards & Interceptors
+        description: Pipes transform and validate incoming data, guards control access to routes, and interceptors wrap request handling — together they form Nest's execution pipeline.
+        resources:
+          - title: NestJS Pipes
+            url: https://docs.nestjs.com/pipes
+            type: docs
+          - title: NestJS Guards
+            url: https://docs.nestjs.com/guards
+            type: docs
+          - title: NestJS Interceptors
+            url: https://docs.nestjs.com/interceptors
+            type: docs
+        subtopics:
+          - title: 'Pipes, Guards & Interceptors: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Write custom pipes for input validation and transformation, plus guards that check request metadata before a handler runs.
+          - title: 'Pipes, Guards & Interceptors: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Build interceptors for logging, response mapping, and timeout handling that apply across multiple routes.
+      - id: middleware-exception-filters
+        title: Middleware & Exception Filters
+        description: Middleware runs before route handlers for cross-cutting concerns like logging, while exception filters catch thrown errors and shape consistent API error responses.
+        resources:
+          - title: NestJS Middleware
+            url: https://docs.nestjs.com/middleware
+            type: docs
+          - title: NestJS Exception Filters
+            url: https://docs.nestjs.com/exception-filters
+            type: docs
+        subtopics:
+          - title: 'Middleware & Exception Filters: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Write functional and class-based middleware, and register it globally or scoped to specific routes.
+          - title: 'Middleware & Exception Filters: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Build custom exception filters that catch specific error types and return structured, consistent JSON error payloads.
+  - title: Databases
+    topics:
+      - id: sql-fundamentals
+        title: SQL Fundamentals
+        description: Relational databases store data in tables with defined relationships, and SQL is the language for querying, joining, and modifying that data reliably.
+        resources:
+          - title: SQL Tutorial - W3Schools
+            url: https://www.w3schools.com/sql/
+            type: article
+          - title: SQLBolt - Interactive SQL Lessons
+            url: https://sqlbolt.com/
+            type: course
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Design normalized tables with primary/foreign keys, and model one-to-many and many-to-many relationships for a real domain.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Write joins and aggregations, wrap related writes in transactions, and learn how indexes affect query speed.
+      - id: typeorm-prisma
+        title: TypeORM & Prisma
+        description: TypeORM and Prisma are ORMs that let you interact with SQL databases using typed TypeScript objects and query builders instead of raw SQL strings.
+        resources:
+          - title: NestJS + TypeORM
+            url: https://docs.nestjs.com/recipes/sql-typeorm
+            type: docs
+          - title: NestJS + Prisma
+            url: https://docs.nestjs.com/recipes/prisma
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Define entities and schemas, set up and run migrations, and model relationships using TypeORM and Prisma syntax.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Write repository queries, wrap operations in transactions, and compare eager vs lazy relation loading between the two ORMs.
+      - id: mongodb-mongoose
+        title: MongoDB & Mongoose
+        description: MongoDB stores data as flexible, JSON-like documents, and Mongoose adds schema validation and modeling on top of it when used from NestJS.
+        resources:
+          - title: NestJS + Mongoose
+            url: https://docs.nestjs.com/techniques/mongodb
+            type: docs
+          - title: MongoDB Documentation
+            url: https://www.mongodb.com/docs/manual/
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Define Mongoose schemas along with embedded documents and references between collections.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Practice aggregation pipelines, indexing strategies, and multi-document transactions in MongoDB.
+  - title: API Development
+    topics:
+      - id: rest-apis
+        title: REST APIs
+        description: REST APIs expose resources over HTTP using standard verbs and status codes — the primary way NestJS controllers communicate with client applications.
+        resources:
+          - title: NestJS Controllers
+            url: https://docs.nestjs.com/controllers
+            type: docs
+          - title: NestJS Versioning
+            url: https://docs.nestjs.com/techniques/versioning
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Design resource-oriented routes, choose correct HTTP methods and status codes, and structure clean request/response payloads.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Add API versioning and rate limiting, and generate machine-readable documentation for the endpoints you've built.
+      - id: validation-dtos
+        title: Validation & DTOs
+        description: DTOs define the exact shape of incoming request data, and Nest's validation pipe uses class-validator decorators to reject malformed payloads before they reach your logic.
+        resources:
+          - title: NestJS Validation
+            url: https://docs.nestjs.com/techniques/validation
+            type: docs
+          - title: class-validator - GitHub
+            url: https://github.com/typestack/class-validator
+            type: docs
+        subtopics:
+          - title: 'Validation & DTOs: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Define DTO classes with decorators like @IsString() and @IsEmail(), then enable the global ValidationPipe.
+          - title: 'Validation & DTOs: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Handle nested DTOs, write custom validators, and transform incoming payloads automatically with class-transformer.
+      - id: openapi-swagger
+        title: OpenAPI / Swagger
+        description: Nest's Swagger module auto-generates interactive OpenAPI documentation directly from your controllers and DTOs, so the docs stay in sync with the code.
+        resources:
+          - title: NestJS OpenAPI (Swagger)
+            url: https://docs.nestjs.com/openapi/introduction
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Annotate controllers with @ApiTags and @ApiOperation so routes are clearly described in the generated documentation.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Document authentication schemes, response models, and error codes so the Swagger UI reflects real API behavior.
+      - id: graphql
+        title: GraphQL
+        description: GraphQL lets clients request exactly the fields they need through a single typed endpoint, and Nest's GraphQL module supports both schema-first and code-first workflows.
+        resources:
+          - title: NestJS GraphQL
+            url: https://docs.nestjs.com/graphql/quick-start
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Define resolvers, queries, and mutations using Nest's code-first, decorator-based approach.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Add field-level authorization guards and generate the schema definition consumed by client applications.
+  - title: Authentication & Security
+    topics:
+      - id: passport-jwt
+        title: Passport & JWT
+        description: Passport.js provides pluggable authentication strategies, and combined with JWTs it lets Nest issue stateless tokens that verify a user's identity on every request.
+        resources:
+          - title: NestJS Authentication
+            url: https://docs.nestjs.com/security/authentication
+            type: docs
+          - title: Introduction to JSON Web Tokens
+            url: https://jwt.io/introduction
+            type: article
+        subtopics:
+          - title: 'Passport & JWT: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set up a local strategy for login and a JWT strategy for verifying tokens on protected routes.
+          - title: 'Passport & JWT: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Implement refresh tokens and expiry handling, plus a guard that attaches the authenticated user to the request object.
+      - id: authorization-rbac
+        title: Authorization & RBAC
+        description: Role-based access control restricts what authenticated users can do, layering permission checks on top of authentication using custom Nest guards and decorators.
+        resources:
+          - title: NestJS Authorization
+            url: https://docs.nestjs.com/security/authorization
+            type: docs
+        subtopics:
+          - title: Authentication & Token Credentials
+            dayLabel: Days 1–2
+            description: Attach roles and permission claims to a user's JWT payload at login time.
+          - title: Authorization & OWASP Vulnerability Defense
+            dayLabel: Days 3–4
+            description: Build a RolesGuard paired with a custom @Roles() decorator to enforce per-route permissions.
+      - id: password-hashing
+        title: Password Hashing
+        description: Passwords must never be stored in plain text — bcrypt hashes them with a salt so that even a database breach doesn't expose real user credentials.
+        resources:
+          - title: bcrypt - npm
+            url: https://www.npmjs.com/package/bcrypt
+            type: docs
+          - title: Password Storage Cheat Sheet - OWASP
+            url: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+            type: article
+        subtopics:
+          - title: 'Password Hashing: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand hashing vs encryption, salting, and why bcrypt's configurable work factor matters for security.
+          - title: 'Password Hashing: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Hash passwords on registration and safely compare them at login using bcrypt.compare.
+      - id: helmet-rate-limiting
+        title: Security Best Practices
+        description: Helmet sets protective HTTP headers and rate limiting throttles repeated requests, both defending a NestJS API against common web attacks.
+        resources:
+          - title: NestJS Helmet
+            url: https://docs.nestjs.com/security/helmet
+            type: docs
+          - title: NestJS Rate Limiting
+            url: https://docs.nestjs.com/security/rate-limiting
+            type: docs
+          - title: OWASP Top 10
+            url: https://owasp.org/www-project-top-ten/
+            type: docs
+        subtopics:
+          - title: Authentication & Token Credentials
+            dayLabel: Days 1–2
+            description: Harden token handling and cookie flags (httpOnly, secure, sameSite) to reduce the risk of token theft.
+          - title: Authorization & OWASP Vulnerability Defense
+            dayLabel: Days 3–4
+            description: Apply Helmet middleware and @nestjs/throttler to guard against XSS, clickjacking, and brute-force attacks from the OWASP Top 10.
+  - title: Caching & Performance
+    topics:
+      - id: caching-module
+        title: Nest Cache Module
+        description: Nest's built-in CacheModule stores frequently requested data in memory or an external store, cutting repeated database hits and speeding up responses.
+        resources:
+          - title: NestJS Caching
+            url: https://docs.nestjs.com/techniques/caching
+            type: docs
+        subtopics:
+          - title: 'Nest Cache Module: Core Language & Runtime Basics'
+            dayLabel: Days 1–2
+            description: Register CacheModule and cache individual route responses using the built-in cache interceptor.
+          - title: 'Nest Cache Module: API Design & Middleware Pipeline'
+            dayLabel: Days 3–4
+            description: Set custom TTLs and cache keys per route, and manually get/set cache entries from within a service.
+          - title: 'Nest Cache Module: Security & Production Deployment'
+            dayLabel: Days 5–6
+            description: Avoid caching sensitive or user-specific data, and plan a cache invalidation strategy for production traffic.
+      - id: redis
+        title: Redis
+        description: Redis is an in-memory key-value store commonly paired with Nest for caching, session storage, and pub/sub messaging thanks to its speed.
+        resources:
+          - title: Redis Documentation
+            url: https://redis.io/docs/
+            type: docs
+          - title: NestJS Redis Microservices
+            url: https://docs.nestjs.com/microservices/redis
+            type: docs
+        subtopics:
+          - title: 'Redis: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn Redis's core data structures — strings, hashes, sets, and sorted sets — and the commands that operate on them.
+          - title: 'Redis: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Wire Redis in as Nest's cache store, and use it for session storage or rate-limit counters.
+      - id: cdn
+        title: CDN
+        description: A CDN caches static assets across edge servers worldwide, reducing latency and offloading traffic your NestJS backend would otherwise have to serve directly.
+        resources:
+          - title: What is a CDN? - Cloudflare
+            url: https://www.cloudflare.com/learning/cdn/what-is-a-cdn/
+            type: article
+        subtopics:
+          - title: 'CDN: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand edge caching, cache-control headers, and how a CDN decides what to serve from the edge vs the origin server.
+          - title: 'CDN: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Configure cache-control headers on API responses and serve static files through a CDN placed in front of Nest.
+  - title: Testing
+    topics:
+      - id: unit-tests
+        title: Unit Tests
+        description: Unit tests verify individual services and providers in isolation, and Nest's testing module makes it easy to mock dependencies with Jest.
+        resources:
+          - title: NestJS Testing
+            url: https://docs.nestjs.com/fundamentals/testing
+            type: docs
+          - title: Jest Documentation
+            url: https://jestjs.io/docs/getting-started
+            type: docs
+        subtopics:
+          - title: 'Unit Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set up Nest's TestingModule, write basic Jest tests, and mock injected providers.
+          - title: 'Unit Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Test services with multiple dependencies, spy on method calls, and check coverage reports.
+      - id: e2e-tests
+        title: End-to-End Tests
+        description: End-to-end tests spin up the full Nest application and hit real HTTP endpoints, confirming controllers, guards, and pipes work together correctly.
+        resources:
+          - title: NestJS E2E Testing
+            url: https://docs.nestjs.com/fundamentals/testing#end-to-end-testing
+            type: docs
+        subtopics:
+          - title: 'End-to-End Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Configure a Nest e2e test app with Supertest and write your first endpoint test.
+          - title: 'End-to-End Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Test authenticated routes, real database interactions, and error responses end-to-end.
+      - id: api-testing
+        title: API Testing
+        description: Tools like Postman let you exercise API endpoints manually and automatically outside your codebase, useful for exploratory testing and sharing collections with a team.
+        resources:
+          - title: Postman Learning Center
+            url: https://learning.postman.com/docs/introduction/overview/
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Build Postman collections covering CRUD endpoints and their expected status codes.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Test authentication flows and import an OpenAPI spec to auto-generate a request collection.
+  - title: Architecture Patterns
+    topics:
+      - id: modular-architecture
+        title: Modular Architecture
+        description: Structuring a large Nest app into feature modules — each with its own controllers, providers, and exports — keeps the codebase organized as it scales.
+        resources:
+          - title: NestJS Modules
+            url: https://docs.nestjs.com/modules
+            type: docs
+          - title: NestJS Dynamic Modules
+            url: https://docs.nestjs.com/fundamentals/dynamic-modules
+            type: docs
+        subtopics:
+          - title: 'Modular Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Split a monolithic module into feature modules and decide what each one should export vs keep private.
+          - title: 'Modular Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Use dynamic modules (forRoot/forFeature) to build configurable, reusable module libraries.
+      - id: cqrs
+        title: CQRS
+        description: CQRS separates write operations (commands) from read operations (queries), a pattern Nest's @nestjs/cqrs package supports with command/query buses and event handlers.
+        resources:
+          - title: NestJS CQRS
+            url: https://docs.nestjs.com/recipes/cqrs
+            type: docs
+        subtopics:
+          - title: 'CQRS: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand the command, query, and event bus pattern, and when separating reads from writes actually pays off.
+          - title: 'CQRS: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Implement command handlers, query handlers, and basic event sourcing with @nestjs/cqrs.
+      - id: microservices-patterns
+        title: Microservices
+        description: Nest can split a monolith into independently deployable microservices that communicate over TCP, Redis, or a message broker instead of plain HTTP.
+        resources:
+          - title: NestJS Microservices
+            url: https://docs.nestjs.com/microservices/basics
+            type: docs
+        subtopics:
+          - title: 'Microservices: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set up a Nest microservice with a transport layer, and understand request-response vs event-based messaging.
+          - title: 'Microservices: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Build a hybrid app combining an HTTP gateway with backend microservices, and handle inter-service error propagation.
+      - id: event-driven
+        title: Event-Driven Architecture
+        description: Event-driven architecture decouples services by having them emit and react to events rather than calling each other directly, improving scalability and fault isolation.
+        resources:
+          - title: NestJS Event Emitter
+            url: https://docs.nestjs.com/techniques/events
+            type: docs
+          - title: Event-Driven Architecture - AWS
+            url: https://aws.amazon.com/event-driven-architecture/
+            type: article
+        subtopics:
+          - title: 'Event-Driven Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Use Nest's EventEmitterModule to emit and listen for events within a single application.
+          - title: 'Event-Driven Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Design event schemas and handlers for cross-service communication in a distributed system.
+  - title: Message Queues
+    topics:
+      - id: rabbitmq
+        title: RabbitMQ
+        description: RabbitMQ is a message broker that queues and routes messages between services, giving Nest microservices reliable asynchronous communication with delivery guarantees.
+        resources:
+          - title: NestJS RabbitMQ Transporter
+            url: https://docs.nestjs.com/microservices/rabbitmq
+            type: docs
+        subtopics:
+          - title: 'RabbitMQ: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Understand exchanges, queues, and routing keys, and connect Nest to RabbitMQ via the built-in transporter.
+          - title: 'RabbitMQ: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Implement message acknowledgments, retries, and dead-letter queues for messages that fail processing.
+      - id: apache-kafka
+        title: Apache Kafka
+        description: Kafka is a distributed event-streaming platform built for high-throughput, ordered message processing across many consumers — a step up from simple queuing.
+        resources:
+          - title: NestJS Kafka Transporter
+            url: https://docs.nestjs.com/microservices/kafka
+            type: docs
+          - title: 'Kafka: The Definitive Guide (Confluent)'
+            url: https://www.confluent.io/resources/kafka-the-definitive-guide-v2/
+            type: article
+        subtopics:
+          - title: 'Apache Kafka: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Learn Kafka's topic, partition, and consumer-group model, and connect Nest using the Kafka transporter.
+          - title: 'Apache Kafka: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Design consumer groups for parallel processing, and handle offset management and message replay.
+  - title: Containerization & DevOps Basics
+    topics:
+      - id: docker
+        title: Docker
+        description: Docker packages a NestJS app and its dependencies into a portable container, ensuring it runs identically across development, staging, and production.
+        resources:
+          - title: Docker Get Started
+            url: https://docs.docker.com/get-started/
+            type: docs
+          - title: Dockerize a Node.js Web App
+            url: https://nodejs.org/en/docs/guides/nodejs-docker-webapp
+            type: docs
+        subtopics:
+          - title: 'Docker: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Write a Dockerfile for a Nest app, understand image layers, and build and run a container locally.
+          - title: 'Docker: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Use docker-compose to run Nest alongside a database and Redis in a local multi-container setup.
+      - id: ci-cd-pipelines
+        title: CI/CD Pipelines
+        description: CI/CD pipelines automatically test, build, and deploy your NestJS app on every push, catching regressions before they ever reach users.
+        resources:
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+          - title: CI/CD Explained - GitLab
+            url: https://about.gitlab.com/topics/ci-cd/
+            type: article
+        subtopics:
+          - title: 'CI/CD Pipelines: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: Set up a GitHub Actions workflow that installs dependencies, runs tests, and lints code on every pull request.
+          - title: 'CI/CD Pipelines: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: Extend the pipeline to build a Docker image and deploy it automatically on merge to main.
+      - id: deployment-platforms
+        title: Deployment Platforms
+        description: Once built and tested, a NestJS app needs a hosting platform and usually a reverse proxy in front of it to handle SSL, load balancing, and routing.
+        resources:
+          - title: NestJS Deployment Recipe (Mau)
+            url: https://docs.nestjs.com/recipes/mau
+            type: docs
+          - title: Nginx as a Reverse Proxy for Node.js
+            url: https://nginx.org/en/docs/http/ngx_http_proxy_module.html
+            type: docs
+        subtopics:
+          - title: Deployment Configuration & Environments
+            dayLabel: Days 1–2
+            description: Configure environment variables, build scripts, and a process manager like PM2 for running Nest reliably in production.
+          - title: Reverse Proxy, SSL & Scaling
+            dayLabel: Days 3–4
+            description: Set up Nginx as a reverse proxy with SSL termination, and evaluate hosting platforms like Railway, Render, or a plain VPS.
+---
+
+Dive into NestJS backend development with this 16-week structured learning path designed for developers who already know TypeScript and Node.js basics. You'll build a solid foundation in Nest's modular architecture, dependency injection, and databases, then move into authentication, caching, and testing, before advancing to CQRS, microservices, message queues, and containerized deployment. By the end, you'll be equipped to design, build, and deploy production-ready, enterprise-grade NestJS backend systems.

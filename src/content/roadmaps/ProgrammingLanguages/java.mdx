@@ -1,0 +1,125 @@
+---
+title: Java Programming
+description: An intensive 1-month roadmap to mastering Java programming, covering core syntax, JVM internals, Object-Oriented design, Collections, Streams API, Concurrency, Virtual Threads, and JUnit testing.
+category: Programming Languages
+estimatedTime: 4 weeks
+difficulty: Intermediate
+topicCount: 24
+order: 5
+icon: ☕
+thumbnail: /thumbnails/icons/Java.svg
+sections:
+  - title: 01. JVM & Java Fundamentals
+    topics:
+      - id: java-jvm-syntax
+        title: JVM Architecture & Core Syntax
+        description: Java executes on the Java Virtual Machine (JVM) for cross-platform portability. Learn JVM bytecode compilation, JIT optimization, Heap vs Stack memory, primitives, and syntax rules.
+        subtopics:
+          - title: JDK, JRE & JVM Internals
+            dayLabel: Days 1–2
+            description: >-
+              Sort out the JDK/JRE/JVM naming that trips up most beginners — the JDK is what you develop with, the JRE is what you run compiled code with, and the JVM is what actually executes it. You'll trace a .java file through javac compilation to bytecode, then see how the JIT compiler kicks in to optimize hot code paths at runtime, plus get a working picture of heap vs stack memory allocation.
+          - title: Primitives, Variables & Operators
+            dayLabel: Days 3–4
+            description: >-
+              Work through Java's eight primitive types (int, double, boolean, char, and the rest) and the difference between a primitive and its boxed wrapper class (int vs Integer). You'll also cover variable declaration rules, operator precedence, and type casting — the small stuff that causes silent bugs if you skip past it too fast.
+  - title: 02. Control Flow & Arrays
+    topics:
+      - id: java-control-arrays
+        title: Branching, Loops & Array Manipulation
+        description: Control application flow and manipulate array data structures in Java. Learn conditional branches, modern switch expressions, loop iterations, multi-dimensional arrays, and System.arraycopy.
+        subtopics:
+          - title: Conditionals & Modern Switch Expressions
+            dayLabel: Days 1–2
+            description: >-
+              Start with standard if-else branching, then move to the modern switch expression syntax (case L ->) that replaced the old fall-through-prone switch statement. You'll write a few switches that return a value directly, and see why pattern matching in switch (newer Java versions) makes handling different types in one block much cleaner.
+          - title: Loops & Array Operations
+            dayLabel: Days 3–4
+            description: >-
+              Cover for, while, do-while, and the enhanced for-each loop, then move into arrays — fixed-size, single type, indexed from zero. You'll practice multi-dimensional arrays (a grid represented as an array of arrays) and use System.arraycopy for fast, safe array copying instead of writing manual copy loops.
+  - title: 03. Object-Oriented Java
+    topics:
+      - id: java-oop
+        title: Classes, Inheritance & Polymorphism
+        description: Build enterprise object-oriented applications in Java. Learn class declarations, constructors, access modifiers, method overloading/overriding, inheritance (extends), and runtime polymorphism.
+        subtopics:
+          - title: Classes, Constructors & Packages
+            dayLabel: Days 1–2
+            description: >-
+              Define classes with fields, constructors, and methods, and get deliberate about access modifiers (public, private, protected, package-private) rather than defaulting to public everywhere. You'll organize a small multi-class project into packages, which is how real Java codebases stay navigable as they grow.
+          - title: Inheritance, Polymorphism & super
+            dayLabel: Days 3–4
+            description: >-
+              Extend a base class with extends, override its methods, and call the parent implementation with super when you need to build on it rather than replace it entirely. You'll see runtime polymorphism in action — a variable typed as the parent class holding a child object, with the correct overridden method running automatically — plus the distinction between overloading (same name, different parameters) and overriding.
+  - title: 04. Interfaces, Records & Sealed Classes
+    topics:
+      - id: java-interfaces-records
+        title: Interfaces, Records & Sealed Hierarchies
+        description: Model domain contracts and immutable data in modern Java. Learn interface default/static methods, immutable Records (Java 14+), and sealed class hierarchies (permits keyword).
+        subtopics:
+          - title: Interfaces & Abstract Classes
+            dayLabel: Days 1–2
+            description: >-
+              Define interfaces to specify what a class must do without dictating how, then compare that against abstract classes, which can share partial implementation across subclasses. You'll also use default and static methods on interfaces — a feature added specifically so interfaces could evolve without breaking every class that implements them.
+          - title: Records & Sealed Classes
+            dayLabel: Days 3–4
+            description: >-
+              Records (Java 14+) collapse the constructor/getters/equals/hashCode boilerplate of an immutable data class down to a single line — you'll rewrite a verbose data holder as a record and feel the difference immediately. Sealed classes are the other half: restricting exactly which classes are allowed to extend or implement a type using the permits keyword, which pairs well with exhaustive switch pattern matching.
+  - title: 05. Collections Framework & Generics
+    topics:
+      - id: java-collections-generics
+        title: Collections Framework & Generics
+        description: Organize data efficiently with Java's Collections Framework. Master ArrayList, LinkedList, HashSet, HashMap, generic type parameters <T>, and wildcard bounds (<? extends T>).
+        subtopics:
+          - title: Collections (List, Set, Map, Queue)
+            dayLabel: Days 1–2
+            description: >-
+              Compare ArrayList (fast random access) against LinkedList (fast insertion/removal), then move to HashSet for uniqueness guarantees and HashMap for key-value lookups. You'll pick the right structure for a few realistic scenarios — deduplicating input, counting occurrences, maintaining insertion order — rather than reaching for ArrayList by default.
+          - title: Generics & Bounded Type Parameters
+            dayLabel: Days 3–4
+            description: >-
+              Write a generic class or method with a type parameter <T> so it works across multiple types without casting or duplicating code. You'll then bound that parameter with wildcards like <? extends T> and <? super T>, learning the "producer extends, consumer super" rule that governs when each direction actually compiles.
+  - title: 06. Functional Java & Streams API
+    topics:
+      - id: java-lambdas-streams
+        title: Lambdas, Functional Interfaces & Streams API
+        description: Write functional, declarative Java code. Learn lambda expressions, method references (Class::method), functional interfaces (Predicate, Function, Consumer), and the Streams API.
+        subtopics:
+          - title: Lambdas & Functional Interfaces
+            dayLabel: Days 1–2
+            description: >-
+              Replace anonymous inner classes with lambda expressions, then learn the functional interfaces they target — Predicate<T> for a true/false test, Function<T,R> for a transformation, Consumer<T> for a side effect. You'll also use method references (Class::method) as a shorthand when a lambda would just be calling one existing method anyway.
+          - title: Streams API (Filter, Map, Reduce, Collect)
+            dayLabel: Days 3–4
+            description: >-
+              Chain filter, map, and reduce operations on a Stream to transform a collection declaratively instead of writing manual loops with mutable accumulators. You'll finish a pipeline with collect() to gather results back into a List, Map, or grouped structure, and get a feel for when a stream actually reads more clearly than a loop and when it doesn't.
+  - title: 07. Concurrency & Virtual Threads
+    topics:
+      - id: java-concurrency
+        title: Multithreading, Executors & Virtual Threads
+        description: Build high-throughput concurrent Java services. Learn Thread, Runnable, synchronized blocks, ReentrantLock, ExecutorService, and high-performance Java 21 Virtual Threads.
+        subtopics:
+          - title: Multithreading, Synchronization & Locks
+            dayLabel: Days 1–2
+            description: >-
+              Spawn threads directly with Thread and Runnable, then deliberately create a race condition on shared state so you can see why it happens before fixing it. You'll protect that state with synchronized blocks first, then with the more flexible ReentrantLock, and compare the tradeoffs between the two.
+          - title: ExecutorService & Virtual Threads (Java 21+)
+            dayLabel: Days 3–4
+            description: >-
+              Move away from managing raw threads by hand and use ExecutorService to run tasks against a managed thread pool instead. Then try Java 21's virtual threads, which let you spin up thousands of lightweight concurrent tasks without the memory overhead of traditional OS threads — a genuine shift in how Java handles high-concurrency workloads.
+  - title: 08. Build Tools & Testing
+    topics:
+      - id: java-build-testing
+        title: Maven/Gradle Build & JUnit 5 Testing
+        description: Automate Java project builds and testing workflows. Learn pom.xml / build.gradle dependency management, plugins, unit testing with JUnit 5, and mocking with Mockito.
+        subtopics:
+          - title: Maven / Gradle Build Lifecycle
+            dayLabel: Days 1–2
+            description: >-
+              Set up a project with Maven's pom.xml or Gradle's build.gradle, declare dependencies, and walk through the build lifecycle phases (compile, test, package). You'll add a plugin or two and see how both tools resolve transitive dependencies automatically instead of you tracking JARs by hand.
+          - title: Unit Testing with JUnit 5 & Mockito
+            dayLabel: Days 3–4
+            description: >-
+              Write unit tests with JUnit 5's @Test annotations and assertion methods, covering both expected results and thrown exceptions. You'll then use Mockito to mock out dependencies — a database call, an external API — so your tests stay fast and isolated instead of depending on real infrastructure being available.
+---
+Java is a world-class, strongly typed, object-oriented programming language designed for platform independence via the Java Virtual Machine (JVM), powering massive enterprise software globally.

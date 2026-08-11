@@ -1,0 +1,733 @@
+---
+title: FastAPI Backend Development
+description: A structured roadmap to becoming a skilled FastAPI backend developer, covering Python, async programming, Pydantic, the ORM/database layer, API design, authentication, architecture patterns, and deployment fundamentals.
+category: Python Frameworks
+estimatedTime: 14 weeks
+difficulty: Intermediate
+topicCount: 30
+order: 7
+icon: ⚡
+thumbnail: /thumbnails/icons/FastAPI.svg
+sections:
+  - title: Programming Fundamentals
+    topics:
+      - id: python-fundamentals
+        title: Python Fundamentals
+        description: >-
+          FastAPI leans on modern Python more heavily than most frameworks — its entire request/response model is built on type hints and async syntax, so shaky Python fundamentals will slow down everything that follows. This module builds the base deliberately before layering framework-specific concepts on top.
+        resources:
+          - title: Python Official Tutorial
+            url: https://docs.python.org/3/tutorial/
+            type: docs
+          - title: Real Python - Python Basics
+            url: https://realpython.com/tutorials/basics/
+            type: course
+        subtopics:
+          - title: 'Python Fundamentals: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Cover variables, the built-in data types (strings, lists, dicts, tuples, sets), control flow, and functions with default and keyword arguments. You'll get comfortable with Python's indentation-based block structure and dynamic typing, since both behave differently from most C-family languages and shape how the rest of this roadmap reads.
+          - title: 'Python Fundamentals: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Move into classes, dunder methods (__init__, __call__), decorators, and context managers (the with statement) — all patterns FastAPI itself uses heavily under the hood, especially for dependency injection later. You'll also cover generators and comprehensions, which show up constantly once you start writing idiomatic async code.
+          - title: 'Python Fundamentals: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Write your first tests with pytest, and set up a virtual environment with dependency management via pip or a modern tool like uv/poetry. You'll also cover exception handling patterns, since FastAPI's own error-handling model builds directly on Python's try/except and custom exception classes.
+      - id: type-hints
+        title: Python Type Hints
+        description: >-
+          Type hints aren't optional decoration in FastAPI — they're the mechanism the framework uses to validate request data, generate OpenAPI docs, and power editor autocomplete, all from the same annotations. This module treats typing as a first-class skill rather than an afterthought, because FastAPI's entire value proposition depends on you using it correctly.
+        resources:
+          - title: typing - Python Docs
+            url: https://docs.python.org/3/library/typing.html
+            type: docs
+          - title: Python Type Checking Guide - Real Python
+            url: https://realpython.com/python-type-checking/
+            type: article
+        subtopics:
+          - title: 'Python Type Hints: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Annotate variables, function parameters, and return types with the basic typing syntax (str, int, list[str], dict[str, int]), and understand that Python doesn't enforce these at runtime on its own — they're hints for tools and, critically, for FastAPI's own validation layer. You'll compare untyped and typed versions of the same function to see the immediate editor-support difference.
+          - title: 'Python Type Hints: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Cover Optional/None handling, Union types (X | Y in modern Python), and generics with TypeVar, then build your first Pydantic-style model using type-hinted class attributes to preview what's coming next. You'll also look at Literal types for restricting a value to a specific set of options, which FastAPI turns directly into dropdown-style OpenAPI documentation.
+          - title: 'Python Type Hints: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Run mypy against your code to catch type errors before runtime, and fix a handful of deliberately introduced type mismatches to see what the checker actually catches versus what it misses. You'll also cover typing best practices for function signatures that FastAPI will later turn directly into path operation parameters.
+      - id: async-python
+        title: Async Python
+        description: >-
+          FastAPI's headline performance advantage comes from being built on asyncio — understanding the event loop, coroutines, and when async actually helps (versus when it's just extra complexity) is essential before you start writing path operations that claim to be async. This module builds that understanding from first principles rather than treating async def as a syntax you just copy.
+        resources:
+          - title: asyncio - Python Docs
+            url: https://docs.python.org/3/library/asyncio.html
+            type: docs
+          - title: 'Async IO in Python: A Complete Walkthrough - Real Python'
+            url: https://realpython.com/async-io-python/
+            type: article
+        subtopics:
+          - title: 'Async Python: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Write your first async def functions and await calls, and build a mental model of the event loop — a single thread that switches between tasks whenever one is waiting on I/O instead of blocking. You'll deliberately compare a synchronous version of a slow I/O operation against its async equivalent to feel the difference directly.
+          - title: 'Async Python: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Use asyncio.gather() to run multiple coroutines concurrently instead of sequentially, and understand why mixing blocking synchronous code (like a non-async database driver) into an async function silently kills the performance benefit you were trying to get. You'll also cover async context managers and async generators, both of which appear throughout FastAPI's own APIs.
+          - title: 'Async Python: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Write tests for async functions using pytest-asyncio, and profile a genuinely I/O-bound workload (multiple concurrent HTTP calls) to measure the real throughput improvement async gives you. You'll also cover common async pitfalls — forgetting to await a coroutine, or accidentally blocking the event loop with CPU-heavy work — since both are easy mistakes that silently degrade performance.
+  - title: Version Control
+    topics:
+      - id: git
+        title: Git
+        description: >-
+          Git is non-negotiable for any real FastAPI project — schema changes, dependency updates, and collaborative feature work all depend on a version history you can trust and roll back. This module builds a working mental model of Git's commit graph so branching, merging, and rebasing stop feeling like memorized incantations.
+        resources:
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: >-
+              Practice the daily-driver commands — init, add, commit, status, diff, log — until they're automatic, and build a mental model of the staging area versus the working directory versus commit history. You'll also learn to write commit messages that explain why a change was made, not just what changed.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: >-
+              Create feature branches, merge them back with both fast-forward and three-way merges, and resolve a deliberately-triggered merge conflict so it stops being intimidating. You'll also cover git rebase for cleaning up commit history before a pull request, and when a rebase workflow is preferable to a merge workflow.
+      - id: github-gitlab
+        title: GitHub/GitLab
+        description: >-
+          Git itself is local — GitHub and GitLab are where your FastAPI project actually becomes a shared, collaborative codebase with code review, issue tracking, and CI hooks attached. This module is about the platform layer on top of Git: how a team actually ships code together.
+        resources:
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitLab Documentation
+            url: https://docs.gitlab.com/
+            type: docs
+        subtopics:
+          - title: Remote Repositories & Collaboration Basics
+            dayLabel: Days 1–2
+            description: >-
+              Push a local repository to GitHub or GitLab, set up SSH keys instead of typing credentials on every push, and practice the fork-and-clone workflow used by most open-source Python projects. You'll also configure a .gitignore tuned for a Python/FastAPI project — virtual environments, __pycache__, and .env files you never want committed.
+          - title: Pull Requests, Code Review & CI Hooks
+            dayLabel: Days 3–4
+            description: >-
+              Open a pull/merge request, respond to review comments, and set up branch protection rules so nothing lands on main without review. You'll also wire up a basic status check (a linter or a pytest run) that blocks a merge on failure — the same mechanism your later CI/CD pipeline builds on directly.
+  - title: FastAPI Core Concepts
+    topics:
+      - id: path-operations-routing
+        title: Path Operations & Routing
+        description: >-
+          Path operations are FastAPI's term for the functions that handle a specific HTTP method and URL path — the fundamental building block everything else in the framework attaches to. This module covers how routing actually works, including how FastAPI resolves overlapping or dynamic path patterns.
+        resources:
+          - title: FastAPI Documentation - Tutorial
+            url: https://fastapi.tiangolo.com/tutorial/
+            type: docs
+          - title: Bigger Applications - Multiple Files
+            url: https://fastapi.tiangolo.com/tutorial/bigger-applications/
+            type: docs
+        subtopics:
+          - title: 'Path Operations & Routing: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write your first path operations with @app.get, @app.post, and friends, and handle path parameters (/items/{item_id}) and query parameters with automatic type conversion and validation baked in for free. You'll see FastAPI reject a request with a malformed parameter automatically, before your function body ever runs.
+          - title: 'Path Operations & Routing: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Organize routes across multiple files using APIRouter, with prefixes and tags so a growing API stays navigable instead of collapsing into one giant main.py. You'll also cover path operation ordering — why a more specific path needs to be declared before a catch-all dynamic one — a subtle routing gotcha that trips up a lot of newcomers.
+      - id: pydantic-models
+        title: Pydantic Models
+        description: >-
+          Pydantic is the validation engine underneath FastAPI — every request body, query parameter, and response gets validated and (de)serialized through Pydantic models built from your Python type hints. This module goes deep, since a shaky understanding of Pydantic will show up as confusing validation errors throughout the rest of the roadmap.
+        resources:
+          - title: Pydantic Documentation
+            url: https://docs.pydantic.dev/latest/
+            type: docs
+          - title: FastAPI Request Body
+            url: https://fastapi.tiangolo.com/tutorial/body/
+            type: docs
+        subtopics:
+          - title: 'Pydantic Models: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Define a BaseModel subclass with typed fields, use it as a request body in a path operation, and watch FastAPI automatically validate incoming JSON against it — rejecting malformed data with a detailed error response before your code runs. You'll compare this against manually validating a dict by hand to appreciate how much boilerplate it removes.
+          - title: 'Pydantic Models: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Add field-level validators with Pydantic's Field() and custom validator functions, and build nested models for structured data (an Order model containing a list of Item models). You'll also cover separate input/output models — why you almost always want a distinct "create" schema versus a "response" schema so internal fields like password hashes never leak into an API response.
+      - id: dependency-injection
+        title: Dependency Injection
+        description: >-
+          FastAPI's dependency injection system — the Depends() function — is how you share logic like database sessions, authentication checks, and pagination parameters across many path operations without duplicating code. This module covers a pattern that feels unusual coming from other frameworks but becomes indispensable once it clicks.
+        resources:
+          - title: FastAPI Dependencies
+            url: https://fastapi.tiangolo.com/tutorial/dependencies/
+            type: docs
+        subtopics:
+          - title: 'Dependency Injection: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write your first dependency function and inject it into a path operation with Depends(), then see how FastAPI calls it automatically and passes the result in as a parameter. You'll build a simple shared dependency — like a common query-parameter parser — used across several endpoints to see the code duplication it eliminates.
+          - title: 'Dependency Injection: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Build a database-session dependency using yield (so cleanup code runs automatically after the request finishes) and a dependency that enforces authentication, raising an HTTPException if the request isn't authorized. You'll also cover dependency caching within a single request and sub-dependencies, where one dependency itself depends on another.
+      - id: middleware-exception-handlers
+        title: Middleware & Exception Handlers
+        description: >-
+          Middleware runs code on every request/response passing through your app — logging, timing, CORS — while exception handlers let you turn raised errors into consistent, well-structured JSON responses instead of default stack traces. This module covers both cross-cutting concerns together, since they're often configured side by side in a real app.
+        resources:
+          - title: FastAPI Middleware
+            url: https://fastapi.tiangolo.com/tutorial/middleware/
+            type: docs
+          - title: FastAPI Handling Errors
+            url: https://fastapi.tiangolo.com/tutorial/handling-errors/
+            type: docs
+        subtopics:
+          - title: 'Middleware & Exception Handlers: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write a custom middleware function that logs request timing for every endpoint, and see the order middleware executes in relative to your path operations. You'll also register FastAPI's built-in CORSMiddleware and understand exactly what problem it solves for a frontend calling your API from a different origin.
+          - title: 'Middleware & Exception Handlers: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Define custom exception classes for your domain (like ItemNotFoundError) and register exception handlers that convert them into consistent JSON error responses with appropriate status codes. You'll also override FastAPI's default validation error handler to customize the shape of error responses your API returns.
+  - title: Databases
+    topics:
+      - id: sql-fundamentals
+        title: SQL Fundamentals
+        description: >-
+          SQLAlchemy eventually generates SQL under the hood, and debugging a slow query or an unexpected result set means being able to read that generated SQL directly. This module builds SQL fluency independent of any Python ORM, so the tools you use later feel like a convenience layer over something you understand.
+        resources:
+          - title: SQL Tutorial - W3Schools
+            url: https://www.w3schools.com/sql/
+            type: article
+          - title: SQLBolt - Interactive SQL Lessons
+            url: https://sqlbolt.com/
+            type: course
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: >-
+              Design normalized table schemas with primary keys, foreign keys, and appropriate data types, and understand why normalization matters for data integrity even though it means more joins later. You'll draw an ER diagram for a small domain before writing a single CREATE TABLE statement.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: >-
+              Write SELECT queries with JOINs, WHERE, GROUP BY, and aggregate functions, then wrap multi-step writes in transactions so a failure partway through doesn't leave data in an inconsistent state. You'll also get an intro to indexes and EXPLAIN plans, the core tools for diagnosing a slow query instead of guessing at the fix.
+      - id: postgresql
+        title: PostgreSQL
+        description: >-
+          PostgreSQL is the standard production database for FastAPI applications, and pairing it with an async driver like asyncpg is what lets your database calls actually benefit from FastAPI's async model instead of quietly blocking the event loop. This module covers Postgres setup and its async connection story specifically.
+        resources:
+          - title: PostgreSQL Official Documentation
+            url: https://www.postgresql.org/docs/current/
+            type: docs
+          - title: asyncpg Documentation
+            url: https://magicstack.github.io/asyncpg/current/
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: >-
+              Install PostgreSQL locally, create a database and user, and connect to it directly with asyncpg to run a query outside of any ORM first. You'll see the raw async query/result cycle before SQLAlchemy wraps it in a more convenient abstraction in the next topic.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: >-
+              Explore Postgres-specific features — the JSONB type for semi-structured data, array columns, and full-text search — and understand connection pooling, which matters even more in an async app where many concurrent requests may be hitting the database simultaneously. You'll configure a connection pool and observe how it behaves under concurrent load.
+      - id: sqlalchemy
+        title: SQLAlchemy (async)
+        description: >-
+          SQLAlchemy's async mode is FastAPI's most common ORM pairing — it lets you write database queries using Python objects and relationships instead of raw SQL strings, while still running non-blocking under the async event loop. This module goes deep, since ORM misuse is one of the most common sources of both bugs and slow endpoints in FastAPI apps.
+        resources:
+          - title: SQLAlchemy Documentation
+            url: https://docs.sqlalchemy.org/en/20/
+            type: docs
+          - title: FastAPI + SQL Databases
+            url: https://fastapi.tiangolo.com/tutorial/sql-databases/
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: >-
+              Define SQLAlchemy models using the modern declarative style with typed Mapped[] columns, and set up an AsyncEngine and AsyncSession for non-blocking database access. You'll see how a SQLAlchemy model maps directly onto the schema you designed in the SQL Fundamentals module.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: >-
+              Write async queries with select() and session.execute(), and use selectinload/joinedload to eagerly fetch related objects and avoid the N+1 query problem — the same performance trap that shows up in every ORM, async or not. You'll also cover wrapping multi-step operations in an explicit transaction so partial failures don't corrupt your data.
+      - id: alembic-migrations
+        title: Alembic Migrations
+        description: >-
+          Alembic is SQLAlchemy's migration tool — the version-controlled history of how your database schema changes over time, generated largely automatically from the difference between your models and the current database state. This module covers writing, reviewing, and applying migrations safely.
+        resources:
+          - title: Alembic Documentation
+            url: https://alembic.sqlalchemy.org/en/latest/
+            type: docs
+        subtopics:
+          - title: 'Alembic Migrations: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Set up Alembic against your SQLAlchemy models and run your first autogenerate to see Alembic compare your model definitions against the live database and produce a migration script. You'll apply it and confirm the resulting schema matches what you expected, treating autogenerate as a helpful draft rather than something to trust blindly.
+          - title: 'Alembic Migrations: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Write a data migration that transforms existing rows (not just schema) as part of a deploy, and practice downgrading a migration to roll back a bad change safely. You'll also handle a migration conflict from two parallel branches — a near-guaranteed scenario once more than one person is working on the schema.
+  - title: API Development
+    topics:
+      - id: request-response-models
+        title: Request & Response Models
+        description: >-
+          Deliberately separating your request models from your response models — rather than reusing one Pydantic model for both — is one of the most important API design habits FastAPI encourages through its response_model parameter. This module builds that habit explicitly.
+        resources:
+          - title: FastAPI Response Model
+            url: https://fastapi.tiangolo.com/tutorial/response-model/
+            type: docs
+        subtopics:
+          - title: 'Request & Response Models: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Set response_model on a path operation and see FastAPI filter and validate the outgoing response against it, even if your function accidentally returns extra fields. You'll deliberately return a field that shouldn't be exposed (like a hashed password) and watch response_model strip it out automatically.
+          - title: 'Request & Response Models: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Build a full set of models for a resource — a Create schema (input, no id), a Read schema (output, includes id and computed fields), and an Update schema (all fields optional for partial updates) — and see how this trio maps cleanly onto CRUD endpoints. You'll also cover response_model_exclude_unset for partial-update responses that shouldn't include untouched fields.
+      - id: automatic-docs
+        title: Automatic OpenAPI Docs
+        description: >-
+          FastAPI generates interactive API documentation automatically from your path operations and Pydantic models — no separate documentation step required, which is one of its most-loved developer-experience features. This module covers how to make that generated documentation genuinely useful rather than just technically present.
+        resources:
+          - title: FastAPI - First Steps (Interactive Docs)
+            url: https://fastapi.tiangolo.com/tutorial/first-steps/
+            type: docs
+          - title: OpenAPI Specification
+            url: https://swagger.io/specification/
+            type: docs
+        subtopics:
+          - title: Interactive Docs with Swagger UI & ReDoc
+            dayLabel: Days 1–2
+            description: >-
+              Open the auto-generated /docs (Swagger UI) and /redoc pages for your app, and try out an endpoint directly from the browser — sending a real request and seeing a real response, generated entirely from your code with zero extra configuration. You'll compare this against manually maintained API documentation to see why teams value it so highly.
+          - title: Enriching the Generated OpenAPI Schema
+            dayLabel: Days 3–4
+            description: >-
+              Add descriptions, examples, and summaries to your path operations and Pydantic fields using FastAPI's parameters, and see them flow directly into the generated docs. You'll also customize tags and grouping so a growing API's documentation stays organized instead of becoming one long undifferentiated list of endpoints.
+      - id: api-design-principles
+        title: API Design Principles
+        description: >-
+          Beyond making an endpoint technically work, good API design is about consistency, discoverability, and not breaking clients when your backend changes. This module covers the conventions experienced teams converge on — RESTful resource naming, pagination, filtering, and status code discipline.
+        resources:
+          - title: API Design Guide - Google Cloud
+            url: https://cloud.google.com/apis/design
+            type: article
+        subtopics:
+          - title: RESTful Resource Design & Status Codes
+            dayLabel: Days 1–2
+            description: >-
+              Design resource-oriented URLs (/items/, /items/{id}) instead of RPC-style action endpoints, and pick appropriate HTTP methods and status codes for each operation — 201 for creation, 204 for a successful delete with no body, 422 for validation errors (which FastAPI already returns by default). You'll audit an existing set of endpoints and fix the status codes that don't follow convention.
+          - title: Pagination, Filtering & API Versioning
+            dayLabel: Days 3–4
+            description: >-
+              Implement pagination for a list endpoint so it never tries to return an entire table in one response, and add query-parameter filtering for common search cases. You'll also set up basic API versioning (a /v1/ prefix, or header-based versioning) so you can evolve your backend without breaking existing clients overnight.
+      - id: websockets
+        title: WebSockets & Streaming
+        description: >-
+          Not every interaction fits the request/response model — WebSockets keep a persistent, two-way connection open for real-time features, and streaming responses send data incrementally instead of all at once. This module covers both, since FastAPI supports them natively as first-class features rather than bolted-on extras.
+        resources:
+          - title: FastAPI WebSockets
+            url: https://fastapi.tiangolo.com/advanced/websockets/
+            type: docs
+        subtopics:
+          - title: 'WebSockets & Streaming: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write your first WebSocket endpoint with @app.websocket, and build a minimal client that connects, sends, and receives messages over a persistent connection instead of separate requests. You'll see how WebSocket handling differs structurally from a normal path operation — it's a long-lived loop rather than a single request/response.
+          - title: 'WebSockets & Streaming: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Build a small real-time feature (a live notification feed or a chat room) managing multiple concurrent WebSocket connections, and implement a StreamingResponse for sending a large file or generated content incrementally instead of buffering it all in memory first. You'll compare when WebSockets, streaming, or plain polling is actually the right tool.
+  - title: Authentication & Security
+    topics:
+      - id: oauth2-password-flow
+        title: OAuth2 & Password Flow
+        description: >-
+          FastAPI has first-class support for OAuth2's password flow, including the exact form-based login pattern that its own interactive docs use for authenticating requests. This module covers that flow specifically, as the foundation the JWT and password-hashing modules build directly on top of.
+        resources:
+          - title: FastAPI Security - OAuth2
+            url: https://fastapi.tiangolo.com/tutorial/security/
+            type: docs
+        subtopics:
+          - title: Authentication & Token Credentials
+            dayLabel: Days 1–2
+            description: >-
+              Set up FastAPI's OAuth2PasswordBearer and OAuth2PasswordRequestForm to build a /token login endpoint that accepts a username/password and returns an access token, matching the pattern FastAPI's own interactive docs expect for authenticated endpoints. You'll test the full login flow directly from the /docs UI.
+          - title: Authorization & Protected Endpoints
+            dayLabel: Days 3–4
+            description: >-
+              Use Depends() with your authentication logic to protect specific path operations, raising a 401 when a request arrives without a valid token. You'll also build a "get current user" dependency that other protected endpoints can depend on, so authorization logic lives in one place instead of being copy-pasted.
+      - id: jwt
+        title: JWT Authentication
+        description: >-
+          JSON Web Tokens are the standard way to issue self-contained, verifiable credentials that don't require a database lookup on every request — the client holds the token, and your server can verify it's genuine using a signature check alone. This module covers issuing, verifying, and refreshing JWTs specifically in a FastAPI context.
+        resources:
+          - title: FastAPI JWT Tutorial
+            url: https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/
+            type: docs
+          - title: Introduction to JSON Web Tokens
+            url: https://jwt.io/introduction
+            type: article
+        subtopics:
+          - title: Issuing & Verifying JWTs
+            dayLabel: Days 1–2
+            description: >-
+              Generate signed JWT access tokens on successful login using a library like python-jose, encoding claims like user ID and expiration directly into the token. You'll decode and verify a token manually first (checking the signature and expiry) before wiring that verification into a reusable dependency.
+          - title: Refresh Tokens & Token Expiration Strategy
+            dayLabel: Days 3–4
+            description: >-
+              Implement short-lived access tokens paired with longer-lived refresh tokens, and build the refresh endpoint that issues a new access token without forcing the user to log in again. You'll also consider token revocation — since JWTs are self-contained, logging a user out actually requires a deliberate strategy like a blacklist or short expiry, not just deleting a cookie.
+      - id: password-hashing
+        title: Password Hashing
+        description: >-
+          Storing plaintext passwords is one of the most damaging mistakes a backend can make — password hashing turns a password into something that's computationally expensive to reverse, so a database leak doesn't immediately compromise every user's account. This module covers doing it correctly, not just technically.
+        resources:
+          - title: FastAPI - OAuth2 with Password and Hashing
+            url: https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/#hash-and-verify-the-passwords
+            type: docs
+          - title: Password Storage Cheat Sheet - OWASP
+            url: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+            type: article
+        subtopics:
+          - title: 'Password Hashing: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Hash a password with passlib/bcrypt (or Argon2) on registration, and verify a submitted password against the stored hash on login — never comparing plaintext directly. You'll understand why hashing is deliberately slow by design, which is exactly what makes brute-forcing a leaked hash database impractical.
+          - title: 'Password Hashing: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Add per-password salting (handled automatically by modern hashing libraries, but worth understanding explicitly) and configure hashing cost parameters appropriately for production. You'll also build a password-reset flow that never emails or logs a plaintext password at any point in the process.
+      - id: owasp-security
+        title: CORS & OWASP Top 10
+        description: >-
+          CORS controls which origins are allowed to call your API from a browser, and the OWASP Top 10 is the industry-standard list of the most critical web application security risks. This module covers both, since a FastAPI backend serving a separate frontend needs correct CORS configuration and broad security awareness before it's safe to expose publicly.
+        resources:
+          - title: FastAPI CORS
+            url: https://fastapi.tiangolo.com/tutorial/cors/
+            type: docs
+          - title: OWASP Top 10
+            url: https://owasp.org/www-project-top-ten/
+            type: docs
+        subtopics:
+          - title: 'CORS & OWASP Top 10: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Configure CORSMiddleware to allow requests from your frontend's origin, and understand exactly what CORS is protecting against — a malicious site making authenticated requests to your API on a user's behalf. You'll deliberately misconfigure it (allow_origins=["*"] with credentials) and see why that's a real security mistake, not just a lint warning.
+          - title: 'CORS & OWASP Top 10: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Audit a small FastAPI app against the OWASP Top 10 — checking for broken access control (missing per-object permission checks), injection risks (raw SQL string formatting instead of parameterized queries), and security misconfiguration (debug mode left on in production). You'll fix each issue found and re-audit to confirm it's resolved.
+  - title: Caching & Performance
+    topics:
+      - id: redis
+        title: Redis
+        description: >-
+          Redis is the standard caching and session-storage backend for FastAPI apps — fast, in-memory, and with an async Python client (redis-py's asyncio support) that fits naturally into FastAPI's own async model. This module gets Redis running and shows how much it can offload from your primary database.
+        resources:
+          - title: redis-py Documentation
+            url: https://redis.readthedocs.io/en/stable/
+            type: docs
+          - title: Redis Documentation
+            url: https://redis.io/docs/
+            type: docs
+        subtopics:
+          - title: 'Redis: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Install Redis and connect to it from FastAPI using redis-py's async client, then cache the result of an expensive endpoint with a simple key/value set and get. You'll measure the actual before/after response time difference so caching stops being an abstract "good practice" and becomes something you've directly observed.
+          - title: 'Redis: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Set per-key expiration (TTL) for time-sensitive cached data, and use Redis for rate-limit counters that need to reset on a schedule. You'll also get a preview of Redis as a message broker, which becomes directly relevant once you reach the Celery/arq module.
+      - id: async-performance
+        title: Async Performance Patterns
+        description: >-
+          Writing async def everywhere doesn't automatically make an app fast — this module is about the patterns that actually deliver on async's promise, and the common mistakes (blocking calls hidden inside an async function) that quietly cancel it out.
+        resources:
+          - title: FastAPI - Concurrency and async/await
+            url: https://fastapi.tiangolo.com/async/
+            type: docs
+        subtopics:
+          - title: Identifying Blocking Calls in Async Code
+            dayLabel: Days 1–2
+            description: >-
+              Find and fix a deliberately-blocking call inside an async endpoint — a synchronous database driver, a synchronous requests.get() call — and see how it stalls the entire event loop for every other concurrent request while it runs. You'll replace it with a genuinely async equivalent (asyncpg, httpx's async client) and measure the throughput difference under concurrent load.
+          - title: Concurrent Task Execution & Connection Pooling
+            dayLabel: Days 3–4
+            description: >-
+              Use asyncio.gather() to run multiple independent I/O operations concurrently within a single request instead of awaiting them one at a time, and tune your database connection pool size to match your app's actual concurrency needs. You'll load-test an endpoint before and after these changes to see the measurable impact.
+      - id: cdn
+        title: CDN
+        description: >-
+          A Content Delivery Network caches static assets and, increasingly, API responses at edge locations close to users — reducing latency and taking load off your FastAPI server entirely for content that doesn't need to hit your app on every request. This module covers what a CDN actually does and where it fits relative to your backend.
+        resources:
+          - title: What is a CDN? - Cloudflare
+            url: https://www.cloudflare.com/learning/cdn/what-is-a-cdn/
+            type: article
+        subtopics:
+          - title: 'CDN: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Understand how a CDN sits between your users and your origin server, caching static assets (and sometimes whole responses) at edge locations geographically closer to the request. You'll trace a request through DNS resolution, edge cache lookup, and origin fallback to see exactly where the latency savings come from.
+          - title: 'CDN: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Configure cache-control headers on a FastAPI response so a CDN knows how long it's allowed to cache a given endpoint's output, and understand cache invalidation — the genuinely hard part of any caching layer, CDN included. You'll also cover when NOT to cache (personalized or frequently-changing data) so you don't accidentally serve stale or incorrect responses.
+  - title: Testing
+    topics:
+      - id: unit-tests
+        title: Unit Tests
+        description: >-
+          Unit tests check individual pieces of logic in isolation — a validator function, a utility, a service-layer method — and catch regressions long before they'd otherwise surface in manual testing. This module builds the habit of testing as you go using pytest, Python's de facto standard test runner.
+        resources:
+          - title: pytest Documentation
+            url: https://docs.pytest.org/en/stable/
+            type: docs
+        subtopics:
+          - title: 'Unit Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write your first tests with pytest — plain functions prefixed with test_, using assert statements directly instead of a separate assertion API. You'll test a Pydantic model's validation logic and a standalone utility function to get comfortable with the basic pytest workflow before involving FastAPI at all.
+          - title: 'Unit Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Use pytest fixtures to share setup code (like a test database session) across multiple tests without duplicating it, and organize a growing test suite into logical modules matching your app's structure. You'll also cover parametrized tests, which run the same test logic against multiple input/output pairs in one compact block.
+      - id: testing-fastapi
+        title: Testing FastAPI Apps
+        description: >-
+          Testing an async FastAPI app has its own specific patterns — TestClient for simulating requests, and pytest-asyncio for testing your async endpoints and dependencies directly. This module covers both, since generic Python testing knowledge alone doesn't quite cover FastAPI's async-specific quirks.
+        resources:
+          - title: FastAPI Testing
+            url: https://fastapi.tiangolo.com/tutorial/testing/
+            type: docs
+          - title: pytest-asyncio Documentation
+            url: https://pytest-asyncio.readthedocs.io/en/latest/
+            type: docs
+        subtopics:
+          - title: 'Testing FastAPI Apps: Core Syntax & Architecture'
+            dayLabel: Days 1–2
+            description: >-
+              Use FastAPI's TestClient to send simulated requests against your app in tests, checking response status codes and JSON payloads without needing a real running server. You'll write your first end-to-end test for a simple GET endpoint and confirm it fails correctly when you break something on purpose.
+          - title: 'Testing FastAPI Apps: Advanced Features & Framework Patterns'
+            dayLabel: Days 3–4
+            description: >-
+              Override dependencies during testing using FastAPI's dependency_overrides — swapping a real database session for a test one, or a real auth check for a mocked authenticated user — so your tests stay fast and isolated from external systems. You'll test a protected endpoint this way without needing a real login flow in every test.
+          - title: 'Testing FastAPI Apps: Testing & Production Optimization'
+            dayLabel: Days 5–6
+            description: >-
+              Set up a dedicated test database that's created fresh and torn down after each test run, and measure test suite coverage to find untested code paths. You'll also cover testing WebSocket endpoints and background tasks, both of which need slightly different testing approaches than a standard request/response endpoint.
+      - id: api-testing
+        title: API Testing
+        description: >-
+          Beyond automated pytest coverage, your API benefits from dedicated exploratory and contract testing — checking real request/response behavior manually during development and validating against your OpenAPI schema. This module covers Postman for that workflow, complementing the automated tests from the previous module.
+        resources:
+          - title: Postman Learning Center
+            url: https://learning.postman.com/docs/introduction/overview/
+            type: docs
+        subtopics:
+          - title: Manual & Exploratory Testing with Postman
+            dayLabel: Days 1–2
+            description: >-
+              Build a Postman collection covering your API's endpoints, with environment variables for base URLs and auth tokens so you can switch between local and staging environments quickly. You'll use this for exploratory testing during development — the fast manual check that happens before something graduates into a permanent automated test.
+          - title: Contract Testing Against Your OpenAPI Schema
+            dayLabel: Days 3–4
+            description: >-
+              Import your FastAPI app's auto-generated OpenAPI schema directly into Postman to generate a baseline collection automatically, and set up basic contract tests that verify your actual API responses match the documented schema. You'll see how this catches drift between your documentation and your real implementation before a client integration breaks because of it.
+  - title: Architecture Patterns
+    topics:
+      - id: project-structure
+        title: Project Structure & Layering
+        description: >-
+          A single-file FastAPI app is fine for a demo, but a real project needs a deliberate structure — separating routers, models, schemas, and business logic — so it stays navigable as it grows past a handful of endpoints. This module covers the layout patterns FastAPI's own documentation recommends and what experienced teams actually use in production.
+        resources:
+          - title: Bigger Applications - Multiple Files
+            url: https://fastapi.tiangolo.com/tutorial/bigger-applications/
+            type: docs
+        subtopics:
+          - title: 'Project Structure & Layering: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Split a single-file app into separate modules — routers, Pydantic schemas, SQLAlchemy models, and a central app.py that wires them together — following the pattern FastAPI's own "Bigger Applications" guide recommends. You'll see how APIRouter lets each domain area (users, items, orders) own its own file without losing the unified app.
+          - title: 'Project Structure & Layering: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Design a folder structure for a multi-domain app (say, users, orders, and products, each with their own router/schema/model files) and set up shared configuration, logging, and dependency modules that every domain area can import from. You'll compare a few common structures (layered by function vs. grouped by domain) and pick one deliberately rather than by default.
+      - id: repository-pattern
+        title: Repository & Service Layer Pattern
+        description: >-
+          As business logic grows, mixing database queries directly into path operations stops scaling — the repository pattern separates data access into its own layer, while a service layer holds business logic that doesn't belong in either a router or a repository. This module covers both patterns and when they're actually worth the added structure.
+        resources:
+          - title: FastAPI + SQL Databases (Session Management)
+            url: https://fastapi.tiangolo.com/tutorial/sql-databases/
+            type: docs
+        subtopics:
+          - title: 'Repository & Service Layer Pattern: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Extract database queries out of a path operation into a dedicated repository class or module, so the router calls repository.get_user(id) instead of writing SQLAlchemy queries inline. You'll see how this makes swapping or mocking the data layer trivial for testing, without touching route logic at all.
+          - title: 'Repository & Service Layer Pattern: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Introduce a service layer for an operation that spans multiple repositories (like processing an order that touches inventory, payment, and notifications), keeping that orchestration logic out of both the router and the repositories. You'll evaluate honestly whether this extra layering is earning its complexity for a given project size, since over-architecting a small API is a real and common mistake too.
+      - id: microservices
+        title: Microservices
+        description: >-
+          Most FastAPI projects should stay a single service far longer than teams assume, but understanding microservices — what problem they solve and what they cost — is necessary to know when splitting a backend apart is actually the right call. This module is deliberately balanced rather than pro-microservices by default.
+        resources:
+          - title: Microservices - Martin Fowler
+            url: https://martinfowler.com/articles/microservices.html
+            type: article
+          - title: Microservices Patterns
+            url: https://microservices.io/patterns/index.html
+            type: article
+        subtopics:
+          - title: 'Microservices: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Compare the single-service FastAPI app you've been building against a microservices architecture — independently deployable services, each with its own database, communicating over the network instead of in-process function calls. You'll weigh the real tradeoffs: independent scaling and deployment versus distributed-systems complexity like network failures and eventual consistency.
+          - title: 'Microservices: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Extract one piece of functionality (say, notifications) into a separate FastAPI service communicating via REST or a message queue, and feel firsthand what that extraction costs — a new deployment pipeline, new failure modes, and new debugging complexity across service boundaries. You'll come away with a much more grounded sense of when this tradeoff is actually worth making.
+      - id: background-tasks
+        title: Background Tasks
+        description: >-
+          FastAPI's built-in BackgroundTasks feature lets you run lightweight work after a response has already been sent — like firing off a confirmation email — without pulling in a full task-queue system for jobs that don't need one. This module covers when this simple approach is the right tool, and when it isn't.
+        resources:
+          - title: FastAPI Background Tasks
+            url: https://fastapi.tiangolo.com/tutorial/background-tasks/
+            type: docs
+        subtopics:
+          - title: 'Background Tasks: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Add a BackgroundTasks parameter to a path operation and schedule a function to run after the response is returned — like writing a log entry or sending a notification — and see the response come back to the client immediately while the task runs afterward in the same process. You'll time the difference against doing the same work synchronously inline.
+          - title: 'Background Tasks: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Understand exactly where BackgroundTasks breaks down — it runs in the same process and is lost if the server restarts or crashes before it completes, with no retry mechanism. You'll use this limitation as the direct motivation for the next module, where a real task queue like Celery or arq solves both problems properly.
+  - title: Message Queues
+    topics:
+      - id: celery-arq
+        title: Celery / arq
+        description: >-
+          For background work that needs to survive a server restart, retry on failure, or run on separate worker machines entirely, you need a real task queue — Celery is the long-established, feature-rich option, while arq is a newer, async-native alternative built specifically to pair naturally with FastAPI. This module covers both so you can make an informed choice.
+        resources:
+          - title: Celery Documentation
+            url: https://docs.celeryq.dev/en/stable/
+            type: docs
+          - title: arq Documentation
+            url: https://arq-docs.helpmanual.io/
+            type: docs
+        subtopics:
+          - title: 'Celery / arq: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Set up Celery with a Redis broker and write your first @shared_task, calling it with .delay() from a FastAPI endpoint and watching it execute in a separate worker process. You'll then set up arq as an async-native alternative and compare the developer experience directly — arq tasks are plain async functions, which fits FastAPI's own style more naturally.
+          - title: 'Celery / arq: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Build a realistic background job — processing an uploaded file, or sending a batch of emails — with retry logic for transient failures, and set up scheduled/periodic tasks (Celery Beat or arq's cron support) for recurring work like a nightly cleanup. You'll monitor task execution and failures using each tool's respective dashboard or logging.
+      - id: rabbitmq
+        title: RabbitMQ
+        description: >-
+          RabbitMQ is a dedicated, production-grade message broker — an alternative to Redis as your Celery/arq backend — built specifically around message-queuing semantics like acknowledgments, dead-letter queues, and flexible routing. This module compares it directly against the Redis broker you've already used.
+        resources:
+          - title: RabbitMQ Tutorials
+            url: https://www.rabbitmq.com/tutorials
+            type: docs
+          - title: aio-pika Documentation
+            url: https://docs.aio-pika.com/
+            type: docs
+        subtopics:
+          - title: 'RabbitMQ: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Install RabbitMQ and connect to it from an async FastAPI app using aio-pika, then explore the management UI to see queues, exchanges, and message flow visually. You'll understand exchanges and routing keys — RabbitMQ's flexible message-routing model — which goes well beyond what a simple Redis list-based queue offers.
+          - title: 'RabbitMQ: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Configure message acknowledgments so a task isn't lost if a worker crashes mid-processing, and set up a dead-letter queue to capture messages that repeatedly fail instead of silently dropping them. You'll compare RabbitMQ against Redis as a broker directly and get a feel for when the added complexity is actually worth it.
+  - title: Containerization & DevOps Basics
+    topics:
+      - id: docker
+        title: Docker
+        description: >-
+          Docker packages your FastAPI app, its dependencies, and its runtime environment into a single portable container, so "works on my machine" stops being a real problem since the machine is now part of what you ship. This module gets a full FastAPI + Postgres + Redis stack running reproducibly with a single command.
+        resources:
+          - title: FastAPI in Containers - Docker
+            url: https://fastapi.tiangolo.com/deployment/docker/
+            type: docs
+          - title: Docker Get Started
+            url: https://docs.docker.com/get-started/
+            type: docs
+        subtopics:
+          - title: 'Docker: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write a Dockerfile for a FastAPI project — a Python base image, installing dependencies, copying code, running Uvicorn — and understand images versus containers (an image is the blueprint, a container is a running instance of it). You'll build and run your first container, then use docker exec to look inside a real isolated environment.
+          - title: 'Docker: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Use docker-compose to run FastAPI, Postgres, and Redis together as a coordinated multi-container stack with one command instead of managing each service separately. You'll set up volumes for persistent database data and environment variables for configuration, matching the pattern real production deployments use.
+      - id: ci-cd-pipelines
+        title: CI/CD Pipelines
+        description: >-
+          Continuous Integration and Continuous Deployment automate what you'd otherwise do by hand every time you ship — running tests, checking code quality, and deploying — so mistakes get caught before they reach users instead of after. This module builds a working pipeline using GitHub Actions against the FastAPI project you've already containerized.
+        resources:
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+          - title: CI/CD Explained - GitLab
+            url: https://about.gitlab.com/topics/ci-cd/
+            type: article
+        subtopics:
+          - title: 'CI/CD Pipelines: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Write a GitHub Actions workflow that runs your pytest suite automatically on every push and pull request, spinning up a Postgres service container for the test database. You'll see a red/green status check appear directly on a pull request, turning "did I break anything" from a manual question into an automated answer.
+          - title: 'CI/CD Pipelines: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Extend the pipeline to build and push a Docker image on a successful merge to main, then trigger an automated deployment step. You'll set up staging vs. production environments with separate secrets and deployment targets, so a broken deploy to staging never has the chance to touch real users.
+      - id: deployment-uvicorn-gunicorn
+        title: Deployment (Uvicorn/Gunicorn)
+        description: >-
+          Uvicorn is the ASGI server that actually runs a FastAPI app, and pairing it with Gunicorn as a process manager gives you multiple worker processes handling concurrent traffic in production instead of a single Uvicorn process. This module covers the standard production deployment setup from the ground up.
+        resources:
+          - title: FastAPI Deployment - Server Workers
+            url: https://fastapi.tiangolo.com/deployment/server-workers/
+            type: docs
+          - title: Uvicorn Documentation
+            url: https://www.uvicorn.org/
+            type: docs
+        subtopics:
+          - title: 'Deployment (Uvicorn/Gunicorn): Foundational Concepts'
+            dayLabel: Days 1–2
+            description: >-
+              Run your FastAPI app directly with Uvicorn (uvicorn main:app) and understand what an ASGI server actually does — bridging raw network connections to your async application code. You'll compare running with --reload for development against a production-style invocation without it.
+          - title: 'Deployment (Uvicorn/Gunicorn): Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: >-
+              Run Gunicorn as a process manager with Uvicorn workers (using UvicornWorker) so multiple worker processes can handle concurrent requests, and tune the worker count based on available CPU cores. You'll put together the full production stack — Gunicorn/Uvicorn, Nginx as a reverse proxy, Postgres, Redis — and do a complete deployment from scratch.
+---
+
+Dive into FastAPI backend development with this 14-week structured learning path designed for developers with some Python experience. You'll build a solid foundation in async Python, Pydantic, and SQLAlchemy, then move into authentication, caching, and testing, before advancing to layered architecture, background tasks/message queues, and containerized deployment. By the end, you'll be equipped to design, build, and deploy production-ready, high-performance FastAPI backend systems.

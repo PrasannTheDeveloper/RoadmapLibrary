@@ -1,0 +1,129 @@
+---
+title: Rust Programming
+description: An intensive 6-week roadmap to mastering Rust programming, covering memory safety without GC, ownership, borrowing, lifetimes, pattern matching, traits, smart pointers, and async Tokio.
+category: Programming Languages
+estimatedTime: 6 weeks
+difficulty: Advanced
+topicCount: 24
+order: 6
+icon: 🦀
+thumbnail: /thumbnails/icons/Rust.svg
+sections:
+  - title: 01. Rust Fundamentals & Variables
+    topics:
+      - id: rust-syntax-vars
+        title: Cargo Setup, Mutability & Scalar Types
+        description: Rust provides memory safety without a garbage collector. Learn rustup, Cargo package manager, immutability by default, mut keyword, variable shadowing, and primitive scalar types.
+        subtopics:
+          - title: Cargo & Project Structure
+            dayLabel: Days 1–2
+            description: >-
+              Install Rust through rustup and get comfortable with Cargo — creating a new project, running cargo build vs cargo run, and reading the Cargo.toml manifest. You'll see how Cargo.lock pins dependency versions and why that matters once a project has more than one crate involved.
+          - title: Variables, Mutability & Primitive Types
+            dayLabel: Days 3–4
+            description: >-
+              Rust variables are immutable unless you explicitly opt in with mut, which forces you to be deliberate about what actually changes. You'll also run into shadowing — reusing a variable name with let to transform a value while keeping the old binding untouched — and get through the scalar types (integers, floats, booleans, char) that everything else builds on.
+  - title: 02. Control Flow & Functions
+    topics:
+      - id: rust-control-functions
+        title: Statements vs Expressions & Control Flow
+        description: Rust is an expression-oriented language. Learn function signatures, statements vs return expressions, conditional if-else expressions, loop, while, and for iterator loops.
+        subtopics:
+          - title: Functions & Expression Syntax
+            dayLabel: Days 1–2
+            description: >-
+              Write functions with explicit parameter and return types, then get used to the idea that almost everything in Rust is an expression — including if-else blocks, which can return a value directly into a variable. The distinction between a statement (does something) and an expression (evaluates to something) is small on paper but shapes how idiomatic Rust code reads.
+          - title: Control Flow Loops (loop, while, for)
+            dayLabel: Days 3–4
+            description: >-
+              Compare Rust's three loop constructs: loop (runs forever until you break, and can even return a value from that break), while (runs on a condition), and for (iterates over a range or collection). You'll also practice loop labels for breaking out of nested loops cleanly, something most languages don't offer directly.
+  - title: 03. Ownership & Borrowing
+    topics:
+      - id: rust-ownership
+        title: Ownership Rules, Move Semantics & Borrowing
+        description: Master Rust's core memory safety paradigm. Learn the 3 ownership rules, stack vs heap allocation, move semantics, Copy vs Clone traits, and borrowing rules (& vs &mut).
+        subtopics:
+          - title: Ownership Rules & Move Semantics
+            dayLabel: Days 1–2
+            description: >-
+              This is the concept that makes Rust different from everything you've used before: every value has exactly one owner, and assigning it to another variable moves it rather than copying it — the original binding becomes invalid. You'll trigger a few "use after move" compiler errors on purpose, since seeing the checker catch it is the fastest way to internalize the rule.
+          - title: Borrowing Rules & References (& and &mut)
+            dayLabel: Days 3–4
+            description: >-
+              Instead of moving a value every time you want to use it, you can borrow it with & (shared, read-only) or &mut (exclusive, mutable). You'll work through the core rule — any number of shared borrows, or exactly one mutable borrow, never both at once — and see why the compiler enforces this so aggressively: it's what rules out data races at compile time.
+  - title: 04. Lifetimes & Borrow Checker
+    topics:
+      - id: rust-lifetimes
+        title: Lifetimes & Borrow Checker Validation
+        description: Understand compile-time memory validation. Learn how the borrow checker prevents dangling references and use-after-free bugs, lifetime annotations ('a), and lifetime elision rules.
+        subtopics:
+          - title: Dangling References & Borrow Checker
+            dayLabel: Days 1–2
+            description: >-
+              Try to write a function that returns a reference to a value it created locally, and watch the borrow checker refuse to compile it — that's a dangling reference, and Rust catches it before your program ever runs. Understanding why the compiler rejects this is the foundation for everything lifetimes do next.
+          - title: Lifetime Annotations ('a)
+            dayLabel: Days 3–4
+            description: >-
+              Lifetime annotations like 'a don't change how long anything actually lives — they just describe to the compiler how multiple references relate to each other, so it can verify none of them outlive the data they point to. You'll annotate a few functions that take multiple reference parameters, then learn the elision rules that let the compiler infer lifetimes automatically in simpler cases.
+  - title: 05. Structs, Enums & Error Handling
+    topics:
+      - id: rust-structs-enums
+        title: Structs, Enums, Option & Result
+        description: Design type-safe Rust applications. Learn named-field structs, impl method blocks, enums with embedded data, pattern matching (match, if let), and Option<T>/Result<T,E> error handling.
+        subtopics:
+          - title: Structs & Methods (impl)
+            dayLabel: Days 1–2
+            description: >-
+              Define structs to group related fields together, then attach behavior to them with impl blocks — methods that take &self, associated functions like new() that don't. You'll build a small domain type (something like a Rectangle or an Account) and give it a handful of methods to see the pattern click.
+          - title: Enums & Pattern Matching (match, if let)
+            dayLabel: Days 3–4
+            description: >-
+              Rust enums can carry data per variant, not just be named constants — so an enum can model something like "a Shape that's either a Circle with a radius or a Rectangle with width and height." You'll pair this with match, which forces you to handle every variant, and if let for the common case where you only care about one.
+          - title: Error Handling (Option, Result & ?)
+            dayLabel: Days 5–6
+            description: >-
+              Rust has no null and no exceptions — instead, Option<T> represents a value that might be absent, and Result<T, E> represents an operation that might fail. You'll chain fallible operations using the ? operator, which propagates an error upward instead of forcing a match at every single call site.
+  - title: 06. Traits & Generics
+    topics:
+      - id: rust-traits-generics
+        title: Traits, Generics & Dynamic Dispatch
+        description: Define reusable behavior contracts in Rust. Learn traits, trait bounds (where clause), generic functions, derive macros, static dispatch, and dynamic dispatch (Box<dyn Trait>).
+        subtopics:
+          - title: Traits & Generic Parameters
+            dayLabel: Days 1–2
+            description: >-
+              Traits define shared behavior — a bit like an interface — that different types can implement in their own way. You'll write a trait, implement it for a couple of structs, then write a generic function constrained with a trait bound so it only accepts types that actually implement that behavior, plus try a few #[derive] macros to get common traits for free.
+          - title: Static vs Dynamic Dispatch (dyn Trait)
+            dayLabel: Days 3–4
+            description: >-
+              Static dispatch (generics, resolved at compile time) and dynamic dispatch (Box<dyn Trait>, resolved at runtime) solve the same problem — calling a method without knowing the exact concrete type — with different tradeoffs. You'll build the same small feature both ways to feel the difference in flexibility versus performance directly.
+  - title: 07. Smart Pointers & Concurrency
+    topics:
+      - id: rust-smartpointers
+        title: Smart Pointers & Safe Concurrency
+        description: Allocate heap data safely and handle concurrency. Learn Box<T>, Rc<T>/Arc<T> reference counting, RefCell<T>/Mutex<T> interior mutability, thread spawning, and mpsc channels.
+        subtopics:
+          - title: Smart Pointers (Box, Rc, Arc, RefCell)
+            dayLabel: Days 1–2
+            description: >-
+              Box<T> puts a value on the heap when you need a known size at compile time (recursive types are the classic case). Rc<T> lets multiple owners share the same data via reference counting, Arc<T> is its thread-safe counterpart, and RefCell<T> allows mutation through what looks like an immutable reference by checking borrow rules at runtime instead of compile time.
+          - title: Fearless Concurrency (Threads, Mutex, Channels)
+            dayLabel: Days 3–4
+            description: >-
+              Spawn OS threads with std::thread and pass data between them safely — Rust's ownership rules mean most classic data races simply fail to compile. You'll protect shared state with Mutex<T> and Arc<T> together, then try the alternative approach: mpsc channels, which pass ownership of messages between threads instead of sharing memory directly.
+  - title: 08. Async Rust & Tokio Runtime
+    topics:
+      - id: rust-async
+        title: Async/Await & Tokio Async Runtime
+        description: Write non-blocking network applications in Rust. Learn Future trait polling, async/await syntax, Tokio multi-threaded runtime (#[tokio::main]), and Cargo publishing.
+        subtopics:
+          - title: Futures & Async/Await
+            dayLabel: Days 1–2
+            description: >-
+              An async function in Rust doesn't run when called — it returns a Future, a value representing work that hasn't completed yet, which gets polled to progress. You'll write async functions and chain them with .await, and get a feel for why Rust needs an executor (unlike JavaScript's built-in event loop) to actually drive those futures forward.
+          - title: Tokio Async Runtime & Cargo Modules
+            dayLabel: Days 3–4
+            description: >-
+              Wire up Tokio as your async runtime with #[tokio::main], then build something that actually needs it — a small concurrent network client or task scheduler. You'll close out by organizing the project into proper Cargo modules and packages, and take a quick look at what publishing a crate to crates.io involves.
+---
+Rust is a systems programming language focused on blazingly fast speed, memory safety without a garbage collector, thread safety, and modern concurrency.
