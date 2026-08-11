@@ -1,0 +1,629 @@
+---
+title: Deep Learning Engineer Roadmap
+description: A structured 20-week roadmap for becoming a job-ready Deep Learning Engineer — covering math and framework foundations, neural network theory, CNNs and computer vision, sequence models and transformers, generative models, advanced architectures, large-scale training, and production deployment.
+category: Machine Learning & AI
+estimatedTime: 20 weeks
+difficulty: Intermediate to Advanced
+topicCount: 35
+order: 6
+icon: 🧠
+thumbnail: /thumbnails/icons/DeepLearning.svg
+sections:
+  - title: Math & Programming Foundations for Deep Learning
+    topics:
+      - id: python-numpy-for-dl
+        title: Python & NumPy for Deep Learning
+        description: Deep learning code is Python wrapped around tensor operations, and fluency with NumPy-style array manipulation is what lets you read and write model code without getting lost in shape errors.
+        resources:
+          - title: NumPy Official Documentation
+            url: https://numpy.org/doc/stable/
+            type: docs
+          - title: Python for Everybody
+            url: https://www.py4e.com/
+            type: course
+        subtopics:
+          - title: 'Python & NumPy: Arrays, Shapes & Broadcasting'
+            dayLabel: Days 1–2
+            description: Practice array creation, reshaping, and broadcasting rules — the same mental model tensors in PyTorch/TensorFlow follow.
+          - title: 'Python & NumPy: Vectorization & Debugging Shape Errors'
+            dayLabel: Days 3–4
+            description: Replace loops with vectorized operations, and learn to diagnose the shape-mismatch errors that dominate early deep learning debugging.
+      - id: linear-algebra-for-dl
+        title: Linear Algebra for Deep Learning
+        description: Every layer in a neural network is a matrix operation, and understanding vectors, matrices, and tensor dimensions is essential to reason about what a model is actually computing.
+        resources:
+          - title: Essence of Linear Algebra - 3Blue1Brown
+            url: https://www.3blue1brown.com/topics/linear-algebra
+            type: video
+          - title: 'Mathematics for Machine Learning: Linear Algebra'
+            url: https://www.coursera.org/learn/linear-algebra-machine-learning
+            type: course
+        subtopics:
+          - title: 'Linear Algebra: Matrix Multiplication & Tensors'
+            dayLabel: Days 1–2
+            description: Review matrix multiplication and generalize to tensors (batches, channels, sequences) as used in deep learning.
+          - title: 'Linear Algebra: Eigen-Decomposition & Norms'
+            dayLabel: Days 3–4
+            description: Understand eigenvalues, vector norms, and their role in weight initialization and regularization.
+      - id: calculus-backpropagation
+        title: Calculus & Backpropagation
+        description: Backpropagation is just the chain rule applied systematically across a computational graph, and understanding it by hand demystifies what autograd libraries do automatically.
+        resources:
+          - title: Essence of Calculus - 3Blue1Brown
+            url: https://www.3blue1brown.com/topics/calculus
+            type: video
+          - title: CS231n - Backpropagation Notes
+            url: https://cs231n.github.io/optimization-2/
+            type: docs
+        subtopics:
+          - title: 'Calculus: Chain Rule & Computational Graphs'
+            dayLabel: Days 1–2
+            description: Represent a small network as a computational graph and apply the chain rule to compute gradients manually.
+          - title: 'Calculus: Implementing Backprop from Scratch'
+            dayLabel: Days 3–4
+            description: Code a minimal backpropagation implementation with only NumPy, before relying on any framework's autograd.
+      - id: probability-for-dl
+        title: Probability for Deep Learning
+        description: Concepts like cross-entropy loss, maximum likelihood, and softmax outputs all rest on probability theory, and understanding it clarifies why models are trained the way they are.
+        resources:
+          - title: 'Deep Learning Book - Chapter 3: Probability'
+            url: https://www.deeplearningbook.org/contents/prob.html
+            type: article
+          - title: StatQuest with Josh Starmer
+            url: https://www.youtube.com/@statquest
+            type: video
+        subtopics:
+          - title: 'Probability: Distributions & Maximum Likelihood'
+            dayLabel: Days 1–2
+            description: Cover probability distributions and maximum likelihood estimation, the principle behind most loss functions.
+          - title: 'Probability: Entropy, Cross-Entropy & KL Divergence'
+            dayLabel: Days 3–4
+            description: Derive cross-entropy loss from first principles, and understand KL divergence's role in generative models.
+  - title: Neural Network Fundamentals
+    topics:
+      - id: perceptrons-activation-functions
+        title: Perceptrons & Activation Functions
+        description: A neural network is built from simple units stacked in layers, and the choice of activation function is what allows the whole stack to model non-linear relationships instead of collapsing into a single linear function.
+        resources:
+          - title: Neural Networks and Deep Learning (free book)
+            url: http://neuralnetworksanddeeplearning.com/
+            type: article
+          - title: Neural Networks - 3Blue1Brown
+            url: https://www.3blue1brown.com/topics/neural-networks
+            type: video
+        subtopics:
+          - title: 'Perceptrons: Single & Multi-Layer Networks'
+            dayLabel: Days 1–2
+            description: Build a single-layer perceptron and extend it to a multi-layer network, seeing why depth adds representational power.
+          - title: 'Activation Functions: ReLU, Sigmoid, Softmax & Variants'
+            dayLabel: Days 3–4
+            description: Compare ReLU, Leaky ReLU, sigmoid, tanh, and softmax, and understand when each is appropriate and why sigmoid/tanh saturate.
+      - id: loss-functions-backprop
+        title: Loss Functions & Backpropagation
+        description: The loss function defines what "good" means for a model, and backpropagation is the mechanism that turns that signal into weight updates across every layer.
+        resources:
+          - title: CS231n - Loss Functions and Optimization
+            url: https://cs231n.github.io/optimization-1/
+            type: docs
+          - title: PyTorch Loss Functions
+            url: https://pytorch.org/docs/stable/nn.html#loss-functions
+            type: docs
+        subtopics:
+          - title: 'Loss Functions: Regression & Classification Losses'
+            dayLabel: Days 1–2
+            description: Implement MSE, cross-entropy, and hinge loss, and match each to the right task and output layer.
+          - title: 'Backpropagation: Gradient Flow Across Layers'
+            dayLabel: Days 3–4
+            description: Trace how gradients flow backward through multiple layers, and see why deep networks can suffer vanishing/exploding gradients.
+      - id: optimization-algorithms
+        title: Optimization Algorithms
+        description: Gradient descent variants determine how quickly and reliably a network converges, and picking the right optimizer and learning rate schedule is often the difference between a model that trains and one that doesn't.
+        resources:
+          - title: An Overview of Gradient Descent Optimization Algorithms
+            url: https://ruder.io/optimizing-gradient-descent/
+            type: article
+          - title: PyTorch Optimizers
+            url: https://pytorch.org/docs/stable/optim.html
+            type: docs
+        subtopics:
+          - title: 'Optimizers: SGD, Momentum & Adam'
+            dayLabel: Days 1–2
+            description: Implement and compare SGD with momentum, RMSProp, and Adam, and see how each handles noisy or sparse gradients.
+          - title: 'Optimizers: Learning Rate Schedules & Warmup'
+            dayLabel: Days 3–4
+            description: Apply learning rate decay, cosine annealing, and warmup schedules, and diagnose training curves for signs of a bad learning rate.
+      - id: regularization-techniques
+        title: Regularization Techniques
+        description: Deep networks have enormous capacity to overfit, and regularization methods like dropout, weight decay, and batch normalization are what keep them generalizing to unseen data.
+        resources:
+          - title: Dropout - Original Paper (JMLR)
+            url: https://jmlr.org/papers/v15/srivastava14a.html
+            type: article
+          - title: Batch Normalization - PyTorch Docs
+            url: https://pytorch.org/docs/stable/generated/torch.nn.BatchNorm2d.html
+            type: docs
+        subtopics:
+          - title: 'Regularization: Dropout & Weight Decay'
+            dayLabel: Days 1–2
+            description: Add dropout layers and L2 weight decay to a network, and observe their effect on the train/validation loss gap.
+          - title: 'Regularization: Batch Normalization & Early Stopping'
+            dayLabel: Days 3–4
+            description: Insert batch normalization layers to stabilize training, and implement early stopping based on validation loss.
+  - title: Deep Learning Frameworks
+    topics:
+      - id: pytorch
+        title: PyTorch
+        description: PyTorch is the dominant framework in research and increasingly in production, offering dynamic computation graphs and an intuitive, Pythonic API for building and training models.
+        resources:
+          - title: PyTorch Official Tutorials
+            url: https://pytorch.org/tutorials/
+            type: docs
+          - title: PyTorch Deep Learning - Learn PyTorch
+            url: https://www.learnpytorch.io/
+            type: course
+        subtopics:
+          - title: 'PyTorch: Tensors, Autograd & nn.Module'
+            dayLabel: Days 1–2
+            description: Work with tensors and autograd, and build models using nn.Module, defining custom forward passes.
+          - title: 'PyTorch: Training Loops, DataLoaders & Checkpoints'
+            dayLabel: Days 3–4
+            description: Write a full training loop with DataLoader/Dataset classes, and save/load model checkpoints correctly.
+      - id: tensorflow-keras
+        title: TensorFlow & Keras
+        description: TensorFlow with its Keras API remains widely used in industry, particularly for production pipelines and mobile/edge deployment via TensorFlow Lite.
+        resources:
+          - title: TensorFlow Documentation
+            url: https://www.tensorflow.org/tutorials
+            type: docs
+          - title: Keras Documentation
+            url: https://keras.io/guides/
+            type: docs
+        subtopics:
+          - title: 'TensorFlow/Keras: Sequential & Functional APIs'
+            dayLabel: Days 1–2
+            description: Build models with the Keras Sequential and Functional APIs, and compare them with PyTorch's more explicit style.
+          - title: 'TensorFlow/Keras: Custom Training & Callbacks'
+            dayLabel: Days 3–4
+            description: Write a custom training loop with GradientTape, and use callbacks for checkpointing, early stopping, and learning-rate scheduling.
+      - id: gpu-acceleration
+        title: GPU Acceleration & CUDA Basics
+        description: Deep learning is computationally intensive, and understanding how tensors move between CPU and GPU — and how to avoid common bottlenecks — is necessary to train models in reasonable time.
+        resources:
+          - title: CUDA Semantics - PyTorch Docs
+            url: https://pytorch.org/docs/stable/notes/cuda.html
+            type: docs
+          - title: NVIDIA CUDA Programming Guide
+            url: https://docs.nvidia.com/cuda/cuda-c-programming-guide/
+            type: docs
+        subtopics:
+          - title: 'GPU Acceleration: Device Placement & Memory'
+            dayLabel: Days 1–2
+            description: Move tensors and models between CPU and GPU, and understand common causes of out-of-memory errors.
+          - title: 'GPU Acceleration: Profiling & Data Loading Bottlenecks'
+            dayLabel: Days 3–4
+            description: Profile training loops to find whether the GPU or the data pipeline is the bottleneck, and fix data-loading with parallel workers.
+  - title: CNNs & Computer Vision
+    topics:
+      - id: cnn-architectures
+        title: CNN Architectures
+        description: Convolutional networks progressively extract spatial features through stacked filters, and studying landmark architectures (LeNet, VGG, ResNet) shows how design choices like skip connections solved real training problems.
+        resources:
+          - title: CS231n - Convolutional Neural Networks
+            url: https://cs231n.github.io/convolutional-networks/
+            type: docs
+          - title: Deep Residual Learning (ResNet paper)
+            url: https://arxiv.org/abs/1512.03385
+            type: article
+        subtopics:
+          - title: 'CNNs: Convolution, Pooling & Feature Maps'
+            dayLabel: Days 1–2
+            description: Implement convolutional and pooling layers from scratch, and visualize the feature maps they produce.
+          - title: 'CNNs: ResNet, Skip Connections & Modern Architectures'
+            dayLabel: Days 3–4
+            description: Study why skip connections in ResNet solved vanishing gradients in very deep networks, and compare with EfficientNet-style scaling.
+      - id: transfer-learning
+        title: Transfer Learning & Fine-Tuning
+        description: Training large vision models from scratch is expensive and data-hungry, and transfer learning reuses features learned on massive datasets, making strong performance achievable with a fraction of the data.
+        resources:
+          - title: Transfer Learning - PyTorch Tutorial
+            url: https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html
+            type: docs
+          - title: torchvision Models
+            url: https://pytorch.org/vision/stable/models.html
+            type: docs
+        subtopics:
+          - title: 'Transfer Learning: Feature Extraction'
+            dayLabel: Days 1–2
+            description: Freeze a pretrained CNN backbone and train only a new classification head on a custom dataset.
+          - title: 'Transfer Learning: Fine-Tuning Strategies'
+            dayLabel: Days 3–4
+            description: Unfreeze and fine-tune deeper layers with a lower learning rate, and decide how much of a pretrained model to retrain.
+      - id: object-detection-segmentation
+        title: Object Detection & Segmentation
+        description: Beyond classifying a whole image, detection and segmentation models localize and outline individual objects, powering applications from autonomous driving to medical imaging.
+        resources:
+          - title: Ultralytics YOLO Documentation
+            url: https://docs.ultralytics.com/
+            type: docs
+          - title: Detectron2 Documentation
+            url: https://detectron2.readthedocs.io/en/latest/
+            type: docs
+        subtopics:
+          - title: 'Detection: Bounding Boxes & YOLO'
+            dayLabel: Days 1–2
+            description: Run and fine-tune a YOLO model for object detection, and understand anchor boxes and non-max suppression.
+          - title: 'Segmentation: Semantic & Instance Segmentation'
+            dayLabel: Days 3–4
+            description: Apply a segmentation model to produce pixel-level masks, and distinguish semantic from instance segmentation.
+      - id: image-augmentation
+        title: Image Augmentation & Data Pipelines
+        description: Vision models are notoriously data-hungry, and augmentation techniques artificially expand a training set's diversity, improving generalization without collecting more labeled data.
+        resources:
+          - title: torchvision.transforms
+            url: https://pytorch.org/vision/stable/transforms.html
+            type: docs
+          - title: Albumentations Documentation
+            url: https://albumentations.ai/docs/
+            type: docs
+        subtopics:
+          - title: 'Augmentation: Geometric & Color Transforms'
+            dayLabel: Days 1–2
+            description: Apply flips, rotations, crops, and color jitter, and build an augmentation pipeline with Albumentations.
+          - title: 'Augmentation: Advanced Techniques (Mixup, CutMix)'
+            dayLabel: Days 3–4
+            description: Implement mixup and CutMix augmentation, and measure their effect on validation accuracy and overfitting.
+  - title: Sequence Models & NLP
+    topics:
+      - id: rnn-lstm-gru
+        title: RNNs, LSTMs & GRUs
+        description: Recurrent architectures process sequences by carrying a hidden state across time steps, and their gated variants (LSTM, GRU) solved the vanishing-gradient problem that limited plain RNNs on long sequences.
+        resources:
+          - title: Understanding LSTM Networks - colah's blog
+            url: https://colah.github.io/posts/2015-08-Understanding-LSTMs/
+            type: article
+          - title: PyTorch - Sequence Models Tutorial
+            url: https://pytorch.org/tutorials/beginner/nlp/sequence_models_tutorial.html
+            type: docs
+        subtopics:
+          - title: 'RNNs: Hidden States & Vanishing Gradients'
+            dayLabel: Days 1–2
+            description: Implement a vanilla RNN and observe how gradients vanish over long sequences during backpropagation through time.
+          - title: 'LSTM/GRU: Gating Mechanisms in Practice'
+            dayLabel: Days 3–4
+            description: Build LSTM and GRU cells, and apply them to a sequence task like character-level text generation.
+      - id: word-embeddings
+        title: Word Embeddings
+        description: Embeddings map discrete words to dense vectors that capture semantic relationships, turning text into a form neural networks can actually operate on.
+        resources:
+          - title: word2vec - Original Paper
+            url: https://arxiv.org/abs/1301.3781
+            type: article
+          - title: GloVe Project Page
+            url: https://nlp.stanford.edu/projects/glove/
+            type: docs
+        subtopics:
+          - title: 'Embeddings: word2vec & GloVe'
+            dayLabel: Days 1–2
+            description: Train or load word2vec/GloVe embeddings, and explore analogies and similarity in embedding space.
+          - title: 'Embeddings: Contextual vs Static Embeddings'
+            dayLabel: Days 3–4
+            description: Compare static embeddings against contextual embeddings from transformer models, and see why context changes a word's representation.
+      - id: attention-mechanism
+        title: Attention Mechanism
+        description: Attention lets a model directly weigh the relevance of every other token when processing one, removing the bottleneck of compressing a whole sequence into a single fixed-size hidden state.
+        resources:
+          - title: Neural Machine Translation by Jointly Learning to Align and Translate
+            url: https://arxiv.org/abs/1409.0473
+            type: article
+          - title: The Illustrated Transformer
+            url: https://jalammar.github.io/illustrated-transformer/
+            type: article
+        subtopics:
+          - title: 'Attention: Query, Key & Value Vectors'
+            dayLabel: Days 1–2
+            description: Implement scaled dot-product attention from scratch, understanding the query/key/value formulation.
+          - title: 'Attention: Multi-Head Attention'
+            dayLabel: Days 3–4
+            description: Extend single-head attention to multi-head attention, and see why multiple heads capture different relationship types.
+      - id: transformers-architecture
+        title: Transformer Architecture
+        description: Transformers stack self-attention and feed-forward blocks to process entire sequences in parallel, and this architecture now underlies state-of-the-art models across NLP, vision, and audio.
+        resources:
+          - title: Attention Is All You Need (paper)
+            url: https://arxiv.org/abs/1706.03762
+            type: article
+          - title: The Annotated Transformer
+            url: https://nlp.seas.harvard.edu/annotated-transformer/
+            type: article
+        subtopics:
+          - title: 'Transformers: Encoder-Decoder Architecture'
+            dayLabel: Days 1–2
+            description: Study the full encoder-decoder transformer architecture, including positional encoding and layer normalization.
+          - title: 'Transformers: Building a Mini-Transformer from Scratch'
+            dayLabel: Days 3–4
+            description: Implement a small transformer from scratch on a toy task to solidify how attention, feed-forward layers, and residuals fit together.
+      - id: pretrained-language-models
+        title: Pretrained Language Models & Fine-Tuning
+        description: Pretrained models like BERT and GPT-family models encode broad language understanding from massive corpora, and fine-tuning them on a specific task is now the standard, far more efficient alternative to training from scratch.
+        resources:
+          - title: Hugging Face Transformers Documentation
+            url: https://huggingface.co/docs/transformers/index
+            type: docs
+          - title: Hugging Face NLP Course
+            url: https://huggingface.co/learn/nlp-course/chapter1/1
+            type: course
+        subtopics:
+          - title: 'Pretrained LMs: Encoder Models (BERT) for Classification'
+            dayLabel: Days 1–2
+            description: Fine-tune a BERT-family encoder model for text classification using the Hugging Face Trainer API.
+          - title: 'Pretrained LMs: Decoder Models & Parameter-Efficient Fine-Tuning'
+            dayLabel: Days 3–4
+            description: Fine-tune a GPT-family decoder model, and apply parameter-efficient methods like LoRA to cut training cost.
+  - title: Generative Deep Learning
+    topics:
+      - id: autoencoders-vae
+        title: Autoencoders & VAEs
+        description: Autoencoders learn compressed representations by reconstructing their own input, and their probabilistic extension — variational autoencoders — enables generating new, plausible samples from the learned latent space.
+        resources:
+          - title: Auto-Encoding Variational Bayes (VAE paper)
+            url: https://arxiv.org/abs/1312.6114
+            type: article
+          - title: PyTorch VAE Tutorial
+            url: https://pytorch.org/tutorials/beginner/introyt/autogradyt_tutorial.html
+            type: docs
+        subtopics:
+          - title: 'Autoencoders: Encoder-Decoder Reconstruction'
+            dayLabel: Days 1–2
+            description: Build a standard autoencoder for dimensionality reduction and denoising, and inspect the learned latent space.
+          - title: 'VAEs: Probabilistic Latent Spaces & Sampling'
+            dayLabel: Days 3–4
+            description: Implement a variational autoencoder with the reparameterization trick, and sample new data points from its latent space.
+      - id: gans
+        title: Generative Adversarial Networks
+        description: GANs pit a generator against a discriminator in a minimax game, producing some of the most realistic synthetic images before diffusion models became dominant.
+        resources:
+          - title: Generative Adversarial Networks (original paper)
+            url: https://arxiv.org/abs/1406.2661
+            type: article
+          - title: PyTorch DCGAN Tutorial
+            url: https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html
+            type: docs
+        subtopics:
+          - title: 'GANs: Generator/Discriminator Training Dynamics'
+            dayLabel: Days 1–2
+            description: Implement a basic GAN and observe the adversarial training loop, including common failure modes like mode collapse.
+          - title: 'GANs: DCGAN & Conditional GANs'
+            dayLabel: Days 3–4
+            description: Build a DCGAN for image generation, and extend it to a conditional GAN that generates images from a class label.
+      - id: diffusion-models
+        title: Diffusion Models
+        description: Diffusion models generate data by learning to reverse a gradual noising process, and they now power most state-of-the-art image and audio generation systems, having largely surpassed GANs in output quality.
+        resources:
+          - title: Denoising Diffusion Probabilistic Models (paper)
+            url: https://arxiv.org/abs/2006.11239
+            type: article
+          - title: Hugging Face Diffusers Documentation
+            url: https://huggingface.co/docs/diffusers/index
+            type: docs
+        subtopics:
+          - title: 'Diffusion: Forward Noising & Reverse Denoising'
+            dayLabel: Days 1–2
+            description: Understand the forward diffusion (noising) process and how a model learns to reverse it step by step.
+          - title: 'Diffusion: Sampling with Pretrained Pipelines'
+            dayLabel: Days 3–4
+            description: Use Hugging Face Diffusers to run and fine-tune a pretrained diffusion pipeline for image generation.
+  - title: Advanced Architectures
+    topics:
+      - id: graph-neural-networks
+        title: Graph Neural Networks
+        description: Many real-world problems — social networks, molecules, recommendation graphs — are naturally structured as graphs, and GNNs extend deep learning to operate directly on that structure instead of forcing it into a grid or sequence.
+        resources:
+          - title: A Gentle Introduction to Graph Neural Networks - Distill
+            url: https://distill.pub/2021/gnn-intro/
+            type: article
+          - title: PyTorch Geometric Documentation
+            url: https://pytorch-geometric.readthedocs.io/en/latest/
+            type: docs
+        subtopics:
+          - title: 'GNNs: Message Passing & Node Embeddings'
+            dayLabel: Days 1–2
+            description: Understand the message-passing framework GNNs use to aggregate information from neighboring nodes.
+          - title: 'GNNs: Building a GCN with PyTorch Geometric'
+            dayLabel: Days 3–4
+            description: Implement a graph convolutional network for node classification using PyTorch Geometric.
+      - id: reinforcement-learning-basics
+        title: Reinforcement Learning Basics
+        description: Reinforcement learning trains an agent through trial-and-error reward signals rather than labeled data, and combined with deep networks it powers systems from game-playing agents to RLHF-tuned language models.
+        resources:
+          - title: Spinning Up in Deep RL - OpenAI
+            url: https://spinningup.openai.com/en/latest/
+            type: course
+          - title: 'Reinforcement Learning: An Introduction (free book)'
+            url: http://incompleteideas.net/book/the-book-2nd.html
+            type: article
+        subtopics:
+          - title: 'RL: Markov Decision Processes & Q-Learning'
+            dayLabel: Days 1–2
+            description: Learn the MDP formulation and implement tabular Q-learning on a simple environment.
+          - title: 'Deep RL: Policy Gradients & DQN'
+            dayLabel: Days 3–4
+            description: Implement a Deep Q-Network and a basic policy-gradient method, and understand how RLHF applies these ideas to fine-tune language models.
+      - id: multimodal-models
+        title: Multimodal Models
+        description: Multimodal models combine text, image, and sometimes audio into a shared representation space, enabling tasks like image captioning, visual question answering, and text-to-image generation.
+        resources:
+          - title: CLIP - Learning Transferable Visual Models (paper)
+            url: https://arxiv.org/abs/2103.00020
+            type: article
+          - title: Hugging Face Multimodal Models
+            url: https://huggingface.co/docs/transformers/tasks/image_captioning
+            type: docs
+        subtopics:
+          - title: 'Multimodal: Joint Text-Image Embeddings (CLIP)'
+            dayLabel: Days 1–2
+            description: Use a pretrained CLIP model to embed text and images into a shared space, and run zero-shot classification with it.
+          - title: 'Multimodal: Captioning & Visual Question Answering'
+            dayLabel: Days 3–4
+            description: Fine-tune or run a pretrained model for image captioning or visual question answering.
+  - title: Training at Scale & MLOps for DL
+    topics:
+      - id: distributed-training
+        title: Distributed Training
+        description: Large models and datasets outgrow a single GPU, and distributed training strategies split the work across multiple GPUs or machines so training finishes in a practical amount of time.
+        resources:
+          - title: PyTorch Distributed Overview
+            url: https://pytorch.org/tutorials/beginner/dist_overview.html
+            type: docs
+          - title: DeepSpeed Documentation
+            url: https://www.deepspeed.ai/getting-started/
+            type: docs
+        subtopics:
+          - title: 'Distributed Training: Data Parallelism'
+            dayLabel: Days 1–2
+            description: Train a model with PyTorch DistributedDataParallel across multiple GPUs, splitting batches across devices.
+          - title: 'Distributed Training: Model Parallelism & DeepSpeed'
+            dayLabel: Days 3–4
+            description: Understand model/pipeline parallelism for models too large for one GPU, and configure DeepSpeed for memory-efficient training.
+      - id: mixed-precision-training
+        title: Mixed Precision & Efficient Training
+        description: Training in lower-precision formats (fp16/bf16) cuts memory usage and speeds up training substantially with minimal accuracy loss, making it a near-default technique for modern deep learning.
+        resources:
+          - title: Automatic Mixed Precision - PyTorch Docs
+            url: https://pytorch.org/docs/stable/notes/amp_examples.html
+            type: docs
+          - title: Mixed Precision Training (paper)
+            url: https://arxiv.org/abs/1710.03740
+            type: article
+        subtopics:
+          - title: 'Mixed Precision: fp16/bf16 Training'
+            dayLabel: Days 1–2
+            description: Enable automatic mixed precision training in PyTorch, and understand gradient scaling to prevent underflow.
+          - title: 'Efficient Training: Gradient Accumulation & Checkpointing'
+            dayLabel: Days 3–4
+            description: Use gradient accumulation to simulate larger batch sizes, and apply gradient checkpointing to trade compute for memory.
+      - id: experiment-tracking
+        title: Experiment Tracking & Reproducibility
+        description: Deep learning experiments involve many hyperparameters and random seeds, and tracking tools keep runs organized so you can compare results and reproduce your best model later.
+        resources:
+          - title: Weights & Biases Documentation
+            url: https://docs.wandb.ai/
+            type: docs
+          - title: MLflow Documentation
+            url: https://mlflow.org/docs/latest/index.html
+            type: docs
+        subtopics:
+          - title: 'Experiment Tracking: Logging Metrics & Artifacts'
+            dayLabel: Days 1–2
+            description: Log losses, metrics, and model checkpoints to Weights & Biases or MLflow across multiple training runs.
+          - title: 'Reproducibility: Seeds, Configs & Sweeps'
+            dayLabel: Days 3–4
+            description: Fix random seeds for reproducibility, and run a hyperparameter sweep to compare configurations systematically.
+      - id: model-compression-quantization
+        title: Model Compression & Quantization
+        description: Full-precision trained models are often too large or slow for production, and compression techniques — quantization, pruning, distillation — shrink them while preserving most of their accuracy.
+        resources:
+          - title: PyTorch Quantization Documentation
+            url: https://pytorch.org/docs/stable/quantization.html
+            type: docs
+          - title: Distilling the Knowledge in a Neural Network (paper)
+            url: https://arxiv.org/abs/1503.02531
+            type: article
+        subtopics:
+          - title: 'Compression: Quantization & Pruning'
+            dayLabel: Days 1–2
+            description: Apply post-training quantization and weight pruning to a trained model, and measure the size/accuracy tradeoff.
+          - title: 'Compression: Knowledge Distillation'
+            dayLabel: Days 3–4
+            description: Train a smaller "student" model to mimic a larger "teacher" model's outputs via knowledge distillation.
+  - title: Deployment & Production
+    topics:
+      - id: model-serving-dl
+        title: Model Serving for Deep Learning
+        description: Serving deep learning models efficiently at scale requires more than a basic API wrapper — batching, GPU scheduling, and low-latency inference engines matter once traffic grows.
+        resources:
+          - title: TorchServe Documentation
+            url: https://pytorch.org/serve/
+            type: docs
+          - title: NVIDIA Triton Inference Server Documentation
+            url: https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/index.html
+            type: docs
+        subtopics:
+          - title: 'Model Serving: Wrapping Models Behind an API'
+            dayLabel: Days 1–2
+            description: Serve a trained model with TorchServe or a FastAPI wrapper, and handle batched inference requests.
+          - title: 'Model Serving: Scaling & Low-Latency Inference'
+            dayLabel: Days 3–4
+            description: Configure request batching and GPU-backed inference with Triton Inference Server for high-throughput, low-latency serving.
+      - id: onnx-model-optimization
+        title: ONNX & Model Optimization
+        description: ONNX provides a framework-agnostic model format, letting you train in PyTorch or TensorFlow and export to an optimized runtime for faster, more portable inference.
+        resources:
+          - title: ONNX Documentation
+            url: https://onnx.ai/onnx/intro/
+            type: docs
+          - title: ONNX Runtime Documentation
+            url: https://onnxruntime.ai/docs/
+            type: docs
+        subtopics:
+          - title: 'ONNX: Exporting & Validating Models'
+            dayLabel: Days 1–2
+            description: Export a trained PyTorch/TensorFlow model to ONNX format, and validate that outputs match the original model.
+          - title: 'ONNX: Runtime Optimization & Graph Fusion'
+            dayLabel: Days 3–4
+            description: Run inference with ONNX Runtime and apply graph optimizations like operator fusion for faster execution.
+      - id: edge-deployment
+        title: Edge & Mobile Deployment
+        description: Running models on phones, embedded devices, or browsers requires shrinking and adapting them for constrained compute, memory, and power budgets — a distinct discipline from server-side deployment.
+        resources:
+          - title: TensorFlow Lite Documentation
+            url: https://www.tensorflow.org/lite/guide
+            type: docs
+          - title: PyTorch Mobile Documentation
+            url: https://pytorch.org/mobile/home/
+            type: docs
+        subtopics:
+          - title: 'Edge Deployment: Converting Models for Mobile'
+            dayLabel: Days 1–2
+            description: Convert a trained model to TensorFlow Lite or PyTorch Mobile format, applying quantization for size reduction.
+          - title: 'Edge Deployment: On-Device Inference Constraints'
+            dayLabel: Days 3–4
+            description: Benchmark on-device inference latency and memory usage, and adapt model architecture choices for edge constraints.
+  - title: Career & Projects
+    topics:
+      - id: dl-system-design
+        title: Deep Learning System Design
+        description: Deep learning system design interviews test whether you can architect a full solution — data pipeline, model choice, training infrastructure, and serving — for an open-ended, large-scale problem.
+        resources:
+          - title: Designing Machine Learning Systems (O'Reilly)
+            url: https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/
+            type: article
+          - title: Machine Learning System Design Interview (book)
+            url: https://www.amazon.com/Machine-Learning-System-Design-Interview/dp/1736049127
+            type: article
+        subtopics:
+          - title: 'DL System Design: Framing Large-Scale Problems'
+            dayLabel: Days 1–2
+            description: Practice scoping an open-ended deep learning problem (e.g. a vision-based recommendation system) into data, model, and infra requirements.
+          - title: 'DL System Design: End-to-End Architecture & Tradeoffs'
+            dayLabel: Days 3–4
+            description: Design a full training-to-serving architecture for a sample product, discussing latency, cost, and scaling tradeoffs.
+      - id: dl-portfolio-projects
+        title: Portfolio Projects & Research Papers
+        description: Reproducing a research paper or shipping a full deep learning project end-to-end is the strongest signal of practical skill you can show employers, beyond any course certificate.
+        resources:
+          - title: Papers with Code
+            url: https://paperswithcode.com/
+            type: article
+          - title: Kaggle Competitions
+            url: https://www.kaggle.com/competitions
+            type: project
+        subtopics:
+          - title: 'Portfolio: Reproducing a Research Paper'
+            dayLabel: Days 1–2
+            description: Pick a foundational paper and reproduce its core result on a smaller scale, documenting your process publicly.
+          - title: 'Portfolio: End-to-End Project & Deployment Demo'
+            dayLabel: Days 3–4
+            description: Package a full deep learning project — training to a live deployed demo — on GitHub with a clear README, ready to walk through in interviews.
+---
+
+Dive into deep learning with this 20-week structured learning path designed for developers who already have some ML or programming background and want to specialize in neural networks. You'll start with the math and framework foundations (linear algebra, backpropagation, PyTorch/TensorFlow, GPU basics), then build a rigorous understanding of neural network theory — activation functions, loss functions, optimizers, and regularization. From there you'll go deep on CNNs and computer vision, sequence models culminating in transformers and pretrained language models, and generative approaches (VAEs, GANs, diffusion models), plus advanced architectures like graph neural networks, deep RL, and multimodal models. The roadmap closes with the engineering side that separates research code from production systems — distributed and mixed-precision training, experiment tracking, model compression, serving infrastructure, edge deployment, and system design/portfolio prep. By the end, you'll be equipped to design, train, optimize, and deploy deep learning models at a level expected of a Deep Learning Engineer role.

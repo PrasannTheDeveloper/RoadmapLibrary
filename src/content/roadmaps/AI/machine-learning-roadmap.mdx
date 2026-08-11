@@ -1,0 +1,691 @@
+---
+title: Machine Learning Engineer Roadmap
+description: A structured 24-week roadmap for becoming a job-ready Machine Learning Engineer — covering Python, math foundations, classical ML algorithms, feature engineering, deep learning, NLP, computer vision, MLOps, big data tools, and system design/interview prep.
+category: Machine Learning & AI
+estimatedTime: 24 weeks
+difficulty: Intermediate
+topicCount: 37
+order: 5
+icon: 🤖
+thumbnail: /thumbnails/icons/MachineLearning.svg
+sections:
+  - title: Programming & Math Foundations
+    topics:
+      - id: python-for-ml
+        title: Python for Machine Learning
+        description: Python is the primary language of the ML ecosystem, and comfort with its syntax, data structures, and functional patterns is the foundation every library and model in this roadmap is built on.
+        resources:
+          - title: Python Official Documentation
+            url: https://docs.python.org/3/tutorial/index.html
+            type: docs
+          - title: Python for Everybody
+            url: https://www.py4e.com/
+            type: course
+          - title: Real Python Tutorials
+            url: https://realpython.com/
+            type: article
+        subtopics:
+          - title: 'Python for ML: Core Language & Data Structures'
+            dayLabel: Days 1–2
+            description: Cover variables, control flow, functions, and Python's core data structures — lists, dicts, sets, and tuples — with an eye toward how they're used in data pipelines.
+          - title: 'Python for ML: Functional Patterns & OOP'
+            dayLabel: Days 3–4
+            description: Practice list comprehensions, generators, decorators, and writing classes, since most ML libraries expose object-oriented APIs (estimators, models, datasets).
+          - title: 'Python for ML: Tooling & Best Practices'
+            dayLabel: Days 5–6
+            description: Set up virtual environments, use type hints, and learn debugging and profiling basics so Python code stays maintainable as projects grow.
+      - id: linear-algebra
+        title: Linear Algebra
+        description: Vectors, matrices, and their operations are the language every ML model is expressed in — from a simple linear regression to the weight matrices inside a neural network.
+        resources:
+          - title: Essence of Linear Algebra - 3Blue1Brown
+            url: https://www.3blue1brown.com/topics/linear-algebra
+            type: video
+          - title: Linear Algebra - Khan Academy
+            url: https://www.khanacademy.org/math/linear-algebra
+            type: course
+          - title: 'Mathematics for Machine Learning: Linear Algebra'
+            url: https://www.coursera.org/learn/linear-algebra-machine-learning
+            type: course
+        subtopics:
+          - title: 'Linear Algebra: Vectors, Matrices & Operations'
+            dayLabel: Days 1–2
+            description: Learn vector/matrix arithmetic, dot products, and matrix multiplication, and how they represent datasets and transformations.
+          - title: 'Linear Algebra: Eigenvalues & Decompositions'
+            dayLabel: Days 3–4
+            description: Understand eigenvectors, eigenvalues, and SVD, the building blocks behind PCA and many optimization algorithms.
+      - id: calculus-optimization
+        title: Calculus & Optimization
+        description: Training a model is fundamentally an optimization problem, and derivatives and gradients are how algorithms like gradient descent find the parameters that minimize error.
+        resources:
+          - title: Essence of Calculus - 3Blue1Brown
+            url: https://www.3blue1brown.com/topics/calculus
+            type: video
+          - title: Multivariable Calculus - Khan Academy
+            url: https://www.khanacademy.org/math/multivariable-calculus
+            type: course
+          - title: Convex Optimization - Stanford
+            url: https://web.stanford.edu/~boyd/cvxbook/
+            type: article
+        subtopics:
+          - title: 'Calculus & Optimization: Derivatives & Gradients'
+            dayLabel: Days 1–2
+            description: Review derivatives, partial derivatives, and the chain rule, which underpins backpropagation in neural networks.
+          - title: 'Calculus & Optimization: Gradient Descent & Variants'
+            dayLabel: Days 3–4
+            description: Implement gradient descent from scratch, then compare it with momentum, RMSProp, and Adam.
+      - id: probability-statistics
+        title: Probability & Statistics
+        description: Probability and statistics let you reason about uncertainty, evaluate whether results are meaningful, and understand the assumptions baked into most ML algorithms.
+        resources:
+          - title: Statistics and Probability - Khan Academy
+            url: https://www.khanacademy.org/math/statistics-probability
+            type: course
+          - title: StatQuest with Josh Starmer
+            url: https://www.youtube.com/@statquest
+            type: video
+          - title: Think Stats (free book)
+            url: https://greenteapress.com/wp/think-stats-2e/
+            type: article
+        subtopics:
+          - title: 'Probability & Statistics: Distributions & Bayes Theorem'
+            dayLabel: Days 1–2
+            description: Cover probability distributions, conditional probability, and Bayes' theorem, the foundation of Naive Bayes and probabilistic models.
+          - title: 'Probability & Statistics: Hypothesis Testing & Inference'
+            dayLabel: Days 3–4
+            description: Practice hypothesis testing, confidence intervals, and p-values, used constantly in A/B testing and evaluating model results.
+  - title: Data Handling & Tools
+    topics:
+      - id: numpy
+        title: NumPy
+        description: NumPy provides fast, vectorized array operations that nearly every other ML library in Python is built on top of, replacing slow native Python loops with optimized C code.
+        resources:
+          - title: NumPy Official Documentation
+            url: https://numpy.org/doc/stable/
+            type: docs
+          - title: NumPy Quickstart Tutorial
+            url: https://numpy.org/doc/stable/user/quickstart.html
+            type: docs
+        subtopics:
+          - title: 'NumPy: Arrays & Vectorized Operations'
+            dayLabel: Days 1–2
+            description: Create and manipulate ndarrays, and learn broadcasting rules that let you avoid explicit loops entirely.
+          - title: 'NumPy: Linear Algebra & Performance'
+            dayLabel: Days 3–4
+            description: Use NumPy's linear algebra module for matrix operations, and profile vectorized code against naive Python implementations.
+      - id: pandas
+        title: Pandas
+        description: Pandas is the standard tool for loading, cleaning, and exploring tabular data in Python, wrapping messy real-world datasets in a consistent DataFrame API.
+        resources:
+          - title: Pandas Official Documentation
+            url: https://pandas.pydata.org/docs/
+            type: docs
+          - title: Pandas - Kaggle Learn
+            url: https://www.kaggle.com/learn/pandas
+            type: course
+        subtopics:
+          - title: 'Pandas: DataFrames, Indexing & Filtering'
+            dayLabel: Days 1–2
+            description: Load CSV/JSON data into DataFrames, and practice selecting, filtering, and slicing rows and columns.
+          - title: 'Pandas: GroupBy, Merging & Aggregation'
+            dayLabel: Days 3–4
+            description: Use groupby, pivot tables, and joins/merges to reshape and summarize datasets for analysis.
+      - id: data-visualization
+        title: Data Visualization
+        description: Visualizing distributions, correlations, and outliers early in a project reveals data quality issues and patterns that summary statistics alone can hide.
+        resources:
+          - title: Matplotlib Documentation
+            url: https://matplotlib.org/stable/users/index.html
+            type: docs
+          - title: Seaborn Documentation
+            url: https://seaborn.pydata.org/
+            type: docs
+          - title: Data Visualization - Kaggle Learn
+            url: https://www.kaggle.com/learn/data-visualization
+            type: course
+        subtopics:
+          - title: 'Data Visualization: Charts & Plot Types'
+            dayLabel: Days 1–2
+            description: Build histograms, scatter plots, and box plots with Matplotlib and Seaborn to understand distributions and relationships.
+          - title: 'Data Visualization: Exploratory Data Analysis'
+            dayLabel: Days 3–4
+            description: Combine plots into a full exploratory data analysis (EDA) workflow that surfaces outliers, skew, and correlated features.
+      - id: data-cleaning-preprocessing
+        title: Data Cleaning & Preprocessing
+        description: Real-world data is messy — missing values, duplicates, and inconsistent formats — and cleaning it properly has more impact on model quality than almost any algorithm choice.
+        resources:
+          - title: scikit-learn Preprocessing Guide
+            url: https://scikit-learn.org/stable/modules/preprocessing.html
+            type: docs
+          - title: Data Cleaning - Kaggle Learn
+            url: https://www.kaggle.com/learn/data-cleaning
+            type: course
+        subtopics:
+          - title: 'Data Cleaning: Missing Values & Outliers'
+            dayLabel: Days 1–2
+            description: Handle missing data through imputation or removal, and detect outliers using IQR and z-score methods.
+          - title: 'Data Cleaning: Encoding & Scaling'
+            dayLabel: Days 3–4
+            description: Encode categorical variables (one-hot, label, target encoding) and scale/normalize numeric features for algorithms sensitive to feature magnitude.
+  - title: Version Control & Environment
+    topics:
+      - id: git
+        title: Git
+        description: Git tracks every change to your notebooks, scripts, and experiment configs locally, letting you branch and roll back safely before pushing to a shared repository.
+        resources:
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Learn init, add, commit, log, and diff, and practice writing a clean, meaningful commit history for experiments.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Create and switch branches, resolve merge conflicts, and prepare clean changes for review.
+      - id: github-collaboration
+        title: GitHub & Collaboration
+        description: GitHub hosts your repositories remotely and adds collaboration tools — issues, pull requests, and Actions — that let you share notebooks, code, and models with a team.
+        resources:
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+        subtopics:
+          - title: Remote Repositories & Forking
+            dayLabel: Days 1–2
+            description: Push and pull against a remote, configure SSH keys, and fork/star repositories to explore open-source ML projects.
+          - title: Reviewing Notebooks & Automating Checks
+            dayLabel: Days 3–4
+            description: Review pull requests containing notebooks and scripts, and set up basic GitHub Actions to lint and test ML code.
+      - id: python-environments
+        title: Virtual Environments & Package Management
+        description: ML projects depend on specific, often conflicting library versions (CUDA, PyTorch, TensorFlow), and isolating environments per project prevents dependency hell.
+        resources:
+          - title: venv - Python Docs
+            url: https://docs.python.org/3/library/venv.html
+            type: docs
+          - title: Conda User Guide
+            url: https://docs.conda.io/projects/conda/en/latest/user-guide/index.html
+            type: docs
+          - title: uv - Astral
+            url: https://docs.astral.sh/uv/
+            type: docs
+        subtopics:
+          - title: 'Environments: venv & Conda'
+            dayLabel: Days 1–2
+            description: Create isolated environments with venv and Conda, and manage Python versions alongside package versions.
+          - title: 'Environments: Reproducibility & Requirements'
+            dayLabel: Days 3–4
+            description: Pin dependencies with requirements.txt or environment.yml so experiments are reproducible on another machine.
+  - title: Core Machine Learning
+    topics:
+      - id: supervised-learning-regression
+        title: Supervised Learning — Regression
+        description: Regression algorithms predict continuous values and introduce the core ML workflow — fitting a model to data and minimizing a loss function — that every later algorithm builds on.
+        resources:
+          - title: scikit-learn Linear Models
+            url: https://scikit-learn.org/stable/modules/linear_model.html
+            type: docs
+          - title: Andrew Ng's Machine Learning Specialization
+            url: https://www.coursera.org/specializations/machine-learning-introduction
+            type: course
+        subtopics:
+          - title: 'Regression: Linear & Polynomial Models'
+            dayLabel: Days 1–2
+            description: Implement linear and polynomial regression, and understand how the normal equation and gradient descent both solve for coefficients.
+          - title: 'Regression: Regularization (Ridge, Lasso, Elastic Net)'
+            dayLabel: Days 3–4
+            description: Apply L1/L2 regularization to reduce overfitting, and understand the bias-variance tradeoff each introduces.
+      - id: supervised-learning-classification
+        title: Supervised Learning — Classification
+        description: Classification algorithms predict discrete labels and cover a wide family of models — from simple linear boundaries to tree-based methods — that form the core toolkit for most real-world ML problems.
+        resources:
+          - title: scikit-learn Supervised Learning Guide
+            url: https://scikit-learn.org/stable/supervised_learning.html
+            type: docs
+          - title: StatQuest - Classification Playlist
+            url: https://www.youtube.com/@statquest
+            type: video
+        subtopics:
+          - title: 'Classification: Logistic Regression & KNN'
+            dayLabel: Days 1–2
+            description: Implement logistic regression and k-nearest neighbors, and understand decision boundaries and the effect of k.
+          - title: 'Classification: Decision Trees & SVMs'
+            dayLabel: Days 3–4
+            description: Build decision trees and support vector machines, and compare how each handles non-linear decision boundaries.
+      - id: model-evaluation-metrics
+        title: Model Evaluation & Metrics
+        description: Choosing the right metric — accuracy, precision/recall, F1, ROC-AUC, RMSE — and validating properly with train/test splits or cross-validation is what separates a model that looks good from one that actually works.
+        resources:
+          - title: scikit-learn Model Evaluation Guide
+            url: https://scikit-learn.org/stable/modules/model_evaluation.html
+            type: docs
+          - title: Cross-Validation - scikit-learn
+            url: https://scikit-learn.org/stable/modules/cross_validation.html
+            type: docs
+        subtopics:
+          - title: 'Model Evaluation: Classification Metrics'
+            dayLabel: Days 1–2
+            description: Compute precision, recall, F1-score, and ROC-AUC, and understand when accuracy alone is misleading (e.g. imbalanced classes).
+          - title: 'Model Evaluation: Cross-Validation & Data Splits'
+            dayLabel: Days 3–4
+            description: Use k-fold cross-validation and stratified splits to get a reliable estimate of how a model generalizes.
+      - id: feature-engineering
+        title: Feature Engineering
+        description: Well-designed features often matter more than the choice of algorithm, and transforming raw data into informative inputs is one of the highest-leverage skills in applied ML.
+        resources:
+          - title: Feature Engineering - Kaggle Learn
+            url: https://www.kaggle.com/learn/feature-engineering
+            type: course
+          - title: Feature Engineering and Selection (free book)
+            url: http://www.feat.engineering/
+            type: article
+        subtopics:
+          - title: 'Feature Engineering: Transformations & Interactions'
+            dayLabel: Days 1–2
+            description: Create polynomial features, binning, and interaction terms, and engineer date/time features from raw timestamps.
+          - title: 'Feature Engineering: Feature Selection'
+            dayLabel: Days 3–4
+            description: Apply filter, wrapper, and embedded feature-selection methods to reduce dimensionality and cut noise.
+      - id: unsupervised-learning-clustering
+        title: Unsupervised Learning — Clustering
+        description: Clustering finds structure in unlabeled data, grouping similar points together — useful for customer segmentation, anomaly detection, and exploratory analysis when no labels exist.
+        resources:
+          - title: scikit-learn Clustering Guide
+            url: https://scikit-learn.org/stable/modules/clustering.html
+            type: docs
+          - title: StatQuest - K-means clustering
+            url: https://www.youtube.com/@statquest
+            type: video
+        subtopics:
+          - title: 'Clustering: K-Means & Hierarchical Clustering'
+            dayLabel: Days 1–2
+            description: Implement k-means and hierarchical clustering, and use the elbow method and silhouette score to pick a good k.
+          - title: 'Clustering: DBSCAN & Evaluation'
+            dayLabel: Days 3–4
+            description: Apply density-based clustering (DBSCAN) for arbitrarily shaped clusters, and evaluate clustering quality without ground-truth labels.
+      - id: dimensionality-reduction
+        title: Dimensionality Reduction
+        description: High-dimensional data is hard to visualize and can hurt model performance, and techniques like PCA and t-SNE compress features while preserving as much signal as possible.
+        resources:
+          - title: scikit-learn Decomposition Guide
+            url: https://scikit-learn.org/stable/modules/decomposition.html
+            type: docs
+          - title: How t-SNE works - Distill
+            url: https://distill.pub/2016/misread-tsne/
+            type: article
+        subtopics:
+          - title: 'Dimensionality Reduction: PCA'
+            dayLabel: Days 1–2
+            description: Apply Principal Component Analysis to reduce feature count while retaining variance, and interpret explained-variance ratios.
+          - title: 'Dimensionality Reduction: t-SNE & UMAP'
+            dayLabel: Days 3–4
+            description: Use t-SNE and UMAP for visualizing high-dimensional data in 2D/3D, and understand where PCA falls short for non-linear structure.
+      - id: ensemble-methods
+        title: Ensemble Methods
+        description: Combining multiple weaker models — through bagging, boosting, or stacking — consistently outperforms single models and powers most winning solutions on tabular-data competitions.
+        resources:
+          - title: XGBoost Documentation
+            url: https://xgboost.readthedocs.io/en/stable/
+            type: docs
+          - title: LightGBM Documentation
+            url: https://lightgbm.readthedocs.io/en/stable/
+            type: docs
+          - title: scikit-learn Ensemble Methods
+            url: https://scikit-learn.org/stable/modules/ensemble.html
+            type: docs
+        subtopics:
+          - title: 'Ensembles: Bagging & Random Forests'
+            dayLabel: Days 1–2
+            description: Build random forests and understand how bagging reduces variance by averaging many decorrelated trees.
+          - title: 'Ensembles: Boosting (XGBoost, LightGBM)'
+            dayLabel: Days 3–4
+            description: Train gradient-boosted trees with XGBoost and LightGBM, the go-to algorithms for structured/tabular ML problems.
+      - id: hyperparameter-tuning
+        title: Hyperparameter Tuning
+        description: Model performance often hinges on hyperparameters — learning rate, tree depth, regularization strength — and systematic search finds better settings than manual guesswork.
+        resources:
+          - title: Tuning the hyper-parameters - scikit-learn
+            url: https://scikit-learn.org/stable/modules/grid_search.html
+            type: docs
+          - title: Optuna Documentation
+            url: https://optuna.readthedocs.io/en/stable/
+            type: docs
+        subtopics:
+          - title: 'Hyperparameter Tuning: Grid & Random Search'
+            dayLabel: Days 1–2
+            description: Use GridSearchCV and RandomizedSearchCV to systematically search hyperparameter spaces with cross-validation.
+          - title: 'Hyperparameter Tuning: Bayesian Optimization'
+            dayLabel: Days 3–4
+            description: Apply Bayesian optimization with Optuna to search more efficiently than grid/random search on expensive models.
+  - title: Deep Learning
+    topics:
+      - id: neural-network-fundamentals
+        title: Neural Network Fundamentals
+        description: Neural networks stack layers of simple functions to approximate complex patterns, and understanding forward passes, activation functions, and backpropagation is essential before touching any framework.
+        resources:
+          - title: Neural Networks and Deep Learning (free book)
+            url: http://neuralnetworksanddeeplearning.com/
+            type: article
+          - title: Neural Networks - 3Blue1Brown
+            url: https://www.3blue1brown.com/topics/neural-networks
+            type: video
+          - title: Deep Learning Specialization
+            url: https://www.coursera.org/specializations/deep-learning
+            type: course
+        subtopics:
+          - title: 'Neural Networks: Perceptrons & Activation Functions'
+            dayLabel: Days 1–2
+            description: Build a single-layer perceptron from scratch and compare activation functions (ReLU, sigmoid, tanh) and why they matter.
+          - title: 'Neural Networks: Backpropagation & Loss Functions'
+            dayLabel: Days 3–4
+            description: Implement backpropagation manually on a small network to understand how gradients flow, and pick loss functions for regression vs classification.
+      - id: pytorch-tensorflow
+        title: PyTorch & TensorFlow
+        description: PyTorch and TensorFlow are the two dominant deep learning frameworks, providing automatic differentiation, GPU acceleration, and pre-built layers so you don't hand-code backpropagation for every model.
+        resources:
+          - title: PyTorch Official Tutorials
+            url: https://pytorch.org/tutorials/
+            type: docs
+          - title: TensorFlow Documentation
+            url: https://www.tensorflow.org/tutorials
+            type: docs
+        subtopics:
+          - title: 'PyTorch/TensorFlow: Tensors & Autograd'
+            dayLabel: Days 1–2
+            description: Work with tensors, GPU device placement, and automatic differentiation (autograd/GradientTape).
+          - title: 'PyTorch/TensorFlow: Building & Training Models'
+            dayLabel: Days 3–4
+            description: Define a model with layers, write a training loop with an optimizer and loss function, and track training/validation metrics.
+      - id: cnn
+        title: Convolutional Neural Networks
+        description: CNNs use convolutional filters to detect spatial patterns like edges and textures, making them the standard architecture for image-based tasks.
+        resources:
+          - title: CS231n - Convolutional Neural Networks
+            url: https://cs231n.github.io/convolutional-networks/
+            type: docs
+          - title: PyTorch - Training a Classifier
+            url: https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html
+            type: docs
+        subtopics:
+          - title: 'CNNs: Convolutions, Pooling & Architecture'
+            dayLabel: Days 1–2
+            description: Understand convolutional filters, stride, padding, and pooling layers, and how they build up spatial hierarchies.
+          - title: 'CNNs: Transfer Learning & Fine-Tuning'
+            dayLabel: Days 3–4
+            description: Fine-tune a pretrained CNN (ResNet, EfficientNet) on a custom image dataset instead of training from scratch.
+      - id: rnn-lstm
+        title: RNNs & LSTMs
+        description: Recurrent networks and their gated variants (LSTM, GRU) process sequential data by carrying information across time steps, historically the backbone of text and time-series modeling before transformers.
+        resources:
+          - title: Understanding LSTM Networks - colah's blog
+            url: https://colah.github.io/posts/2015-08-Understanding-LSTMs/
+            type: article
+          - title: PyTorch - Sequence Models Tutorial
+            url: https://pytorch.org/tutorials/beginner/nlp/sequence_models_tutorial.html
+            type: docs
+        subtopics:
+          - title: 'RNNs: Sequential Data & Vanishing Gradients'
+            dayLabel: Days 1–2
+            description: Build a simple RNN, and understand why vanishing/exploding gradients limit how far back it can "remember."
+          - title: 'RNNs: LSTM & GRU Architectures'
+            dayLabel: Days 3–4
+            description: Implement LSTM/GRU cells and apply them to a sequence task like text generation or time-series forecasting.
+      - id: transformers-attention
+        title: Transformers & Attention
+        description: The attention mechanism lets models weigh relevant parts of an input directly, and transformers built on it now power state-of-the-art models across NLP, vision, and multimodal tasks.
+        resources:
+          - title: The Illustrated Transformer
+            url: https://jalammar.github.io/illustrated-transformer/
+            type: article
+          - title: Attention Is All You Need (paper)
+            url: https://arxiv.org/abs/1706.03762
+            type: article
+          - title: Hugging Face - Transformers Course
+            url: https://huggingface.co/learn/nlp-course/chapter1/1
+            type: course
+        subtopics:
+          - title: 'Transformers: Self-Attention & Positional Encoding'
+            dayLabel: Days 1–2
+            description: Understand self-attention, multi-head attention, and positional encodings that let transformers process sequences in parallel.
+          - title: 'Transformers: Pretrained Models & Fine-Tuning'
+            dayLabel: Days 3–4
+            description: Fine-tune a pretrained transformer (BERT, GPT-family) with Hugging Face on a downstream classification or generation task.
+  - title: Specialized ML Domains
+    topics:
+      - id: nlp
+        title: Natural Language Processing
+        description: NLP covers the techniques for turning raw text into structured signals a model can use — from classic tokenization and embeddings to modern transformer-based language models.
+        resources:
+          - title: Hugging Face NLP Course
+            url: https://huggingface.co/learn/nlp-course/chapter1/1
+            type: course
+          - title: spaCy Documentation
+            url: https://spacy.io/usage
+            type: docs
+        subtopics:
+          - title: 'NLP: Tokenization & Word Embeddings'
+            dayLabel: Days 1–2
+            description: Preprocess text with tokenization and stemming/lemmatization, and learn word embeddings like word2vec and GloVe.
+          - title: 'NLP: Text Classification & Named Entity Recognition'
+            dayLabel: Days 3–4
+            description: Build a text classifier and a named entity recognition pipeline using spaCy or Hugging Face pipelines.
+      - id: computer-vision
+        title: Computer Vision
+        description: Computer vision applies deep learning to images and video for tasks like classification, object detection, and segmentation, building directly on CNN and transformer foundations.
+        resources:
+          - title: OpenCV Documentation
+            url: https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html
+            type: docs
+          - title: CS231n - Stanford
+            url: https://cs231n.stanford.edu/
+            type: course
+        subtopics:
+          - title: 'Computer Vision: Image Processing with OpenCV'
+            dayLabel: Days 1–2
+            description: Perform image transformations, filtering, and augmentation with OpenCV before feeding data into a model.
+          - title: 'Computer Vision: Object Detection & Segmentation'
+            dayLabel: Days 3–4
+            description: Use a pretrained object detection model (YOLO) or segmentation model to locate and outline objects in images.
+      - id: recommender-systems
+        title: Recommender Systems
+        description: Recommender systems predict what a user will want next, using collaborative filtering, content-based methods, or hybrid approaches that power products like e-commerce and streaming platforms.
+        resources:
+          - title: Recommender Systems - Google ML Crash Course
+            url: https://developers.google.com/machine-learning/recommendation
+            type: course
+          - title: Surprise Library Documentation
+            url: https://surpriselib.com/
+            type: docs
+        subtopics:
+          - title: 'Recommenders: Collaborative Filtering'
+            dayLabel: Days 1–2
+            description: Build user-based and item-based collaborative filtering models, and understand matrix factorization approaches.
+          - title: 'Recommenders: Content-Based & Hybrid Systems'
+            dayLabel: Days 3–4
+            description: Combine content-based features with collaborative signals, and handle the cold-start problem for new users/items.
+      - id: time-series-forecasting
+        title: Time Series Forecasting
+        description: Time series data has temporal dependencies that standard ML assumptions ignore, so forecasting requires specialized techniques for trend, seasonality, and autocorrelation.
+        resources:
+          - title: 'Forecasting: Principles and Practice (free book)'
+            url: https://otexts.com/fpp3/
+            type: article
+          - title: statsmodels Time Series Analysis
+            url: https://www.statsmodels.org/stable/tsa.html
+            type: docs
+        subtopics:
+          - title: 'Time Series: Decomposition & Classical Models'
+            dayLabel: Days 1–2
+            description: Decompose series into trend/seasonality/residual, and fit ARIMA/SARIMA models for classical forecasting.
+          - title: 'Time Series: ML & Deep Learning Approaches'
+            dayLabel: Days 3–4
+            description: Apply gradient-boosted trees and LSTM-based models to forecasting, and evaluate with time-aware cross-validation.
+  - title: MLOps & Deployment
+    topics:
+      - id: model-deployment
+        title: Model Deployment
+        description: A model only creates value once it's serving predictions in production, and wrapping it behind an API is the standard way to make it accessible to other applications.
+        resources:
+          - title: FastAPI Documentation
+            url: https://fastapi.tiangolo.com/
+            type: docs
+          - title: Flask Documentation
+            url: https://flask.palletsprojects.com/en/latest/
+            type: docs
+        subtopics:
+          - title: 'Model Deployment: Serving Predictions via API'
+            dayLabel: Days 1–2
+            description: Wrap a trained model behind a FastAPI or Flask endpoint that accepts input and returns predictions.
+          - title: 'Model Deployment: Serialization & Versioning'
+            dayLabel: Days 3–4
+            description: Serialize models with pickle/joblib or ONNX, and version models so you can roll back a bad deployment.
+      - id: docker-for-ml
+        title: Docker for ML
+        description: Docker packages a model, its dependencies, and runtime environment into a portable container, ensuring predictions behave identically across a data scientist's laptop and production servers.
+        resources:
+          - title: Docker Get Started
+            url: https://docs.docker.com/get-started/
+            type: docs
+          - title: Dockerizing a Python App
+            url: https://docs.docker.com/language/python/
+            type: docs
+        subtopics:
+          - title: 'Docker for ML: Building Images'
+            dayLabel: Days 1–2
+            description: Write a Dockerfile for a Python ML service, install dependencies (including GPU libraries where needed), and build an image.
+          - title: 'Docker for ML: Compose & GPU Containers'
+            dayLabel: Days 3–4
+            description: Use docker-compose to run a model service alongside a database, and configure GPU passthrough with NVIDIA Container Toolkit.
+      - id: ml-pipelines-orchestration
+        title: ML Pipelines & Orchestration
+        description: Production ML involves repeatable pipelines for data ingestion, training, and evaluation, and orchestration tools schedule and track these steps reliably instead of running notebooks by hand.
+        resources:
+          - title: MLflow Documentation
+            url: https://mlflow.org/docs/latest/index.html
+            type: docs
+          - title: Apache Airflow Documentation
+            url: https://airflow.apache.org/docs/
+            type: docs
+        subtopics:
+          - title: 'ML Pipelines: Experiment Tracking with MLflow'
+            dayLabel: Days 1–2
+            description: Track experiments, parameters, and metrics with MLflow, and compare runs to pick the best model.
+          - title: 'ML Pipelines: Orchestrating with Airflow'
+            dayLabel: Days 3–4
+            description: Build a DAG in Airflow that automates data preprocessing, training, and evaluation on a schedule.
+      - id: cloud-ml-platforms
+        title: Cloud ML Platforms
+        description: Cloud platforms provide managed infrastructure for training at scale, hosting endpoints, and monitoring models — skills expected of most ML engineering roles today.
+        resources:
+          - title: Amazon SageMaker Documentation
+            url: https://docs.aws.amazon.com/sagemaker/
+            type: docs
+          - title: Google Cloud Vertex AI Documentation
+            url: https://cloud.google.com/vertex-ai/docs
+            type: docs
+        subtopics:
+          - title: 'Cloud ML: Managed Training Jobs'
+            dayLabel: Days 1–2
+            description: Launch a training job on SageMaker or Vertex AI, and understand managed compute, storage, and instance types for ML workloads.
+          - title: 'Cloud ML: Managed Endpoints & Autoscaling'
+            dayLabel: Days 3–4
+            description: Deploy a model to a managed endpoint with autoscaling, and set up basic usage and cost monitoring.
+      - id: model-monitoring
+        title: Model Monitoring & Drift Detection
+        description: Model performance degrades over time as real-world data shifts away from training data, and monitoring for this drift is what keeps production models trustworthy.
+        resources:
+          - title: Evidently AI Documentation
+            url: https://docs.evidentlyai.com/
+            type: docs
+          - title: Monitoring ML Models in Production - Google Cloud
+            url: https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning
+            type: article
+        subtopics:
+          - title: 'Model Monitoring: Data & Concept Drift'
+            dayLabel: Days 1–2
+            description: Detect data drift and concept drift by comparing live input distributions against training data.
+          - title: 'Model Monitoring: Logging, Alerts & Retraining'
+            dayLabel: Days 3–4
+            description: Set up prediction logging and alerting thresholds, and design a retraining trigger for when performance drops.
+  - title: Big Data & SQL
+    topics:
+      - id: sql-for-ml
+        title: SQL for Machine Learning
+        description: Most training data lives in relational databases or data warehouses, and SQL is how you pull, join, and aggregate that data before it ever reaches a notebook.
+        resources:
+          - title: SQL Tutorial - W3Schools
+            url: https://www.w3schools.com/sql/
+            type: article
+          - title: SQLBolt - Interactive SQL Lessons
+            url: https://sqlbolt.com/
+            type: course
+        subtopics:
+          - title: 'SQL for ML: Querying & Joins'
+            dayLabel: Days 1–2
+            description: Write SELECT queries with filters, joins, and aggregations to pull training datasets from relational tables.
+          - title: 'SQL for ML: Window Functions & Feature Extraction'
+            dayLabel: Days 3–4
+            description: Use window functions and CTEs to compute rolling aggregates and lagged features directly in SQL.
+      - id: big-data-spark
+        title: Big Data & Apache Spark
+        description: When datasets no longer fit in memory on a single machine, distributed processing frameworks like Spark let you clean, transform, and train models across a cluster.
+        resources:
+          - title: Apache Spark Documentation
+            url: https://spark.apache.org/docs/latest/
+            type: docs
+          - title: PySpark API Reference
+            url: https://spark.apache.org/docs/latest/api/python/index.html
+            type: docs
+        subtopics:
+          - title: 'Spark: DataFrames & Distributed Processing'
+            dayLabel: Days 1–2
+            description: Load and transform large datasets using PySpark DataFrames, and understand how Spark partitions and distributes work.
+          - title: 'Spark: MLlib for Distributed Training'
+            dayLabel: Days 3–4
+            description: Train a model at scale using Spark MLlib, and compare its API and workflow against scikit-learn.
+  - title: Career & System Design
+    topics:
+      - id: ml-system-design
+        title: ML System Design
+        description: ML system design interviews test whether you can turn an open-ended business problem into a full pipeline — data, features, model choice, evaluation, and deployment — under real-world constraints.
+        resources:
+          - title: Machine Learning System Design Interview (book)
+            url: https://www.amazon.com/Machine-Learning-System-Design-Interview/dp/1736049127
+            type: article
+          - title: Designing Machine Learning Systems (O'Reilly)
+            url: https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/
+            type: article
+        subtopics:
+          - title: 'ML System Design: Framing the Problem'
+            dayLabel: Days 1–2
+            description: Practice translating a vague business goal into a concrete ML problem, metric, and success criteria.
+          - title: 'ML System Design: End-to-End Architecture'
+            dayLabel: Days 3–4
+            description: Design a full pipeline — data collection, feature store, training, serving, and monitoring — for a sample product like a fraud detector or feed ranker.
+      - id: kaggle-portfolio-projects
+        title: Kaggle & Portfolio Projects
+        description: Competing on Kaggle and building a public portfolio of end-to-end projects is how you demonstrate practical ML skill to employers beyond coursework and certificates.
+        resources:
+          - title: Kaggle Competitions
+            url: https://www.kaggle.com/competitions
+            type: project
+          - title: Papers with Code
+            url: https://paperswithcode.com/
+            type: article
+        subtopics:
+          - title: 'Portfolio: Competing on Kaggle'
+            dayLabel: Days 1–2
+            description: Enter a Kaggle competition, study top public notebooks, and iterate on feature engineering and model selection.
+          - title: 'Portfolio: End-to-End Project & Presentation'
+            dayLabel: Days 3–4
+            description: Package a full project — data to deployed demo — on GitHub with a clear README, and prepare to explain your decisions in interviews.
+---
+
+Dive into machine learning with this 24-week structured learning path designed for developers who want to become job-ready ML engineers. You'll start with Python, math foundations, and data handling tools, then build a solid grounding in classical ML algorithms — regression, classification, clustering, and ensembles — before moving into deep learning with PyTorch/TensorFlow, CNNs, RNNs, and transformers. From there you'll go deep on specialized domains like NLP, computer vision, recommender systems, and time series, then round out the roadmap with MLOps (deployment, Docker, pipelines, cloud platforms, monitoring), big data tools, and ML system design/interview prep. By the end, you'll be equipped to build, evaluate, deploy, and maintain production-ready machine learning systems — and to talk through that work confidently in interviews.

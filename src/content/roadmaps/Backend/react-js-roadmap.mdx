@@ -1,0 +1,481 @@
+---
+title: React.js Frontend Development
+description: A structured 14-week roadmap for becoming a job-ready React developer — covering JavaScript/TypeScript fundamentals, core React concepts and hooks, routing, state management, styling, data fetching, forms, testing, performance, and build/deployment tooling.
+category: Frontend Frameworks
+estimatedTime: 14 weeks
+difficulty: Beginner to Intermediate
+topicCount: 27
+order: 3
+icon: ⚛️
+thumbnail: /thumbnails/icons/React.svg
+sections:
+  - title: Programming Fundamentals
+    topics:
+      - id: javascript-fundamentals
+        title: JavaScript Fundamentals
+        description: React is a JavaScript library at its core, so fluency with closures, array methods, and asynchronous behavior is what lets you read and write component logic without fighting the language itself.
+        resources:
+          - title: JavaScript Guide - MDN
+            url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+            type: docs
+          - title: The Modern JavaScript Tutorial
+            url: https://javascript.info/
+            type: course
+        subtopics:
+          - title: 'JavaScript Fundamentals: Core Language & ES6+ Syntax'
+            dayLabel: Days 1–2
+            description: Cover variables, scope, closures, destructuring, and spread/rest syntax, the ES6+ features React code leans on constantly.
+          - title: 'JavaScript Fundamentals: Array Methods & Async Patterns'
+            dayLabel: Days 3–4
+            description: Practice map/filter/reduce for rendering lists, and promises/async-await for handling asynchronous data fetching.
+          - title: 'JavaScript Fundamentals: The DOM & Event Handling'
+            dayLabel: Days 5–6
+            description: Understand how the DOM and event handling work natively, which clarifies what React's virtual DOM and synthetic events are abstracting over.
+      - id: typescript-fundamentals
+        title: TypeScript Fundamentals
+        description: TypeScript layers static types over JavaScript, catching prop mismatches and state bugs at compile time and making larger React codebases far easier to navigate and refactor safely.
+        resources:
+          - title: TypeScript Documentation
+            url: https://www.typescriptlang.org/docs/
+            type: docs
+          - title: TypeScript for JS Programmers
+            url: https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
+            type: article
+        subtopics:
+          - title: 'TypeScript Fundamentals: Types, Interfaces & Generics'
+            dayLabel: Days 1–2
+            description: Learn interfaces, type unions, and generics, and how the compiler infers types across function calls and objects.
+          - title: 'TypeScript Fundamentals: Typing React Components & Props'
+            dayLabel: Days 3–4
+            description: Type component props, state, and event handlers, and configure tsconfig for a React project.
+      - id: html-css-fundamentals
+        title: HTML & CSS Fundamentals
+        description: React ultimately renders HTML and relies on CSS for layout and styling, so a solid grip on semantic markup, the box model, and Flexbox/Grid is what makes component UIs actually look right.
+        resources:
+          - title: HTML - MDN
+            url: https://developer.mozilla.org/en-US/docs/Web/HTML
+            type: docs
+          - title: CSS - MDN
+            url: https://developer.mozilla.org/en-US/docs/Web/CSS
+            type: docs
+          - title: Flexbox Froggy
+            url: https://flexboxfroggy.com/
+            type: project
+        subtopics:
+          - title: 'HTML & CSS: Semantic Markup & the Box Model'
+            dayLabel: Days 1–2
+            description: Write semantic HTML and understand the CSS box model, specificity, and cascade rules.
+          - title: 'HTML & CSS: Flexbox & Grid Layouts'
+            dayLabel: Days 3–4
+            description: Build responsive layouts with Flexbox and CSS Grid, the two layout systems most component UIs are built on.
+  - title: Version Control
+    topics:
+      - id: git
+        title: Git
+        description: Git tracks every change to your components and configs locally, letting you experiment, branch, and roll back safely before code ever reaches a shared remote repository.
+        resources:
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Learn init, add, commit, log, and diff, and practice writing a clean, meaningful commit history.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Create and switch branches, resolve merge conflicts, and prepare a clean set of changes for review.
+      - id: github-gitlab
+        title: GitHub/GitLab
+        description: GitHub and GitLab host your Git repositories remotely and layer collaboration tools — pull requests, issues, and CI runners — on top of core Git.
+        resources:
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitLab Documentation
+            url: https://docs.gitlab.com/
+            type: docs
+        subtopics:
+          - title: Remote Repositories & Collaboration
+            dayLabel: Days 1–2
+            description: Push and pull against a remote, configure SSH keys, and manage forks and upstream syncing.
+          - title: Reviewing Pull/Merge Requests
+            dayLabel: Days 3–4
+            description: Open pull/merge requests, respond to review comments, and work with protected branches and required status checks.
+  - title: React Fundamentals
+    topics:
+      - id: react-basics-jsx
+        title: React Basics & JSX
+        description: JSX and the component model are the foundation everything else in React builds on — components are just functions that describe what the UI should look like for a given state.
+        resources:
+          - title: React Documentation - Describing the UI
+            url: https://react.dev/learn/describing-the-ui
+            type: docs
+          - title: React Official Tutorial
+            url: https://react.dev/learn
+            type: course
+        subtopics:
+          - title: 'React Basics: JSX Syntax & Components'
+            dayLabel: Days 1–2
+            description: Write JSX, understand how it compiles to function calls, and build your first function components.
+          - title: 'React Basics: Props & Component Composition'
+            dayLabel: Days 3–4
+            description: Pass props between components and compose smaller components into larger UI trees.
+          - title: 'React Basics: Rendering Lists & Conditional UI'
+            dayLabel: Days 5–6
+            description: Render lists with keys, and conditionally show UI based on props or state.
+      - id: state-and-events
+        title: State & Event Handling
+        description: State is what makes a React UI interactive, and understanding how state updates trigger re-renders — and how events are handled — is core to building anything beyond static markup.
+        resources:
+          - title: React Documentation - Adding Interactivity
+            url: https://react.dev/learn/adding-interactivity
+            type: docs
+          - title: React Documentation - Responding to Events
+            url: https://react.dev/learn/responding-to-events
+            type: docs
+        subtopics:
+          - title: 'State & Events: useState & Local Component State'
+            dayLabel: Days 1–2
+            description: Manage local state with useState, and understand why state updates are asynchronous and batched.
+          - title: 'State & Events: Handling Forms & User Input'
+            dayLabel: Days 3–4
+            description: Handle click, change, and submit events, and build controlled inputs that stay in sync with state.
+      - id: react-hooks
+        title: React Hooks
+        description: Hooks let function components manage state, side effects, and context without classes, and they're the primary API you'll use to write React in any modern codebase.
+        resources:
+          - title: React Documentation - Hooks Reference
+            url: https://react.dev/reference/react/hooks
+            type: docs
+          - title: A Complete Guide to useEffect
+            url: https://overreacted.io/a-complete-guide-to-useeffect/
+            type: article
+        subtopics:
+          - title: 'Hooks: useEffect & Side Effects'
+            dayLabel: Days 1–2
+            description: Use useEffect for data fetching, subscriptions, and cleanup, and understand its dependency array.
+          - title: 'Hooks: useRef, useMemo & useCallback'
+            dayLabel: Days 3–4
+            description: Use useRef for DOM access and mutable values, and useMemo/useCallback to avoid unnecessary recalculations and re-renders.
+      - id: component-lifecycle-rendering
+        title: Component Lifecycle & Rendering Behavior
+        description: Understanding when and why React re-renders a component — and how the virtual DOM reconciles changes — is what lets you reason about bugs and performance instead of guessing.
+        resources:
+          - title: React Documentation - Render and Commit
+            url: https://react.dev/learn/render-and-commit
+            type: docs
+          - title: React Documentation - Preserving and Resetting State
+            url: https://react.dev/learn/preserving-and-resetting-state
+            type: docs
+        subtopics:
+          - title: 'Rendering: The Render & Commit Phases'
+            dayLabel: Days 1–2
+            description: Trace how React renders components, diffs the virtual DOM, and commits changes to the real DOM.
+          - title: 'Rendering: Keys, Reconciliation & State Preservation'
+            dayLabel: Days 3–4
+            description: Understand how keys affect reconciliation, and when component state is preserved versus reset between renders.
+  - title: Routing & State Management
+    topics:
+      - id: react-router
+        title: React Router
+        description: React Router turns a React app into a true multi-page experience, mapping URLs to components so users can navigate, bookmark, and share specific views.
+        resources:
+          - title: React Router Documentation
+            url: https://reactrouter.com/en/main
+            type: docs
+        subtopics:
+          - title: 'React Router: Routes, Links & Navigation'
+            dayLabel: Days 1–2
+            description: Define routes, navigate with Link/useNavigate, and read URL params and query strings.
+          - title: 'React Router: Nested Routes & Route Protection'
+            dayLabel: Days 3–4
+            description: Build nested layouts with nested routes, and implement protected routes that redirect unauthenticated users.
+      - id: context-api
+        title: Context API
+        description: The Context API lets you share state across a component tree without manually threading props through every level, solving "prop drilling" for moderately shared state like theme or auth.
+        resources:
+          - title: React Documentation - Passing Data Deeply with Context
+            url: https://react.dev/learn/passing-data-deeply-with-context
+            type: docs
+        subtopics:
+          - title: 'Context API: Creating & Consuming Context'
+            dayLabel: Days 1–2
+            description: Create a context, provide it at the right level of the tree, and consume it with useContext.
+          - title: 'Context API: Combining Context with useReducer'
+            dayLabel: Days 3–4
+            description: Pair Context with useReducer to build a lightweight global state store without an external library.
+      - id: redux-zustand
+        title: State Management (Redux/Zustand)
+        description: As apps grow, dedicated state management libraries like Redux Toolkit or Zustand provide predictable, centralized state with better debugging tools than Context alone can offer.
+        resources:
+          - title: Redux Toolkit Documentation
+            url: https://redux-toolkit.js.org/introduction/getting-started
+            type: docs
+          - title: Zustand Documentation
+            url: https://zustand.docs.pmnd.rs/getting-started/introduction
+            type: docs
+        subtopics:
+          - title: 'State Management: Redux Toolkit Fundamentals'
+            dayLabel: Days 1–2
+            description: Set up a Redux Toolkit store with slices, actions, and reducers, and connect components with useSelector/useDispatch.
+          - title: 'State Management: Lightweight Stores with Zustand'
+            dayLabel: Days 3–4
+            description: Build a global store with Zustand for simpler use cases, and compare its API and boilerplate against Redux.
+  - title: Styling & UI
+    topics:
+      - id: css-styling-tailwind
+        title: CSS-in-JS & Tailwind CSS
+        description: Modern React apps style components with utility-first frameworks like Tailwind or CSS-in-JS libraries, keeping styles colocated with the components they belong to.
+        resources:
+          - title: Tailwind CSS Documentation
+            url: https://tailwindcss.com/docs
+            type: docs
+          - title: styled-components Documentation
+            url: https://styled-components.com/docs
+            type: docs
+        subtopics:
+          - title: 'Styling: Utility-First CSS with Tailwind'
+            dayLabel: Days 1–2
+            description: Style components using Tailwind's utility classes, and configure themes, spacing, and breakpoints.
+          - title: 'Styling: CSS-in-JS with styled-components'
+            dayLabel: Days 3–4
+            description: Write component-scoped styles with styled-components, and pass props into styles dynamically.
+      - id: component-libraries
+        title: Component Libraries
+        description: Component libraries like MUI or shadcn/ui provide production-ready, accessible building blocks, letting you assemble polished UIs without designing every button and modal from scratch.
+        resources:
+          - title: Material UI Documentation
+            url: https://mui.com/material-ui/getting-started/
+            type: docs
+          - title: shadcn/ui Documentation
+            url: https://ui.shadcn.com/docs
+            type: docs
+        subtopics:
+          - title: 'Component Libraries: Using & Theming MUI'
+            dayLabel: Days 1–2
+            description: Build UI with Material UI components, and customize the theme to match a design system.
+          - title: 'Component Libraries: Composable Components with shadcn/ui'
+            dayLabel: Days 3–4
+            description: Add and customize shadcn/ui components, which ship as editable source code rather than a black-box package.
+  - title: Data Fetching & APIs
+    topics:
+      - id: fetch-axios-rest
+        title: Fetch, Axios & REST Integration
+        description: Most React apps exist to display and manipulate data from a backend, and knowing how to call REST APIs, handle loading/error states, and manage request lifecycles is a daily-use skill.
+        resources:
+          - title: Fetch API - MDN
+            url: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+            type: docs
+          - title: Axios Documentation
+            url: https://axios-http.com/docs/intro
+            type: docs
+        subtopics:
+          - title: 'REST Integration: Fetching Data with useEffect'
+            dayLabel: Days 1–2
+            description: Fetch data on mount with fetch/Axios inside useEffect, and manage loading, error, and success states manually.
+          - title: 'REST Integration: POST/PUT/DELETE & Error Handling'
+            dayLabel: Days 3–4
+            description: Send create/update/delete requests, and build consistent error handling around failed network calls.
+      - id: react-query-swr
+        title: React Query / TanStack Query
+        description: Data-fetching libraries like TanStack Query handle caching, background refetching, and request deduplication automatically, eliminating most of the manual loading-state boilerplate.
+        resources:
+          - title: TanStack Query Documentation
+            url: https://tanstack.com/query/latest/docs/framework/react/overview
+            type: docs
+        subtopics:
+          - title: 'TanStack Query: Queries & Caching'
+            dayLabel: Days 1–2
+            description: Fetch and cache data with useQuery, and understand stale time, cache time, and automatic refetching.
+          - title: 'TanStack Query: Mutations & Optimistic Updates'
+            dayLabel: Days 3–4
+            description: Perform mutations with useMutation, and implement optimistic updates that reflect changes before the server confirms them.
+      - id: graphql-apollo
+        title: GraphQL with Apollo Client
+        description: GraphQL lets a React app request exactly the fields it needs from a single typed endpoint, and Apollo Client integrates that querying model directly into components with built-in caching.
+        resources:
+          - title: Apollo Client Documentation
+            url: https://www.apollographql.com/docs/react
+            type: docs
+        subtopics:
+          - title: 'Apollo Client: Queries in Components'
+            dayLabel: Days 1–2
+            description: Set up Apollo Client and fetch data in components using the useQuery hook.
+          - title: 'Apollo Client: Mutations & Cache Updates'
+            dayLabel: Days 3–4
+            description: Perform mutations with useMutation, and update Apollo's normalized cache so the UI reflects changes immediately.
+  - title: Forms & Validation
+    topics:
+      - id: react-hook-form
+        title: React Hook Form
+        description: React Hook Form manages form state with minimal re-renders by relying on uncontrolled inputs internally, making it the standard choice for anything beyond a couple of fields.
+        resources:
+          - title: React Hook Form Documentation
+            url: https://react-hook-form.com/get-started
+            type: docs
+        subtopics:
+          - title: 'React Hook Form: Registering Fields & Handling Submit'
+            dayLabel: Days 1–2
+            description: Register form fields, handle submission, and read validation errors with minimal boilerplate.
+          - title: 'React Hook Form: Complex & Dynamic Forms'
+            dayLabel: Days 3–4
+            description: Build dynamic field arrays and multi-step forms, and integrate a custom UI component library with the form state.
+      - id: form-validation-zod
+        title: Form Validation with Zod/Yup
+        description: Schema-based validation libraries like Zod define the shape and rules of form data in one place, keeping validation logic consistent between the client and, often, the backend.
+        resources:
+          - title: Zod Documentation
+            url: https://zod.dev/
+            type: docs
+          - title: React Hook Form - Resolvers (Zod integration)
+            url: https://react-hook-form.com/get-started#SchemaValidation
+            type: docs
+        subtopics:
+          - title: 'Form Validation: Defining Schemas with Zod'
+            dayLabel: Days 1–2
+            description: Define validation schemas with Zod for required fields, formats, and custom rules.
+          - title: 'Form Validation: Integrating Zod with React Hook Form'
+            dayLabel: Days 3–4
+            description: Wire a Zod schema into React Hook Form's resolver so validation errors surface automatically per field.
+  - title: Testing
+    topics:
+      - id: unit-testing-jest-rtl
+        title: Unit Testing (Jest & React Testing Library)
+        description: Testing components the way a user interacts with them — rather than their internal implementation — catches real regressions and is the philosophy React Testing Library is built around.
+        resources:
+          - title: React Testing Library Documentation
+            url: https://testing-library.com/docs/react-testing-library/intro/
+            type: docs
+          - title: Jest Documentation
+            url: https://jestjs.io/docs/getting-started
+            type: docs
+        subtopics:
+          - title: 'Unit Testing: Rendering & Querying Components'
+            dayLabel: Days 1–2
+            description: Render components in tests and query them by role/text the way a user would find them, avoiding brittle implementation-detail selectors.
+          - title: 'Unit Testing: Simulating User Events & Assertions'
+            dayLabel: Days 3–4
+            description: Simulate clicks and input with userEvent, and assert on the resulting UI state and side effects.
+      - id: e2e-testing-cypress-playwright
+        title: E2E Testing (Cypress/Playwright)
+        description: End-to-end tests drive a real browser through full user flows, catching integration issues across frontend, routing, and backend that unit tests can't see.
+        resources:
+          - title: Playwright Documentation
+            url: https://playwright.dev/docs/intro
+            type: docs
+          - title: Cypress Documentation
+            url: https://docs.cypress.io/app/get-started/why-cypress
+            type: docs
+        subtopics:
+          - title: 'E2E Testing: Writing Your First Test'
+            dayLabel: Days 1–2
+            description: Write an E2E test with Playwright or Cypress that navigates a real page and asserts on visible UI.
+          - title: 'E2E Testing: Critical User Flows & CI Integration'
+            dayLabel: Days 3–4
+            description: Cover a critical user flow like login or checkout end to end, and run the suite automatically in CI.
+  - title: Performance & Advanced Patterns
+    topics:
+      - id: performance-optimization
+        title: Performance Optimization
+        description: Unnecessary re-renders and large bundles are the most common causes of a sluggish React app, and knowing how to profile and fix them is what separates a working app from a fast one.
+        resources:
+          - title: React Documentation - Optimizing Performance
+            url: https://react.dev/learn/render-and-commit
+            type: docs
+          - title: React DevTools Profiler
+            url: https://react.dev/learn/react-developer-tools
+            type: docs
+        subtopics:
+          - title: 'Performance: Profiling Re-Renders'
+            dayLabel: Days 1–2
+            description: Use the React DevTools Profiler to identify unnecessary re-renders, and apply React.memo where it actually helps.
+          - title: 'Performance: Code Splitting & Lazy Loading'
+            dayLabel: Days 3–4
+            description: Split bundles with React.lazy and Suspense, and measure the impact on initial load time.
+      - id: custom-hooks-advanced-patterns
+        title: Custom Hooks & Advanced Patterns
+        description: Extracting reusable logic into custom hooks — and understanding patterns like compound components — is what keeps larger React codebases DRY and maintainable as they grow.
+        resources:
+          - title: React Documentation - Reusing Logic with Custom Hooks
+            url: https://react.dev/learn/reusing-logic-with-custom-hooks
+            type: docs
+          - title: Patterns.dev - React Patterns
+            url: https://www.patterns.dev/react
+            type: article
+        subtopics:
+          - title: 'Custom Hooks: Extracting Reusable Logic'
+            dayLabel: Days 1–2
+            description: Extract shared stateful logic (e.g. data fetching, form handling) into custom hooks that multiple components can reuse.
+          - title: 'Advanced Patterns: Compound Components & Render Props'
+            dayLabel: Days 3–4
+            description: Build compound components and understand render props, patterns used by many component libraries internally.
+      - id: ssr-nextjs
+        title: Server-Side Rendering & Next.js
+        description: Next.js extends React with server-side rendering, static generation, and file-based routing, addressing SEO and initial-load performance that a pure client-side React app struggles with.
+        resources:
+          - title: Next.js Documentation
+            url: https://nextjs.org/docs
+            type: docs
+        subtopics:
+          - title: 'Next.js: App Router & File-Based Routing'
+            dayLabel: Days 1–2
+            description: Set up a Next.js app, understand the App Router's file-based routing, and build server and client components.
+          - title: 'Next.js: Data Fetching & Rendering Strategies'
+            dayLabel: Days 3–4
+            description: Compare server-side rendering, static generation, and incremental static regeneration, and fetch data appropriately for each.
+  - title: Build Tools & Deployment
+    topics:
+      - id: build-tools-vite-webpack
+        title: Build Tools (Vite/Webpack)
+        description: Build tools bundle, transpile, and optimize your React code for the browser, and understanding what they do under the hood helps you debug config issues instead of copy-pasting fixes blindly.
+        resources:
+          - title: Vite Documentation
+            url: https://vite.dev/guide/
+            type: docs
+          - title: Webpack Documentation
+            url: https://webpack.js.org/concepts/
+            type: docs
+        subtopics:
+          - title: 'Build Tools: Setting Up a Project with Vite'
+            dayLabel: Days 1–2
+            description: Scaffold a React project with Vite, and understand its dev server and fast HMR (hot module replacement).
+          - title: 'Build Tools: Bundling, Env Variables & Config'
+            dayLabel: Days 3–4
+            description: Configure environment variables and build output, and understand bundling/tree-shaking basics.
+      - id: cicd-pipelines
+        title: CI/CD Pipelines
+        description: CI/CD pipelines automatically lint, test, and build your React app on every push, catching regressions before they ever reach users or a deployed preview.
+        resources:
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+        subtopics:
+          - title: 'CI/CD: Automated Linting & Testing'
+            dayLabel: Days 1–2
+            description: Set up a GitHub Actions workflow that installs dependencies, lints, and runs tests on every pull request.
+          - title: 'CI/CD: Automated Build & Preview Deployments'
+            dayLabel: Days 3–4
+            description: Extend the pipeline to build the app and generate a preview deployment automatically on each pull request.
+      - id: deployment-platforms
+        title: Deployment Platforms
+        description: Once built and tested, a React app needs a hosting platform — static hosts and edge networks make deployment for frontend apps far simpler than a traditional server setup.
+        resources:
+          - title: Vercel Documentation
+            url: https://vercel.com/docs
+            type: docs
+          - title: Netlify Documentation
+            url: https://docs.netlify.com/
+            type: docs
+        subtopics:
+          - title: Deploying a Static/SPA Build
+            dayLabel: Days 1–2
+            description: Deploy a production build to Vercel or Netlify, and configure redirects/rewrites for client-side routing.
+          - title: Custom Domains, Environments & Rollbacks
+            dayLabel: Days 3–4
+            description: Attach a custom domain, configure environment-specific variables, and practice rolling back a bad deployment.
+---
+
+Dive into React.js frontend development with this 14-week structured learning path designed for developers with some JavaScript experience. You'll build a solid foundation in modern JavaScript/TypeScript and HTML/CSS, then move into core React concepts — components, state, hooks, and rendering behavior — before advancing to routing, state management, styling, and data fetching. From there you'll cover forms and validation, testing (unit and end-to-end), performance optimization, advanced patterns, and server-side rendering with Next.js, before finishing with build tools, CI/CD, and deployment. By the end, you'll be equipped to design, build, test, and ship production-ready React applications.

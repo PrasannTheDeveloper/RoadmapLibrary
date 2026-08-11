@@ -8,7 +8,7 @@ const roadmaps = defineCollection({
     description: z.string(),
     category: z.string(),
     estimatedTime: z.string(),
-    difficulty: z.enum(['Beginner', 'Intermediate', 'Advanced']),
+    difficulty: z.string(),
     topicCount: z.number(),
     order: z.number(),
     icon: z.string(),

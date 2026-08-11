@@ -524,17 +524,25 @@ img {
 }
 
 .badge-frontend { background-color: #dbeafe; color: #1d4ed8; }
+.badge-frontend-frameworks { background-color: #e0e7ff; color: #3730a3; }
 .badge-backend { background-color: #dcfce7; color: #15803d; }
+.badge-python-frameworks { background-color: #dcfce7; color: #15803d; }
 .badge-devops { background-color: #fef3c7; color: #b45309; }
 .badge-fullstack { background-color: var(--color-violet-soft); color: var(--color-violet); }
 .badge-ai-ml { background-color: #fce7f3; color: #be185d; }
+.badge-machine-learning---ai,
+.badge-machine-learning-ai { background-color: #fce7f3; color: #be185d; }
 .badge-data-science { background-color: var(--color-cyan-soft); color: #0d9488; }
 .badge-cybersecurity { background-color: #fee2e2; color: #dc2626; }
 .badge-programming-languages { background-color: #f3e8ff; color: #6b21a8; }
 
 html.dark .badge-frontend { background-color: #1e3a8a; color: #93c5fd; }
+html.dark .badge-frontend-frameworks { background-color: #312e81; color: #c7d2fe; }
 html.dark .badge-backend { background-color: #14532d; color: #86efac; }
+html.dark .badge-python-frameworks { background-color: #14532d; color: #86efac; }
 html.dark .badge-devops { background-color: #78350f; color: #fde68a; }
+html.dark .badge-machine-learning---ai,
+html.dark .badge-machine-learning-ai { background-color: #831843; color: #fbcfe8; }
 html.dark .badge-programming-languages { background-color: #581c87; color: #e9d5ff; }
 
 /* ================================================================

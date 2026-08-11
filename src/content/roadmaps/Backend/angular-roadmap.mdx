@@ -1,0 +1,473 @@
+---
+title: Angular Frontend Development
+description: A structured 14-week roadmap for becoming a job-ready Angular developer — covering TypeScript fundamentals, core Angular concepts, RxJS and reactive state, routing, forms, HTTP integration, styling, testing, performance, and build/deployment tooling.
+category: Frontend Frameworks
+estimatedTime: 14 weeks
+difficulty: Beginner to Intermediate
+topicCount: 28
+order: 4
+icon: 🅰️
+thumbnail: /thumbnails/icons/Angular.svg
+sections:
+  - title: Programming Fundamentals
+    topics:
+      - id: javascript-fundamentals
+        title: JavaScript Fundamentals
+        description: Angular compiles down to JavaScript, and understanding the language's closures, array methods, and asynchronous behavior helps you reason about what Angular's abstractions are doing underneath.
+        resources:
+          - title: JavaScript Guide - MDN
+            url: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+            type: docs
+          - title: The Modern JavaScript Tutorial
+            url: https://javascript.info/
+            type: course
+        subtopics:
+          - title: 'JavaScript Fundamentals: Core Language & ES6+ Syntax'
+            dayLabel: Days 1–2
+            description: Cover variables, scope, closures, destructuring, and spread/rest syntax — the ES6+ features Angular code relies on throughout.
+          - title: 'JavaScript Fundamentals: Array Methods & Async Patterns'
+            dayLabel: Days 3–4
+            description: Practice map/filter/reduce for transforming data, and promises/async-await, which underpin much of Angular's HTTP and async workflows.
+          - title: 'JavaScript Fundamentals: The DOM & Event Handling'
+            dayLabel: Days 5–6
+            description: Understand how the DOM and native event handling work, which clarifies what Angular's template binding and event syntax abstract over.
+      - id: typescript-fundamentals
+        title: TypeScript Fundamentals
+        description: Angular is built on TypeScript from the ground up — components, services, and modules are all typed classes — so fluency here isn't optional the way it can be in other frontend frameworks.
+        resources:
+          - title: TypeScript Documentation
+            url: https://www.typescriptlang.org/docs/
+            type: docs
+          - title: TypeScript for JS Programmers
+            url: https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
+            type: article
+        subtopics:
+          - title: 'TypeScript Fundamentals: Types, Interfaces & Generics'
+            dayLabel: Days 1–2
+            description: Learn interfaces, type unions, and generics, and how the compiler infers and enforces types across classes and functions.
+          - title: 'TypeScript Fundamentals: Classes, Decorators & Access Modifiers'
+            dayLabel: Days 3–4
+            description: Work with classes, constructors, and access modifiers, and understand decorators — the syntax Angular uses to define components and services.
+      - id: html-css-fundamentals
+        title: HTML & CSS Fundamentals
+        description: Angular templates are ultimately HTML with extra syntax, and a solid grip on semantic markup, the box model, and Flexbox/Grid is what makes component templates render correctly.
+        resources:
+          - title: HTML - MDN
+            url: https://developer.mozilla.org/en-US/docs/Web/HTML
+            type: docs
+          - title: CSS - MDN
+            url: https://developer.mozilla.org/en-US/docs/Web/CSS
+            type: docs
+        subtopics:
+          - title: 'HTML & CSS: Semantic Markup & the Box Model'
+            dayLabel: Days 1–2
+            description: Write semantic HTML and understand the CSS box model, specificity, and cascade rules.
+          - title: 'HTML & CSS: Flexbox & Grid Layouts'
+            dayLabel: Days 3–4
+            description: Build responsive layouts with Flexbox and CSS Grid, the two layout systems most Angular component templates are built on.
+  - title: Version Control
+    topics:
+      - id: git
+        title: Git
+        description: Git tracks every change to your components and configs locally, letting you experiment, branch, and roll back safely before code ever reaches a shared remote repository.
+        resources:
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Learn init, add, commit, log, and diff, and practice writing a clean, meaningful commit history.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Create and switch branches, resolve merge conflicts, and prepare a clean set of changes for review.
+      - id: github-gitlab
+        title: GitHub/GitLab
+        description: GitHub and GitLab host your Git repositories remotely and layer collaboration tools — pull requests, issues, and CI runners — on top of core Git.
+        resources:
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitLab Documentation
+            url: https://docs.gitlab.com/
+            type: docs
+        subtopics:
+          - title: Remote Repositories & Collaboration
+            dayLabel: Days 1–2
+            description: Push and pull against a remote, configure SSH keys, and manage forks and upstream syncing.
+          - title: Reviewing Pull/Merge Requests
+            dayLabel: Days 3–4
+            description: Open pull/merge requests, respond to review comments, and work with protected branches and required status checks.
+  - title: Angular Fundamentals
+    topics:
+      - id: angular-cli-project-structure
+        title: Angular CLI & Project Structure
+        description: The Angular CLI scaffolds, builds, and serves your app with sensible defaults, and understanding the generated project structure is the first step to navigating any Angular codebase confidently.
+        resources:
+          - title: Angular CLI Documentation
+            url: https://angular.dev/tools/cli
+            type: docs
+          - title: Angular - Setting up the Local Environment
+            url: https://angular.dev/installation
+            type: docs
+        subtopics:
+          - title: 'Angular CLI: Project Setup & File Structure'
+            dayLabel: Days 1–2
+            description: Scaffold a new Angular app with the CLI, and understand the generated folder structure, config files, and build targets.
+          - title: 'Angular CLI: Generating Components, Services & Schematics'
+            dayLabel: Days 3–4
+            description: Use CLI schematics to generate components, services, and modules consistently instead of creating files by hand.
+      - id: components-templates
+        title: Components & Templates
+        description: Components are the fundamental building block of an Angular app, pairing a TypeScript class with an HTML template — understanding this pairing is the foundation everything else builds on.
+        resources:
+          - title: Angular Documentation - Components
+            url: https://angular.dev/guide/components
+            type: docs
+        subtopics:
+          - title: 'Components: Structure, Inputs & Outputs'
+            dayLabel: Days 1–2
+            description: Build components with @Input/@Output decorators to pass data down and emit events up the component tree.
+          - title: 'Components: Lifecycle Hooks'
+            dayLabel: Days 3–4
+            description: Use lifecycle hooks like ngOnInit and ngOnDestroy to run logic at the right point in a component's life.
+      - id: data-binding-directives
+        title: Data Binding & Directives
+        description: Angular's binding syntax and built-in directives are what connect your component's data to the DOM, letting templates stay dynamic without manual DOM manipulation.
+        resources:
+          - title: Angular Documentation - Templates
+            url: https://angular.dev/guide/templates
+            type: docs
+          - title: Angular Documentation - Built-in Directives
+            url: https://angular.dev/guide/directives
+            type: docs
+        subtopics:
+          - title: 'Data Binding: Interpolation, Property & Event Binding'
+            dayLabel: Days 1–2
+            description: Use interpolation, property binding, and event binding to connect component state to the template in both directions.
+          - title: 'Directives: Structural & Attribute Directives'
+            dayLabel: Days 3–4
+            description: Apply built-in structural directives (@if, @for) and attribute directives (ngClass, ngStyle) to control rendering.
+      - id: modules-dependency-injection
+        title: Modules & Dependency Injection
+        description: Angular's dependency injection system provides services to components automatically, and understanding it — along with standalone components replacing NgModules — is key to structuring a maintainable app.
+        resources:
+          - title: Angular Documentation - Dependency Injection
+            url: https://angular.dev/guide/di
+            type: docs
+          - title: Angular Documentation - Standalone Components
+            url: https://angular.dev/guide/components/importing
+            type: docs
+        subtopics:
+          - title: 'Dependency Injection: Providers & Injectable Services'
+            dayLabel: Days 1–2
+            description: Create injectable services and understand how Angular's injector resolves and provides them to components.
+          - title: 'Modules: NgModules vs Standalone Components'
+            dayLabel: Days 3–4
+            description: Compare the traditional NgModule structure with modern standalone components, and understand when each is used.
+  - title: Reactive Programming & State
+    topics:
+      - id: rxjs-fundamentals
+        title: RxJS Fundamentals
+        description: RxJS and its Observable pattern power Angular's HTTP client, forms, and router under the hood, so understanding streams and operators is essential to working with Angular idiomatically rather than fighting it.
+        resources:
+          - title: RxJS Documentation
+            url: https://rxjs.dev/guide/overview
+            type: docs
+          - title: Learn RxJS
+            url: https://www.learnrxjs.io/
+            type: article
+        subtopics:
+          - title: 'RxJS: Observables, Subjects & Subscriptions'
+            dayLabel: Days 1–2
+            description: Create and subscribe to Observables, and understand the difference between Observables, Subjects, and BehaviorSubjects.
+          - title: 'RxJS: Operators & Unsubscribing'
+            dayLabel: Days 3–4
+            description: Use common operators (map, filter, switchMap, debounceTime), and manage unsubscribing to avoid memory leaks.
+      - id: angular-signals
+        title: Angular Signals
+        description: Signals are Angular's newer reactivity primitive, offering a simpler, more fine-grained alternative to RxJS for local component state and enabling better change-detection performance.
+        resources:
+          - title: Angular Documentation - Signals
+            url: https://angular.dev/guide/signals
+            type: docs
+        subtopics:
+          - title: 'Signals: Creating & Reading Reactive State'
+            dayLabel: Days 1–2
+            description: Create signals for component state, and read/update them, seeing how templates automatically react to changes.
+          - title: 'Signals: Computed Signals & Effects'
+            dayLabel: Days 3–4
+            description: Derive state with computed signals, and use effects to run side effects when signal values change.
+      - id: ngrx-state-management
+        title: NgRx State Management
+        description: NgRx applies the Redux pattern to Angular, giving larger apps a single, predictable, centrally-managed store instead of scattering shared state across services.
+        resources:
+          - title: NgRx Documentation
+            url: https://ngrx.io/docs
+            type: docs
+        subtopics:
+          - title: 'NgRx: Store, Actions & Reducers'
+            dayLabel: Days 1–2
+            description: Set up an NgRx store with actions and reducers, and dispatch actions from components to update state.
+          - title: 'NgRx: Selectors & Effects'
+            dayLabel: Days 3–4
+            description: Use selectors to read derived state efficiently, and NgRx Effects to handle side effects like API calls.
+  - title: Routing & Navigation
+    topics:
+      - id: angular-router
+        title: Angular Router
+        description: The Angular Router turns an app into a true multi-view experience, mapping URLs to components so users can navigate, bookmark, and deep-link into specific views.
+        resources:
+          - title: Angular Documentation - Routing
+            url: https://angular.dev/guide/routing
+            type: docs
+        subtopics:
+          - title: 'Angular Router: Route Configuration & Navigation'
+            dayLabel: Days 1–2
+            description: Configure routes, navigate with routerLink and the Router service, and read route params and query params.
+          - title: 'Angular Router: Nested & Lazy-Loaded Routes'
+            dayLabel: Days 3–4
+            description: Build nested layouts with child routes, and lazy-load feature routes to keep the initial bundle small.
+      - id: route-guards-resolvers
+        title: Route Guards & Resolvers
+        description: Guards and resolvers let you control access to routes and pre-fetch data before a component even loads, keeping navigation logic out of individual components.
+        resources:
+          - title: Angular Documentation - Route Guards
+            url: https://angular.dev/guide/routing/route-guards
+            type: docs
+        subtopics:
+          - title: 'Guards: CanActivate & Authentication Checks'
+            dayLabel: Days 1–2
+            description: Implement CanActivate guards that redirect unauthenticated users before a protected route loads.
+          - title: 'Resolvers: Pre-Fetching Route Data'
+            dayLabel: Days 3–4
+            description: Use resolvers to fetch data before a route activates, so the component renders with data already available.
+  - title: Forms
+    topics:
+      - id: template-driven-forms
+        title: Template-Driven Forms
+        description: Template-driven forms define validation and structure directly in the HTML template, offering a fast, declarative way to build simpler forms.
+        resources:
+          - title: Angular Documentation - Template-Driven Forms
+            url: https://angular.dev/guide/forms/template-driven-forms
+            type: docs
+        subtopics:
+          - title: 'Template-Driven Forms: ngModel & Two-Way Binding'
+            dayLabel: Days 1–2
+            description: Build a form using ngModel for two-way data binding, and read form state directly from the template.
+          - title: 'Template-Driven Forms: Built-in Validators'
+            dayLabel: Days 3–4
+            description: Apply built-in validators (required, minlength, pattern) and display validation messages conditionally.
+      - id: reactive-forms
+        title: Reactive Forms & Validation
+        description: Reactive forms build form structure and validation in the component class instead of the template, giving far more control for complex, dynamic, or heavily-validated forms.
+        resources:
+          - title: Angular Documentation - Reactive Forms
+            url: https://angular.dev/guide/forms/reactive-forms
+            type: docs
+        subtopics:
+          - title: 'Reactive Forms: FormGroup, FormControl & FormArray'
+            dayLabel: Days 1–2
+            description: Build forms with FormGroup, FormControl, and FormArray, defining structure and validators in TypeScript.
+          - title: 'Reactive Forms: Custom & Async Validators'
+            dayLabel: Days 3–4
+            description: Write custom synchronous validators and async validators (e.g. checking username availability against an API).
+  - title: HTTP & APIs
+    topics:
+      - id: httpclient-rest
+        title: HttpClient & REST Integration
+        description: Angular's HttpClient is how a component or service talks to a backend, returning Observables that integrate naturally with the rest of Angular's RxJS-based patterns.
+        resources:
+          - title: Angular Documentation - HttpClient
+            url: https://angular.dev/guide/http
+            type: docs
+        subtopics:
+          - title: 'HttpClient: GET/POST Requests & Typed Responses'
+            dayLabel: Days 1–2
+            description: Make GET and POST requests with HttpClient, and type the response payloads with TypeScript interfaces.
+          - title: 'HttpClient: Handling Errors & Loading States'
+            dayLabel: Days 3–4
+            description: Handle failed requests with RxJS error operators, and manage loading state around API calls in a service.
+      - id: interceptors-error-handling
+        title: Interceptors & Error Handling
+        description: HTTP interceptors let you attach auth tokens, log requests, or handle errors globally in one place, instead of repeating that logic in every service that calls the API.
+        resources:
+          - title: Angular Documentation - HTTP Interceptors
+            url: https://angular.dev/guide/http/interceptors
+            type: docs
+        subtopics:
+          - title: 'Interceptors: Attaching Auth Tokens'
+            dayLabel: Days 1–2
+            description: Write an interceptor that attaches an auth token to outgoing requests automatically.
+          - title: 'Interceptors: Global Error Handling & Retries'
+            dayLabel: Days 3–4
+            description: Build an interceptor for centralized error handling, and add retry logic for transient network failures.
+  - title: Styling & UI
+    topics:
+      - id: angular-material
+        title: Angular Material
+        description: Angular Material provides a full set of accessible, pre-built UI components that follow Material Design, letting you assemble polished interfaces without building every widget from scratch.
+        resources:
+          - title: Angular Material Documentation
+            url: https://material.angular.dev/
+            type: docs
+        subtopics:
+          - title: 'Angular Material: Core Components & Layout'
+            dayLabel: Days 1–2
+            description: Add Angular Material to a project and use core components like buttons, cards, and form fields.
+          - title: 'Angular Material: Theming & Customization'
+            dayLabel: Days 3–4
+            description: Customize a Material theme's colors and typography to match a design system.
+      - id: component-styling
+        title: Component Styling & View Encapsulation
+        description: Angular scopes component styles by default through view encapsulation, and understanding how that works — along with SCSS support — is key to avoiding unexpected style leakage or conflicts.
+        resources:
+          - title: Angular Documentation - Component Styling
+            url: https://angular.dev/guide/components/styling
+            type: docs
+        subtopics:
+          - title: 'Component Styling: Scoped Styles & SCSS'
+            dayLabel: Days 1–2
+            description: Write component-scoped SCSS styles, and understand how Angular's view encapsulation isolates them by default.
+          - title: 'Component Styling: ViewEncapsulation Modes & Global Styles'
+            dayLabel: Days 3–4
+            description: Compare Emulated, None, and ShadowDom encapsulation modes, and decide when global styles are appropriate.
+  - title: Testing
+    topics:
+      - id: unit-testing-jasmine-karma
+        title: Unit Testing (Jasmine & Karma)
+        description: Angular ships with Jasmine and Karma configured out of the box, and testing components and services in isolation catches regressions early, before they reach a real user.
+        resources:
+          - title: Angular Documentation - Testing
+            url: https://angular.dev/guide/testing
+            type: docs
+          - title: Jasmine Documentation
+            url: https://jasmine.github.io/
+            type: docs
+        subtopics:
+          - title: 'Unit Testing: TestBed & Component Tests'
+            dayLabel: Days 1–2
+            description: Configure TestBed to test components in isolation, and write assertions against rendered template output.
+          - title: 'Unit Testing: Testing Services & Mocking Dependencies'
+            dayLabel: Days 3–4
+            description: Test services independently, and mock dependencies like HttpClient using Angular's testing utilities.
+      - id: e2e-testing-cypress-playwright
+        title: E2E Testing (Cypress/Playwright)
+        description: End-to-end tests drive a real browser through full user flows, catching integration issues across routing, forms, and backend calls that unit tests alone can't see.
+        resources:
+          - title: Playwright Documentation
+            url: https://playwright.dev/docs/intro
+            type: docs
+          - title: Cypress Documentation
+            url: https://docs.cypress.io/app/get-started/why-cypress
+            type: docs
+        subtopics:
+          - title: 'E2E Testing: Writing Your First Test'
+            dayLabel: Days 1–2
+            description: Write an E2E test with Playwright or Cypress that navigates a real page and asserts on visible UI.
+          - title: 'E2E Testing: Critical User Flows & CI Integration'
+            dayLabel: Days 3–4
+            description: Cover a critical user flow like login or checkout end to end, and run the suite automatically in CI.
+  - title: Performance & Advanced Patterns
+    topics:
+      - id: change-detection-performance
+        title: Change Detection & Performance Optimization
+        description: Angular's change detection re-checks the component tree for updates, and understanding how it works — and how to control it — is what separates a fast Angular app from one that lags under real data volume.
+        resources:
+          - title: Angular Documentation - Zone.js and Change Detection
+            url: https://angular.dev/best-practices/zone-pollution
+            type: docs
+          - title: Angular Documentation - Skipping Component Subtrees
+            url: https://angular.dev/best-practices/skipping-subtrees
+            type: docs
+        subtopics:
+          - title: 'Change Detection: Default Strategy & Zone.js'
+            dayLabel: Days 1–2
+            description: Understand how Angular's default change detection works with Zone.js, and what triggers a check.
+          - title: 'Change Detection: OnPush Strategy & Signals'
+            dayLabel: Days 3–4
+            description: Apply the OnPush change detection strategy to skip unnecessary checks, and see how signals further reduce change-detection overhead.
+      - id: lazy-loading-modules
+        title: Lazy Loading & Module Federation
+        description: Loading feature areas of an app only when they're needed keeps the initial bundle small, which directly improves first-load performance on real-world connections.
+        resources:
+          - title: Angular Documentation - Lazy-Loading Feature Modules
+            url: https://angular.dev/guide/ngmodules/lazy-loading
+            type: docs
+        subtopics:
+          - title: 'Lazy Loading: Route-Level Code Splitting'
+            dayLabel: Days 1–2
+            description: Configure lazy-loaded routes so feature areas are only downloaded when a user navigates to them.
+          - title: 'Lazy Loading: Preloading Strategies'
+            dayLabel: Days 3–4
+            description: Apply preloading strategies to lazy-load routes in the background after the initial view renders.
+      - id: custom-directives-pipes
+        title: Custom Directives & Pipes
+        description: Writing your own directives and pipes lets you encapsulate reusable DOM behavior and data transformations, keeping templates clean instead of repeating logic across components.
+        resources:
+          - title: Angular Documentation - Attribute Directives
+            url: https://angular.dev/guide/directives/attribute-directives
+            type: docs
+          - title: Angular Documentation - Pipes
+            url: https://angular.dev/guide/templates/pipes
+            type: docs
+        subtopics:
+          - title: 'Custom Directives: Building an Attribute Directive'
+            dayLabel: Days 1–2
+            description: Build a custom attribute directive that manipulates an element's behavior or appearance.
+          - title: 'Custom Pipes: Transforming Data in Templates'
+            dayLabel: Days 3–4
+            description: Write a custom pipe to transform displayed data, and understand pure vs impure pipes and their performance implications.
+  - title: Build Tools & Deployment
+    topics:
+      - id: angular-cli-build-config
+        title: Angular CLI Build & Configuration
+        description: The Angular CLI's build system handles bundling, tree-shaking, and environment configuration, and understanding its options is what lets you tune output for production instead of shipping default settings blindly.
+        resources:
+          - title: Angular Documentation - Build System
+            url: https://angular.dev/tools/cli/build
+            type: docs
+        subtopics:
+          - title: 'Angular CLI: Build Configurations & Environments'
+            dayLabel: Days 1–2
+            description: Configure environment files and build configurations for development vs production builds.
+          - title: 'Angular CLI: Bundle Analysis & Optimization Flags'
+            dayLabel: Days 3–4
+            description: Analyze bundle size with source-map-explorer, and apply build optimization flags to reduce output size.
+      - id: cicd-pipelines
+        title: CI/CD Pipelines
+        description: CI/CD pipelines automatically lint, test, and build your Angular app on every push, catching regressions before they ever reach users or a deployed preview.
+        resources:
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+        subtopics:
+          - title: 'CI/CD: Automated Linting & Testing'
+            dayLabel: Days 1–2
+            description: Set up a GitHub Actions workflow that installs dependencies, lints, and runs unit tests on every pull request.
+          - title: 'CI/CD: Automated Build & Preview Deployments'
+            dayLabel: Days 3–4
+            description: Extend the pipeline to build the app for production and generate a preview deployment automatically.
+      - id: deployment-platforms
+        title: Deployment Platforms
+        description: Once built and tested, an Angular app needs a hosting platform — static hosts and edge networks make deployment for frontend apps far simpler than a traditional server setup.
+        resources:
+          - title: Vercel Documentation
+            url: https://vercel.com/docs
+            type: docs
+          - title: Netlify Documentation
+            url: https://docs.netlify.com/
+            type: docs
+        subtopics:
+          - title: Deploying a Production Build
+            dayLabel: Days 1–2
+            description: Deploy a production build to Vercel or Netlify, and configure redirects/rewrites for client-side routing.
+          - title: Custom Domains, Environments & Rollbacks
+            dayLabel: Days 3–4
+            description: Attach a custom domain, configure environment-specific variables, and practice rolling back a bad deployment.
+---
+
+Dive into Angular frontend development with this 14-week structured learning path designed for developers with some JavaScript experience. You'll build a solid foundation in TypeScript and HTML/CSS, then move into core Angular concepts — components, templates, data binding, directives, and dependency injection — before advancing to RxJS, Angular Signals, and NgRx for reactive state management. From there you'll cover routing and guards, template-driven and reactive forms, HTTP integration and interceptors, Angular Material styling, and both unit and end-to-end testing, before finishing with change detection performance, lazy loading, custom directives/pipes, and build/deployment tooling. By the end, you'll be equipped to design, build, test, and ship production-ready Angular applications.
