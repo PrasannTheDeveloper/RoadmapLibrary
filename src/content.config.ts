@@ -34,9 +34,19 @@ const roadmaps = defineCollection({
             subtopics: z
               .array(
                 z.object({
-                  id: z.string(),
+                  id: z.string().optional(),
                   title: z.string(),
+                  dayLabel: z.string().optional(),
                   description: z.string().optional(),
+                  resources: z
+                    .array(
+                      z.object({
+                        title: z.string(),
+                        url: z.string(),
+                        type: z.enum(['article', 'video', 'course', 'docs', 'project']),
+                      })
+                    )
+                    .optional(),
                 })
               )
               .optional(),

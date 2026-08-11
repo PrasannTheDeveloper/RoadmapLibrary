@@ -1,380 +1,629 @@
 ---
-title: "Spring Boot Backend Development"
-description: "A structured roadmap to becoming a skilled Spring Boot backend developer, covering Java, Spring's IoC container, JPA/Hibernate, API design, authentication with Spring Security, architecture patterns, and deployment fundamentals."
-category: "Java Frameworks"
-estimatedTime: "20 weeks"
-difficulty: "Intermediate"
+title: Spring Boot Backend Development
+description: A structured roadmap to becoming a skilled Spring Boot backend developer, covering Java, Spring's IoC container, JPA/Hibernate, API design, authentication with Spring Security, architecture patterns, and deployment fundamentals.
+category: Java Frameworks
+estimatedTime: 20 weeks
+difficulty: Intermediate
 topicCount: 30
 order: 8
-icon: "🍃"
-thumbnail: "/thumbnails/icons/Springboot.svg"
+icon: 🍃
+thumbnail: /thumbnails/icons/Springboot.svg
 sections:
-  - title: "Programming Fundamentals"
+  - title: Programming Fundamentals
     topics:
-      - id: "java-fundamentals"
-        title: "Java Fundamentals"
-        description: "Learn core Java syntax, OOP concepts, generics, collections, streams, and lambda expressions — the foundation Spring Boot is built on."
+      - id: java-fundamentals
+        title: Java Fundamentals
+        description: In-depth exploration of Java Fundamentals. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Java Documentation - Oracle"
-            url: "https://docs.oracle.com/en/java/javase/21/"
-            type: "docs"
-          - title: "Java Tutorials - Oracle"
-            url: "https://docs.oracle.com/javase/tutorial/"
-            type: "course"
-          - title: "Java Streams - Baeldung"
-            url: "https://www.baeldung.com/java-8-streams"
-            type: "article"
-      - id: "data-structures"
-        title: "Data Structures"
-        description: "Understand arrays, ArrayLists, HashMaps, stacks, queues, trees, and graphs in Java — and when to use each for optimal performance."
+          - title: Java Documentation - Oracle
+            url: https://docs.oracle.com/en/java/javase/21/
+            type: docs
+          - title: Java Tutorials - Oracle
+            url: https://docs.oracle.com/javase/tutorial/
+            type: course
+          - title: Java Streams - Baeldung
+            url: https://www.baeldung.com/java-8-streams
+            type: article
+        subtopics:
+          - title: 'Java Fundamentals: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Java Fundamentals: Java OOP & IoC Container. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Java Fundamentals.'
+          - title: 'Java Fundamentals: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Java Fundamentals: Spring Data & Web Security. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Java Fundamentals.'
+      - id: data-structures
+        title: Data Structures
+        description: In-depth exploration of Data Structures. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Java Collections Framework - Oracle Docs"
-            url: "https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html"
-            type: "docs"
-          - title: "Data Structures Easy to Advanced - freeCodeCamp"
-            url: "https://www.youtube.com/watch?v=RBSGKlAvoiM"
-            type: "video"
-      - id: "algorithms-basics"
-        title: "Algorithms Basics"
-        description: "Learn fundamental algorithms including sorting, searching, recursion, and Big O notation for analyzing time and space complexity."
+          - title: Java Collections Framework - Oracle Docs
+            url: https://docs.oracle.com/javase/8/docs/technotes/guides/collections/overview.html
+            type: docs
+          - title: Data Structures Easy to Advanced - freeCodeCamp
+            url: https://www.youtube.com/watch?v=RBSGKlAvoiM
+            type: video
+        subtopics:
+          - title: 'Data Structures: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Data Structures: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Data Structures.'
+          - title: 'Data Structures: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Data Structures: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Data Structures.'
+      - id: algorithms-basics
+        title: Algorithms Basics
+        description: In-depth exploration of Algorithms Basics. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Introduction to Algorithms - MIT OpenCourseWare"
-            url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/"
-            type: "course"
-          - title: "Big-O Cheat Sheet"
-            url: "https://www.bigocheatsheet.com/"
-            type: "article"
-
-  - title: "Version Control"
+          - title: Introduction to Algorithms - MIT OpenCourseWare
+            url: https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/
+            type: course
+          - title: Big-O Cheat Sheet
+            url: https://www.bigocheatsheet.com/
+            type: article
+        subtopics:
+          - title: 'Algorithms Basics: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Algorithms Basics: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Algorithms Basics.'
+          - title: 'Algorithms Basics: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Algorithms Basics: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Algorithms Basics.'
+  - title: Version Control
     topics:
-      - id: "git"
-        title: "Git"
-        description: "Master Git for version control — commits, branches, merges, rebases, stashing, and resolving conflicts in collaborative environments."
+      - id: git
+        title: Git
+        description: In-depth exploration of Git. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Pro Git Book"
-            url: "https://git-scm.com/book/en/v2"
-            type: "docs"
-          - title: "Learn Git Branching"
-            url: "https://learngitbranching.js.org/"
-            type: "project"
-      - id: "github-gitlab"
-        title: "GitHub/GitLab"
-        description: "Use hosted Git platforms for pull/merge requests, code reviews, CI/CD integration, issue tracking, and team collaboration."
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Hands-on module for Git Core Commands & Workflow. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Git.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Hands-on module for Branching Strategies & Pull Requests. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Git.
+      - id: github-gitlab
+        title: GitHub/GitLab
+        description: In-depth exploration of GitHub/GitLab. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "GitHub Docs - Get Started"
-            url: "https://docs.github.com/en/get-started"
-            type: "docs"
-          - title: "GitLab Documentation"
-            url: "https://docs.gitlab.com/"
-            type: "docs"
-
-  - title: "Spring Core Concepts"
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitLab Documentation
+            url: https://docs.gitlab.com/
+            type: docs
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Hands-on module for Git Core Commands & Workflow. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for GitHub/GitLab.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Hands-on module for Branching Strategies & Pull Requests. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for GitHub/GitLab.
+  - title: Spring Core Concepts
     topics:
-      - id: "ioc-dependency-injection"
-        title: "IoC Container & Dependency Injection"
-        description: "Understand Spring's Inversion of Control container, bean lifecycle, and dependency injection via constructor, setter, and field injection with @Autowired."
+      - id: ioc-dependency-injection
+        title: IoC Container & Dependency Injection
+        description: In-depth exploration of IoC Container & Dependency Injection. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Framework Documentation - IoC Container"
-            url: "https://docs.spring.io/spring-framework/reference/core/beans.html"
-            type: "docs"
-          - title: "Spring Boot Reference Documentation"
-            url: "https://docs.spring.io/spring-boot/reference/"
-            type: "docs"
-      - id: "spring-boot-starters-autoconfig"
-        title: "Starters & Auto-Configuration"
-        description: "Learn how Spring Boot starters and auto-configuration eliminate boilerplate setup, and how to override defaults with your own configuration classes."
+          - title: Spring Framework Documentation - IoC Container
+            url: https://docs.spring.io/spring-framework/reference/core/beans.html
+            type: docs
+          - title: Spring Boot Reference Documentation
+            url: https://docs.spring.io/spring-boot/reference/
+            type: docs
+        subtopics:
+          - title: 'IoC Container & Dependency Injection: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for IoC Container & Dependency Injection: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for IoC Container & Dependency Injection.'
+          - title: 'IoC Container & Dependency Injection: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for IoC Container & Dependency Injection: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for IoC Container & Dependency Injection.'
+      - id: spring-boot-starters-autoconfig
+        title: Starters & Auto-Configuration
+        description: In-depth exploration of Starters & Auto-Configuration. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Boot Auto-Configuration"
-            url: "https://docs.spring.io/spring-boot/reference/using/auto-configuration.html"
-            type: "docs"
-      - id: "application-properties"
-        title: "Application Configuration"
-        description: "Manage app configuration with application.properties/application.yml, profiles for different environments, and externalized configuration via @ConfigurationProperties."
+          - title: Spring Boot Auto-Configuration
+            url: https://docs.spring.io/spring-boot/reference/using/auto-configuration.html
+            type: docs
+        subtopics:
+          - title: 'Starters & Auto-Configuration: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Starters & Auto-Configuration: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Starters & Auto-Configuration.'
+          - title: 'Starters & Auto-Configuration: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Starters & Auto-Configuration: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Starters & Auto-Configuration.'
+      - id: application-properties
+        title: Application Configuration
+        description: In-depth exploration of Application Configuration. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Externalized Configuration - Spring Boot Docs"
-            url: "https://docs.spring.io/spring-boot/reference/features/external-config.html"
-            type: "docs"
-      - id: "aop-interceptors"
-        title: "AOP & Interceptors"
-        description: "Use Aspect-Oriented Programming for cross-cutting concerns like logging and transactions, and HandlerInterceptors for pre/post request processing."
+          - title: Externalized Configuration - Spring Boot Docs
+            url: https://docs.spring.io/spring-boot/reference/features/external-config.html
+            type: docs
+        subtopics:
+          - title: 'Application Configuration: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Application Configuration: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Application Configuration.'
+          - title: 'Application Configuration: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Application Configuration: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Application Configuration.'
+      - id: aop-interceptors
+        title: AOP & Interceptors
+        description: In-depth exploration of AOP & Interceptors. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Aspect Oriented Programming with Spring"
-            url: "https://docs.spring.io/spring-framework/reference/core/aop.html"
-            type: "docs"
-
-  - title: "Databases"
+          - title: Aspect Oriented Programming with Spring
+            url: https://docs.spring.io/spring-framework/reference/core/aop.html
+            type: docs
+        subtopics:
+          - title: 'AOP & Interceptors: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for AOP & Interceptors: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for AOP & Interceptors.'
+          - title: 'AOP & Interceptors: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for AOP & Interceptors: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for AOP & Interceptors.'
+  - title: Databases
     topics:
-      - id: "sql-fundamentals"
-        title: "SQL Fundamentals"
-        description: "Learn relational database concepts, SQL queries (SELECT, JOIN, GROUP BY, subqueries), schema design, normalization, and indexing strategies."
+      - id: sql-fundamentals
+        title: SQL Fundamentals
+        description: In-depth exploration of SQL Fundamentals. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "SQL Tutorial - W3Schools"
-            url: "https://www.w3schools.com/sql/"
-            type: "article"
-          - title: "SQLBolt - Interactive SQL Lessons"
-            url: "https://sqlbolt.com/"
-            type: "course"
-      - id: "postgresql-mysql"
-        title: "PostgreSQL / MySQL"
-        description: "Work with a production relational database such as PostgreSQL or MySQL, and configure Spring Boot's DataSource to connect to it."
+          - title: SQL Tutorial - W3Schools
+            url: https://www.w3schools.com/sql/
+            type: article
+          - title: SQLBolt - Interactive SQL Lessons
+            url: https://sqlbolt.com/
+            type: course
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Hands-on module for Schema Design & Data Modeling. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for SQL Fundamentals.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Hands-on module for Querying, Transactions & Performance. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for SQL Fundamentals.
+      - id: postgresql-mysql
+        title: PostgreSQL / MySQL
+        description: In-depth exploration of PostgreSQL / MySQL. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "PostgreSQL Official Documentation"
-            url: "https://www.postgresql.org/docs/current/"
-            type: "docs"
-          - title: "MySQL Reference Manual"
-            url: "https://dev.mysql.com/doc/refman/en/"
-            type: "docs"
-      - id: "spring-data-jpa-hibernate"
-        title: "Spring Data JPA & Hibernate"
-        description: "Use Spring Data JPA with Hibernate as the ORM — entities, repositories, derived query methods, JPQL, and relationship mapping (@OneToMany, @ManyToMany)."
+          - title: PostgreSQL Official Documentation
+            url: https://www.postgresql.org/docs/current/
+            type: docs
+          - title: MySQL Reference Manual
+            url: https://dev.mysql.com/doc/refman/en/
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Hands-on module for Schema Design & Data Modeling. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for PostgreSQL / MySQL.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Hands-on module for Querying, Transactions & Performance. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for PostgreSQL / MySQL.
+      - id: spring-data-jpa-hibernate
+        title: Spring Data JPA & Hibernate
+        description: In-depth exploration of Spring Data JPA & Hibernate. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Data JPA Documentation"
-            url: "https://docs.spring.io/spring-data/jpa/reference/"
-            type: "docs"
-          - title: "Hibernate ORM Documentation"
-            url: "https://hibernate.org/orm/documentation/"
-            type: "docs"
-      - id: "flyway-liquibase"
-        title: "Database Migrations"
-        description: "Manage schema evolution with Flyway or Liquibase — versioned migration scripts that run automatically on application startup."
+          - title: Spring Data JPA Documentation
+            url: https://docs.spring.io/spring-data/jpa/reference/
+            type: docs
+          - title: Hibernate ORM Documentation
+            url: https://hibernate.org/orm/documentation/
+            type: docs
+        subtopics:
+          - title: 'Spring Data JPA & Hibernate: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Spring Data JPA & Hibernate: Java OOP & IoC Container. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Spring Data JPA & Hibernate.'
+          - title: 'Spring Data JPA & Hibernate: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Spring Data JPA & Hibernate: Spring Data & Web Security. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Spring Data JPA & Hibernate.'
+      - id: flyway-liquibase
+        title: Database Migrations
+        description: In-depth exploration of Database Migrations. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Flyway Documentation"
-            url: "https://documentation.red-gate.com/fd"
-            type: "docs"
-          - title: "Liquibase Documentation"
-            url: "https://docs.liquibase.com/"
-            type: "docs"
-
-  - title: "API Development"
+          - title: Flyway Documentation
+            url: https://documentation.red-gate.com/fd
+            type: docs
+          - title: Liquibase Documentation
+            url: https://docs.liquibase.com/
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Hands-on module for Schema Design & Data Modeling. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Database Migrations.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Hands-on module for Querying, Transactions & Performance. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Database Migrations.
+  - title: API Development
     topics:
-      - id: "spring-web-mvc"
-        title: "Spring Web MVC / REST Controllers"
-        description: "Build RESTful APIs with @RestController, @RequestMapping family annotations, request/response bodies, path variables, and content negotiation."
+      - id: spring-web-mvc
+        title: Spring Web MVC / REST Controllers
+        description: In-depth exploration of Spring Web MVC / REST Controllers. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Building a RESTful Web Service - Spring Guides"
-            url: "https://spring.io/guides/gs/rest-service"
-            type: "course"
-          - title: "Spring Web MVC Documentation"
-            url: "https://docs.spring.io/spring-framework/reference/web/webmvc.html"
-            type: "docs"
-      - id: "dto-validation"
-        title: "DTOs & Bean Validation"
-        description: "Separate entities from API contracts using DTOs, and validate incoming requests with Jakarta Bean Validation annotations (@NotNull, @Valid, custom validators)."
+          - title: Building a RESTful Web Service - Spring Guides
+            url: https://spring.io/guides/gs/rest-service
+            type: course
+          - title: Spring Web MVC Documentation
+            url: https://docs.spring.io/spring-framework/reference/web/webmvc.html
+            type: docs
+        subtopics:
+          - title: 'Spring Web MVC / REST Controllers: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Spring Web MVC / REST Controllers: Java OOP & IoC Container. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Spring Web MVC / REST Controllers.'
+          - title: 'Spring Web MVC / REST Controllers: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Spring Web MVC / REST Controllers: Spring Data & Web Security. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Spring Web MVC / REST Controllers.'
+      - id: dto-validation
+        title: DTOs & Bean Validation
+        description: In-depth exploration of DTOs & Bean Validation. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Validation - Spring Framework Docs"
-            url: "https://docs.spring.io/spring-framework/reference/core/validation/beanvalidation.html"
-            type: "docs"
-      - id: "api-design-principles"
-        title: "API Design Principles"
-        description: "Apply best practices for API design including consistent naming, global exception handling with @ControllerAdvice, pagination, and documentation with springdoc-openapi."
+          - title: Validation - Spring Framework Docs
+            url: https://docs.spring.io/spring-framework/reference/core/validation/beanvalidation.html
+            type: docs
+        subtopics:
+          - title: 'DTOs & Bean Validation: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for DTOs & Bean Validation: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for DTOs & Bean Validation.'
+          - title: 'DTOs & Bean Validation: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for DTOs & Bean Validation: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for DTOs & Bean Validation.'
+      - id: api-design-principles
+        title: API Design Principles
+        description: In-depth exploration of API Design Principles. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "springdoc-openapi Documentation"
-            url: "https://springdoc.org/"
-            type: "docs"
-          - title: "Error Handling for REST with Spring - Baeldung"
-            url: "https://www.baeldung.com/exception-handling-for-rest-with-spring"
-            type: "article"
-      - id: "graphql"
-        title: "GraphQL"
-        description: "Build GraphQL APIs with Spring for GraphQL — schema definitions, @QueryMapping/@MutationMapping controllers, and integration with Spring Data."
+          - title: springdoc-openapi Documentation
+            url: https://springdoc.org/
+            type: docs
+          - title: Error Handling for REST with Spring - Baeldung
+            url: https://www.baeldung.com/exception-handling-for-rest-with-spring
+            type: article
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Hands-on module for API Endpoint Design & Protocol Rules. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for API Design Principles.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Hands-on module for API Security & OpenAPI Specifications. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for API Design Principles.
+      - id: graphql
+        title: GraphQL
+        description: In-depth exploration of GraphQL. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring for GraphQL Documentation"
-            url: "https://docs.spring.io/spring-graphql/reference/"
-            type: "docs"
-
-  - title: "Authentication & Security"
+          - title: Spring for GraphQL Documentation
+            url: https://docs.spring.io/spring-graphql/reference/
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Hands-on module for API Endpoint Design & Protocol Rules. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for GraphQL.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Hands-on module for API Security & OpenAPI Specifications. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for GraphQL.
+  - title: Authentication & Security
     topics:
-      - id: "spring-security-fundamentals"
-        title: "Spring Security Fundamentals"
-        description: "Learn Spring Security's filter chain, SecurityFilterChain configuration, authentication providers, and method-level security with @PreAuthorize."
+      - id: spring-security-fundamentals
+        title: Spring Security Fundamentals
+        description: In-depth exploration of Spring Security Fundamentals. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Security Documentation"
-            url: "https://docs.spring.io/spring-security/reference/"
-            type: "docs"
-      - id: "jwt"
-        title: "JWT Authentication"
-        description: "Implement stateless authentication using JSON Web Tokens with Spring Security — custom filters, token generation/validation, and refresh token patterns."
+          - title: Spring Security Documentation
+            url: https://docs.spring.io/spring-security/reference/
+            type: docs
+        subtopics:
+          - title: 'Spring Security Fundamentals: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Spring Security Fundamentals: Java OOP & IoC Container. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Spring Security Fundamentals.'
+          - title: 'Spring Security Fundamentals: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Spring Security Fundamentals: Spring Data & Web Security. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Spring Security Fundamentals.'
+      - id: jwt
+        title: JWT Authentication
+        description: In-depth exploration of JWT Authentication. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Security OAuth2 Resource Server (JWT)"
-            url: "https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html"
-            type: "docs"
-          - title: "Introduction to JSON Web Tokens"
-            url: "https://jwt.io/introduction"
-            type: "article"
-      - id: "oauth2-oidc"
-        title: "OAuth 2.0 & OpenID Connect"
-        description: "Implement OAuth 2.0 and OIDC login flows using Spring Security's OAuth2 Client and Resource Server support for third-party and enterprise auth."
+          - title: Spring Security OAuth2 Resource Server (JWT)
+            url: https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html
+            type: docs
+          - title: Introduction to JSON Web Tokens
+            url: https://jwt.io/introduction
+            type: article
+        subtopics:
+          - title: Authentication & Token Credentials
+            dayLabel: Days 1–2
+            description: Hands-on module for Authentication & Token Credentials. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for JWT Authentication.
+          - title: Authorization & OWASP Vulnerability Defense
+            dayLabel: Days 3–4
+            description: Hands-on module for Authorization & OWASP Vulnerability Defense. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for JWT Authentication.
+      - id: oauth2-oidc
+        title: OAuth 2.0 & OpenID Connect
+        description: In-depth exploration of OAuth 2.0 & OpenID Connect. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Security OAuth2"
-            url: "https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html"
-            type: "docs"
-      - id: "password-hashing"
-        title: "Password Hashing"
-        description: "Securely store passwords using Spring Security's PasswordEncoder abstraction with BCrypt or Argon2 — never store plaintext passwords."
+          - title: Spring Security OAuth2
+            url: https://docs.spring.io/spring-security/reference/servlet/oauth2/index.html
+            type: docs
+        subtopics:
+          - title: Authentication & Token Credentials
+            dayLabel: Days 1–2
+            description: Hands-on module for Authentication & Token Credentials. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for OAuth 2.0 & OpenID Connect.
+          - title: Authorization & OWASP Vulnerability Defense
+            dayLabel: Days 3–4
+            description: Hands-on module for Authorization & OWASP Vulnerability Defense. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for OAuth 2.0 & OpenID Connect.
+      - id: password-hashing
+        title: Password Hashing
+        description: In-depth exploration of Password Hashing. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Password Storage - Spring Security Docs"
-            url: "https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html"
-            type: "docs"
-          - title: "Password Storage Cheat Sheet - OWASP"
-            url: "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
-            type: "article"
-      - id: "owasp-top-10"
-        title: "OWASP Top 10"
-        description: "Understand and defend against the most critical web application security risks including injection, broken authentication, XSS, and CSRF."
+          - title: Password Storage - Spring Security Docs
+            url: https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html
+            type: docs
+          - title: Password Storage Cheat Sheet - OWASP
+            url: https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html
+            type: article
+        subtopics:
+          - title: 'Password Hashing: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Password Hashing: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Password Hashing.'
+          - title: 'Password Hashing: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Password Hashing: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Password Hashing.'
+      - id: owasp-top-10
+        title: OWASP Top 10
+        description: In-depth exploration of OWASP Top 10. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "OWASP Top 10"
-            url: "https://owasp.org/www-project-top-ten/"
-            type: "docs"
-
-  - title: "Caching & Performance"
+          - title: OWASP Top 10
+            url: https://owasp.org/www-project-top-ten/
+            type: docs
+        subtopics:
+          - title: 'OWASP Top 10: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for OWASP Top 10: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for OWASP Top 10.'
+          - title: 'OWASP Top 10: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for OWASP Top 10: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for OWASP Top 10.'
+  - title: Caching & Performance
     topics:
-      - id: "spring-cache-abstraction"
-        title: "Spring Cache Abstraction"
-        description: "Use Spring's caching abstraction (@Cacheable, @CacheEvict) with pluggable providers to cache expensive method calls declaratively."
+      - id: spring-cache-abstraction
+        title: Spring Cache Abstraction
+        description: In-depth exploration of Spring Cache Abstraction. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Caching - Spring Framework Docs"
-            url: "https://docs.spring.io/spring-framework/reference/integration/cache.html"
-            type: "docs"
-      - id: "redis"
-        title: "Redis"
-        description: "Use Redis with Spring Data Redis as a cache backend, distributed session store, and for pub/sub messaging and rate limiting."
+          - title: Caching - Spring Framework Docs
+            url: https://docs.spring.io/spring-framework/reference/integration/cache.html
+            type: docs
+        subtopics:
+          - title: 'Spring Cache Abstraction: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Spring Cache Abstraction: Java OOP & IoC Container. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Spring Cache Abstraction.'
+          - title: 'Spring Cache Abstraction: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Spring Cache Abstraction: Spring Data & Web Security. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Spring Cache Abstraction.'
+      - id: redis
+        title: Redis
+        description: In-depth exploration of Redis. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Data Redis Documentation"
-            url: "https://docs.spring.io/spring-data/redis/reference/"
-            type: "docs"
-          - title: "Redis Documentation"
-            url: "https://redis.io/docs/"
-            type: "docs"
-      - id: "connection-pooling"
-        title: "Connection Pooling & JVM Tuning"
-        description: "Tune HikariCP connection pool settings and understand JVM memory/GC basics to keep Spring Boot apps performant under load."
+          - title: Spring Data Redis Documentation
+            url: https://docs.spring.io/spring-data/redis/reference/
+            type: docs
+          - title: Redis Documentation
+            url: https://redis.io/docs/
+            type: docs
+        subtopics:
+          - title: 'Redis: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Redis: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Redis.'
+          - title: 'Redis: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Redis: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Redis.'
+      - id: connection-pooling
+        title: Connection Pooling & JVM Tuning
+        description: In-depth exploration of Connection Pooling & JVM Tuning. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "HikariCP Documentation"
-            url: "https://github.com/brettwooldridge/HikariCP"
-            type: "docs"
-
-  - title: "Testing"
+          - title: HikariCP Documentation
+            url: https://github.com/brettwooldridge/HikariCP
+            type: docs
+        subtopics:
+          - title: 'Connection Pooling & JVM Tuning: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Connection Pooling & JVM Tuning: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Connection Pooling & JVM Tuning.'
+          - title: 'Connection Pooling & JVM Tuning: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Connection Pooling & JVM Tuning: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Connection Pooling & JVM Tuning.'
+  - title: Testing
     topics:
-      - id: "unit-tests-junit"
-        title: "Unit Tests (JUnit 5)"
-        description: "Write focused unit tests for services and components using JUnit 5, with Mockito for mocking and AssertJ for fluent assertions."
+      - id: unit-tests-junit
+        title: Unit Tests (JUnit 5)
+        description: In-depth exploration of Unit Tests (JUnit 5). Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Testing - Spring Boot Reference Docs"
-            url: "https://docs.spring.io/spring-boot/reference/testing/"
-            type: "docs"
-          - title: "JUnit 5 User Guide"
-            url: "https://junit.org/junit5/docs/current/user-guide/"
-            type: "docs"
-      - id: "integration-tests"
-        title: "Integration Tests"
-        description: "Test how multiple components work together using @SpringBootTest, MockMvc, and Testcontainers for real database/broker integration tests."
+          - title: Testing - Spring Boot Reference Docs
+            url: https://docs.spring.io/spring-boot/reference/testing/
+            type: docs
+          - title: JUnit 5 User Guide
+            url: https://junit.org/junit5/docs/current/user-guide/
+            type: docs
+        subtopics:
+          - title: 'Unit Tests (JUnit 5): Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Unit Tests (JUnit 5): Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Unit Tests (JUnit 5).'
+          - title: 'Unit Tests (JUnit 5): Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Unit Tests (JUnit 5): Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Unit Tests (JUnit 5).'
+      - id: integration-tests
+        title: Integration Tests
+        description: In-depth exploration of Integration Tests. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Testcontainers Documentation"
-            url: "https://java.testcontainers.org/"
-            type: "docs"
-          - title: "Spring Boot Testing - Auto-configured Tests"
-            url: "https://docs.spring.io/spring-boot/reference/testing/spring-boot-applications.html"
-            type: "docs"
-      - id: "api-testing"
-        title: "API Testing"
-        description: "Validate API endpoints with tools like Postman, or REST Assured for automated, code-based API test suites."
+          - title: Testcontainers Documentation
+            url: https://java.testcontainers.org/
+            type: docs
+          - title: Spring Boot Testing - Auto-configured Tests
+            url: https://docs.spring.io/spring-boot/reference/testing/spring-boot-applications.html
+            type: docs
+        subtopics:
+          - title: 'Integration Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Integration Tests: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Integration Tests.'
+          - title: 'Integration Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Integration Tests: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Integration Tests.'
+      - id: api-testing
+        title: API Testing
+        description: In-depth exploration of API Testing. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "REST Assured Documentation"
-            url: "https://rest-assured.io/"
-            type: "docs"
-          - title: "Postman Learning Center"
-            url: "https://learning.postman.com/docs/introduction/overview/"
-            type: "docs"
-
-  - title: "Architecture Patterns"
+          - title: REST Assured Documentation
+            url: https://rest-assured.io/
+            type: docs
+          - title: Postman Learning Center
+            url: https://learning.postman.com/docs/introduction/overview/
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Hands-on module for API Endpoint Design & Protocol Rules. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for API Testing.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Hands-on module for API Security & OpenAPI Specifications. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for API Testing.
+  - title: Architecture Patterns
     topics:
-      - id: "layered-architecture"
-        title: "Layered Architecture"
-        description: "Structure Spring Boot apps with clear separation between controllers, services, repositories, and entities/DTOs for maintainability."
+      - id: layered-architecture
+        title: Layered Architecture
+        description: In-depth exploration of Layered Architecture. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Boot Application Structuring - Baeldung"
-            url: "https://www.baeldung.com/spring-boot-app-structuring"
-            type: "article"
-      - id: "hexagonal-clean-architecture"
-        title: "Hexagonal / Clean Architecture"
-        description: "Apply ports-and-adapters (hexagonal) or Clean Architecture principles to isolate domain logic from Spring and infrastructure concerns."
+          - title: Spring Boot Application Structuring - Baeldung
+            url: https://www.baeldung.com/spring-boot-app-structuring
+            type: article
+        subtopics:
+          - title: 'Layered Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Layered Architecture: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Layered Architecture.'
+          - title: 'Layered Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Layered Architecture: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Layered Architecture.'
+      - id: hexagonal-clean-architecture
+        title: Hexagonal / Clean Architecture
+        description: In-depth exploration of Hexagonal / Clean Architecture. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Hexagonal Architecture with Spring Boot - Baeldung"
-            url: "https://www.baeldung.com/hexagonal-architecture-ddd-spring"
-            type: "article"
-      - id: "microservices-spring-cloud"
-        title: "Microservices with Spring Cloud"
-        description: "Build microservices using Spring Cloud — service discovery (Eureka), API gateways, config server, and resilience patterns with Resilience4j."
+          - title: Hexagonal Architecture with Spring Boot - Baeldung
+            url: https://www.baeldung.com/hexagonal-architecture-ddd-spring
+            type: article
+        subtopics:
+          - title: 'Hexagonal / Clean Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Hexagonal / Clean Architecture: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Hexagonal / Clean Architecture.'
+          - title: 'Hexagonal / Clean Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Hexagonal / Clean Architecture: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Hexagonal / Clean Architecture.'
+      - id: microservices-spring-cloud
+        title: Microservices with Spring Cloud
+        description: In-depth exploration of Microservices with Spring Cloud. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Cloud Documentation"
-            url: "https://spring.io/projects/spring-cloud"
-            type: "docs"
-          - title: "Resilience4j Documentation"
-            url: "https://resilience4j.readme.io/docs"
-            type: "docs"
-      - id: "event-driven"
-        title: "Event-Driven Architecture"
-        description: "Build loosely coupled systems using Spring's ApplicationEventPublisher, message brokers, and event sourcing for asynchronous, real-time workflows."
+          - title: Spring Cloud Documentation
+            url: https://spring.io/projects/spring-cloud
+            type: docs
+          - title: Resilience4j Documentation
+            url: https://resilience4j.readme.io/docs
+            type: docs
+        subtopics:
+          - title: 'Microservices with Spring Cloud: Java OOP & IoC Container'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Microservices with Spring Cloud: Java OOP & IoC Container. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Microservices with Spring Cloud.'
+          - title: 'Microservices with Spring Cloud: Spring Data & Web Security'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Microservices with Spring Cloud: Spring Data & Web Security. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Microservices with Spring Cloud.'
+      - id: event-driven
+        title: Event-Driven Architecture
+        description: In-depth exploration of Event-Driven Architecture. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Framework Events"
-            url: "https://docs.spring.io/spring-framework/reference/core/beans/context-introduction.html#context-functionality-events"
-            type: "docs"
-          - title: "Event-Driven Architecture - AWS"
-            url: "https://aws.amazon.com/event-driven-architecture/"
-            type: "article"
-
-  - title: "Message Queues"
+          - title: Spring Framework Events
+            url: https://docs.spring.io/spring-framework/reference/core/beans/context-introduction.html#context-functionality-events
+            type: docs
+          - title: Event-Driven Architecture - AWS
+            url: https://aws.amazon.com/event-driven-architecture/
+            type: article
+        subtopics:
+          - title: 'Event-Driven Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Event-Driven Architecture: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Event-Driven Architecture.'
+          - title: 'Event-Driven Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Event-Driven Architecture: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Event-Driven Architecture.'
+  - title: Message Queues
     topics:
-      - id: "rabbitmq"
-        title: "RabbitMQ"
-        description: "Implement reliable message queuing with Spring AMQP/RabbitMQ — exchanges, queues, bindings, and @RabbitListener for consumer patterns."
+      - id: rabbitmq
+        title: RabbitMQ
+        description: In-depth exploration of RabbitMQ. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring AMQP Documentation"
-            url: "https://docs.spring.io/spring-amqp/reference/"
-            type: "docs"
-          - title: "RabbitMQ Tutorials"
-            url: "https://www.rabbitmq.com/tutorials"
-            type: "docs"
-      - id: "apache-kafka"
-        title: "Apache Kafka"
-        description: "Use Spring for Apache Kafka for high-throughput event streaming — producers, @KafkaListener consumers, topics, partitions, and consumer groups."
+          - title: Spring AMQP Documentation
+            url: https://docs.spring.io/spring-amqp/reference/
+            type: docs
+          - title: RabbitMQ Tutorials
+            url: https://www.rabbitmq.com/tutorials
+            type: docs
+        subtopics:
+          - title: 'RabbitMQ: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for RabbitMQ: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for RabbitMQ.'
+          - title: 'RabbitMQ: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for RabbitMQ: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for RabbitMQ.'
+      - id: apache-kafka
+        title: Apache Kafka
+        description: In-depth exploration of Apache Kafka. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring for Apache Kafka Documentation"
-            url: "https://docs.spring.io/spring-kafka/reference/"
-            type: "docs"
-          - title: "Kafka: The Definitive Guide (Confluent)"
-            url: "https://www.confluent.io/resources/kafka-the-definitive-guide-v2/"
-            type: "article"
-
-  - title: "Containerization & DevOps Basics"
+          - title: Spring for Apache Kafka Documentation
+            url: https://docs.spring.io/spring-kafka/reference/
+            type: docs
+          - title: 'Kafka: The Definitive Guide (Confluent)'
+            url: https://www.confluent.io/resources/kafka-the-definitive-guide-v2/
+            type: article
+        subtopics:
+          - title: 'Apache Kafka: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Apache Kafka: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Apache Kafka.'
+          - title: 'Apache Kafka: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Apache Kafka: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Apache Kafka.'
+  - title: Containerization & DevOps Basics
     topics:
-      - id: "docker"
-        title: "Docker"
-        description: "Package Spring Boot applications into portable containers with Docker — build layered/optimized JAR images (or use buildpacks), and run multi-container setups with Docker Compose."
+      - id: docker
+        title: Docker
+        description: In-depth exploration of Docker. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Container Images - Spring Boot Docs"
-            url: "https://docs.spring.io/spring-boot/reference/packaging/container-images/index.html"
-            type: "docs"
-          - title: "Docker Get Started"
-            url: "https://docs.docker.com/get-started/"
-            type: "docs"
-      - id: "ci-cd-pipelines"
-        title: "CI/CD Pipelines"
-        description: "Automate testing, building (via Maven/Gradle), and deployment with CI/CD pipelines using GitHub Actions, GitLab CI, or Jenkins."
+          - title: Container Images - Spring Boot Docs
+            url: https://docs.spring.io/spring-boot/reference/packaging/container-images/index.html
+            type: docs
+          - title: Docker Get Started
+            url: https://docs.docker.com/get-started/
+            type: docs
+        subtopics:
+          - title: 'Docker: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Docker: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Docker.'
+          - title: 'Docker: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Docker: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Docker.'
+      - id: ci-cd-pipelines
+        title: CI/CD Pipelines
+        description: In-depth exploration of CI/CD Pipelines. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "GitHub Actions Documentation"
-            url: "https://docs.github.com/en/actions"
-            type: "docs"
-          - title: "CI/CD Explained - GitLab"
-            url: "https://about.gitlab.com/topics/ci-cd/"
-            type: "article"
-      - id: "actuator-observability"
-        title: "Actuator & Observability"
-        description: "Expose health checks, metrics, and application info with Spring Boot Actuator, and integrate with Prometheus/Grafana for production monitoring."
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+          - title: CI/CD Explained - GitLab
+            url: https://about.gitlab.com/topics/ci-cd/
+            type: article
+        subtopics:
+          - title: 'CI/CD Pipelines: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for CI/CD Pipelines: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for CI/CD Pipelines.'
+          - title: 'CI/CD Pipelines: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for CI/CD Pipelines: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for CI/CD Pipelines.'
+      - id: actuator-observability
+        title: Actuator & Observability
+        description: In-depth exploration of Actuator & Observability. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Spring Boot Actuator Documentation"
-            url: "https://docs.spring.io/spring-boot/reference/actuator/index.html"
-            type: "docs"
+          - title: Spring Boot Actuator Documentation
+            url: https://docs.spring.io/spring-boot/reference/actuator/index.html
+            type: docs
+        subtopics:
+          - title: 'Actuator & Observability: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Actuator & Observability: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Actuator & Observability.'
+          - title: 'Actuator & Observability: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Actuator & Observability: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Actuator & Observability.'
 ---
 
 Dive into Spring Boot backend development with this 20-week structured learning path designed for developers with some Java experience. You'll build a solid foundation in Spring's IoC container, Spring Data JPA, and relational databases, then move into Spring Security, caching, and testing, before advancing to microservices with Spring Cloud, message queues, and containerized deployment. By the end, you'll be equipped to design, build, and deploy production-ready, enterprise-grade Spring Boot backend systems.

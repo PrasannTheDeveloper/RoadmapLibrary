@@ -43,6 +43,56 @@ function getWeekLabel(section: any, index: number) {
               <div style="flex: 1;">
                 <div class="list-topic-title">{topic.title}</div>
                 {topic.description && <div class="list-topic-desc">{topic.description}</div>}
+
+                {/* Subtopic Accordion Dropdowns */}
+                {topic.subtopics && topic.subtopics.length > 0 && (
+                  <div class="tree-subtopics-container" style="margin-top: 12px;">
+                    {topic.subtopics.map((sub: any, subIndex: number) => {
+                      const subTitle = typeof sub === 'string' ? sub : sub.title;
+                      const subDesc = typeof sub === 'string' ? null : sub.description;
+                      const subResources = typeof sub === 'string' ? null : sub.resources;
+                      const dayTag = (typeof sub === 'object' && sub.dayLabel) ? sub.dayLabel : `Days ${subIndex * 2 + 1}–${subIndex * 2 + 2}`;
+
+                      return (
+                        <details class="subtopic-accordion">
+                          <summary class="subtopic-summary">
+                            <div class="subtopic-summary-left">
+                              <svg class="subtopic-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                              </svg>
+                              <span class="subtopic-title">{subTitle}</span>
+                            </div>
+                            <span class="day-tag badge-mono">{dayTag}</span>
+                          </summary>
+                          <div class="subtopic-details-body">
+                            <div class="subtopic-info-box">
+                              <span class="subtopic-info-label">💡 What to Learn:</span>
+                              <p class="subtopic-info">
+                                {subDesc || `In-depth learning milestone for ${subTitle}. Understand core principles, common use cases, underlying implementation details, hands-on syntax, and production best practices.`}
+                              </p>
+                            </div>
+                            {subResources && subResources.length > 0 && (
+                              <div class="tree-resources" style="padding-left: 0; margin-top: 8px;">
+                                <span class="resources-label">Resources:</span>
+                                {subResources.map((res: any) => (
+                                  <a
+                                    class="tree-resource-link"
+                                    href={res.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    {res.title}
+                                  </a>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </details>
+                      );
+                    })}
+                  </div>
+                )}
+
                 {topic.resources && topic.resources.length > 0 && (
                   <div class="tree-resources" style="margin-top: 8px; padding-left: 0;">
                     {topic.resources.map((res: any) => (

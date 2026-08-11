@@ -1179,6 +1179,12 @@ html.dark .mesh-gradient {
   border-left: 3px solid var(--color-ink);
 }
 
+/* ── Timeline Toggle Rules for Section Weeks & Subtopic Days ── */
+#roadmap-container.hide-timeline .week-tag,
+#roadmap-container.hide-timeline .day-tag {
+  display: none !important;
+}
+
 .tree-section-header-left {
   display: flex;
   align-items: center;
@@ -1318,6 +1324,105 @@ html.dark .mesh-gradient {
   color: var(--color-body);
   margin: 0;
   padding-left: 30px;
+}
+
+/* ── Subtopic Dropdown Accordions ── */
+.tree-subtopics-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.subtopic-accordion {
+  background: var(--color-canvas-soft);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.subtopic-accordion[open] {
+  border-color: var(--color-hairline-strong);
+  background: var(--color-canvas);
+  box-shadow: var(--shadow-level-1);
+}
+
+.subtopic-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--color-ink);
+  list-style: none;
+}
+
+.subtopic-summary::-webkit-details-marker {
+  display: none;
+}
+
+.subtopic-summary-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.subtopic-chevron {
+  transition: transform var(--transition-fast);
+  color: var(--color-mute);
+  flex-shrink: 0;
+}
+
+.subtopic-accordion[open] .subtopic-chevron {
+  transform: rotate(90deg);
+  color: var(--color-ink);
+}
+
+.day-tag {
+  font-size: 11px;
+  color: var(--color-mute);
+  white-space: nowrap;
+}
+
+.subtopic-details-body {
+  padding: 12px 14px 14px 34px;
+  border-top: 1px solid var(--color-hairline);
+  background: var(--color-canvas-soft-2);
+}
+
+.subtopic-info-box {
+  margin-bottom: 8px;
+}
+
+.subtopic-info-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-mute);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.subtopic-info {
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--color-body);
+  margin: 0;
+}
+
+.resources-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+  align-self: center;
 }
 
 .tree-subtopics {

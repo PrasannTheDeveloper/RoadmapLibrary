@@ -10,8 +10,17 @@ interface Props {
   thumbnail?: string;
 }
 
-const { title, description, category, estimatedTime, difficulty, topicCount, icon, thumbnail } = Astro.props;
+const { title, description, category, estimatedTime = '16 weeks', difficulty, topicCount, icon, thumbnail } = Astro.props;
 const categoryBadgeClass = `badge badge-${category.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+
+function formatTimeWithMonths(timeStr: string) {
+  const weeks = parseInt(timeStr, 10);
+  if (!weeks || isNaN(weeks)) return timeStr;
+  const months = (weeks / 4).toFixed(1).replace(/\.0$/, '');
+  return `${months} months (${weeks} weeks)`;
+}
+
+const formattedTime = formatTimeWithMonths(estimatedTime);
 ---
 
 <header class="roadmap-header">
@@ -32,7 +41,7 @@ const categoryBadgeClass = `badge badge-${category.toLowerCase().replace(/[^a-z0
   <p class="text-body-lg" style="color: var(--color-body); margin: 0; max-width: 800px;">{description}</p>
 
   <div class="roadmap-header-meta">
-    {estimatedTime && <span class="roadmap-header-meta-item">⏱ {estimatedTime}</span>}
+    <span class="roadmap-header-meta-item">⏱ {formattedTime}</span>
     <span class="roadmap-header-meta-item">📚 {topicCount} topics</span>
     <span class="roadmap-header-meta-item">📊 {difficulty} level</span>
     <span class="roadmap-header-meta-item">⚡ Self-paced learning</span>
@@ -49,7 +58,7 @@ const categoryBadgeClass = `badge badge-${category.toLowerCase().replace(/[^a-z0
     </button>
 
     <div class="view-toggle" role="group" aria-label="Timeline and View options">
-      <button class="view-toggle-btn active" id="toggle-timeline" aria-label="Toggle week timeline visibility">
+      <button class="view-toggle-btn active" id="toggle-timeline" aria-label="Toggle timeline visibility for weeks and subtopic days">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>

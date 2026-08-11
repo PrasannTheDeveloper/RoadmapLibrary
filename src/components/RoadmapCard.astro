@@ -13,6 +13,15 @@ interface Props {
 const { title, description, category, estimatedTime, topicCount, slug, icon, thumbnail } = Astro.props;
 
 const badgeClass = `badge badge-${category.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
+
+function formatTimeWithMonths(timeStr: string) {
+  const weeks = parseInt(timeStr, 10);
+  if (!weeks || isNaN(weeks)) return timeStr;
+  const months = (weeks / 4).toFixed(1).replace(/\.0$/, '');
+  return `${months} months (${weeks} wks)`;
+}
+
+const formattedTime = formatTimeWithMonths(estimatedTime);
 ---
 
 <a class="roadmap-card" href={`/roadmaps/${slug}`} data-category={category} data-title={title.toLowerCase()}>
@@ -31,7 +40,7 @@ const badgeClass = `badge badge-${category.toLowerCase().replace(/[^a-z0-9]/g, '
   <p class="roadmap-card-desc">{description}</p>
 
   <div class="roadmap-card-meta">
-    <span class="roadmap-card-meta-item">⏱ {estimatedTime}</span>
+    <span class="roadmap-card-meta-item">⏱ {formattedTime}</span>
     <span class="roadmap-card-meta-item">📚 {topicCount} topics</span>
     <span class="roadmap-card-arrow">&rarr;</span>
   </div>

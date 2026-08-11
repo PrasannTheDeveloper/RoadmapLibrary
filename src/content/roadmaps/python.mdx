@@ -1,0 +1,121 @@
+---
+title: Python Programming
+description: An intensive 1-month roadmap to mastering Python programming, covering core syntax, data structures, object-oriented design, decorators, generators, asynchronous IO, testing, and packaging.
+category: Programming Languages
+estimatedTime: 4 weeks
+difficulty: Beginner
+topicCount: 24
+order: 1
+icon: 🐍
+thumbnail: /thumbnails/icons/Python.svg
+sections:
+  - title: 01. Environment, Syntax & Variables
+    topics:
+      - id: py-env-syntax
+        title: Python Environment & Core Syntax
+        description: Setting up a proper development environment and mastering core syntax is the foundation of Python software development. This module covers Python 3 installation, interpreter execution, dynamic typing, variable assignment, and standard operators.
+        subtopics:
+          - title: Environment Setup & REPL
+            dayLabel: Days 1–2
+            description: Install Python 3.12+, configure VS Code or PyCharm with Python extensions, and master the interactive REPL. Learn how to execute .py script files from the terminal, inspect sys.path, and configure virtual environment paths.
+          - title: Variables, Primitive Types & Expressions
+            dayLabel: Days 3–4
+            description: 'Master Python''s fundamental data types: int, float, str, and bool. Understand dynamic typing mechanics, variable assignment, immutability, type casting functions (int(), float(), str()), and mathematical operators (+, -, *, /, //, %, **).'
+          - title: String Formatting & Operations
+            dayLabel: Days 5–6
+            description: Practice advanced string manipulation using modern f-strings, string formatting methods, immutability rules, indexing, slicing ([start:stop:step]), and core string methods like .split(), .join(), .strip(), and .replace().
+  - title: 02. Control Flow & Error Handling
+    topics:
+      - id: py-control-errors
+        title: Conditionals, Loops & Exception Handling
+        description: Control flow and defensive error handling allow software to respond dynamically to input and recover gracefully from runtime failures. This topic teaches logical branching, loop constructs, pattern matching, and robust try-except blocks.
+        subtopics:
+          - title: Conditionals & Match-Case
+            dayLabel: Days 1–2
+            description: Implement logical branching with if-elif-else statements, evaluate truthy and falsy expressions, use ternary operators, and leverage structural pattern matching (match-case) introduced in Python 3.10 for complex data structures.
+          - title: Loops & Iteration Controls
+            dayLabel: Days 3–4
+            description: Master for loops and while loops in Python. Learn how to use range(), enumerate(), zip(), break, continue, and the built-in else clause on loop blocks for clean iteration logic.
+          - title: Exception Handling (try-except-finally)
+            dayLabel: Days 5–6
+            description: Write defensive Python code using try-except-else-finally blocks. Learn how to catch specific built-in exceptions, raise custom exception classes, inspect traceback logs, and clean up open files or sockets.
+  - title: 03. Functions & Scope
+    topics:
+      - id: py-functions-scope
+        title: Functions, Lambdas & Scope Resolution
+        description: Functions modularize code for reuse, maintainability, and clean architecture. In this section, you will master function signatures, positional vs keyword arguments, variable scope rules (LEGB), anonymous lambdas, and decorators.
+        subtopics:
+          - title: Function Signature & Arguments
+            dayLabel: Days 1–2
+            description: Define reusable functions using def syntax. Master positional arguments, keyword arguments, default parameter values, positional-only arguments (/), keyword-only arguments (*), and variable unpacking with *args and **kwargs.
+          - title: Scoping (LEGB) & Lambda Expressions
+            dayLabel: Days 3–4
+            description: Understand Python's LEGB (Local, Enclosing, Global, Built-in) scope resolution hierarchy, global and nonlocal keywords, and single-line anonymous lambda functions for inline functional mapping.
+          - title: Higher-Order Functions & Decorators
+            dayLabel: Days 5–6
+            description: Pass functions as first-class objects, write higher-order functions, and create custom function decorators with @functools.wraps. Understand decorator chaining and parameterized decorator factories.
+  - title: 04. Data Structures & Collections
+    topics:
+      - id: py-collections
+        title: Lists, Tuples, Dicts & Sets
+        description: 'Data structures dictate how application data is organized, searched, and manipulated in memory. This module covers Python''s core collection types: dynamic lists, immutable tuples, key-value dictionaries, and unique sets.'
+        subtopics:
+          - title: Lists & Tuples
+            dayLabel: Days 1–2
+            description: Manipulate dynamic ordered sequences with Lists and fixed immutable Tuples. Master list methods (.append(), .extend(), .pop(), .sort()), tuple unpacking, and list comprehensions [x for x in iterable if condition].
+          - title: Dictionaries & Sets
+            dayLabel: Days 3–4
+            description: Store key-value pairs using hash map Dictionaries and unique elements using Sets. Learn dict comprehensions, set mathematical operations (union, intersection, difference), and collections module tools (Counter, defaultdict).
+  - title: 05. Object-Oriented Python
+    topics:
+      - id: py-oop
+        title: Classes, Inheritance & Dunder Methods
+        description: Object-Oriented Programming (OOP) enables software developers to model complex real-world domain entities. This topic covers class definition, instance initialization, single and multiple inheritance, method overriding, and dunder magic methods.
+        subtopics:
+          - title: Classes & Constructors
+            dayLabel: Days 1–2
+            description: Define custom classes, object instantiation, the self parameter, instance constructor __init__, instance attributes, class attributes, and decorator methods (@classmethod and @staticmethod).
+          - title: Inheritance & Polymorphism
+            dayLabel: Days 3–4
+            description: Implement single and multiple inheritance, method overriding, super() initializer chaining, Method Resolution Order (MRO), abstract base classes (abc module), and duck typing polymorphism.
+          - title: Dunder Magic Methods & Dataclasses
+            dayLabel: Days 5–6
+            description: Customize object behavior by implementing magic dunder methods (__str__, __repr__, __eq__, __len__, __getitem__). Use the modern @dataclass decorator to generate boilerplate methods automatically.
+  - title: 06. Advanced Metaprogramming
+    topics:
+      - id: py-advanced
+        title: Iterators, Generators & Context Managers
+        description: Advanced Python features unlock high-performance data processing and resource management. Here you will master custom iterators, generator functions for memory-efficient streaming, and context managers for automated resource cleanup.
+        subtopics:
+          - title: Iterators & Generator Functions
+            dayLabel: Days 1–2
+            description: Understand Python's iterator protocol (__iter__ and __next__ methods), create generator functions using the yield keyword, write memory-efficient generator expressions, and build data streaming pipelines.
+          - title: Context Managers & with Statement
+            dayLabel: Days 3–4
+            description: Manage system resources cleanly using the with statement. Build custom context manager classes implementing __enter__ and __exit__, or use contextlib.@contextmanager decorator for automated cleanup.
+  - title: 07. Modules, Packages & Virtual Isolation
+    topics:
+      - id: py-modules-pkg
+        title: Modules, Packages & Virtual Isolation
+        description: Structuring code into modules and isolating dependencies is essential for scalable project maintenance. Learn directory packaging, import statements, virtual environments (venv/poetry), and dependency management.
+        subtopics:
+          - title: Module Imports & Package Structure
+            dayLabel: Days 1–2
+            description: Organize large Python applications into modular directory packages. Configure __init__.py files, execute absolute vs relative imports, manage sys.path, and handle circular dependency issues.
+          - title: Virtual Envs & Dependency Management
+            dayLabel: Days 3–4
+            description: Isolate Python project dependencies using venv, virtualenv, pip, requirements.txt files, and modern dependency management tools like Poetry or Pipenv to prevent version conflicts.
+  - title: 08. Testing & Code Quality
+    topics:
+      - id: py-testing
+        title: Testing (pytest), Tooling & Linting
+        description: Automated testing and static analysis maintain code quality and prevent regressions in production. Learn to write unit tests with pytest, configure fixtures, run static type checking with mypy, and format code with ruff.
+        subtopics:
+          - title: Unit Testing with pytest
+            dayLabel: Days 1–2
+            description: Write automated test suites using pytest framework. Master test discovery rules, assert statements, test fixtures (@pytest.fixture), parameterization (@pytest.mark.parametrize), and mocking dependencies with unittest.mock.
+          - title: Linting, Formatting & Type Checking
+            dayLabel: Days 3–4
+            description: Enforce PEP 8 code formatting using ruff or black, run static type checking with mypy, and configure pre-commit hooks to automate code quality checks before git commits.
+---
+Python is a high-level, versatile programming language renowned for its clean readability, rich ecosystem, and wide application across web development, data science, machine learning, and automation.

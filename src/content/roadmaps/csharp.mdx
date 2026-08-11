@@ -1,0 +1,112 @@
+---
+title: C# Programming
+description: An intensive 1-month roadmap to mastering C# programming, covering syntax, type system, OOP, LINQ, memory management, delegates, events, async/await, and .NET CLI.
+category: Programming Languages
+estimatedTime: 4 weeks
+difficulty: Intermediate
+topicCount: 24
+order: 4
+icon: 🔷
+thumbnail: /thumbnails/icons/CSharp.svg
+sections:
+  - title: 01. C# Syntax & Type System
+    topics:
+      - id: cs-syntax-types
+        title: Syntax, Primitive Types & Memory
+        description: C# is a strongly typed, modern language on .NET. Master C# primitives, value types vs reference types, stack vs heap memory allocation, struct vs class semantics, and nullable reference types.
+        subtopics:
+          - title: Primitives, Variables & Nullability
+            dayLabel: Days 1–2
+            description: Work through C#'s built-in types — int, double, bool, char, string — and how var lets the compiler infer them at compile time. Learn nullable value types (int?), the null-coalescing (??) and null-coalescing assignment (??=) operators, and how enabling the nullable reference types context (string? vs string) catches null-reference bugs before runtime instead of after.
+          - title: Value Types vs Reference Types
+            dayLabel: Days 3–4
+            description: Compare how structs (value types) are copied by value on the stack against how classes (reference types) are passed by reference on the heap. Trace what boxing and unboxing actually cost, and practice using ref, out, and in parameters to control whether a method mutates the caller's data or just reads it.
+  - title: 02. Control Flow & Pattern Matching
+    topics:
+      - id: cs-control-pattern
+        title: Conditionals, Loops & Pattern Matching
+        description: Control program execution flow using modern C# features. Learn if-else, loops, switch expressions (=>), pattern matching, relational patterns, and positional pattern matching.
+        subtopics:
+          - title: Control Flow & Loops
+            dayLabel: Days 1–2
+            description: Cover the classic control structures — if/else chains, the traditional switch statement, for, foreach, while, and do-while loops — plus break, continue, and the rarely-needed but occasionally handy goto. Build small programs (e.g., FizzBuzz variants, input validators) to get the flow logic to feel automatic.
+          - title: Pattern Matching & Switch Expressions
+            dayLabel: Days 3–4
+            description: Move from statement-based switches to expression-based switch expressions (=> syntax) that return a value directly. Practice type patterns, relational patterns (< > <= >=), positional patterns that deconstruct tuples and records, when clauses for extra conditions, and list patterns for matching array/span shapes.
+  - title: 03. Object-Oriented C#
+    topics:
+      - id: cs-oop
+        title: Classes, Records, Structs & Interfaces
+        description: Build object-oriented software in C#. Learn class members, primary constructors, auto-properties, immutable record types, value equality, readonly structs, and interface inheritance.
+        subtopics:
+          - title: Classes, Properties & Constructors
+            dayLabel: Days 1–2
+            description: Design classes with fields, auto-implemented properties, and the newer primary constructor syntax (C# 12) that folds constructor parameters straight into the class declaration. Compare constructor overloading, static members and static constructors, and the access modifiers (public/private/protected/internal) that shape a class's API surface.
+          - title: Records & Structs
+            dayLabel: Days 3–4
+            description: Use record types for immutable data models with built-in value-based equality (two records with the same data are equal, unlike classes). Practice non-destructive mutation with the with expression, and see when a readonly struct or a record struct beats a full class for small, allocation-sensitive data.
+          - title: Interfaces & Inheritance
+            dayLabel: Days 5–6
+            description: Define contracts with interfaces, including C#'s support for default interface implementations and implementing multiple interfaces on one class. Contrast that with single-inheritance class hierarchies — abstract classes, virtual/override members, sealed classes — and practice writing polymorphic code that depends on abstractions rather than concrete types.
+  - title: 04. Generic Collections & LINQ
+    topics:
+      - id: cs-collections-linq
+        title: Collections & LINQ Queries
+        description: Query and transform data structures seamlessly with LINQ. Master List<T>, Dictionary<TKey,TValue>, HashSet<T>, and LINQ methods (Where, Select, OrderBy, GroupBy, Join).
+        subtopics:
+          - title: Generic Collections (List, Dictionary, HashSet)
+            dayLabel: Days 1–2
+            description: Compare the core generic collections — List<T> for ordered, resizable sequences, Dictionary<TKey,TValue> for fast key-based lookups, HashSet<T> for uniqueness checks, plus Queue<T> and Stack<T> for FIFO/LIFO workflows. Learn where IEnumerable<T>, ICollection<T>, and IList<T> fit as you choose the narrowest interface a method actually needs.
+          - title: LINQ Query & Method Syntax
+            dayLabel: Days 3–4
+            description: Chain LINQ methods — Where, Select, OrderBy, GroupBy, Join, Aggregate — to filter, project, and reshape collections without writing manual loops. Understand deferred execution (queries don't run until enumerated), compare fluent method syntax against SQL-like query syntax, and see how IQueryable<T> differs from IEnumerable<T> when a provider like EF Core translates your query into SQL.
+  - title: 05. Delegates, Events & Lambdas
+    topics:
+      - id: cs-delegates-events
+        title: Delegates, Action/Func & Events
+        description: Implement event-driven architectures and function pointers in C#. Learn custom delegates, Action<T>, Func<T,TResult>, lambda expressions, and event publisher-subscriber models.
+        subtopics:
+          - title: Delegates & Action / Func
+            dayLabel: Days 1–2
+            description: Define custom delegate types that hold references to methods, then see how the built-in generic Action<T> (no return value) and Func<T, TResult> (returns a value) delegates cover most cases without a custom declaration. Practice writing lambda expressions inline, chaining multicast delegates, and capturing outer variables in closures.
+          - title: Events & Publisher-Subscriber Pattern
+            dayLabel: Days 3–4
+            description: Build the event keyword on top of delegates to implement a publisher-subscriber pattern, following the standard EventHandler / EventHandler<TEventArgs> convention and custom EventArgs subclasses for passing event data. Practice subscribing and unsubscribing with += and -=, and understand why forgetting -= is a common source of memory leaks.
+  - title: 06. Asynchronous Programming
+    topics:
+      - id: cs-async
+        title: Task-based Asynchronous Pattern (TAP)
+        description: Write scalable, non-blocking asynchronous software in C#. Master Task, Task<TResult>, async/await execution flow, Task.WhenAll, and CancellationToken processing.
+        subtopics:
+          - title: Task, async & await
+            dayLabel: Days 1–2
+            description: Learn the difference between Task (no return value) and Task<TResult> (returns a value), and trace exactly what happens at an await point — the calling thread isn't blocked, and control returns once the awaited operation completes. Cover why async void is dangerous outside event handlers, how exceptions propagate out of async methods, and when ConfigureAwait(false) matters.
+          - title: Task Combinators & CancellationToken
+            dayLabel: Days 3–4
+            description: Coordinate multiple asynchronous operations with Task.WhenAll (run in parallel, wait for all) and Task.WhenAny (react to whichever finishes first). Practice cooperative cancellation with CancellationTokenSource and CancellationToken, build timeout patterns around them, and report progress back to a caller with IProgress<T>.
+  - title: 07. Memory Management & IDisposable
+    topics:
+      - id: cs-memory
+        title: Garbage Collection & Resource Cleanup
+        description: Understand .NET memory management and unmanaged resource cleanup. Learn Garbage Collection generations (Gen 0, 1, 2), Large Object Heap (LOH), IDisposable, and using statements.
+        subtopics:
+          - title: Garbage Collection (Gen 0, 1, 2)
+            dayLabel: Days 1–2
+            description: Understand the generational garbage collector — short-lived objects are collected cheaply in Gen 0, survivors get promoted to Gen 1 then Gen 2, and why that design makes most allocations fast. Cover the Large Object Heap (LOH) for objects over 85KB, why manually calling GC.Collect() is usually a mistake, and when weak references and finalizers are actually appropriate.
+          - title: IDisposable & using Statement
+            dayLabel: Days 3–4
+            description: Implement the IDisposable pattern to release unmanaged resources (file handles, database connections, network sockets) deterministically instead of waiting on the garbage collector. Practice using statements and using declarations for automatic cleanup, try-finally as the manual fallback, and IAsyncDisposable for cleanup that itself needs to be asynchronous.
+  - title: 08. Tooling & Testing
+    topics:
+      - id: cs-tooling-testing
+        title: .NET CLI, NuGet & xUnit Testing
+        description: Develop and test .NET projects from the command line. Master dotnet CLI commands, solution management, NuGet package resolution, and automated unit testing with xUnit and Moq.
+        subtopics:
+          - title: .NET CLI & Solution Setup
+            dayLabel: Days 1–2
+            description: Get comfortable driving a project entirely from the command line with dotnet new, dotnet build, dotnet run, and dotnet restore. Learn how a .sln solution file ties multiple .csproj projects together, how to add project references between them, and how NuGet resolves and restores package dependencies.
+          - title: Unit Testing with xUnit & Moq
+            dayLabel: Days 3–4
+            description: Write automated tests with xUnit using [Fact] for single-case tests and [Theory] with [InlineData] for parameterized ones, structuring each test around the arrange-act-assert pattern. Use Moq to fake out dependencies (like a database or an HTTP client) so tests stay fast and isolated, and set up a dedicated test project referencing the code under test.
+---
+C# is a modern, object-oriented, type-safe programming language developed by Microsoft for building high-performance enterprise backend applications, cloud services, and cross-platform software. This roadmap moves from core syntax and the type system through object-oriented design, collections and LINQ, event-driven patterns, asynchronous programming, memory management, and finally the command-line tooling and testing practices used in real .NET projects — the same stack behind ASP.NET Core Web API, Blazor, and .NET MAUI work.

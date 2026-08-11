@@ -1,0 +1,109 @@
+---
+title: Java Programming
+description: An intensive 1-month roadmap to mastering Java programming, covering core syntax, JVM internals, Object-Oriented design, Collections, Streams API, Concurrency, Virtual Threads, and JUnit testing.
+category: Programming Languages
+estimatedTime: 4 weeks
+difficulty: Intermediate
+topicCount: 24
+order: 5
+icon: ☕
+thumbnail: /thumbnails/icons/Java.svg
+sections:
+  - title: 01. JVM & Java Fundamentals
+    topics:
+      - id: java-jvm-syntax
+        title: JVM Architecture & Core Syntax
+        description: Java executes on the Java Virtual Machine (JVM) for cross-platform portability. Learn JVM bytecode compilation, JIT optimization, Heap vs Stack memory, primitives, and syntax rules.
+        subtopics:
+          - title: JDK, JRE & JVM Internals
+            dayLabel: Days 1–2
+            description: Hands-on module for JDK, JRE & JVM Internals. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for JVM Architecture & Core Syntax.
+          - title: Primitives, Variables & Operators
+            dayLabel: Days 3–4
+            description: Hands-on module for Primitives, Variables & Operators. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for JVM Architecture & Core Syntax.
+  - title: 02. Control Flow & Arrays
+    topics:
+      - id: java-control-arrays
+        title: Branching, Loops & Array Manipulation
+        description: Control application flow and manipulate array data structures in Java. Learn conditional branches, modern switch expressions, loop iterations, multi-dimensional arrays, and System.arraycopy.
+        subtopics:
+          - title: Conditionals & Modern Switch Expressions
+            dayLabel: Days 1–2
+            description: Hands-on module for Conditionals & Modern Switch Expressions. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Branching, Loops & Array Manipulation.
+          - title: Loops & Array Operations
+            dayLabel: Days 3–4
+            description: Hands-on module for Loops & Array Operations. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Branching, Loops & Array Manipulation.
+  - title: 03. Object-Oriented Java
+    topics:
+      - id: java-oop
+        title: Classes, Inheritance & Polymorphism
+        description: Build enterprise object-oriented applications in Java. Learn class declarations, constructors, access modifiers, method overloading/overriding, inheritance (extends), and runtime polymorphism.
+        subtopics:
+          - title: Classes, Constructors & Packages
+            dayLabel: Days 1–2
+            description: Hands-on module for Classes, Constructors & Packages. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Classes, Inheritance & Polymorphism.
+          - title: Inheritance, Polymorphism & super
+            dayLabel: Days 3–4
+            description: Hands-on module for Inheritance, Polymorphism & super. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Classes, Inheritance & Polymorphism.
+  - title: 04. Interfaces, Records & Sealed Classes
+    topics:
+      - id: java-interfaces-records
+        title: Interfaces, Records & Sealed Hierarchies
+        description: Model domain contracts and immutable data in modern Java. Learn interface default/static methods, immutable Records (Java 14+), and sealed class hierarchies (permits keyword).
+        subtopics:
+          - title: Interfaces & Abstract Classes
+            dayLabel: Days 1–2
+            description: Hands-on module for Interfaces & Abstract Classes. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Interfaces, Records & Sealed Hierarchies.
+          - title: Records & Sealed Classes
+            dayLabel: Days 3–4
+            description: Hands-on module for Records & Sealed Classes. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Interfaces, Records & Sealed Hierarchies.
+  - title: 05. Collections Framework & Generics
+    topics:
+      - id: java-collections-generics
+        title: Collections Framework & Generics
+        description: Organize data efficiently with Java's Collections Framework. Master ArrayList, LinkedList, HashSet, HashMap, generic type parameters <T>, and wildcard bounds (<? extends T>).
+        subtopics:
+          - title: Collections (List, Set, Map, Queue)
+            dayLabel: Days 1–2
+            description: Hands-on module for Collections (List, Set, Map, Queue). Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Collections Framework & Generics.
+          - title: Generics & Bounded Type Parameters
+            dayLabel: Days 3–4
+            description: Hands-on module for Generics & Bounded Type Parameters. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Collections Framework & Generics.
+  - title: 06. Functional Java & Streams API
+    topics:
+      - id: java-lambdas-streams
+        title: Lambdas, Functional Interfaces & Streams API
+        description: Write functional, declarative Java code. Learn lambda expressions, method references (Class::method), functional interfaces (Predicate, Function, Consumer), and the Streams API.
+        subtopics:
+          - title: Lambdas & Functional Interfaces
+            dayLabel: Days 1–2
+            description: Hands-on module for Lambdas & Functional Interfaces. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Lambdas, Functional Interfaces & Streams API.
+          - title: Streams API (Filter, Map, Reduce, Collect)
+            dayLabel: Days 3–4
+            description: Hands-on module for Streams API (Filter, Map, Reduce, Collect). Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Lambdas, Functional Interfaces & Streams API.
+  - title: 07. Concurrency & Virtual Threads
+    topics:
+      - id: java-concurrency
+        title: Multithreading, Executors & Virtual Threads
+        description: Build high-throughput concurrent Java services. Learn Thread, Runnable, synchronized blocks, ReentrantLock, ExecutorService, and high-performance Java 21 Virtual Threads.
+        subtopics:
+          - title: Multithreading, Synchronization & Locks
+            dayLabel: Days 1–2
+            description: Hands-on module for Multithreading, Synchronization & Locks. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Multithreading, Executors & Virtual Threads.
+          - title: ExecutorService & Virtual Threads (Java 21+)
+            dayLabel: Days 3–4
+            description: Hands-on module for ExecutorService & Virtual Threads (Java 21+). Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Multithreading, Executors & Virtual Threads.
+  - title: 08. Build Tools & Testing
+    topics:
+      - id: java-build-testing
+        title: Maven/Gradle Build & JUnit 5 Testing
+        description: Automate Java project builds and testing workflows. Learn pom.xml / build.gradle dependency management, plugins, unit testing with JUnit 5, and mocking with Mockito.
+        subtopics:
+          - title: Maven / Gradle Build Lifecycle
+            dayLabel: Days 1–2
+            description: Hands-on module for Maven / Gradle Build Lifecycle. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Maven/Gradle Build & JUnit 5 Testing.
+          - title: Unit Testing with JUnit 5 & Mockito
+            dayLabel: Days 3–4
+            description: Hands-on module for Unit Testing with JUnit 5 & Mockito. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Maven/Gradle Build & JUnit 5 Testing.
+---
+Java is a world-class, strongly typed, object-oriented programming language designed for platform independence via the Java Virtual Machine (JVM), powering massive enterprise software globally.

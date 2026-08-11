@@ -1,0 +1,112 @@
+---
+title: JavaScript Programming
+description: An intensive 1-month roadmap to mastering modern JavaScript, covering core language syntax, objects, prototypes, closures, asynchronous event loop, DOM manipulation, and tooling.
+category: Programming Languages
+estimatedTime: 4 weeks
+difficulty: Beginner
+topicCount: 24
+order: 2
+icon: 🟨
+thumbnail: /thumbnails/icons/JavaScript.svg
+sections:
+  - title: 01. JavaScript Core & Types
+    topics:
+      - id: js-core-types
+        title: Syntax, Variables & Scoping
+        description: JavaScript is the core programming language of the web. This topic introduces modern syntax, variable declaration keywords (let, const, var), block vs function scoping, primitive data types, and implicit type coercion rules.
+        subtopics:
+          - title: Variables (let, const, var) & Scoping
+            dayLabel: Days 1–2
+            description: Master block scope vs function scope in JavaScript. Learn why const and let replaced var, understand temporal dead zone (TDZ) behavior, hoisting mechanics, and variable re-assignment rules.
+          - title: Primitives, Coercion & Operators
+            dayLabel: Days 3–4
+            description: Study JavaScript's 7 primitive types (String, Number, Boolean, Symbol, BigInt, null, undefined). Learn implicit vs explicit type coercion, strict equality (===) vs loose equality (==), and logical operators.
+  - title: 02. Control Flow & Functions
+    topics:
+      - id: js-control-functions
+        title: Branching, Loops & Functions
+        description: Control structures and function definitions form the logic engine of web applications. Learn conditional branching, loop iterations, function declarations, function expressions, and modern arrow function syntax.
+        subtopics:
+          - title: Conditionals & Loops
+            dayLabel: Days 1–2
+            description: Implement logic branching with if-else and switch statements, ternary operator expressions, and iterate sequences using for, while, do-while, for...of (iterables), and for...in (object properties).
+          - title: Function Declarations & Arrow Functions
+            dayLabel: Days 3–4
+            description: Compare function declarations, function expressions, and ES6 arrow functions. Understand arrow function concise syntax, implicit returns, default parameters, and rest parameter gathering (...args).
+  - title: 03. Objects, Arrays & ES6+ Features
+    topics:
+      - id: js-objects-arrays
+        title: Objects, Arrays & Destructuring
+        description: Objects and arrays store complex structured data in JavaScript. Master array transformation methods (map, filter, reduce), object property access, shorthand syntax, and powerful destructuring assignments.
+        subtopics:
+          - title: Arrays & Iteration Methods
+            dayLabel: Days 1–2
+            description: 'Transform and query JavaScript arrays using functional iteration methods: .map(), .filter(), .reduce(), .find(), .some(), .every(), .slice(), and .splice() while maintaining immutable state practices.'
+          - title: Object Literals & Destructuring
+            dayLabel: Days 3–4
+            description: Create and manipulate JavaScript object literals. Master property shorthand, computed property names, Object.keys(), Object.values(), Object.entries(), and object/array destructuring assignment syntax.
+  - title: 04. Closures, Prototypes & 'this'
+    topics:
+      - id: js-closures-prototypes
+        title: Lexical Scope, Closures & OOP
+        description: Deep-dive into JavaScript execution contexts and object-oriented patterns. Learn lexical scoping, closures for data privacy, prototypal inheritance, constructor functions, ES6 classes, and the 'this' binding keyword.
+        subtopics:
+          - title: Lexical Scope & Closures
+            dayLabel: Days 1–2
+            description: Understand how functions retain access to their outer lexical environment even after parent execution completes. Practice building private variables, stateful factory functions, and module patterns using closures.
+          - title: Prototypes, Classes & 'this' Binding
+            dayLabel: Days 3–4
+            description: Master prototypal inheritance via __proto__ and prototype property, ES6 class syntax, constructors, super, and how the 'this' keyword binds dynamically via default, implicit, explicit (call/apply/bind), and arrow functions.
+  - title: 05. Asynchronous JavaScript
+    topics:
+      - id: js-async-promises
+        title: Promises, Async/Await & Event Loop
+        description: Asynchronous programming handles non-blocking operations like API calls and file IO. Master Promises, async/await syntax, error handling, and the single-threaded Event Loop microtask/macrotask queues.
+        subtopics:
+          - title: Callbacks & Promises
+            dayLabel: Days 1–2
+            description: Transition from callback-based asynchronous patterns to Promises. Learn Promise states (pending, fulfilled, rejected), chaining .then() and .catch(), and managing multiple promises with Promise.all() and Promise.allSettled().
+          - title: Async/Await & Error Handling
+            dayLabel: Days 3–4
+            description: Write clean synchronous-looking asynchronous code using async/await. Learn how async functions return Promises implicitly, handle network errors using try/catch/finally blocks, and throw custom Error objects.
+          - title: Event Loop, Call Stack & Microtasks
+            dayLabel: Days 5–6
+            description: Deconstruct JavaScript's single-threaded concurrency runtime. Understand the Call Stack, Web/Node APIs background processing, Callback Macrotask Queue (setTimeout), and High-Priority Microtask Queue (Promises).
+  - title: 06. DOM Manipulation & Web APIs
+    topics:
+      - id: js-dom-apis
+        title: DOM Tree, Events & Storage APIs
+        description: Browser web applications interact with users through the Document Object Model (DOM). Learn DOM tree navigation, element manipulation, event handling, event delegation, and Web Storage APIs.
+        subtopics:
+          - title: DOM Selection & Manipulation
+            dayLabel: Days 1–2
+            description: Select HTML elements using querySelector and querySelectorAll, update textContent and innerHTML, manipulate CSS classes via classList (add, remove, toggle), and create/append new DOM nodes dynamically.
+          - title: Event Listeners & Event Delegation
+            dayLabel: Days 3–4
+            description: Attach event listeners with addEventListener, handle user click, input, submit events, understand event propagation phases (capturing vs bubbling), call e.stopPropagation() / e.preventDefault(), and implement event delegation.
+  - title: 07. Modules & Build Tooling
+    topics:
+      - id: js-modules-tooling
+        title: ES Modules, Bundlers & npm
+        description: Modern JavaScript development relies on modular architecture and package management. Master ES module imports/exports, npm dependency configuration, and modern build bundlers like Vite.
+        subtopics:
+          - title: ES Modules (import/export)
+            dayLabel: Days 1–2
+            description: Structure modular web applications using native ES Modules. Master named exports/imports, default exports, module namespace imports (import * as Utils), dynamic import() expressions, and script type='module'.
+          - title: Package Managers & Build Tools
+            dayLabel: Days 3–4
+            description: Manage external third-party dependencies using npm or pnpm. Configure package.json dependencies vs devDependencies, package-lock.json version pinning, npm scripts, and modern Vite dev server / build bundler.
+  - title: 08. Testing & Debugging
+    topics:
+      - id: js-testing
+        title: Vitest/Jest Testing & Debugging
+        description: Writing reliable web software requires automated unit testing and browser debugging. Learn unit testing with Vitest/Jest, assertion suites, function mocking, and browser DevTools debugging.
+        subtopics:
+          - title: Unit Testing with Vitest / Jest
+            dayLabel: Days 1–2
+            description: Write unit tests for JavaScript functions using Vitest or Jest. Organize tests into describe blocks and test/it cases, write expect() assertions, test async code, and mock external API dependencies.
+          - title: Browser DevTools & Debugging
+            dayLabel: Days 3–4
+            description: Master browser developer tools for debugging. Inspect DOM elements, use console API methods (console.log, console.table, console.error), set conditional breakpoints, inspect call stacks, and analyze HTTP requests in Network tab.
+---
+JavaScript is the premier programming language of the web, powering interactive browser applications, frontend frameworks, and server-side runtimes.

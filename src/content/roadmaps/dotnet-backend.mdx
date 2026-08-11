@@ -1,369 +1,604 @@
 ---
-title: ".NET Backend Development"
-description: "A structured roadmap to becoming a skilled .NET backend developer, covering C#, ASP.NET Core, EF Core, databases, API design, authentication, architecture patterns, and deployment fundamentals."
-category: ".NET Frameworks"
-estimatedTime: "18 weeks"
-difficulty: "Intermediate"
+title: .NET Backend Development
+description: A structured roadmap to becoming a skilled .NET backend developer, covering C#, ASP.NET Core, EF Core, databases, API design, authentication, architecture patterns, and deployment fundamentals.
+category: .NET Frameworks
+estimatedTime: 18 weeks
+difficulty: Intermediate
 topicCount: 30
 order: 3
-icon: "🔷"
-thumbnail: "/thumbnails/icons/NET core.svg"
+icon: 🔷
+thumbnail: /thumbnails/icons/NET core.svg
 sections:
-  - title: "Programming Fundamentals"
+  - title: Programming Fundamentals
     topics:
-      - id: "csharp-fundamentals"
-        title: "C# Fundamentals"
-        description: "Learn C# core syntax, types, classes, interfaces, generics, delegates, LINQ, and async/await — the foundation for everything else in the .NET ecosystem."
+      - id: csharp-fundamentals
+        title: C# Fundamentals
+        description: In-depth exploration of C# Fundamentals. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "C# Documentation - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/csharp/"
-            type: "docs"
-          - title: "C# Fundamentals for Absolute Beginners"
-            url: "https://learn.microsoft.com/en-us/shows/csharp-fundamentals-for-absolute-beginners/"
-            type: "course"
-          - title: "LINQ Overview - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/csharp/linq/"
-            type: "docs"
-      - id: "data-structures"
-        title: "Data Structures"
-        description: "Understand arrays, lists, dictionaries, stacks, queues, trees, and graphs in C#, and when to reach for each collection type for optimal performance."
+          - title: C# Documentation - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/csharp/
+            type: docs
+          - title: C# Fundamentals for Absolute Beginners
+            url: https://learn.microsoft.com/en-us/shows/csharp-fundamentals-for-absolute-beginners/
+            type: course
+          - title: LINQ Overview - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/csharp/linq/
+            type: docs
+        subtopics:
+          - title: 'C# Fundamentals: C# Language & Runtime Features'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for C# Fundamentals: C# Language & Runtime Features. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for C# Fundamentals.'
+          - title: 'C# Fundamentals: ASP.NET Core & EF Core Integration'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for C# Fundamentals: ASP.NET Core & EF Core Integration. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for C# Fundamentals.'
+      - id: data-structures
+        title: Data Structures
+        description: In-depth exploration of Data Structures. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Collections and Data Structures - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/standard/collections/"
-            type: "docs"
-          - title: "Data Structures Easy to Advanced - freeCodeCamp"
-            url: "https://www.youtube.com/watch?v=RBSGKlAvoiM"
-            type: "video"
-      - id: "algorithms-basics"
-        title: "Algorithms Basics"
-        description: "Learn fundamental algorithms including sorting, searching, recursion, and Big O notation for analyzing time and space complexity."
+          - title: Collections and Data Structures - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/standard/collections/
+            type: docs
+          - title: Data Structures Easy to Advanced - freeCodeCamp
+            url: https://www.youtube.com/watch?v=RBSGKlAvoiM
+            type: video
+        subtopics:
+          - title: 'Data Structures: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Data Structures: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Data Structures.'
+          - title: 'Data Structures: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Data Structures: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Data Structures.'
+      - id: algorithms-basics
+        title: Algorithms Basics
+        description: In-depth exploration of Algorithms Basics. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Introduction to Algorithms - MIT OpenCourseWare"
-            url: "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/"
-            type: "course"
-          - title: "Big-O Cheat Sheet"
-            url: "https://www.bigocheatsheet.com/"
-            type: "article"
-
-  - title: "Version Control"
+          - title: Introduction to Algorithms - MIT OpenCourseWare
+            url: https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/
+            type: course
+          - title: Big-O Cheat Sheet
+            url: https://www.bigocheatsheet.com/
+            type: article
+        subtopics:
+          - title: 'Algorithms Basics: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Algorithms Basics: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Algorithms Basics.'
+          - title: 'Algorithms Basics: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Algorithms Basics: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Algorithms Basics.'
+  - title: Version Control
     topics:
-      - id: "git"
-        title: "Git"
-        description: "Master Git for version control — commits, branches, merges, rebases, stashing, and resolving conflicts in collaborative environments."
+      - id: git
+        title: Git
+        description: In-depth exploration of Git. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Pro Git Book"
-            url: "https://git-scm.com/book/en/v2"
-            type: "docs"
-          - title: "Learn Git Branching"
-            url: "https://learngitbranching.js.org/"
-            type: "project"
-      - id: "github-gitlab"
-        title: "GitHub/GitLab"
-        description: "Use hosted Git platforms for pull/merge requests, code reviews, CI/CD integration, issue tracking, and team collaboration."
+          - title: Pro Git Book
+            url: https://git-scm.com/book/en/v2
+            type: docs
+          - title: Learn Git Branching
+            url: https://learngitbranching.js.org/
+            type: project
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Hands-on module for Git Core Commands & Workflow. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Git.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Hands-on module for Branching Strategies & Pull Requests. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Git.
+      - id: github-gitlab
+        title: GitHub/GitLab
+        description: In-depth exploration of GitHub/GitLab. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "GitHub Docs - Get Started"
-            url: "https://docs.github.com/en/get-started"
-            type: "docs"
-          - title: "GitLab Documentation"
-            url: "https://docs.gitlab.com/"
-            type: "docs"
-
-  - title: ".NET Ecosystem & Runtime"
+          - title: GitHub Docs - Get Started
+            url: https://docs.github.com/en/get-started
+            type: docs
+          - title: GitLab Documentation
+            url: https://docs.gitlab.com/
+            type: docs
+        subtopics:
+          - title: Git Core Commands & Workflow
+            dayLabel: Days 1–2
+            description: Hands-on module for Git Core Commands & Workflow. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for GitHub/GitLab.
+          - title: Branching Strategies & Pull Requests
+            dayLabel: Days 3–4
+            description: Hands-on module for Branching Strategies & Pull Requests. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for GitHub/GitLab.
+  - title: .NET Ecosystem & Runtime
     topics:
-      - id: "dotnet-cli-sdk"
-        title: ".NET CLI & SDK"
-        description: "Get comfortable with the .NET SDK, dotnet CLI commands, project/solution structure, NuGet package management, and multi-targeting."
+      - id: dotnet-cli-sdk
+        title: .NET CLI & SDK
+        description: In-depth exploration of .NET CLI & SDK. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: ".NET CLI Overview - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/core/tools/"
-            type: "docs"
-          - title: "NuGet Documentation"
-            url: "https://learn.microsoft.com/en-us/nuget/"
-            type: "docs"
-      - id: "dependency-injection"
-        title: "Dependency Injection"
-        description: "Understand the built-in .NET dependency injection container — service lifetimes (transient, scoped, singleton), constructor injection, and testable design."
+          - title: .NET CLI Overview - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/core/tools/
+            type: docs
+          - title: NuGet Documentation
+            url: https://learn.microsoft.com/en-us/nuget/
+            type: docs
+        subtopics:
+          - title: '.NET CLI & SDK: C# Language & Runtime Features'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for .NET CLI & SDK: C# Language & Runtime Features. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for .NET CLI & SDK.'
+          - title: '.NET CLI & SDK: ASP.NET Core & EF Core Integration'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for .NET CLI & SDK: ASP.NET Core & EF Core Integration. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for .NET CLI & SDK.'
+      - id: dependency-injection
+        title: Dependency Injection
+        description: In-depth exploration of Dependency Injection. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Dependency Injection in .NET - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection"
-            type: "docs"
-          - title: "DI Guidelines - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection-guidelines"
-            type: "article"
-      - id: "configuration-logging"
-        title: "Configuration & Logging"
-        description: "Manage app settings with appsettings.json, environment variables, and the Options pattern, and add structured logging with ILogger and providers like Serilog."
+          - title: Dependency Injection in .NET - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection
+            type: docs
+          - title: DI Guidelines - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/core/extensions/dependency-injection-guidelines
+            type: article
+        subtopics:
+          - title: 'Dependency Injection: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Dependency Injection: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Dependency Injection.'
+          - title: 'Dependency Injection: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Dependency Injection: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Dependency Injection.'
+      - id: configuration-logging
+        title: Configuration & Logging
+        description: In-depth exploration of Configuration & Logging. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Configuration in .NET - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration"
-            type: "docs"
-          - title: "Logging in .NET - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/core/extensions/logging"
-            type: "docs"
-
-  - title: "Databases"
+          - title: Configuration in .NET - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration
+            type: docs
+          - title: Logging in .NET - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/core/extensions/logging
+            type: docs
+        subtopics:
+          - title: 'Configuration & Logging: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Configuration & Logging: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Configuration & Logging.'
+          - title: 'Configuration & Logging: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Configuration & Logging: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Configuration & Logging.'
+  - title: Databases
     topics:
-      - id: "sql-fundamentals"
-        title: "SQL Fundamentals"
-        description: "Learn relational database concepts, SQL queries (SELECT, JOIN, GROUP BY, subqueries), schema design, normalization, and indexing strategies."
+      - id: sql-fundamentals
+        title: SQL Fundamentals
+        description: In-depth exploration of SQL Fundamentals. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "SQL Tutorial - W3Schools"
-            url: "https://www.w3schools.com/sql/"
-            type: "article"
-          - title: "SQLBolt - Interactive SQL Lessons"
-            url: "https://sqlbolt.com/"
-            type: "course"
-      - id: "sql-server"
-        title: "SQL Server"
-        description: "Work with Microsoft SQL Server — T-SQL, stored procedures, views, transactions, and SQL Server Management Studio (SSMS) for administration."
+          - title: SQL Tutorial - W3Schools
+            url: https://www.w3schools.com/sql/
+            type: article
+          - title: SQLBolt - Interactive SQL Lessons
+            url: https://sqlbolt.com/
+            type: course
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Hands-on module for Schema Design & Data Modeling. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for SQL Fundamentals.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Hands-on module for Querying, Transactions & Performance. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for SQL Fundamentals.
+      - id: sql-server
+        title: SQL Server
+        description: In-depth exploration of SQL Server. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "SQL Server Documentation"
-            url: "https://learn.microsoft.com/en-us/sql/sql-server/"
-            type: "docs"
-          - title: "T-SQL Reference - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/sql/t-sql/language-reference"
-            type: "docs"
-      - id: "ef-core"
-        title: "Entity Framework Core"
-        description: "Use EF Core as the primary .NET ORM — DbContext, code-first migrations, LINQ queries, relationships, and performance tuning with tracking and includes."
+          - title: SQL Server Documentation
+            url: https://learn.microsoft.com/en-us/sql/sql-server/
+            type: docs
+          - title: T-SQL Reference - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/sql/t-sql/language-reference
+            type: docs
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Hands-on module for Schema Design & Data Modeling. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for SQL Server.
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Hands-on module for Querying, Transactions & Performance. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for SQL Server.
+      - id: ef-core
+        title: Entity Framework Core
+        description: In-depth exploration of Entity Framework Core. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "EF Core Documentation"
-            url: "https://learn.microsoft.com/en-us/ef/core/"
-            type: "docs"
-          - title: "EF Core Migrations"
-            url: "https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/"
-            type: "docs"
-      - id: "dapper"
-        title: "Dapper (Micro-ORM)"
-        description: "Learn Dapper as a lightweight alternative to EF Core for high-performance, raw-SQL-driven data access when full ORM overhead isn't needed."
+          - title: EF Core Documentation
+            url: https://learn.microsoft.com/en-us/ef/core/
+            type: docs
+          - title: EF Core Migrations
+            url: https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/
+            type: docs
+        subtopics:
+          - title: 'Entity Framework Core: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Entity Framework Core: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Entity Framework Core.'
+          - title: 'Entity Framework Core: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Entity Framework Core: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Entity Framework Core.'
+      - id: dapper
+        title: Dapper (Micro-ORM)
+        description: In-depth exploration of Dapper (Micro-ORM). Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Dapper GitHub Repository"
-            url: "https://github.com/DapperLib/Dapper"
-            type: "docs"
-          - title: "Dapper Tutorial"
-            url: "https://www.learndapper.com/"
-            type: "article"
-
-  - title: "API Development"
+          - title: Dapper GitHub Repository
+            url: https://github.com/DapperLib/Dapper
+            type: docs
+          - title: Dapper Tutorial
+            url: https://www.learndapper.com/
+            type: article
+        subtopics:
+          - title: Schema Design & Data Modeling
+            dayLabel: Days 1–2
+            description: Hands-on module for Schema Design & Data Modeling. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Dapper (Micro-ORM).
+          - title: Querying, Transactions & Performance
+            dayLabel: Days 3–4
+            description: Hands-on module for Querying, Transactions & Performance. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Dapper (Micro-ORM).
+  - title: API Development
     topics:
-      - id: "aspnet-core-web-api"
-        title: "ASP.NET Core Web API"
-        description: "Build RESTful APIs with ASP.NET Core — controllers, routing, model binding, action filters, middleware pipeline, and dependency injection."
+      - id: aspnet-core-web-api
+        title: ASP.NET Core Web API
+        description: In-depth exploration of ASP.NET Core Web API. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "ASP.NET Core Web API Documentation"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/web-api/"
-            type: "docs"
-          - title: "Build a Web API Tutorial - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api"
-            type: "course"
-      - id: "minimal-apis"
-        title: "Minimal APIs"
-        description: "Build lightweight, low-ceremony HTTP APIs using the Minimal API syntax introduced in .NET 6+, ideal for microservices and small services."
+          - title: ASP.NET Core Web API Documentation
+            url: https://learn.microsoft.com/en-us/aspnet/core/web-api/
+            type: docs
+          - title: Build a Web API Tutorial - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api
+            type: course
+        subtopics:
+          - title: 'ASP.NET Core Web API: C# Language & Runtime Features'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for ASP.NET Core Web API: C# Language & Runtime Features. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for ASP.NET Core Web API.'
+          - title: 'ASP.NET Core Web API: ASP.NET Core & EF Core Integration'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for ASP.NET Core Web API: ASP.NET Core & EF Core Integration. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for ASP.NET Core Web API.'
+      - id: minimal-apis
+        title: Minimal APIs
+        description: In-depth exploration of Minimal APIs. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Minimal APIs Overview - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis"
-            type: "docs"
-      - id: "api-design-principles"
-        title: "API Design Principles"
-        description: "Apply best practices for API design including consistent naming, error handling, rate limiting, versioning, and documentation with Swagger/OpenAPI."
+          - title: Minimal APIs Overview - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/aspnet/core/fundamentals/minimal-apis
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Hands-on module for API Endpoint Design & Protocol Rules. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Minimal APIs.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Hands-on module for API Security & OpenAPI Specifications. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Minimal APIs.
+      - id: api-design-principles
+        title: API Design Principles
+        description: In-depth exploration of API Design Principles. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Swashbuckle / Swagger for ASP.NET Core"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger"
-            type: "docs"
-          - title: "RESTful API Design - Microsoft"
-            url: "https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design"
-            type: "article"
-      - id: "grpc"
-        title: "gRPC"
-        description: "Build high-performance, contract-first RPC services with gRPC and Protocol Buffers for efficient service-to-service communication."
+          - title: Swashbuckle / Swagger for ASP.NET Core
+            url: https://learn.microsoft.com/en-us/aspnet/core/tutorials/web-api-help-pages-using-swagger
+            type: docs
+          - title: RESTful API Design - Microsoft
+            url: https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design
+            type: article
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Hands-on module for API Endpoint Design & Protocol Rules. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for API Design Principles.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Hands-on module for API Security & OpenAPI Specifications. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for API Design Principles.
+      - id: grpc
+        title: gRPC
+        description: In-depth exploration of gRPC. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "gRPC for .NET - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/grpc/"
-            type: "docs"
-
-  - title: "Authentication & Security"
+          - title: gRPC for .NET - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/aspnet/core/grpc/
+            type: docs
+        subtopics:
+          - title: 'gRPC: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for gRPC: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for gRPC.'
+          - title: 'gRPC: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for gRPC: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for gRPC.'
+  - title: Authentication & Security
     topics:
-      - id: "aspnet-identity"
-        title: "ASP.NET Core Identity"
-        description: "Implement user registration, login, roles, and claims-based authorization using the built-in ASP.NET Core Identity system."
+      - id: aspnet-identity
+        title: ASP.NET Core Identity
+        description: In-depth exploration of ASP.NET Core Identity. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "ASP.NET Core Identity Documentation"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity"
-            type: "docs"
-      - id: "jwt"
-        title: "JWT Authentication"
-        description: "Implement stateless authentication using JSON Web Tokens in ASP.NET Core — token generation, validation middleware, and refresh token patterns."
+          - title: ASP.NET Core Identity Documentation
+            url: https://learn.microsoft.com/en-us/aspnet/core/security/authentication/identity
+            type: docs
+        subtopics:
+          - title: 'ASP.NET Core Identity: C# Language & Runtime Features'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for ASP.NET Core Identity: C# Language & Runtime Features. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for ASP.NET Core Identity.'
+          - title: 'ASP.NET Core Identity: ASP.NET Core & EF Core Integration'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for ASP.NET Core Identity: ASP.NET Core & EF Core Integration. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for ASP.NET Core Identity.'
+      - id: jwt
+        title: JWT Authentication
+        description: In-depth exploration of JWT Authentication. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "JWT Bearer Authentication - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/security/authentication/jwt-bearer"
-            type: "docs"
-          - title: "Introduction to JSON Web Tokens"
-            url: "https://jwt.io/introduction"
-            type: "article"
-      - id: "oauth-2"
-        title: "OAuth 2.0 & OpenID Connect"
-        description: "Implement OAuth 2.0 and OpenID Connect flows for secure third-party authentication using ASP.NET Core authentication handlers."
+          - title: JWT Bearer Authentication - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/aspnet/core/security/authentication/jwt-bearer
+            type: docs
+          - title: Introduction to JSON Web Tokens
+            url: https://jwt.io/introduction
+            type: article
+        subtopics:
+          - title: Authentication & Token Credentials
+            dayLabel: Days 1–2
+            description: Hands-on module for Authentication & Token Credentials. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for JWT Authentication.
+          - title: Authorization & OWASP Vulnerability Defense
+            dayLabel: Days 3–4
+            description: Hands-on module for Authorization & OWASP Vulnerability Defense. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for JWT Authentication.
+      - id: oauth-2
+        title: OAuth 2.0 & OpenID Connect
+        description: In-depth exploration of OAuth 2.0 & OpenID Connect. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "OAuth 2.0 and OpenID Connect - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/security/authentication/"
-            type: "docs"
-          - title: "OAuth 2.0 Simplified"
-            url: "https://www.oauth.com/"
-            type: "article"
-      - id: "owasp-top-10"
-        title: "OWASP Top 10"
-        description: "Understand and defend against the most critical web application security risks including injection, broken authentication, XSS, and CSRF, and apply mitigations in ASP.NET Core."
+          - title: OAuth 2.0 and OpenID Connect - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/aspnet/core/security/authentication/
+            type: docs
+          - title: OAuth 2.0 Simplified
+            url: https://www.oauth.com/
+            type: article
+        subtopics:
+          - title: Authentication & Token Credentials
+            dayLabel: Days 1–2
+            description: Hands-on module for Authentication & Token Credentials. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for OAuth 2.0 & OpenID Connect.
+          - title: Authorization & OWASP Vulnerability Defense
+            dayLabel: Days 3–4
+            description: Hands-on module for Authorization & OWASP Vulnerability Defense. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for OAuth 2.0 & OpenID Connect.
+      - id: owasp-top-10
+        title: OWASP Top 10
+        description: In-depth exploration of OWASP Top 10. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "OWASP Top 10"
-            url: "https://owasp.org/www-project-top-ten/"
-            type: "docs"
-          - title: "Overview of ASP.NET Core Security"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/security/"
-            type: "docs"
-
-  - title: "Caching & Performance"
+          - title: OWASP Top 10
+            url: https://owasp.org/www-project-top-ten/
+            type: docs
+          - title: Overview of ASP.NET Core Security
+            url: https://learn.microsoft.com/en-us/aspnet/core/security/
+            type: docs
+        subtopics:
+          - title: 'OWASP Top 10: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for OWASP Top 10: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for OWASP Top 10.'
+          - title: 'OWASP Top 10: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for OWASP Top 10: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for OWASP Top 10.'
+  - title: Caching & Performance
     topics:
-      - id: "redis"
-        title: "Redis"
-        description: "Use Redis with .NET (via StackExchange.Redis) for distributed caching, session state, rate limiting, and pub/sub messaging."
+      - id: redis
+        title: Redis
+        description: In-depth exploration of Redis. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Distributed Caching in .NET - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed"
-            type: "docs"
-          - title: "StackExchange.Redis Documentation"
-            url: "https://stackexchange.github.io/StackExchange.Redis/"
-            type: "docs"
-      - id: "response-caching"
-        title: "Response & In-Memory Caching"
-        description: "Improve performance with output caching, response caching middleware, and in-memory caching (IMemoryCache) for frequently requested data."
+          - title: Distributed Caching in .NET - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/aspnet/core/performance/caching/distributed
+            type: docs
+          - title: StackExchange.Redis Documentation
+            url: https://stackexchange.github.io/StackExchange.Redis/
+            type: docs
+        subtopics:
+          - title: 'Redis: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Redis: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Redis.'
+          - title: 'Redis: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Redis: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Redis.'
+      - id: response-caching
+        title: Response & In-Memory Caching
+        description: In-depth exploration of Response & In-Memory Caching. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Response Caching - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/response"
-            type: "docs"
-          - title: "In-Memory Caching - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory"
-            type: "docs"
-      - id: "cdn"
-        title: "CDN"
-        description: "Distribute static assets globally using Content Delivery Networks to reduce latency, improve load times, and handle traffic spikes."
+          - title: Response Caching - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/aspnet/core/performance/caching/response
+            type: docs
+          - title: In-Memory Caching - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/aspnet/core/performance/caching/memory
+            type: docs
+        subtopics:
+          - title: 'Response & In-Memory Caching: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Response & In-Memory Caching: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Response & In-Memory Caching.'
+          - title: 'Response & In-Memory Caching: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Response & In-Memory Caching: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Response & In-Memory Caching.'
+      - id: cdn
+        title: CDN
+        description: In-depth exploration of CDN. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "What is a CDN? - Cloudflare"
-            url: "https://www.cloudflare.com/learning/cdn/what-is-a-cdn/"
-            type: "article"
-
-  - title: "Testing"
+          - title: What is a CDN? - Cloudflare
+            url: https://www.cloudflare.com/learning/cdn/what-is-a-cdn/
+            type: article
+        subtopics:
+          - title: 'CDN: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for CDN: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for CDN.'
+          - title: 'CDN: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for CDN: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for CDN.'
+  - title: Testing
     topics:
-      - id: "unit-tests-xunit"
-        title: "Unit Tests (xUnit)"
-        description: "Write focused unit tests for services and business logic using xUnit (or NUnit/MSTest), with mocking libraries like Moq and assertion libraries like FluentAssertions."
+      - id: unit-tests-xunit
+        title: Unit Tests (xUnit)
+        description: In-depth exploration of Unit Tests (xUnit). Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Unit Testing in .NET - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/core/testing/"
-            type: "docs"
-          - title: "xUnit Documentation"
-            url: "https://xunit.net/"
-            type: "docs"
-      - id: "integration-tests"
-        title: "Integration Tests"
-        description: "Test how multiple components work together using WebApplicationFactory, in-memory or test databases, and EF Core's InMemory/SQLite providers."
+          - title: Unit Testing in .NET - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/core/testing/
+            type: docs
+          - title: xUnit Documentation
+            url: https://xunit.net/
+            type: docs
+        subtopics:
+          - title: 'Unit Tests (xUnit): Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Unit Tests (xUnit): Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Unit Tests (xUnit).'
+          - title: 'Unit Tests (xUnit): Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Unit Tests (xUnit): Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Unit Tests (xUnit).'
+      - id: integration-tests
+        title: Integration Tests
+        description: In-depth exploration of Integration Tests. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Integration Tests in ASP.NET Core - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests"
-            type: "docs"
-      - id: "api-testing"
-        title: "API Testing"
-        description: "Validate API endpoints with tools like Postman, Swagger UI, or automated test suites to ensure correct responses, error handling, and edge cases."
+          - title: Integration Tests in ASP.NET Core - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests
+            type: docs
+        subtopics:
+          - title: 'Integration Tests: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Integration Tests: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Integration Tests.'
+          - title: 'Integration Tests: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Integration Tests: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Integration Tests.'
+      - id: api-testing
+        title: API Testing
+        description: In-depth exploration of API Testing. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Postman Learning Center"
-            url: "https://learning.postman.com/docs/introduction/overview/"
-            type: "docs"
-
-  - title: "Architecture Patterns"
+          - title: Postman Learning Center
+            url: https://learning.postman.com/docs/introduction/overview/
+            type: docs
+        subtopics:
+          - title: API Endpoint Design & Protocol Rules
+            dayLabel: Days 1–2
+            description: Hands-on module for API Endpoint Design & Protocol Rules. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for API Testing.
+          - title: API Security & OpenAPI Specifications
+            dayLabel: Days 3–4
+            description: Hands-on module for API Security & OpenAPI Specifications. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for API Testing.
+  - title: Architecture Patterns
     topics:
-      - id: "mvc"
-        title: "MVC"
-        description: "Organize code using the Model-View-Controller pattern in ASP.NET Core MVC to separate data, presentation, and business logic concerns."
+      - id: mvc
+        title: MVC
+        description: In-depth exploration of MVC. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Overview of ASP.NET Core MVC"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/mvc/overview"
-            type: "docs"
-      - id: "clean-architecture"
-        title: "Clean Architecture"
-        description: "Structure .NET solutions using Clean Architecture / Onion Architecture — separating Domain, Application, Infrastructure, and Presentation layers for testability and maintainability."
+          - title: Overview of ASP.NET Core MVC
+            url: https://learn.microsoft.com/en-us/aspnet/core/mvc/overview
+            type: docs
+        subtopics:
+          - title: 'MVC: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for MVC: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for MVC.'
+          - title: 'MVC: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for MVC: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for MVC.'
+      - id: clean-architecture
+        title: Clean Architecture
+        description: In-depth exploration of Clean Architecture. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Common Web Application Architectures - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures"
-            type: "docs"
-          - title: "Clean Architecture Solution Template (GitHub)"
-            url: "https://github.com/jasontaylordev/CleanArchitecture"
-            type: "project"
-      - id: "microservices"
-        title: "Microservices"
-        description: "Decompose applications into small, independently deployable .NET services that communicate over APIs, enabling team autonomy and scalability."
+          - title: Common Web Application Architectures - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures
+            type: docs
+          - title: Clean Architecture Solution Template (GitHub)
+            url: https://github.com/jasontaylordev/CleanArchitecture
+            type: project
+        subtopics:
+          - title: 'Clean Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Clean Architecture: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Clean Architecture.'
+          - title: 'Clean Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Clean Architecture: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Clean Architecture.'
+      - id: microservices
+        title: Microservices
+        description: In-depth exploration of Microservices. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: ".NET Microservices Architecture - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/architecture/microservices/"
-            type: "docs"
-      - id: "event-driven"
-        title: "Event-Driven Architecture"
-        description: "Build loosely coupled .NET systems using events, message brokers, MediatR, and event sourcing for real-time processing and asynchronous workflows."
+          - title: .NET Microservices Architecture - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/architecture/microservices/
+            type: docs
+        subtopics:
+          - title: 'Microservices: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Microservices: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Microservices.'
+          - title: 'Microservices: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Microservices: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Microservices.'
+      - id: event-driven
+        title: Event-Driven Architecture
+        description: In-depth exploration of Event-Driven Architecture. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "MediatR Documentation (GitHub)"
-            url: "https://github.com/jbogard/MediatR"
-            type: "docs"
-          - title: "Event-Driven Architecture - AWS"
-            url: "https://aws.amazon.com/event-driven-architecture/"
-            type: "article"
-
-  - title: "Message Queues"
+          - title: MediatR Documentation (GitHub)
+            url: https://github.com/jbogard/MediatR
+            type: docs
+          - title: Event-Driven Architecture - AWS
+            url: https://aws.amazon.com/event-driven-architecture/
+            type: article
+        subtopics:
+          - title: 'Event-Driven Architecture: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Event-Driven Architecture: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Event-Driven Architecture.'
+          - title: 'Event-Driven Architecture: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Event-Driven Architecture: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Event-Driven Architecture.'
+  - title: Message Queues
     topics:
-      - id: "rabbitmq"
-        title: "RabbitMQ"
-        description: "Implement reliable message queuing with RabbitMQ in .NET using the RabbitMQ.Client library or MassTransit for decoupled service communication."
+      - id: rabbitmq
+        title: RabbitMQ
+        description: In-depth exploration of RabbitMQ. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "RabbitMQ .NET Client Documentation"
-            url: "https://www.rabbitmq.com/tutorials"
-            type: "docs"
-          - title: "MassTransit Documentation"
-            url: "https://masstransit.io/documentation/concepts"
-            type: "docs"
-      - id: "azure-service-bus"
-        title: "Azure Service Bus"
-        description: "Use Azure Service Bus for enterprise-grade messaging with queues and topics, enabling reliable pub/sub and point-to-point communication in cloud-hosted .NET apps."
+          - title: RabbitMQ .NET Client Documentation
+            url: https://www.rabbitmq.com/tutorials
+            type: docs
+          - title: MassTransit Documentation
+            url: https://masstransit.io/documentation/concepts
+            type: docs
+        subtopics:
+          - title: 'RabbitMQ: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for RabbitMQ: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for RabbitMQ.'
+          - title: 'RabbitMQ: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for RabbitMQ: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for RabbitMQ.'
+      - id: azure-service-bus
+        title: Azure Service Bus
+        description: In-depth exploration of Azure Service Bus. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Azure Service Bus Documentation"
-            url: "https://learn.microsoft.com/en-us/azure/service-bus-messaging/"
-            type: "docs"
-
-  - title: "Containerization & DevOps Basics"
+          - title: Azure Service Bus Documentation
+            url: https://learn.microsoft.com/en-us/azure/service-bus-messaging/
+            type: docs
+        subtopics:
+          - title: 'Azure Service Bus: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Azure Service Bus: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Azure Service Bus.'
+          - title: 'Azure Service Bus: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Azure Service Bus: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Azure Service Bus.'
+  - title: Containerization & DevOps Basics
     topics:
-      - id: "docker"
-        title: "Docker"
-        description: "Package .NET applications into portable containers with Docker — write Dockerfiles for ASP.NET Core apps, manage images, and run multi-container setups with Docker Compose."
+      - id: docker
+        title: Docker
+        description: In-depth exploration of Docker. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Containerize a .NET App - Microsoft Learn"
-            url: "https://learn.microsoft.com/en-us/dotnet/core/docker/build-container"
-            type: "docs"
-          - title: "Docker Get Started"
-            url: "https://docs.docker.com/get-started/"
-            type: "docs"
-      - id: "ci-cd-pipelines"
-        title: "CI/CD Pipelines"
-        description: "Automate testing, building, and deployment of .NET apps using GitHub Actions or Azure DevOps Pipelines to ship code faster and more reliably."
+          - title: Containerize a .NET App - Microsoft Learn
+            url: https://learn.microsoft.com/en-us/dotnet/core/docker/build-container
+            type: docs
+          - title: Docker Get Started
+            url: https://docs.docker.com/get-started/
+            type: docs
+        subtopics:
+          - title: 'Docker: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Docker: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Docker.'
+          - title: 'Docker: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Docker: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Docker.'
+      - id: ci-cd-pipelines
+        title: CI/CD Pipelines
+        description: In-depth exploration of CI/CD Pipelines. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "GitHub Actions Documentation"
-            url: "https://docs.github.com/en/actions"
-            type: "docs"
-          - title: "Azure Pipelines Documentation"
-            url: "https://learn.microsoft.com/en-us/azure/devops/pipelines/"
-            type: "docs"
-      - id: "azure-deployment"
-        title: "Azure Deployment"
-        description: "Deploy ASP.NET Core applications to Azure App Service, Azure Container Apps, or Azure Kubernetes Service, and manage app settings and scaling in the cloud."
+          - title: GitHub Actions Documentation
+            url: https://docs.github.com/en/actions
+            type: docs
+          - title: Azure Pipelines Documentation
+            url: https://learn.microsoft.com/en-us/azure/devops/pipelines/
+            type: docs
+        subtopics:
+          - title: 'CI/CD Pipelines: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for CI/CD Pipelines: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for CI/CD Pipelines.'
+          - title: 'CI/CD Pipelines: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for CI/CD Pipelines: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for CI/CD Pipelines.'
+      - id: azure-deployment
+        title: Azure Deployment
+        description: In-depth exploration of Azure Deployment. Understand the core architectural principles, key technical concepts, operational syntax, edge cases, and industry standards required to master this module.
         resources:
-          - title: "Deploy ASP.NET Core Apps to Azure App Service"
-            url: "https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/azure-apps/"
-            type: "docs"
+          - title: Deploy ASP.NET Core Apps to Azure App Service
+            url: https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/azure-apps/
+            type: docs
+        subtopics:
+          - title: 'Azure Deployment: Foundational Concepts'
+            dayLabel: Days 1–2
+            description: 'Hands-on module for Azure Deployment: Foundational Concepts. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Azure Deployment.'
+          - title: 'Azure Deployment: Practical Applications & Architecture'
+            dayLabel: Days 3–4
+            description: 'Hands-on module for Azure Deployment: Practical Applications & Architecture. Focus on writing clean code, understanding operational mechanics, testing edge cases, and applying best practices for Azure Deployment.'
 ---
 
 Dive into .NET backend development with this 18-week structured learning path built for developers who already know C# basics and want to reach job-ready proficiency. You'll build a solid foundation in ASP.NET Core, EF Core, and relational databases, then move into authentication, caching, and testing, before advancing to architecture patterns, message queues, and containerized deployment on Azure. By the end, you'll be equipped to design, build, and deploy production-ready .NET backend systems.
