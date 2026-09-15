@@ -11,37 +11,37 @@
    ================================================================ */
 
 @theme {
-  /* ── Colors ── */
+  /* ── Colors (Harmonized for #e6e9f2 canvas) ── */
   --color-canvas: #ffffff;
-  --color-canvas-soft: #eef2f6;
-  --color-canvas-soft-2: #e2e8f0;
-  --color-ink: #171717;
-  --color-body: #4d4d4d;
-  --color-mute: #888888;
-  --color-hairline: #ebebeb;
-  --color-hairline-strong: #a1a1a1;
+  --color-canvas-soft: #e6e9f2;
+  --color-canvas-soft-2: #d8dce8;
+  --color-ink: #0f172a;
+  --color-body: #334155;
+  --color-mute: #64748b;
+  --color-hairline: #cbd5e1;
+  --color-hairline-strong: #94a3b8;
   --color-on-primary: #ffffff;
-  --color-link: #0070f3;
-  --color-link-deep: #0761d1;
-  --color-link-bg-soft: #d3e5ff;
-  --color-success: #0070f3;
-  --color-error: #ee0000;
-  --color-error-soft: #f7d4d6;
-  --color-warning: #f5a623;
-  --color-warning-soft: #ffefcf;
-  --color-violet: #7928ca;
-  --color-violet-soft: #d8ccf1;
-  --color-cyan: #50e3c2;
-  --color-cyan-soft: #aaffec;
-  --color-highlight-pink: #ff0080;
+  --color-link: #2563eb;
+  --color-link-deep: #1d4ed8;
+  --color-link-bg-soft: #dbeafe;
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-error-soft: #fee2e2;
+  --color-warning: #f59e0b;
+  --color-warning-soft: #fef3c7;
+  --color-violet: #6366f1;
+  --color-violet-soft: #e0e7ff;
+  --color-cyan: #06b6d4;
+  --color-cyan-soft: #cffafe;
+  --color-highlight-pink: #ec4899;
 
-  /* Gradient stops */
-  --color-grad-develop-start: #007cf0;
-  --color-grad-develop-end: #00dfd8;
-  --color-grad-preview-start: #7928ca;
-  --color-grad-preview-end: #ff0080;
-  --color-grad-ship-start: #ff4d4d;
-  --color-grad-ship-end: #f9cb28;
+  /* Gradient stops harmonized for #e6e9f2 */
+  --color-grad-develop-start: #0284c7;
+  --color-grad-develop-end: #06b6d4;
+  --color-grad-preview-start: #2563eb;
+  --color-grad-preview-end: #6366f1;
+  --color-grad-ship-start: #4f46e5;
+  --color-grad-ship-end: #8b5cf6;
 
   /* ── Font Families ── */
   --font-sans: 'Geist', 'Inter', system-ui, -apple-system, sans-serif;
@@ -667,7 +667,8 @@ html.dark .badge-programming-languages { background-color: #581c87; color: #e9d5
   padding-bottom: 80px;
   position: relative;
   overflow: hidden;
-  background-image: url('/Hero/HeroBackground.png');
+  background-color: #e6e9f2;
+  background-image: linear-gradient(to bottom, rgba(230, 233, 242, 0) 70%, #e6e9f2 100%), url('/Hero/HeroBackground.png');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;

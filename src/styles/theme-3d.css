@@ -1,128 +1,292 @@
 /* ================================================================
-   Roadmap Library — Ultra-Depth 3D Floating Theme (macOS Inspired)
-   - Zero backdrop-filter on cards (blazing 120fps performance)
-   - No harsh outline rings or sharp lines (natural 3D lighting)
-   - Volumetric soft gradients and deep ambient drop shadows
-   - Generous squircle rounded curves (20-24px cards, 16px inputs)
-   - Real tactile 3D buttons with physical depth
-   - Floating macOS dock nav
+   Roadmap Library — Ultra-Depth 3D Floating Theme (Vibrant Edition)
+   - Real 3D Physical Extrusions (Top specular bevel + bottom chamfer)
+   - High-contrast volumetric drop shadows (Stripe/Apple tier depth)
+   - Rich vibrant colors: Electric Indigo CTAs, jewel-toned 3D badges
+   - 100% Performance Optimized: Zero backdrop-filter, pure GPU transforms
    ================================================================ */
 
+/* ── Canvas Background (#e6e9f2) ── */
+body {
+  background-color: #e6e9f2 !important;
+}
+
+html.dark body {
+  background-color: #0d0d0d !important;
+}
+
 :root {
-  /* ── Smooth Round Curves ── */
+  /* ── 3D Geometry (Smooth Rounded Curves) ── */
   --radius-3d-card: 24px;
   --radius-3d-element: 20px;
   --radius-3d-input: 16px;
   --radius-3d-pill: 9999px;
 
-  /* ── High-Performance Natural 3D Floating Shadows (No Harsh Lines) ── */
+  /* ── 3D Physical Extrusion & Volumetric Floating Shadows ── */
 
-  /* Level 1: Micro Floating (Pills, Tags, Checkboxes) */
-  --shadow-float-micro: 
-    0 2px 6px rgba(0, 0, 0, 0.04),
-    0 1px 2px rgba(0, 0, 0, 0.02);
+  /* Level 1: Micro Floating 3D (Pills, Badges, Tags, Checkboxes) */
+  --shadow-3d-micro: 
+    inset 0 1px 0 #ffffff,
+    inset 0 -1px 0 rgba(15, 28, 50, 0.08),
+    0 2px 5px rgba(15, 28, 50, 0.08),
+    0 1px 2px rgba(15, 28, 50, 0.05);
 
-  /* Level 2: Low Floating (Inputs, Subtopics, Accords) */
-  --shadow-float-low: 
-    0 3px 8px rgba(30, 41, 59, 0.04),
-    0 8px 20px -3px rgba(30, 41, 59, 0.07);
+  /* Level 2: Low Floating 3D (Inputs, Subtopics, Accords) */
+  --shadow-3d-low: 
+    inset 0 1.5px 0 #ffffff,
+    inset 0 -1.5px 0 rgba(15, 28, 50, 0.06),
+    0 3px 8px -1px rgba(15, 28, 50, 0.09),
+    0 8px 20px -2px rgba(15, 28, 50, 0.10);
 
-  /* Level 3: Standard Floating Cards (Roadmap Cards, Feature Cards) */
-  --shadow-float-card: 
-    0 4px 8px -2px rgba(30, 41, 59, 0.04),
-    0 12px 24px -4px rgba(30, 41, 59, 0.08),
-    0 24px 48px -8px rgba(30, 41, 59, 0.08);
+  /* Level 3: Standard Floating 3D Slabs (Roadmap Cards, Feature Cards) */
+  --shadow-3d-card: 
+    inset 0 1.5px 0 0 #ffffff,
+    inset 0 -2.5px 0 0 rgba(15, 28, 50, 0.07),
+    0 3px 6px -1px rgba(15, 28, 50, 0.08),
+    0 10px 22px -3px rgba(15, 28, 50, 0.12),
+    0 22px 42px -6px rgba(15, 28, 50, 0.12),
+    0 38px 74px -12px rgba(15, 28, 50, 0.08);
 
-  /* Level 4: Hover Floating State (Lifting High in Mid-Air) */
-  --shadow-float-hover: 
-    0 8px 16px -2px rgba(30, 41, 59, 0.06),
-    0 20px 40px -4px rgba(30, 41, 59, 0.12),
-    0 40px 72px -8px rgba(30, 41, 59, 0.14);
+  /* Level 4: Hover In-Air Elevation (Floating High Above Floor) */
+  --shadow-3d-hover: 
+    inset 0 2px 0 0 #ffffff,
+    inset 0 -3px 0 0 rgba(15, 28, 50, 0.09),
+    0 10px 20px -2px rgba(15, 28, 50, 0.14),
+    0 24px 46px -4px rgba(15, 28, 50, 0.18),
+    0 46px 82px -8px rgba(15, 28, 50, 0.16),
+    0 72px 124px -16px rgba(15, 28, 50, 0.12);
 
-  /* Level 5: Deep Container Panels */
-  --shadow-float-panel: 
-    0 10px 30px -5px rgba(30, 41, 59, 0.06),
-    0 25px 60px -10px rgba(30, 41, 59, 0.10);
+  /* Level 5: Major Container Panels */
+  --shadow-3d-panel: 
+    inset 0 2px 0 0 #ffffff,
+    inset 0 -2px 0 0 rgba(15, 28, 50, 0.06),
+    0 8px 20px -2px rgba(15, 28, 50, 0.10),
+    0 20px 44px -6px rgba(15, 28, 50, 0.14),
+    0 38px 76px -10px rgba(15, 28, 50, 0.10);
 
-  /* 3D Tactile Buttons */
-  --shadow-btn-primary: 
-    0 4px 14px rgba(0, 0, 0, 0.22),
-    0 1px 3px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  /* 3D Vibrant Primary Button (Royal Sapphire) */
+  --shadow-3d-btn-primary: 
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2.5px 0 rgba(15, 45, 110, 0.40),
+    0 6px 18px -2px rgba(37, 99, 235, 0.45),
+    0 2px 6px rgba(37, 99, 235, 0.25);
 
-  --shadow-btn-primary-hover: 
-    0 8px 22px rgba(0, 0, 0, 0.30),
-    0 2px 6px rgba(0, 0, 0, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  --shadow-3d-btn-primary-hover: 
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.55),
+    inset 0 -2.5px 0 rgba(15, 45, 110, 0.40),
+    0 12px 28px -4px rgba(37, 99, 235, 0.55),
+    0 4px 12px rgba(37, 99, 235, 0.30);
 
-  --shadow-btn-secondary: 
-    0 3px 10px rgba(0, 0, 0, 0.06),
-    0 1px 2px rgba(0, 0, 0, 0.04),
-    inset 0 1px 0 #ffffff;
+  /* 3D Secondary Button (Ceramic Floating Pill) */
+  --shadow-3d-btn-secondary: 
+    inset 0 1.5px 0 #ffffff,
+    inset 0 -2px 0 rgba(15, 28, 50, 0.08),
+    0 4px 12px rgba(15, 28, 50, 0.10),
+    0 1px 3px rgba(15, 28, 50, 0.05);
 
-  --shadow-btn-secondary-hover: 
-    0 8px 20px rgba(0, 0, 0, 0.10),
-    0 2px 5px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 #ffffff;
+  --shadow-3d-btn-secondary-hover: 
+    inset 0 1.5px 0 #ffffff,
+    inset 0 -2px 0 rgba(15, 28, 50, 0.10),
+    0 10px 24px rgba(15, 28, 50, 0.16),
+    0 3px 8px rgba(15, 28, 50, 0.08);
 
-  /* macOS Focus Glow */
-  --shadow-focus-glow: 
-    0 0 0 3.5px rgba(0, 112, 243, 0.25),
-    0 8px 24px rgba(0, 112, 243, 0.15);
+  /* Luminous Focus Ring */
+  --shadow-3d-focus: 
+    0 0 0 3.5px rgba(0, 112, 243, 0.32),
+    0 8px 24px rgba(0, 112, 243, 0.22);
 }
 
 /* Dark Theme Overrides */
 html.dark {
-  --shadow-float-micro: 
-    0 2px 6px rgba(0, 0, 0, 0.5);
+  --shadow-3d-micro: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.6);
 
-  --shadow-float-low: 
-    0 4px 12px rgba(0, 0, 0, 0.5),
-    0 8px 20px rgba(0, 0, 0, 0.4);
-
-  --shadow-float-card: 
-    0 6px 16px rgba(0, 0, 0, 0.5),
-    0 16px 36px -4px rgba(0, 0, 0, 0.6),
-    0 30px 60px -8px rgba(0, 0, 0, 0.4);
-
-  --shadow-float-hover: 
-    0 10px 24px rgba(0, 0, 0, 0.6),
-    0 24px 50px -4px rgba(0, 0, 0, 0.75),
-    0 48px 90px -10px rgba(0, 0, 0, 0.5);
-
-  --shadow-btn-primary: 
-    0 4px 14px rgba(255, 255, 255, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-
-  --shadow-btn-primary-hover: 
-    0 8px 24px rgba(255, 255, 255, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.9);
-
-  --shadow-btn-secondary: 
+  --shadow-3d-low: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
     0 4px 14px rgba(0, 0, 0, 0.6),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    0 10px 24px rgba(0, 0, 0, 0.5);
 
-  --shadow-btn-secondary-hover: 
-    0 8px 22px rgba(0, 0, 0, 0.7),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  --shadow-3d-card: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 8px 20px rgba(0, 0, 0, 0.65),
+    0 20px 48px rgba(0, 0, 0, 0.75),
+    0 36px 72px rgba(0, 0, 0, 0.55);
+
+  --shadow-3d-hover: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 16px 36px rgba(0, 0, 0, 0.75),
+    0 32px 68px rgba(0, 0, 0, 0.85),
+    0 54px 108px rgba(0, 0, 0, 0.65);
+
+  --shadow-3d-btn-primary: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 4px 16px rgba(255, 255, 255, 0.2);
+
+  --shadow-3d-btn-primary-hover: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 8px 28px rgba(255, 255, 255, 0.28);
+
+  --shadow-3d-btn-secondary: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 4px 16px rgba(0, 0, 0, 0.6);
+
+  --shadow-3d-btn-secondary-hover: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 10px 28px rgba(0, 0, 0, 0.7);
 }
 
 /* ================================================================
-   BASE ELEMENTS (NO SHARP OUTLINES)
+   RICH VIBRANT COLOR UTILITIES & JEWEL BADGES
+   ================================================================ */
+
+/* Vibrant Headline Text Gradients Harmonized for #e6e9f2 */
+.text-gradient-vibrant {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 45%, #4f46e5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Polished Jewel-Toned 3D Badges (Harmonized with #e6e9f2) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px !important;
+  font-family: var(--font-sans);
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.1px;
+  border-radius: var(--radius-3d-pill) !important;
+  white-space: nowrap;
+  box-shadow: var(--shadow-3d-micro);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Frontend: Electric Sky Blue */
+.badge-frontend,
+.badge-frontend-frameworks {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%) !important;
+  color: #0369a1 !important;
+  border: 1px solid rgba(14, 165, 233, 0.35) !important;
+}
+
+/* Backend: Emerald / Jade */
+.badge-backend,
+.badge-python-frameworks {
+  background: linear-gradient(135deg, #ecfdf5 0%, #a7f3d0 100%) !important;
+  color: #065f46 !important;
+  border: 1px solid rgba(16, 185, 129, 0.35) !important;
+}
+
+/* AI & Machine Learning: Royal Violet */
+.badge-ai-ml,
+.badge-machine-learning---ai,
+.badge-machine-learning-ai {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ddd6fe 100%) !important;
+  color: #5b21b6 !important;
+  border: 1px solid rgba(139, 92, 246, 0.35) !important;
+}
+
+/* DevOps: Sunfire Amber */
+.badge-devops {
+  background: linear-gradient(135deg, #fffbeb 0%, #fde68a 100%) !important;
+  color: #92400e !important;
+  border: 1px solid rgba(245, 158, 11, 0.35) !important;
+}
+
+/* Fullstack: Royal Amethyst */
+.badge-fullstack {
+  background: linear-gradient(135deg, #eef2ff 0%, #c7d2fe 100%) !important;
+  color: #3730a3 !important;
+  border: 1px solid rgba(99, 102, 241, 0.35) !important;
+}
+
+/* Data Science: Vibrant Teal */
+.badge-data-science {
+  background: linear-gradient(135deg, #f0fdfa 0%, #99f6e4 100%) !important;
+  color: #115e59 !important;
+  border: 1px solid rgba(20, 184, 166, 0.35) !important;
+}
+
+/* Cybersecurity: Crimson Shield */
+.badge-cybersecurity {
+  background: linear-gradient(135deg, #fef2f2 0%, #fecaca 100%) !important;
+  color: #991b1b !important;
+  border: 1px solid rgba(239, 68, 68, 0.35) !important;
+}
+
+/* Programming Languages: Cool Slate */
+.badge-programming-languages {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+  color: #1e293b !important;
+  border: 1px solid rgba(100, 116, 139, 0.35) !important;
+}
+
+/* Dark mode jewel badges */
+html.dark .badge-frontend,
+html.dark .badge-frontend-frameworks {
+  background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%) !important;
+  color: #93c5fd !important;
+  border-color: rgba(147, 197, 253, 0.3) !important;
+}
+
+html.dark .badge-backend,
+html.dark .badge-python-frameworks {
+  background: linear-gradient(135deg, #064e3b 0%, #022c22 100%) !important;
+  color: #6ee7b7 !important;
+  border-color: rgba(110, 231, 183, 0.3) !important;
+}
+
+html.dark .badge-ai-ml,
+html.dark .badge-machine-learning---ai,
+html.dark .badge-machine-learning-ai {
+  background: linear-gradient(135deg, #831843 0%, #500724 100%) !important;
+  color: #f472b6 !important;
+  border-color: rgba(244, 114, 182, 0.3) !important;
+}
+
+html.dark .badge-devops {
+  background: linear-gradient(135deg, #78350f 0%, #451a03 100%) !important;
+  color: #fcd34d !important;
+  border-color: rgba(252, 211, 77, 0.3) !important;
+}
+
+html.dark .badge-cybersecurity {
+  background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%) !important;
+  color: #fca5a5 !important;
+  border-color: rgba(252, 165, 165, 0.3) !important;
+}
+
+html.dark .badge-programming-languages {
+  background: linear-gradient(135deg, #581c87 0%, #3b0764 100%) !important;
+  color: #d8b4fe !important;
+  border-color: rgba(216, 180, 254, 0.3) !important;
+}
+
+/* ================================================================
+   BASE ELEMENTS
    ================================================================ */
 
 .faq-item {
   background: #ffffff;
-  border: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
   border-radius: var(--radius-3d-element) !important;
-  padding: 20px 26px;
-  box-shadow: var(--shadow-float-low);
+  padding: 22px 28px;
+  box-shadow: var(--shadow-3d-low);
   overflow: hidden;
   position: relative;
 }
 
 html.dark .faq-item {
   background: #18181b;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .hero-quick-link {
@@ -131,35 +295,49 @@ html.dark .faq-item {
   gap: 6px;
   padding: 8px 18px;
   background: #ffffff;
-  border: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
   border-radius: var(--radius-3d-pill) !important;
   font-size: 13px;
   font-weight: 500;
   color: var(--color-ink);
   text-decoration: none;
-  box-shadow: var(--shadow-float-micro);
+  box-shadow: var(--shadow-3d-micro);
 }
 
 html.dark .hero-quick-link {
   background: #202023;
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .floating-form-card {
   background: #ffffff;
-  border: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
   border-radius: var(--radius-3d-card) !important;
   padding: 36px;
-  box-shadow: var(--shadow-float-panel);
+  box-shadow: var(--shadow-3d-panel);
   position: relative;
 }
 
 html.dark .floating-form-card {
   background: #18181b;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.footer {
+  background-color: #e6e9f2 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+html.dark .footer {
+  background-color: #0d0d0d !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: none !important;
 }
 
 /* ================================================================
    DESKTOP ONLY (min-width: 769px)
-   3D ELEVATION, VOLUMETRIC SURFACES & HARDWARE HOVER LIFTS
+   TRUE PHYSICAL 3D ELEVATIONS & HIGH-PERFORMANCE LIFTS
    ================================================================ */
 
 @media (min-width: 769px) {
@@ -179,7 +357,7 @@ html.dark .floating-form-card {
   .form-input,
   .hero-quick-link,
   .nav-bar {
-    transition: transform 0.26s ease-out, box-shadow 0.26s ease-out !important;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   /* ── 1. FLOATING MACOS DOCK NAVBAR ── */
@@ -187,93 +365,141 @@ html.dark .floating-form-card {
     margin: 16px auto 0 !important;
     max-width: min(calc(var(--page-width) + 48px), 94%) !important;
     border-radius: var(--radius-3d-pill) !important;
-    border: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.95) !important;
     background: #ffffff !important;
-    box-shadow: 0 4px 20px rgba(30, 41, 59, 0.08) !important;
+    box-shadow: 
+      inset 0 1.5px 0 #ffffff,
+      inset 0 -1.5px 0 rgba(15, 28, 50, 0.06),
+      0 6px 18px -2px rgba(15, 28, 50, 0.10),
+      0 20px 48px -6px rgba(15, 28, 50, 0.12) !important;
     top: 16px !important;
   }
 
   html.dark .nav-bar {
     background: #18181b !important;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7) !important;
   }
 
-  /* ── 2. CARDS: 3D VOLUMETRIC FLOATING SLABS (ROUND EDGES, NO SHARP LINES) ── */
+  /* ── 2. CARDS: PHYSICAL 3D CERAMIC SLABS ── */
   .roadmap-card {
-    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%) !important;
-    border: none !important;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 55%, #f4f6fa 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
     border-radius: var(--radius-3d-card) !important;
-    box-shadow: var(--shadow-float-card) !important;
+    box-shadow: var(--shadow-3d-card) !important;
     padding: 28px !important;
+    position: relative;
   }
 
   html.dark .roadmap-card {
-    background: linear-gradient(180deg, #202024 0%, #18181b 100%) !important;
+    background: linear-gradient(180deg, #242429 0%, #1a1a1e 100%) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
   }
 
-  /* Noticeable 3D lift: rises high above canvas */
+  /* Powerful 3D Lift on Hover */
   .roadmap-card:hover {
-    transform: translateY(-8px) scale(1.01) !important;
-    box-shadow: var(--shadow-float-hover) !important;
+    transform: translateY(-9px) scale(1.018) !important;
+    box-shadow: var(--shadow-3d-hover) !important;
   }
 
   .roadmap-card-meta {
-    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+    border-top: 1px solid rgba(15, 28, 50, 0.06) !important;
   }
 
   html.dark .roadmap-card-meta {
     border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
   }
 
+  /* 3D Raised Ceramic Logo Pod */
   .roadmap-card-logo-wrapper {
+    width: 48px !important;
+    height: 48px !important;
     border-radius: 16px !important;
-    border: none !important;
-    box-shadow: var(--shadow-float-low) !important;
-    background: #ffffff !important;
-    transition: transform 0.24s ease-out !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 
+      inset 0 1.5px 0 #ffffff,
+      inset 0 -1.5px 0 rgba(15, 28, 50, 0.08),
+      0 4px 10px rgba(15, 28, 50, 0.12),
+      0 1px 3px rgba(15, 28, 50, 0.06) !important;
+    background: linear-gradient(145deg, #ffffff 0%, #edf1f8 100%) !important;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   html.dark .roadmap-card-logo-wrapper {
     background: #2a2a2e !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
   }
 
   .roadmap-card:hover .roadmap-card-logo-wrapper {
-    transform: scale(1.10) !important;
+    transform: scale(1.12) translateY(-2px) rotate(-2deg) !important;
+    box-shadow: 
+      inset 0 1.5px 0 #ffffff,
+      inset 0 -1.5px 0 rgba(15, 28, 50, 0.10),
+      0 8px 18px rgba(15, 28, 50, 0.18),
+      0 2px 6px rgba(15, 28, 50, 0.10) !important;
   }
 
+  /* 3D Arrow Action Puck */
   .roadmap-card-arrow {
-    transition: transform 0.24s ease-out, color 0.2s ease !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 9999px !important;
+    background: #edf1f8 !important;
+    color: var(--color-mute) !important;
+    box-shadow: 
+      inset 0 1px 0 #ffffff, 
+      inset 0 -1px 0 rgba(15, 28, 50, 0.08), 
+      0 3px 8px rgba(15, 28, 50, 0.10) !important;
+    transition: all 0.25s ease !important;
+    margin-left: auto;
+  }
+
+  html.dark .roadmap-card-arrow {
+    background: #27272a !important;
   }
 
   .roadmap-card:hover .roadmap-card-arrow {
-    transform: translateX(8px) scale(1.15) !important;
-    color: var(--color-ink) !important;
+    background: linear-gradient(135deg, #0070f3 0%, #0056cc 100%) !important;
+    color: #ffffff !important;
+    transform: translateX(4px) scale(1.1) !important;
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.5), 
+      0 6px 16px rgba(0, 112, 243, 0.45) !important;
   }
 
   /* Feature Cards */
   .feature-card {
-    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%) !important;
-    border: none !important;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 55%, #f4f6fa 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
     border-radius: var(--radius-3d-card) !important;
-    box-shadow: var(--shadow-float-card) !important;
+    box-shadow: var(--shadow-3d-card) !important;
     padding: 36px !important;
   }
 
   html.dark .feature-card {
-    background: linear-gradient(180deg, #202024 0%, #18181b 100%) !important;
+    background: linear-gradient(180deg, #242429 0%, #1a1a1e 100%) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
   }
 
   .feature-card:hover {
-    transform: translateY(-7px) scale(1.01) !important;
-    box-shadow: var(--shadow-float-hover) !important;
+    transform: translateY(-9px) scale(1.018) !important;
+    box-shadow: var(--shadow-3d-hover) !important;
   }
 
   .feature-card-icon {
+    width: 52px !important;
+    height: 52px !important;
     border-radius: 18px !important;
-    border: none !important;
-    box-shadow: var(--shadow-float-low) !important;
-    background: #ffffff !important;
-    transition: transform 0.24s ease-out !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    box-shadow: 
+      inset 0 1.5px 0 #ffffff,
+      inset 0 -1.5px 0 rgba(15, 28, 50, 0.08),
+      0 4px 12px rgba(15, 28, 50, 0.12) !important;
+    background: linear-gradient(145deg, #ffffff 0%, #edf1f8 100%) !important;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   html.dark .feature-card-icon {
@@ -281,117 +507,125 @@ html.dark .floating-form-card {
   }
 
   .feature-card:hover .feature-card-icon {
-    transform: translateY(-3px) scale(1.10) !important;
+    transform: translateY(-4px) scale(1.12) !important;
   }
 
   /* General Cards */
   .card {
-    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%) !important;
-    border: none !important;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 55%, #f4f6fa 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
     border-radius: var(--radius-3d-card) !important;
-    box-shadow: var(--shadow-float-card) !important;
+    box-shadow: var(--shadow-3d-card) !important;
   }
 
   html.dark .card {
-    background: linear-gradient(180deg, #202024 0%, #18181b 100%) !important;
+    background: linear-gradient(180deg, #242429 0%, #1a1a1e 100%) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
   }
 
   .card:hover {
-    transform: translateY(-6px) !important;
-    box-shadow: var(--shadow-float-hover) !important;
+    transform: translateY(-8px) scale(1.015) !important;
+    box-shadow: var(--shadow-3d-hover) !important;
   }
 
   /* Mini Project Cards */
   .mini-project-card {
     background: #ffffff !important;
-    border: 2px solid rgba(0, 0, 0, 0.08) !important;
+    border: 1.5px solid rgba(0, 112, 243, 0.25) !important;
     border-radius: var(--radius-3d-element) !important;
-    box-shadow: var(--shadow-float-low) !important;
+    box-shadow: var(--shadow-3d-low) !important;
   }
 
   html.dark .mini-project-card {
     background: #1c1c20 !important;
-    border-color: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(0, 112, 243, 0.3) !important;
   }
 
   .mini-project-card:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: var(--shadow-float-card) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-3d-card) !important;
   }
 
   /* FAQ Accordion Item */
   .faq-item:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: var(--shadow-float-card) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-3d-card) !important;
   }
 
   .faq-item[open] {
-    box-shadow: var(--shadow-float-card) !important;
-    transform: translateY(-3px) !important;
+    box-shadow: var(--shadow-3d-card) !important;
+    transform: translateY(-4px) !important;
   }
 
-  /* ── 3. TACTILE 3D BUTTONS (REAL PHYSICAL KEYS) ── */
+  /* ── 3. VIBRANT 3D BUTTONS (ROYAL SAPPHIRE & CERAMIC) ── */
   .btn-primary {
-    background: #18181b !important;
+    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 55%, #1d4ed8 100%) !important;
     color: #ffffff !important;
-    border: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
     border-radius: var(--radius-3d-pill) !important;
-    box-shadow: var(--shadow-btn-primary) !important;
+    box-shadow: var(--shadow-3d-btn-primary) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.2px;
   }
 
   html.dark .btn-primary {
-    background: #ffffff !important;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%) !important;
     color: #000000 !important;
+    border: none !important;
   }
 
   .btn-primary:hover {
-    transform: translateY(-3px) scale(1.02) !important;
-    box-shadow: var(--shadow-btn-primary-hover) !important;
+    transform: translateY(-3.5px) scale(1.025) !important;
+    box-shadow: var(--shadow-3d-btn-primary-hover) !important;
     opacity: 1 !important;
   }
 
   .btn-primary:active {
-    transform: translateY(1.5px) scale(0.98) !important;
-    box-shadow: var(--shadow-float-micro) !important;
+    transform: translateY(2px) scale(0.98) !important;
+    box-shadow: inset 0 2px 4px rgba(0, 20, 60, 0.45), 0 2px 6px rgba(37, 99, 235, 0.3) !important;
   }
 
   .btn-secondary {
-    background: linear-gradient(180deg, #ffffff 0%, #f4f5f8 100%) !important;
-    color: #171717 !important;
-    border: none !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f2f5fb 100%) !important;
+    color: #0f172a !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
     border-radius: var(--radius-3d-pill) !important;
-    box-shadow: var(--shadow-btn-secondary) !important;
+    box-shadow: var(--shadow-3d-btn-secondary) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.2px;
   }
 
   html.dark .btn-secondary {
     background: linear-gradient(180deg, #2a2a2e 0%, #1f1f23 100%) !important;
     color: #ededed !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
   }
 
   .btn-secondary:hover {
     transform: translateY(-3px) scale(1.02) !important;
-    box-shadow: var(--shadow-btn-secondary-hover) !important;
+    box-shadow: var(--shadow-3d-btn-secondary-hover) !important;
   }
 
   .btn-secondary:active {
     transform: translateY(1.5px) scale(0.98) !important;
-    box-shadow: var(--shadow-float-micro) !important;
+    box-shadow: inset 0 1.5px 3px rgba(15, 28, 50, 0.12), 0 1px 2px rgba(15, 28, 50, 0.05) !important;
   }
 
   .theme-toggle-btn {
     border-radius: var(--radius-3d-pill) !important;
-    box-shadow: var(--shadow-float-micro) !important;
-    border: none !important;
+    box-shadow: var(--shadow-3d-micro) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
     background: #ffffff !important;
   }
 
   html.dark .theme-toggle-btn {
     background: #27272a !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
   }
 
   .theme-toggle-btn:hover {
     transform: translateY(-2px) scale(1.08) !important;
-    box-shadow: var(--shadow-float-low) !important;
+    box-shadow: var(--shadow-3d-low) !important;
   }
 
   .theme-toggle-btn:active {
@@ -401,43 +635,63 @@ html.dark .floating-form-card {
   /* Filter Pills */
   .filter-pill {
     background: #ffffff !important;
-    border: none !important;
+    border: 1px solid #cbd5e1 !important;
     border-radius: var(--radius-3d-pill) !important;
-    box-shadow: var(--shadow-float-micro) !important;
+    box-shadow: 
+      inset 0 1px 0 #ffffff,
+      inset 0 -1.5px 0 rgba(15, 28, 50, 0.06),
+      0 3px 8px rgba(15, 28, 50, 0.06) !important;
+    font-weight: 500 !important;
+    color: #334155 !important;
   }
 
   html.dark .filter-pill {
     background: #242428 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    color: #cbd5e1 !important;
   }
 
   .filter-pill:hover {
     transform: translateY(-2.5px) !important;
-    box-shadow: var(--shadow-float-low) !important;
+    box-shadow: 
+      inset 0 1px 0 #ffffff,
+      0 8px 18px rgba(15, 28, 50, 0.12) !important;
+    color: var(--color-ink) !important;
+    border-color: var(--color-link) !important;
   }
 
   .filter-pill.active {
-    background: #18181b !important;
+    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%) !important;
     color: #ffffff !important;
-    box-shadow: var(--shadow-btn-primary) !important;
-    transform: translateY(-1px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow: 
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -2px 0 rgba(15, 45, 110, 0.35),
+      0 6px 20px -2px rgba(37, 99, 235, 0.50) !important;
+    transform: translateY(-1.5px) !important;
   }
 
   html.dark .filter-pill.active {
-    background: #ffffff !important;
+    background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%) !important;
     color: #000000 !important;
   }
 
   /* Segmented View Toggle */
   .view-toggle {
-    border-radius: 16px !important;
-    box-shadow: var(--shadow-float-micro) !important;
-    border: none !important;
-    background: #e2e8f0 !important;
+    border-radius: 18px !important;
+    box-shadow: 
+      inset 0 1.5px 3px rgba(15, 28, 50, 0.12),
+      inset 0 -1px 0 #ffffff,
+      0 2px 6px rgba(15, 28, 50, 0.05) !important;
+    border: 1px solid rgba(15, 28, 50, 0.06) !important;
+    background: #d8dce8 !important;
     padding: 4px !important;
   }
 
   html.dark .view-toggle {
     background: #27272a !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.4) !important;
   }
 
   .view-toggle-btn {
@@ -446,25 +700,37 @@ html.dark .floating-form-card {
 
   .view-toggle-btn.active {
     background: #ffffff !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10) !important;
+    box-shadow: 
+      inset 0 1px 0 #ffffff,
+      inset 0 -1px 0 rgba(15, 28, 50, 0.06),
+      0 3px 10px rgba(15, 28, 50, 0.15) !important;
     transform: translateY(-1px) !important;
+    color: var(--color-link) !important;
   }
 
   html.dark .view-toggle-btn.active {
     background: #3f3f46 !important;
+    color: #38bdf8 !important;
   }
 
   .hero-quick-link:hover {
     transform: translateY(-3px) scale(1.03) !important;
-    box-shadow: var(--shadow-float-low) !important;
+    box-shadow: 
+      inset 0 1px 0 #ffffff,
+      0 8px 20px rgba(15, 28, 50, 0.14) !important;
+    color: var(--color-link) !important;
   }
 
-  /* ── 4. FORMS & INPUTS (SOFT 3D SUNKEN/FLOATING) ── */
+  /* ── 4. FORMS & INPUTS (3D ELEVATED) ── */
   .form-input {
     background: #ffffff !important;
-    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border: 1.5px solid #cbd5e1 !important;
     border-radius: var(--radius-3d-input) !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03), inset 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+    box-shadow: 
+      inset 0 1.5px 2px rgba(15, 28, 50, 0.04),
+      0 4px 14px rgba(15, 28, 50, 0.06),
+      0 1px 3px rgba(15, 28, 50, 0.04) !important;
+    color: var(--color-ink) !important;
   }
 
   html.dark .form-input {
@@ -480,67 +746,92 @@ html.dark .floating-form-card {
 
   .form-input:focus {
     transform: translateY(-2px) !important;
-    border-color: #0070f3 !important;
-    box-shadow: var(--shadow-focus-glow) !important;
+    border-color: var(--color-link) !important;
+    box-shadow: var(--shadow-3d-focus) !important;
   }
 
   /* ── 5. ROADMAP TREE & TIMELINE NODES ── */
   .tree-section-header {
     background: #ffffff !important;
-    border: none !important;
-    border-left: 5px solid var(--color-ink) !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    border-left: 5px solid var(--color-link) !important;
     border-radius: var(--radius-3d-element) !important;
-    box-shadow: var(--shadow-float-low) !important;
+    box-shadow: var(--shadow-3d-low) !important;
   }
 
   html.dark .tree-section-header {
     background: #18181b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    border-left-color: #38bdf8 !important;
   }
 
   .tree-node-content {
-    background: #ffffff !important;
-    border: none !important;
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
     border-radius: var(--radius-3d-element) !important;
-    box-shadow: var(--shadow-float-low) !important;
+    box-shadow: var(--shadow-3d-low) !important;
+  }
+
+  /* Roadmap Card Typography Harmonization */
+  .roadmap-card-title {
+    color: var(--color-ink) !important;
+    font-weight: 700 !important;
+  }
+
+  .roadmap-card-desc {
+    color: var(--color-body) !important;
+  }
+
+  .roadmap-card-meta {
+    border-top: 1px solid var(--color-hairline) !important;
+    color: var(--color-mute) !important;
   }
 
   html.dark .tree-node-content {
     background: #18181b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
   }
 
   .tree-node-content:hover {
-    transform: translateY(-4px) !important;
-    box-shadow: var(--shadow-float-card) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-3d-card) !important;
   }
 
   .tree-node-check {
-    border-radius: 7px !important;
-    border: 2px solid rgba(0, 0, 0, 0.2) !important;
-    box-shadow: var(--shadow-float-micro) !important;
-    transition: transform 0.18s ease-out !important;
+    border-radius: 8px !important;
+    border: 2px solid rgba(15, 28, 50, 0.22) !important;
+    box-shadow: 
+      inset 0 1px 2px rgba(15, 28, 50, 0.12),
+      0 1px 0 #ffffff !important;
+    transition: transform 0.18s ease-out, border-color 0.18s ease !important;
   }
 
   .tree-node-check:hover {
     transform: scale(1.15) !important;
+    border-color: #0070f3 !important;
   }
 
   .subtopic-accordion {
     border-radius: var(--radius-3d-input) !important;
-    border: none !important;
-    background: #f8fafc !important;
-    box-shadow: var(--shadow-float-micro) !important;
+    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    background: #f1f4fa !important;
+    box-shadow: 
+      inset 0 1px 2px rgba(15, 28, 50, 0.05),
+      0 1px 0 #ffffff !important;
   }
 
   html.dark .subtopic-accordion {
     background: #242428 !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
   }
 
   .subtopic-accordion:hover {
-    box-shadow: var(--shadow-float-low) !important;
+    box-shadow: var(--shadow-3d-low) !important;
+    background: #ffffff !important;
   }
 
   .subtopic-accordion[open] {
-    box-shadow: var(--shadow-float-card) !important;
+    box-shadow: var(--shadow-3d-card) !important;
     transform: translateY(-3px) !important;
     background: #ffffff !important;
   }
@@ -551,27 +842,28 @@ html.dark .floating-form-card {
 
   .tree-resource-link {
     border-radius: var(--radius-3d-pill) !important;
-    border: none !important;
-    box-shadow: var(--shadow-float-micro) !important;
+    border: 1px solid rgba(0, 112, 243, 0.20) !important;
+    box-shadow: var(--shadow-3d-micro) !important;
     transition: transform 0.2s ease, box-shadow 0.2s ease !important;
   }
 
   .tree-resource-link:hover {
     transform: translateY(-2px) scale(1.03) !important;
-    box-shadow: 0 4px 14px rgba(0, 112, 243, 0.25) !important;
+    box-shadow: 0 6px 16px rgba(0, 112, 243, 0.35) !important;
   }
 
   /* Table of Contents Floating Panel */
   .toc-sidebar {
     background: #ffffff !important;
-    border: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.85) !important;
     border-radius: var(--radius-3d-card) !important;
     padding: 24px !important;
-    box-shadow: var(--shadow-float-card) !important;
+    box-shadow: var(--shadow-3d-panel) !important;
   }
 
   html.dark .toc-sidebar {
     background: #18181b !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
   }
 
   .toc-link {
@@ -583,33 +875,20 @@ html.dark .floating-form-card {
     transform: translateX(4px) !important;
   }
 
-  /* Badges & Pills */
-  .badge {
-    border-radius: var(--radius-3d-pill) !important;
-    border: none !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-  }
-
-  .badge-mono {
-    border-radius: 10px !important;
-    border: none !important;
-    box-shadow: var(--shadow-float-micro) !important;
-  }
-
   /* Floating progress shelf */
   .progress-bar-container {
-    box-shadow: 0 4px 20px rgba(30, 41, 59, 0.06) !important;
+    box-shadow: 0 6px 24px rgba(15, 28, 50, 0.10) !important;
     border-bottom: none !important;
   }
 
   .progress-bar-track {
     border-radius: 9999px !important;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.15) !important;
   }
 
   .progress-bar-fill {
     border-radius: 9999px !important;
-    box-shadow: 0 0 16px rgba(0, 124, 240, 0.45) !important;
+    box-shadow: 0 0 16px rgba(0, 124, 240, 0.5) !important;
   }
 }
 
@@ -647,14 +926,14 @@ html.dark .floating-form-card {
   .card,
   .floating-form-card {
     border-radius: var(--radius-3d-card) !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
   }
 
   .roadmap-card:hover,
   .roadmap-card:active {
     transform: none !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
   }
 
   .btn-primary,
@@ -671,7 +950,7 @@ html.dark .floating-form-card {
 
   .form-input:focus {
     transform: none !important;
-    box-shadow: 0 0 0 2px var(--color-ink) !important;
+    box-shadow: 0 0 0 2px #0070f3 !important;
   }
 
   .nav-bar {
@@ -679,13 +958,13 @@ html.dark .floating-form-card {
     border-radius: 0 !important;
     max-width: 100% !important;
     top: 0 !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
   }
 
   .tree-node-content {
     border-radius: var(--radius-3d-element) !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03) !important;
   }
 
   .subtopic-accordion {
@@ -695,15 +974,15 @@ html.dark .floating-form-card {
 
   .faq-item {
     border-radius: var(--radius-3d-element) !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
     transform: none !important;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
   }
 
   .hero-quick-link {
     border-radius: var(--radius-3d-pill) !important;
     box-shadow: none !important;
-    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid rgba(15, 23, 42, 0.06) !important;
     transform: none !important;
   }
 }
