@@ -65,13 +65,10 @@ const pathname = Astro.url.pathname;
 </nav>
 
 <script is:inline>
-  // Prevent FOUC by setting theme class instantly
+  // Light theme is default; load dark only if explicitly chosen by user
   const theme = (() => {
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme-pref')) {
       return localStorage.getItem('theme-pref');
-    }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
     }
     return 'light';
   })();

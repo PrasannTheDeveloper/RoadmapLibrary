@@ -4,6 +4,7 @@
    ================================================================ */
 
 @import "tailwindcss";
+@import "./theme-3d.css";
 
 /* ================================================================
    1. THEME TOKENS (from DESIGN.md)
@@ -12,8 +13,8 @@
 @theme {
   /* ── Colors ── */
   --color-canvas: #ffffff;
-  --color-canvas-soft: #fafafa;
-  --color-canvas-soft-2: #f5f5f5;
+  --color-canvas-soft: #eef2f6;
+  --color-canvas-soft-2: #e2e8f0;
   --color-ink: #171717;
   --color-body: #4d4d4d;
   --color-mute: #888888;
@@ -145,7 +146,6 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
-  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
 ::selection {
@@ -663,10 +663,105 @@ html.dark .badge-programming-languages { background-color: #581c87; color: #e9d5
 }
 
 .section-hero {
-  padding-top: 128px;
-  padding-bottom: 128px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   position: relative;
   overflow: hidden;
+  background-image: url('/Hero/HeroBackground.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+}
+
+html.dark .section-hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('/Hero/HeroBackground.png');
+}
+
+.hero-content {
+  max-width: 640px;
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.hero-right-side {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 48%;
+  max-width: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1;
+  pointer-events: none;
+  margin: 0 !important;
+  padding: 24px 32px 24px 0 !important;
+  box-sizing: border-box;
+}
+
+.hero-right-image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: right center;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  border: none !important;
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.hero-right-image:hover {
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 960px) {
+  .section-hero {
+    padding-top: 56px;
+    padding-bottom: 0;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-content {
+    max-width: 100%;
+  }
+  .hero-right-side {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 32px 0 0 0 !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-right-image {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    object-position: center;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
 }
 
 .section-dark {

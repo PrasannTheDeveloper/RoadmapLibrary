@@ -69,45 +69,56 @@ const faqSchema = {
 
   <!-- Hero Section -->
   <section class="section-hero">
-    <div class="mesh-gradient"></div>
-    <div class="container animate-fade-in-up" style="position: relative; z-index: 1;">
-      <span class="badge-mono" style="margin-bottom: 16px; display: inline-block;">
-        ⚡ Interactive Learning Paths
-      </span>
-
-      <h1 class="text-display-xl" style="margin: 0 0 20px; max-width: 860px;">
-        Master any tech skill with an interactive developer roadmap.
-      </h1>
-
-      <p class="text-body-lg" style="color: var(--color-body); margin: 0 0 32px; max-width: 720px; line-height: 30px;">
-        Bookmark this site and track your interactive developer roadmap directly online. Check off topics, complete hands-on mini-projects, and resume your learning anytime — eliminating the need for cluttering static PDFs or lost file downloads.
-      </p>
-
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-        <a class="btn-primary" href="#roadmaps">
-          Explore Interactive Roadmaps
-        </a>
-        <span class="text-caption-mono" style="color: var(--color-mute); padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-full); border: 1px solid var(--color-hairline);">
-          📌 Tip: Press Cmd/Ctrl + D to Bookmark
+    <div class="container animate-fade-in-up" style="position: relative; z-index: 10;">
+      <div class="hero-content">
+        <span class="badge-mono" style="margin-bottom: 16px; display: inline-block;">
+          ⚡ Interactive Learning Paths
         </span>
-      </div>
 
-      <!-- Hero Quick Links for Legal & Company pages -->
-      <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--color-hairline);">
-        <span class="text-caption-mono" style="color: var(--color-mute);">Quick Links:</span>
-        <a href="/privacy" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--color-ink); text-decoration: none;">
-          🔒 Privacy Policy
-        </a>
-        <a href="/terms" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--color-ink); text-decoration: none;">
-          📜 Terms & Conditions
-        </a>
-        <a href="/about" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--color-ink); text-decoration: none;">
-          ℹ️ About Us
-        </a>
-        <a href="/contact" style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-full); font-size: 13px; font-weight: 500; color: var(--color-ink); text-decoration: none;">
-          📩 Contact Us
-        </a>
+        <h1 class="text-display-xl" style="margin: 0 0 20px;">
+          Master any tech skill with an interactive developer roadmap.
+        </h1>
+
+        <p class="text-body-lg" style="color: var(--color-body); margin: 0 0 32px; line-height: 30px;">
+          Bookmark this site and track your interactive developer roadmap directly online. Check off topics, complete hands-on mini-projects, and resume your learning anytime — eliminating the need for cluttering static PDFs or lost file downloads.
+        </p>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+          <a class="btn-primary" href="#roadmaps">
+            Explore Interactive Roadmaps
+          </a>
+          <span class="text-caption-mono" style="color: var(--color-mute); padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-full); border: 1px solid var(--color-hairline);">
+            📌 Tip: Press Cmd/Ctrl + D to Bookmark
+          </span>
+        </div>
+
+        <!-- Hero Quick Links for Legal & Company pages -->
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--color-hairline);">
+          <span class="text-caption-mono" style="color: var(--color-mute);">Quick Links:</span>
+          <a href="/privacy" class="hero-quick-link">
+            🔒 Privacy Policy
+          </a>
+          <a href="/terms" class="hero-quick-link">
+            📜 Terms & Conditions
+          </a>
+          <a href="/about" class="hero-quick-link">
+            ℹ️ About Us
+          </a>
+          <a href="/contact" class="hero-quick-link">
+            📩 Contact Us
+          </a>
+        </div>
       </div>
+    </div>
+
+    <div class="hero-right-side">
+      <img
+        src="/Hero/HeroRightImage.png"
+        alt="Interactive Developer Roadmap Illustration"
+        class="hero-right-image"
+        loading="eager"
+        decoding="async"
+      />
     </div>
   </section>
 
@@ -252,7 +263,7 @@ const faqSchema = {
 
         <div style="display: flex; flex-direction: column; gap: 16px;">
           {faqList.map((item) => (
-            <details class="faq-item" style="background: var(--color-canvas); border: 1px solid var(--color-hairline); border-radius: var(--radius-md); padding: 16px 20px; transition: border-color 0.2s ease;">
+            <details class="faq-item">
               <summary style="font-weight: 600; font-size: 17px; cursor: pointer; color: var(--color-ink); display: flex; align-items: center; justify-content: space-between;">
                 <span>{item.q}</span>
               </summary>

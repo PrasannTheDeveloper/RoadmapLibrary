@@ -1,0 +1,709 @@
+/* ================================================================
+   Roadmap Library — Ultra-Depth 3D Floating Theme (macOS Inspired)
+   - Zero backdrop-filter on cards (blazing 120fps performance)
+   - No harsh outline rings or sharp lines (natural 3D lighting)
+   - Volumetric soft gradients and deep ambient drop shadows
+   - Generous squircle rounded curves (20-24px cards, 16px inputs)
+   - Real tactile 3D buttons with physical depth
+   - Floating macOS dock nav
+   ================================================================ */
+
+:root {
+  /* ── Smooth Round Curves ── */
+  --radius-3d-card: 24px;
+  --radius-3d-element: 20px;
+  --radius-3d-input: 16px;
+  --radius-3d-pill: 9999px;
+
+  /* ── High-Performance Natural 3D Floating Shadows (No Harsh Lines) ── */
+
+  /* Level 1: Micro Floating (Pills, Tags, Checkboxes) */
+  --shadow-float-micro: 
+    0 2px 6px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.02);
+
+  /* Level 2: Low Floating (Inputs, Subtopics, Accords) */
+  --shadow-float-low: 
+    0 3px 8px rgba(30, 41, 59, 0.04),
+    0 8px 20px -3px rgba(30, 41, 59, 0.07);
+
+  /* Level 3: Standard Floating Cards (Roadmap Cards, Feature Cards) */
+  --shadow-float-card: 
+    0 4px 8px -2px rgba(30, 41, 59, 0.04),
+    0 12px 24px -4px rgba(30, 41, 59, 0.08),
+    0 24px 48px -8px rgba(30, 41, 59, 0.08);
+
+  /* Level 4: Hover Floating State (Lifting High in Mid-Air) */
+  --shadow-float-hover: 
+    0 8px 16px -2px rgba(30, 41, 59, 0.06),
+    0 20px 40px -4px rgba(30, 41, 59, 0.12),
+    0 40px 72px -8px rgba(30, 41, 59, 0.14);
+
+  /* Level 5: Deep Container Panels */
+  --shadow-float-panel: 
+    0 10px 30px -5px rgba(30, 41, 59, 0.06),
+    0 25px 60px -10px rgba(30, 41, 59, 0.10);
+
+  /* 3D Tactile Buttons */
+  --shadow-btn-primary: 
+    0 4px 14px rgba(0, 0, 0, 0.22),
+    0 1px 3px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+
+  --shadow-btn-primary-hover: 
+    0 8px 22px rgba(0, 0, 0, 0.30),
+    0 2px 6px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  --shadow-btn-secondary: 
+    0 3px 10px rgba(0, 0, 0, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 #ffffff;
+
+  --shadow-btn-secondary-hover: 
+    0 8px 20px rgba(0, 0, 0, 0.10),
+    0 2px 5px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 #ffffff;
+
+  /* macOS Focus Glow */
+  --shadow-focus-glow: 
+    0 0 0 3.5px rgba(0, 112, 243, 0.25),
+    0 8px 24px rgba(0, 112, 243, 0.15);
+}
+
+/* Dark Theme Overrides */
+html.dark {
+  --shadow-float-micro: 
+    0 2px 6px rgba(0, 0, 0, 0.5);
+
+  --shadow-float-low: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 8px 20px rgba(0, 0, 0, 0.4);
+
+  --shadow-float-card: 
+    0 6px 16px rgba(0, 0, 0, 0.5),
+    0 16px 36px -4px rgba(0, 0, 0, 0.6),
+    0 30px 60px -8px rgba(0, 0, 0, 0.4);
+
+  --shadow-float-hover: 
+    0 10px 24px rgba(0, 0, 0, 0.6),
+    0 24px 50px -4px rgba(0, 0, 0, 0.75),
+    0 48px 90px -10px rgba(0, 0, 0, 0.5);
+
+  --shadow-btn-primary: 
+    0 4px 14px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  --shadow-btn-primary-hover: 
+    0 8px 24px rgba(255, 255, 255, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+  --shadow-btn-secondary: 
+    0 4px 14px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+  --shadow-btn-secondary-hover: 
+    0 8px 22px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+/* ================================================================
+   BASE ELEMENTS (NO SHARP OUTLINES)
+   ================================================================ */
+
+.faq-item {
+  background: #ffffff;
+  border: none !important;
+  border-radius: var(--radius-3d-element) !important;
+  padding: 20px 26px;
+  box-shadow: var(--shadow-float-low);
+  overflow: hidden;
+  position: relative;
+}
+
+html.dark .faq-item {
+  background: #18181b;
+}
+
+.hero-quick-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: #ffffff;
+  border: none !important;
+  border-radius: var(--radius-3d-pill) !important;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink);
+  text-decoration: none;
+  box-shadow: var(--shadow-float-micro);
+}
+
+html.dark .hero-quick-link {
+  background: #202023;
+}
+
+.floating-form-card {
+  background: #ffffff;
+  border: none !important;
+  border-radius: var(--radius-3d-card) !important;
+  padding: 36px;
+  box-shadow: var(--shadow-float-panel);
+  position: relative;
+}
+
+html.dark .floating-form-card {
+  background: #18181b;
+}
+
+/* ================================================================
+   DESKTOP ONLY (min-width: 769px)
+   3D ELEVATION, VOLUMETRIC SURFACES & HARDWARE HOVER LIFTS
+   ================================================================ */
+
+@media (min-width: 769px) {
+  /* Ultra-smooth hardware transitions */
+  .roadmap-card,
+  .feature-card,
+  .card,
+  .mini-project-card,
+  .faq-item,
+  .btn-primary,
+  .btn-secondary,
+  .theme-toggle-btn,
+  .filter-pill,
+  .view-toggle-btn,
+  .subtopic-accordion,
+  .tree-node-content,
+  .form-input,
+  .hero-quick-link,
+  .nav-bar {
+    transition: transform 0.26s ease-out, box-shadow 0.26s ease-out !important;
+  }
+
+  /* ── 1. FLOATING MACOS DOCK NAVBAR ── */
+  .nav-bar {
+    margin: 16px auto 0 !important;
+    max-width: min(calc(var(--page-width) + 48px), 94%) !important;
+    border-radius: var(--radius-3d-pill) !important;
+    border: none !important;
+    background: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(30, 41, 59, 0.08) !important;
+    top: 16px !important;
+  }
+
+  html.dark .nav-bar {
+    background: #18181b !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  /* ── 2. CARDS: 3D VOLUMETRIC FLOATING SLABS (ROUND EDGES, NO SHARP LINES) ── */
+  .roadmap-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%) !important;
+    border: none !important;
+    border-radius: var(--radius-3d-card) !important;
+    box-shadow: var(--shadow-float-card) !important;
+    padding: 28px !important;
+  }
+
+  html.dark .roadmap-card {
+    background: linear-gradient(180deg, #202024 0%, #18181b 100%) !important;
+  }
+
+  /* Noticeable 3D lift: rises high above canvas */
+  .roadmap-card:hover {
+    transform: translateY(-8px) scale(1.01) !important;
+    box-shadow: var(--shadow-float-hover) !important;
+  }
+
+  .roadmap-card-meta {
+    border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
+  }
+
+  html.dark .roadmap-card-meta {
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .roadmap-card-logo-wrapper {
+    border-radius: 16px !important;
+    border: none !important;
+    box-shadow: var(--shadow-float-low) !important;
+    background: #ffffff !important;
+    transition: transform 0.24s ease-out !important;
+  }
+
+  html.dark .roadmap-card-logo-wrapper {
+    background: #2a2a2e !important;
+  }
+
+  .roadmap-card:hover .roadmap-card-logo-wrapper {
+    transform: scale(1.10) !important;
+  }
+
+  .roadmap-card-arrow {
+    transition: transform 0.24s ease-out, color 0.2s ease !important;
+  }
+
+  .roadmap-card:hover .roadmap-card-arrow {
+    transform: translateX(8px) scale(1.15) !important;
+    color: var(--color-ink) !important;
+  }
+
+  /* Feature Cards */
+  .feature-card {
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%) !important;
+    border: none !important;
+    border-radius: var(--radius-3d-card) !important;
+    box-shadow: var(--shadow-float-card) !important;
+    padding: 36px !important;
+  }
+
+  html.dark .feature-card {
+    background: linear-gradient(180deg, #202024 0%, #18181b 100%) !important;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-7px) scale(1.01) !important;
+    box-shadow: var(--shadow-float-hover) !important;
+  }
+
+  .feature-card-icon {
+    border-radius: 18px !important;
+    border: none !important;
+    box-shadow: var(--shadow-float-low) !important;
+    background: #ffffff !important;
+    transition: transform 0.24s ease-out !important;
+  }
+
+  html.dark .feature-card-icon {
+    background: #2a2a2e !important;
+  }
+
+  .feature-card:hover .feature-card-icon {
+    transform: translateY(-3px) scale(1.10) !important;
+  }
+
+  /* General Cards */
+  .card {
+    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%) !important;
+    border: none !important;
+    border-radius: var(--radius-3d-card) !important;
+    box-shadow: var(--shadow-float-card) !important;
+  }
+
+  html.dark .card {
+    background: linear-gradient(180deg, #202024 0%, #18181b 100%) !important;
+  }
+
+  .card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: var(--shadow-float-hover) !important;
+  }
+
+  /* Mini Project Cards */
+  .mini-project-card {
+    background: #ffffff !important;
+    border: 2px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: var(--radius-3d-element) !important;
+    box-shadow: var(--shadow-float-low) !important;
+  }
+
+  html.dark .mini-project-card {
+    background: #1c1c20 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .mini-project-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--shadow-float-card) !important;
+  }
+
+  /* FAQ Accordion Item */
+  .faq-item:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--shadow-float-card) !important;
+  }
+
+  .faq-item[open] {
+    box-shadow: var(--shadow-float-card) !important;
+    transform: translateY(-3px) !important;
+  }
+
+  /* ── 3. TACTILE 3D BUTTONS (REAL PHYSICAL KEYS) ── */
+  .btn-primary {
+    background: #18181b !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: var(--radius-3d-pill) !important;
+    box-shadow: var(--shadow-btn-primary) !important;
+  }
+
+  html.dark .btn-primary {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: var(--shadow-btn-primary-hover) !important;
+    opacity: 1 !important;
+  }
+
+  .btn-primary:active {
+    transform: translateY(1.5px) scale(0.98) !important;
+    box-shadow: var(--shadow-float-micro) !important;
+  }
+
+  .btn-secondary {
+    background: linear-gradient(180deg, #ffffff 0%, #f4f5f8 100%) !important;
+    color: #171717 !important;
+    border: none !important;
+    border-radius: var(--radius-3d-pill) !important;
+    box-shadow: var(--shadow-btn-secondary) !important;
+  }
+
+  html.dark .btn-secondary {
+    background: linear-gradient(180deg, #2a2a2e 0%, #1f1f23 100%) !important;
+    color: #ededed !important;
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: var(--shadow-btn-secondary-hover) !important;
+  }
+
+  .btn-secondary:active {
+    transform: translateY(1.5px) scale(0.98) !important;
+    box-shadow: var(--shadow-float-micro) !important;
+  }
+
+  .theme-toggle-btn {
+    border-radius: var(--radius-3d-pill) !important;
+    box-shadow: var(--shadow-float-micro) !important;
+    border: none !important;
+    background: #ffffff !important;
+  }
+
+  html.dark .theme-toggle-btn {
+    background: #27272a !important;
+  }
+
+  .theme-toggle-btn:hover {
+    transform: translateY(-2px) scale(1.08) !important;
+    box-shadow: var(--shadow-float-low) !important;
+  }
+
+  .theme-toggle-btn:active {
+    transform: translateY(1px) scale(0.96) !important;
+  }
+
+  /* Filter Pills */
+  .filter-pill {
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: var(--radius-3d-pill) !important;
+    box-shadow: var(--shadow-float-micro) !important;
+  }
+
+  html.dark .filter-pill {
+    background: #242428 !important;
+  }
+
+  .filter-pill:hover {
+    transform: translateY(-2.5px) !important;
+    box-shadow: var(--shadow-float-low) !important;
+  }
+
+  .filter-pill.active {
+    background: #18181b !important;
+    color: #ffffff !important;
+    box-shadow: var(--shadow-btn-primary) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  html.dark .filter-pill.active {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  /* Segmented View Toggle */
+  .view-toggle {
+    border-radius: 16px !important;
+    box-shadow: var(--shadow-float-micro) !important;
+    border: none !important;
+    background: #e2e8f0 !important;
+    padding: 4px !important;
+  }
+
+  html.dark .view-toggle {
+    background: #27272a !important;
+  }
+
+  .view-toggle-btn {
+    border-radius: 12px !important;
+  }
+
+  .view-toggle-btn.active {
+    background: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  html.dark .view-toggle-btn.active {
+    background: #3f3f46 !important;
+  }
+
+  .hero-quick-link:hover {
+    transform: translateY(-3px) scale(1.03) !important;
+    box-shadow: var(--shadow-float-low) !important;
+  }
+
+  /* ── 4. FORMS & INPUTS (SOFT 3D SUNKEN/FLOATING) ── */
+  .form-input {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: var(--radius-3d-input) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03), inset 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  }
+
+  html.dark .form-input {
+    background: #1f1f23 !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+  }
+
+  .form-input-lg,
+  .form-input-search {
+    border-radius: 20px !important;
+    height: 52px !important;
+  }
+
+  .form-input:focus {
+    transform: translateY(-2px) !important;
+    border-color: #0070f3 !important;
+    box-shadow: var(--shadow-focus-glow) !important;
+  }
+
+  /* ── 5. ROADMAP TREE & TIMELINE NODES ── */
+  .tree-section-header {
+    background: #ffffff !important;
+    border: none !important;
+    border-left: 5px solid var(--color-ink) !important;
+    border-radius: var(--radius-3d-element) !important;
+    box-shadow: var(--shadow-float-low) !important;
+  }
+
+  html.dark .tree-section-header {
+    background: #18181b !important;
+  }
+
+  .tree-node-content {
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: var(--radius-3d-element) !important;
+    box-shadow: var(--shadow-float-low) !important;
+  }
+
+  html.dark .tree-node-content {
+    background: #18181b !important;
+  }
+
+  .tree-node-content:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: var(--shadow-float-card) !important;
+  }
+
+  .tree-node-check {
+    border-radius: 7px !important;
+    border: 2px solid rgba(0, 0, 0, 0.2) !important;
+    box-shadow: var(--shadow-float-micro) !important;
+    transition: transform 0.18s ease-out !important;
+  }
+
+  .tree-node-check:hover {
+    transform: scale(1.15) !important;
+  }
+
+  .subtopic-accordion {
+    border-radius: var(--radius-3d-input) !important;
+    border: none !important;
+    background: #f8fafc !important;
+    box-shadow: var(--shadow-float-micro) !important;
+  }
+
+  html.dark .subtopic-accordion {
+    background: #242428 !important;
+  }
+
+  .subtopic-accordion:hover {
+    box-shadow: var(--shadow-float-low) !important;
+  }
+
+  .subtopic-accordion[open] {
+    box-shadow: var(--shadow-float-card) !important;
+    transform: translateY(-3px) !important;
+    background: #ffffff !important;
+  }
+
+  html.dark .subtopic-accordion[open] {
+    background: #1f1f23 !important;
+  }
+
+  .tree-resource-link {
+    border-radius: var(--radius-3d-pill) !important;
+    border: none !important;
+    box-shadow: var(--shadow-float-micro) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  }
+
+  .tree-resource-link:hover {
+    transform: translateY(-2px) scale(1.03) !important;
+    box-shadow: 0 4px 14px rgba(0, 112, 243, 0.25) !important;
+  }
+
+  /* Table of Contents Floating Panel */
+  .toc-sidebar {
+    background: #ffffff !important;
+    border: none !important;
+    border-radius: var(--radius-3d-card) !important;
+    padding: 24px !important;
+    box-shadow: var(--shadow-float-card) !important;
+  }
+
+  html.dark .toc-sidebar {
+    background: #18181b !important;
+  }
+
+  .toc-link {
+    border-radius: 12px !important;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease !important;
+  }
+
+  .toc-link:hover {
+    transform: translateX(4px) !important;
+  }
+
+  /* Badges & Pills */
+  .badge {
+    border-radius: var(--radius-3d-pill) !important;
+    border: none !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .badge-mono {
+    border-radius: 10px !important;
+    border: none !important;
+    box-shadow: var(--shadow-float-micro) !important;
+  }
+
+  /* Floating progress shelf */
+  .progress-bar-container {
+    box-shadow: 0 4px 20px rgba(30, 41, 59, 0.06) !important;
+    border-bottom: none !important;
+  }
+
+  .progress-bar-track {
+    border-radius: 9999px !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .progress-bar-fill {
+    border-radius: 9999px !important;
+    box-shadow: 0 0 16px rgba(0, 124, 240, 0.45) !important;
+  }
+}
+
+/* ================================================================
+   MOBILE PERFORMANCE (<= 768px):
+   100% Flat 2D, NO 3D transforms, ZERO scroll jank, 120fps fluid.
+   ================================================================ */
+
+@media (max-width: 768px) {
+  .roadmap-card,
+  .feature-card,
+  .card,
+  .mini-project-card,
+  .faq-item,
+  .btn-primary,
+  .btn-secondary,
+  .theme-toggle-btn,
+  .filter-pill,
+  .view-toggle-btn,
+  .subtopic-accordion,
+  .tree-node-content,
+  .form-input,
+  .nav-bar,
+  .tree-node-check,
+  .tree-resource-link,
+  .feature-card-icon,
+  .roadmap-card-logo-wrapper,
+  .hero-quick-link {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .roadmap-card,
+  .feature-card,
+  .card,
+  .floating-form-card {
+    border-radius: var(--radius-3d-card) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .roadmap-card:hover,
+  .roadmap-card:active {
+    transform: none !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    border-radius: var(--radius-3d-pill) !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .form-input {
+    border-radius: var(--radius-3d-input) !important;
+    box-shadow: none !important;
+  }
+
+  .form-input:focus {
+    transform: none !important;
+    box-shadow: 0 0 0 2px var(--color-ink) !important;
+  }
+
+  .nav-bar {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    max-width: 100% !important;
+    top: 0 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .tree-node-content {
+    border-radius: var(--radius-3d-element) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  }
+
+  .subtopic-accordion {
+    border-radius: var(--radius-3d-input) !important;
+    box-shadow: none !important;
+  }
+
+  .faq-item {
+    border-radius: var(--radius-3d-element) !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    transform: none !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+  }
+
+  .hero-quick-link {
+    border-radius: var(--radius-3d-pill) !important;
+    box-shadow: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    transform: none !important;
+  }
+}
