@@ -372,9 +372,46 @@ const formattedTime = formatTimeWithMonths(estimatedTime);
       });
     }
 
+    // Checkbox onboarding tooltip for first-time visitors
+    const TOOLTIP_KEY = 'roadmap-checkbox-tooltip-dismissed';
+    const tooltips = document.querySelectorAll('.checkbox-onboarding-tooltip');
+    const dismissBtns = [
+      document.getElementById('dismiss-checkbox-tooltip'),
+      document.getElementById('dismiss-checkbox-tooltip-list')
+    ].filter(Boolean);
+
+    function dismissTooltips() {
+      tooltips.forEach((el) => {
+        (el as HTMLElement).style.opacity = '0';
+        (el as HTMLElement).style.transform = 'translateY(8px) scale(0.95)';
+        setTimeout(() => {
+          (el as HTMLElement).style.display = 'none';
+        }, 300);
+      });
+      localStorage.setItem(TOOLTIP_KEY, 'true');
+    }
+
+    if (!localStorage.getItem(TOOLTIP_KEY)) {
+      tooltips.forEach((el) => {
+        el.classList.add('is-visible');
+      });
+      dismissBtns.forEach((btn) => {
+        btn?.addEventListener('click', dismissTooltips);
+      });
+    } else {
+      tooltips.forEach((el) => {
+        (el as HTMLElement).style.display = 'none';
+      });
+    }
+
     // Checkbox change listener
     document.querySelectorAll('.tree-node-check').forEach((cb) => {
       cb.addEventListener('change', (e) => {
+        // Auto dismiss onboarding tooltip on first interaction
+        if (!localStorage.getItem(TOOLTIP_KEY)) {
+          dismissTooltips();
+        }
+
         const checkbox = e.target as HTMLInputElement;
         const topicId = checkbox.getAttribute('data-topic');
         if (!topicId) return;

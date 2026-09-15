@@ -32,17 +32,33 @@ function getWeekLabel(section: any, index: number) {
         </div>
 
         <div class="tree-topics">
-          {section.topics.map((topic: any) => (
+          {section.topics.map((topic: any, topicIdx: number) => (
             <div class="tree-node" data-topic-id={topic.id} id={`topic-${topic.id}`}>
               <div class="tree-node-content">
                 <div class="tree-node-header">
-                  <input
-                    type="checkbox"
-                    class="tree-node-check"
-                    data-roadmap={roadmapId}
-                    data-topic={topic.id}
-                    aria-label={`Mark ${topic.title} as complete`}
-                  />
+                  <div class="checkbox-wrapper">
+                    <input
+                      type="checkbox"
+                      class="tree-node-check"
+                      data-roadmap={roadmapId}
+                      data-topic={topic.id}
+                      aria-label={`Mark ${topic.title} as complete`}
+                    />
+                    {i === 0 && topicIdx === 0 && (
+                      <div class="checkbox-onboarding-tooltip" id="checkbox-onboarding-tooltip" role="tooltip">
+                        <div class="tooltip-content">
+                          <span class="tooltip-sparkle">💡</span>
+                          <div class="tooltip-text">
+                            <strong>Track Progress:</strong> Check items as you complete them to save your progress!
+                          </div>
+                          <button type="button" class="tooltip-close-btn" id="dismiss-checkbox-tooltip" aria-label="Dismiss tooltip">
+                            Got it!
+                          </button>
+                        </div>
+                        <div class="tooltip-arrow"></div>
+                      </div>
+                    )}
+                  </div>
                   <span class="tree-node-title">{topic.title}</span>
                 </div>
 
