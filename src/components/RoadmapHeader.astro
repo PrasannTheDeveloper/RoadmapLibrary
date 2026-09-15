@@ -21,6 +21,13 @@ function formatTimeWithMonths(timeStr: string) {
 }
 
 const formattedTime = formatTimeWithMonths(estimatedTime);
+
+// Difficulty color mapping
+const difficultyColor = {
+  Beginner: '#10b981',
+  Intermediate: '#2563eb',
+  Advanced: '#8b5cf6',
+}[difficulty] || '#2563eb';
 ---
 
 <header class="roadmap-header">
@@ -29,64 +36,146 @@ const formattedTime = formatTimeWithMonths(estimatedTime);
     <div class="print-header-url">roadmaplibrary.com</div>
   </div>
 
-  <span class={categoryBadgeClass}>{category}</span>
-  <h1 class="text-display-lg" style="margin: 12px 0 8px; display: flex; align-items: center; gap: 12px;">
-    {thumbnail ? (
-      <img src={thumbnail} alt={`${title} Framework Logo`} class="roadmap-header-logo" width="36" height="36" />
-    ) : (
-      <span>{icon}</span>
-    )}
-    <span>{title}</span>
-  </h1>
-  <p class="text-body-lg" style="color: var(--color-body); margin: 0; max-width: 800px;">{description}</p>
+  <!-- Elevated 3D Roadmap Hero Card -->
+  <div class="roadmap-hero-card">
+    <!-- Breadcrumb & Category Bar -->
+    <div class="roadmap-breadcrumb-bar">
+      <nav class="roadmap-breadcrumb" aria-label="Breadcrumb navigation">
+        <a href="/" class="roadmap-breadcrumb-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          Home
+        </a>
+        <span class="roadmap-breadcrumb-separator">/</span>
+        <a href="/#roadmaps" class="roadmap-breadcrumb-link">Roadmaps</a>
+        <span class="roadmap-breadcrumb-separator">/</span>
+        <span class="roadmap-breadcrumb-current">{category}</span>
+      </nav>
 
-  <div class="roadmap-header-meta">
-    <span class="roadmap-header-meta-item">⏱ {formattedTime}</span>
-    <span class="roadmap-header-meta-item">📚 {topicCount} topics</span>
-    <span class="roadmap-header-meta-item">📊 {difficulty} level</span>
-    <span class="roadmap-header-meta-item">⚡ Self-paced learning</span>
-  </div>
+      <div class="roadmap-category-wrap">
+        <span class={categoryBadgeClass}>{category}</span>
+      </div>
+    </div>
 
-  <div class="roadmap-header-actions">
-    <button class="btn-primary btn-sm" id="download-pdf" aria-label="Download this roadmap as PDF">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-        <polyline points="7 10 12 15 17 10"></polyline>
-        <line x1="12" y1="15" x2="12" y2="3"></line>
-      </svg>
-      Download PDF
-    </button>
+    <!-- Title & Icon Box -->
+    <div class="roadmap-title-row">
+      <div class="roadmap-hero-icon-box">
+        {thumbnail ? (
+          <img src={thumbnail} alt={`${title} Framework Logo`} class="roadmap-hero-logo" width="44" height="44" loading="eager" />
+        ) : (
+          <span class="roadmap-hero-icon-emoji">{icon}</span>
+        )}
+      </div>
 
-    <div class="view-toggle" role="group" aria-label="Timeline and View options">
-      <button class="view-toggle-btn active" id="toggle-timeline" aria-label="Toggle timeline visibility for weeks and subtopic days">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <div class="roadmap-title-text-wrap">
+        <h1 class="roadmap-main-title">
+          <span>{title}</span>
+          <span class="roadmap-title-accent">Roadmap</span>
+        </h1>
+      </div>
+    </div>
+
+    <!-- Enhanced Description with Lead Styling -->
+    <div class="roadmap-desc-container">
+      <p class="roadmap-description">{description}</p>
+    </div>
+
+    <!-- Sleek SVG Meta Chips Grid -->
+    <div class="roadmap-meta-chips" role="list" aria-label="Roadmap specifications">
+      <div class="roadmap-chip" role="listitem">
+        <svg class="roadmap-chip-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
         </svg>
-        <span>Timeline: On</span>
+        <span class="roadmap-chip-label">Duration:</span>
+        <span class="roadmap-chip-value">{formattedTime}</span>
+      </div>
+
+      <div class="roadmap-chip" role="listitem">
+        <svg class="roadmap-chip-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+        </svg>
+        <span class="roadmap-chip-label">Curriculum:</span>
+        <span class="roadmap-chip-value">{topicCount} topics</span>
+      </div>
+
+      <div class="roadmap-chip" role="listitem">
+        <svg class="roadmap-chip-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"></line>
+          <line x1="12" y1="20" x2="12" y2="4"></line>
+          <line x1="6" y1="20" x2="6" y2="14"></line>
+        </svg>
+        <span class="roadmap-chip-label">Level:</span>
+        <span class="roadmap-chip-value" style={`color: ${difficultyColor}; font-weight: 600;`}>
+          <span class="roadmap-difficulty-dot" style={`background-color: ${difficultyColor}`}></span>
+          {difficulty}
+        </span>
+      </div>
+
+      <div class="roadmap-chip" role="listitem">
+        <svg class="roadmap-chip-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+        </svg>
+        <span class="roadmap-chip-label">Format:</span>
+        <span class="roadmap-chip-value">Self-Paced</span>
+      </div>
+
+      <div class="roadmap-chip roadmap-chip-verified" role="listitem">
+        <svg class="roadmap-chip-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <polyline points="9 12 11 14 15 10"></polyline>
+        </svg>
+        <span class="roadmap-chip-value">2026 Edition</span>
+      </div>
+    </div>
+
+    <!-- Actions & View Toolbar -->
+    <div class="roadmap-header-actions">
+      <button class="btn-primary btn-sm roadmap-pdf-btn" id="download-pdf" aria-label="Download this roadmap as PDF">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Download PDF</span>
       </button>
 
-      <button class="view-toggle-btn active" data-view="tree" aria-label="Tree view">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="5" r="3"></circle>
-          <line x1="12" y1="8" x2="12" y2="13"></line>
-          <line x1="12" y1="13" x2="6" y2="18"></line>
-          <line x1="12" y1="13" x2="18" y2="18"></line>
-        </svg>
-        Tree
-      </button>
+      <div class="view-toggle" role="group" aria-label="Timeline and View options">
+        <button class="view-toggle-btn active" id="toggle-timeline" aria-label="Toggle timeline visibility for weeks and subtopic days">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>Timeline: On</span>
+        </button>
 
-      <button class="view-toggle-btn" data-view="list" aria-label="List view">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="8" y1="6" x2="21" y2="6"></line>
-          <line x1="8" y1="12" x2="21" y2="12"></line>
-          <line x1="8" y1="18" x2="21" y2="18"></line>
-          <line x1="3" y1="6" x2="3.01" y2="6"></line>
-          <line x1="3" y1="12" x2="3.01" y2="12"></line>
-          <line x1="3" y1="18" x2="3.01" y2="18"></line>
-        </svg>
-        List
-      </button>
+        <span class="view-toggle-divider" aria-hidden="true"></span>
+
+        <button class="view-toggle-btn active" data-view="tree" aria-label="Tree view">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="5" r="3"></circle>
+            <line x1="12" y1="8" x2="12" y2="13"></line>
+            <line x1="12" y1="13" x2="6" y2="18"></line>
+            <line x1="12" y1="13" x2="18" y2="18"></line>
+          </svg>
+          <span>Tree</span>
+        </button>
+
+        <button class="view-toggle-btn" data-view="list" aria-label="List view">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="8" y1="6" x2="21" y2="6"></line>
+            <line x1="8" y1="12" x2="21" y2="12"></line>
+            <line x1="8" y1="18" x2="21" y2="18"></line>
+            <line x1="3" y1="6" x2="3.01" y2="6"></line>
+            <line x1="3" y1="12" x2="3.01" y2="12"></line>
+            <line x1="3" y1="18" x2="3.01" y2="18"></line>
+          </svg>
+          <span>List</span>
+        </button>
+      </div>
     </div>
   </div>
 </header>

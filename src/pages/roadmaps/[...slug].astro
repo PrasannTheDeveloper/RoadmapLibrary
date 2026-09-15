@@ -38,6 +38,30 @@ export async function getStaticPaths() {
     }
   });
 
+  // 4. Category aliases (e.g. "programming languages", "programming-languages", "programminglanguages", "backend", "ai", "cybersecurity")
+  const categories = Array.from(new Set(roadmaps.map((r) => r.data.category)));
+  categories.forEach((category) => {
+    const catRoadmaps = roadmaps
+      .filter((r) => r.data.category === category)
+      .sort((a, b) => a.data.order - b.data.order);
+    if (catRoadmaps.length > 0) {
+      const primaryRoadmap = catRoadmaps[0];
+      const catSlugHyphen = category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      const catSlugSpace = category.toLowerCase();
+      const catSlugNoSpace = category.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+      const aliasSet = new Set([catSlugHyphen, catSlugSpace, catSlugNoSpace, category]);
+      aliasSet.forEach((alias) => {
+        if (!paths.some((p) => p.params.slug === alias)) {
+          paths.push({
+            params: { slug: alias },
+            props: { roadmap: primaryRoadmap },
+          });
+        }
+      });
+    }
+  });
+
   return paths;
 }
 
@@ -283,8 +307,29 @@ const formattedTime = formatTimeWithMonths(estimatedTime);
 
       const fill = document.getElementById('progress-fill');
       const label = document.getElementById('progress-label');
+      const countEl = document.getElementById('progress-count');
+      const trackAria = document.getElementById('progress-track-aria');
+
       if (fill) fill.style.width = `${pct}%`;
       if (label) label.textContent = `${pct}%`;
+      if (trackAria) trackAria.setAttribute('aria-valuenow', String(pct));
+      if (countEl) countEl.textContent = `${checked} of ${topicCount} completed`;
+
+      const statusPill = document.getElementById('progress-status-pill');
+      const statusText = document.getElementById('progress-status-text');
+      if (statusPill && statusText) {
+        statusPill.classList.remove('status-not-started', 'status-in-progress', 'status-completed');
+        if (pct === 0) {
+          statusPill.classList.add('status-not-started');
+          statusText.textContent = 'Not Started';
+        } else if (pct === 100) {
+          statusPill.classList.add('status-completed');
+          statusText.textContent = 'Completed! 🎉';
+        } else {
+          statusPill.classList.add('status-in-progress');
+          statusText.textContent = `${pct}% In Progress`;
+        }
+      }
 
       document.querySelectorAll('.tree-node-check').forEach((cb) => {
         const topicId = cb.getAttribute('data-topic');
@@ -304,6 +349,25 @@ const formattedTime = formatTimeWithMonths(estimatedTime);
         if (tocProgress) {
           tocProgress.textContent =
             sectionTopics.length > 0 ? `${sectionChecked}/${sectionTopics.length}` : '';
+        }
+      });
+    }
+
+    // Reset progress button handler
+    const resetBtn = document.getElementById('progress-reset-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        if (window.confirm('Reset your progress on this roadmap? All checked topics will be cleared.')) {
+          const progress = getProgress();
+          delete progress[roadmapId];
+          saveProgress(progress);
+
+          document.querySelectorAll('.tree-node-check').forEach((cb) => {
+            (cb as HTMLInputElement).checked = false;
+            cb.closest('.tree-node, .list-topic')?.classList.remove('is-checked');
+          });
+
+          updateUI();
         }
       });
     }

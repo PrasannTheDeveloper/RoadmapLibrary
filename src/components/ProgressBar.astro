@@ -7,13 +7,50 @@ interface Props {
 const { roadmapId, topicCount } = Astro.props;
 ---
 
-<div class="progress-bar-container">
+<div class="progress-bar-container" id="roadmap-progress-shelf" role="region" aria-label="Interactive learning progress tracking">
   <div class="container">
     <div class="progress-bar-inner">
-      <div class="progress-bar-track">
-        <div class="progress-bar-fill" id="progress-fill" style="width: 0%"></div>
+      <!-- Left: Status Badge & Interactive Topic Readout -->
+      <div class="progress-hud-status">
+        <div class="progress-status-pill status-not-started" id="progress-status-pill" aria-live="polite">
+          <span class="progress-status-dot" id="progress-status-dot"></span>
+          <span class="progress-status-text" id="progress-status-text">Not Started</span>
+        </div>
+        <div class="progress-stats-readout">
+          <span id="progress-count" class="progress-count-text">0 of {topicCount} completed</span>
+        </div>
       </div>
-      <span class="progress-bar-label" id="progress-label">0%</span>
+
+      <!-- Center: Track with glowing gradient & leading-edge glow thumb -->
+      <div class="progress-track-wrapper">
+        <div class="progress-bar-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-track-aria">
+          <div class="progress-bar-fill" id="progress-fill" style="width: 0%">
+            <span class="progress-fill-glow"></span>
+            <span class="progress-fill-thumb"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Tabular Percentage Badge & Reset Action -->
+      <div class="progress-hud-actions">
+        <div class="progress-percent-badge" title="Overall Roadmap Completion">
+          <span class="progress-bar-label" id="progress-label">0%</span>
+        </div>
+
+        <button
+          type="button"
+          class="progress-reset-btn"
+          id="progress-reset-btn"
+          title="Reset your saved progress for this roadmap"
+          aria-label="Reset roadmap progress"
+        >
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+            <path d="M3 3v5h5"></path>
+          </svg>
+          <span class="progress-reset-label">Reset</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

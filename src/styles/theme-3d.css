@@ -877,18 +877,18 @@ html.dark .footer {
 
   /* Floating progress shelf */
   .progress-bar-container {
-    box-shadow: 0 6px 24px rgba(15, 28, 50, 0.10) !important;
-    border-bottom: none !important;
+    box-shadow: 0 8px 24px rgba(15, 28, 50, 0.08) !important;
+    border-bottom: 1px solid var(--color-hairline) !important;
   }
 
   .progress-bar-track {
     border-radius: 9999px !important;
-    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.15) !important;
+    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.18) !important;
   }
 
   .progress-bar-fill {
     border-radius: 9999px !important;
-    box-shadow: 0 0 16px rgba(0, 124, 240, 0.5) !important;
+    box-shadow: 0 0 16px rgba(6, 182, 212, 0.6) !important;
   }
 }
 

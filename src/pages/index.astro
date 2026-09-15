@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import SearchFilter from '../components/SearchFilter.astro';
 import RoadmapCard from '../components/RoadmapCard.astro';
 import FeatureCard from '../components/FeatureCard.astro';
+import Hero from '../components/Hero.astro';
 import AdSlot from '../components/AdSlot.astro';
 import { getCollection } from 'astro:content';
 
@@ -68,59 +69,7 @@ const faqSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 
   <!-- Hero Section -->
-  <section class="section-hero">
-    <div class="container animate-fade-in-up" style="position: relative; z-index: 10;">
-      <div class="hero-content">
-        <span class="badge badge-frontend" style="margin-bottom: 16px; display: inline-block;">
-          ⚡ Interactive Learning Paths
-        </span>
-
-        <h1 class="text-display-xl" style="margin: 0 0 20px;">
-          Master any tech skill with an <span class="text-gradient-vibrant">interactive developer roadmap.</span>
-        </h1>
-
-        <p class="text-body-lg" style="color: var(--color-body); margin: 0 0 32px; line-height: 30px;">
-          Bookmark this site and track your interactive developer roadmap directly online. Check off topics, complete hands-on mini-projects, and resume your learning anytime — eliminating the need for cluttering static PDFs or lost file downloads.
-        </p>
-
-        <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-          <a class="btn-primary" href="#roadmaps">
-            Explore Interactive Roadmaps
-          </a>
-          <span class="text-caption-mono" style="color: var(--color-mute); padding: 8px 12px; background: var(--color-canvas-soft-2); border-radius: var(--radius-full); border: 1px solid var(--color-hairline);">
-            📌 Tip: Press Cmd/Ctrl + D to Bookmark
-          </span>
-        </div>
-
-        <!-- Hero Quick Links for Legal & Company pages -->
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--color-hairline);">
-          <span class="text-caption-mono" style="color: var(--color-mute);">Quick Links:</span>
-          <a href="/privacy" class="hero-quick-link">
-            🔒 Privacy Policy
-          </a>
-          <a href="/terms" class="hero-quick-link">
-            📜 Terms & Conditions
-          </a>
-          <a href="/about" class="hero-quick-link">
-            ℹ️ About Us
-          </a>
-          <a href="/contact" class="hero-quick-link">
-            📩 Contact Us
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-right-side">
-      <img
-        src="/Hero/HeroRightImage.png"
-        alt="Interactive Developer Roadmap Illustration"
-        class="hero-right-image"
-        loading="eager"
-        decoding="async"
-      />
-    </div>
-  </section>
+  <Hero />
 
   <!-- Top Banner Ad -->
   <AdSlot type="banner" />
