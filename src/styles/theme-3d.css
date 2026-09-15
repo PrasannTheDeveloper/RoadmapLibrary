@@ -6,9 +6,9 @@
    - 100% Performance Optimized: Zero backdrop-filter, pure GPU transforms
    ================================================================ */
 
-/* ── Canvas Background (#e6e9f2) ── */
+/* ── Canvas Background (#e3e6ef) ── */
 body {
-  background-color: #e6e9f2 !important;
+  background-color: #e3e6ef !important;
 }
 
 html.dark body {
@@ -275,8 +275,8 @@ html.dark .badge-programming-languages {
    ================================================================ */
 
 .faq-item {
-  background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  background: #EDEFF5;
+  border: 1px solid #d8dce8 !important;
   border-radius: var(--radius-3d-element) !important;
   padding: 22px 28px;
   box-shadow: var(--shadow-3d-low);
@@ -294,24 +294,25 @@ html.dark .faq-item {
   align-items: center;
   gap: 6px;
   padding: 8px 18px;
-  background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  background: #EDEFF5;
+  border: 1px solid #d8dce8 !important;
   border-radius: var(--radius-3d-pill) !important;
   font-size: 13px;
   font-weight: 500;
-  color: var(--color-ink);
+  color: #0f172a !important;
   text-decoration: none;
   box-shadow: var(--shadow-3d-micro);
 }
 
 html.dark .hero-quick-link {
-  background: #202023;
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  background: #EDEFF5;
+  border-color: #d8dce8 !important;
+  color: #0f172a !important;
 }
 
 .floating-form-card {
-  background: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  background: #EDEFF5;
+  border: 1px solid #d8dce8 !important;
   border-radius: var(--radius-3d-card) !important;
   padding: 36px;
   box-shadow: var(--shadow-3d-panel);
@@ -324,7 +325,7 @@ html.dark .floating-form-card {
 }
 
 .footer {
-  background-color: #e6e9f2 !important;
+  background-color: #e3e6ef !important;
   border-top: 1px solid rgba(255, 255, 255, 0.8) !important;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
 }
@@ -365,13 +366,13 @@ html.dark .footer {
     margin: 16px auto 0 !important;
     max-width: min(calc(var(--page-width) + 48px), 94%) !important;
     border-radius: var(--radius-3d-pill) !important;
-    border: 1px solid rgba(255, 255, 255, 0.95) !important;
-    background: #ffffff !important;
+    border: 1px solid #d8dce8 !important;
+    background: #EDEFF5 !important;
     box-shadow: 
       inset 0 1.5px 0 #ffffff,
-      inset 0 -1.5px 0 rgba(15, 28, 50, 0.06),
-      0 6px 18px -2px rgba(15, 28, 50, 0.10),
-      0 20px 48px -6px rgba(15, 28, 50, 0.12) !important;
+      inset 0 -1.5px 0 rgba(15, 28, 50, 0.04),
+      0 6px 18px -2px rgba(15, 28, 50, 0.08),
+      0 20px 48px -6px rgba(15, 28, 50, 0.08) !important;
     top: 16px !important;
   }
 
@@ -383,8 +384,8 @@ html.dark .footer {
 
   /* ── 2. CARDS: PHYSICAL 3D CERAMIC SLABS ── */
   .roadmap-card {
-    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 55%, #f4f6fa 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    background: #EDEFF5 !important;
+    border: 1px solid #d8dce8 !important;
     border-radius: var(--radius-3d-card) !important;
     box-shadow: var(--shadow-3d-card) !important;
     padding: 28px !important;
@@ -398,12 +399,13 @@ html.dark .footer {
 
   /* Powerful 3D Lift on Hover */
   .roadmap-card:hover {
-    transform: translateY(-9px) scale(1.018) !important;
+    transform: translateY(-8px) scale(1.015) !important;
+    border-color: #94a3b8 !important;
     box-shadow: var(--shadow-3d-hover) !important;
   }
 
   .roadmap-card-meta {
-    border-top: 1px solid rgba(15, 28, 50, 0.06) !important;
+    border-top: 1px solid #e2e8f0 !important;
   }
 
   html.dark .roadmap-card-meta {
@@ -415,13 +417,13 @@ html.dark .footer {
     width: 48px !important;
     height: 48px !important;
     border-radius: 16px !important;
-    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid #d8dce8 !important;
     box-shadow: 
       inset 0 1.5px 0 #ffffff,
-      inset 0 -1.5px 0 rgba(15, 28, 50, 0.08),
-      0 4px 10px rgba(15, 28, 50, 0.12),
-      0 1px 3px rgba(15, 28, 50, 0.06) !important;
-    background: linear-gradient(145deg, #ffffff 0%, #edf1f8 100%) !important;
+      inset 0 -1.5px 0 rgba(15, 28, 50, 0.04),
+      0 3px 8px rgba(15, 28, 50, 0.06),
+      0 1px 2px rgba(15, 28, 50, 0.03) !important;
+    background: #ffffff !important;
     transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
@@ -431,12 +433,11 @@ html.dark .footer {
   }
 
   .roadmap-card:hover .roadmap-card-logo-wrapper {
-    transform: scale(1.12) translateY(-2px) rotate(-2deg) !important;
+    transform: scale(1.1) translateY(-2px) rotate(-2deg) !important;
     box-shadow: 
       inset 0 1.5px 0 #ffffff,
-      inset 0 -1.5px 0 rgba(15, 28, 50, 0.10),
-      0 8px 18px rgba(15, 28, 50, 0.18),
-      0 2px 6px rgba(15, 28, 50, 0.10) !important;
+      0 6px 14px rgba(15, 28, 50, 0.10),
+      0 2px 5px rgba(15, 28, 50, 0.06) !important;
   }
 
   /* 3D Arrow Action Puck */
@@ -447,33 +448,35 @@ html.dark .footer {
     width: 32px !important;
     height: 32px !important;
     border-radius: 9999px !important;
-    background: #edf1f8 !important;
+    background: #ffffff !important;
     color: var(--color-mute) !important;
+    border: 1px solid #d8dce8 !important;
     box-shadow: 
       inset 0 1px 0 #ffffff, 
-      inset 0 -1px 0 rgba(15, 28, 50, 0.08), 
-      0 3px 8px rgba(15, 28, 50, 0.10) !important;
+      0 2px 5px rgba(15, 28, 50, 0.05) !important;
     transition: all 0.25s ease !important;
     margin-left: auto;
   }
 
   html.dark .roadmap-card-arrow {
     background: #27272a !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
   }
 
   .roadmap-card:hover .roadmap-card-arrow {
     background: linear-gradient(135deg, #0070f3 0%, #0056cc 100%) !important;
     color: #ffffff !important;
-    transform: translateX(4px) scale(1.1) !important;
+    border-color: #0070f3 !important;
+    transform: translateX(4px) scale(1.08) !important;
     box-shadow: 
       inset 0 1px 0 rgba(255, 255, 255, 0.5), 
-      0 6px 16px rgba(0, 112, 243, 0.45) !important;
+      0 4px 14px rgba(0, 112, 243, 0.45) !important;
   }
 
   /* Feature Cards */
   .feature-card {
-    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 55%, #f4f6fa 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    background: #EDEFF5 !important;
+    border: 1px solid #d8dce8 !important;
     border-radius: var(--radius-3d-card) !important;
     box-shadow: var(--shadow-3d-card) !important;
     padding: 36px !important;
@@ -485,7 +488,8 @@ html.dark .footer {
   }
 
   .feature-card:hover {
-    transform: translateY(-9px) scale(1.018) !important;
+    transform: translateY(-8px) scale(1.015) !important;
+    border-color: #94a3b8 !important;
     box-shadow: var(--shadow-3d-hover) !important;
   }
 
@@ -493,12 +497,12 @@ html.dark .footer {
     width: 52px !important;
     height: 52px !important;
     border-radius: 18px !important;
-    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid #d8dce8 !important;
     box-shadow: 
       inset 0 1.5px 0 #ffffff,
-      inset 0 -1.5px 0 rgba(15, 28, 50, 0.08),
-      0 4px 12px rgba(15, 28, 50, 0.12) !important;
-    background: linear-gradient(145deg, #ffffff 0%, #edf1f8 100%) !important;
+      inset 0 -1.5px 0 rgba(15, 28, 50, 0.04),
+      0 3px 8px rgba(15, 28, 50, 0.06) !important;
+    background: #ffffff !important;
     transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
@@ -507,13 +511,13 @@ html.dark .footer {
   }
 
   .feature-card:hover .feature-card-icon {
-    transform: translateY(-4px) scale(1.12) !important;
+    transform: translateY(-3px) scale(1.1) !important;
   }
 
   /* General Cards */
   .card {
-    background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 55%, #f4f6fa 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    background: #EDEFF5 !important;
+    border: 1px solid #d8dce8 !important;
     border-radius: var(--radius-3d-card) !important;
     box-shadow: var(--shadow-3d-card) !important;
   }
@@ -524,14 +528,15 @@ html.dark .footer {
   }
 
   .card:hover {
-    transform: translateY(-8px) scale(1.015) !important;
+    transform: translateY(-7px) scale(1.012) !important;
+    border-color: #94a3b8 !important;
     box-shadow: var(--shadow-3d-hover) !important;
   }
 
   /* Mini Project Cards */
   .mini-project-card {
-    background: #ffffff !important;
-    border: 1.5px solid rgba(0, 112, 243, 0.25) !important;
+    background: #EDEFF5 !important;
+    border: 1.5px solid #cbd5e1 !important;
     border-radius: var(--radius-3d-element) !important;
     box-shadow: var(--shadow-3d-low) !important;
   }
@@ -542,19 +547,22 @@ html.dark .footer {
   }
 
   .mini-project-card:hover {
-    transform: translateY(-5px) !important;
+    transform: translateY(-4px) !important;
+    border-color: #0070f3 !important;
     box-shadow: var(--shadow-3d-card) !important;
   }
 
   /* FAQ Accordion Item */
   .faq-item:hover {
-    transform: translateY(-5px) !important;
+    transform: translateY(-4px) !important;
+    border-color: #cbd5e1 !important;
     box-shadow: var(--shadow-3d-card) !important;
   }
 
   .faq-item[open] {
     box-shadow: var(--shadow-3d-card) !important;
-    transform: translateY(-4px) !important;
+    border-color: #cbd5e1 !important;
+    transform: translateY(-3px) !important;
   }
 
   /* ── 3. VIBRANT 3D BUTTONS (ROYAL SAPPHIRE & CERAMIC) ── */
@@ -575,20 +583,21 @@ html.dark .footer {
   }
 
   .btn-primary:hover {
-    transform: translateY(-3.5px) scale(1.025) !important;
+    background: linear-gradient(180deg, #3b82f6 0%, #2563eb 100%) !important;
+    transform: translateY(-3px) scale(1.02) !important;
     box-shadow: var(--shadow-3d-btn-primary-hover) !important;
     opacity: 1 !important;
   }
 
   .btn-primary:active {
-    transform: translateY(2px) scale(0.98) !important;
+    transform: translateY(1.5px) scale(0.98) !important;
     box-shadow: inset 0 2px 4px rgba(0, 20, 60, 0.45), 0 2px 6px rgba(37, 99, 235, 0.3) !important;
   }
 
   .btn-secondary {
-    background: linear-gradient(180deg, #ffffff 0%, #f2f5fb 100%) !important;
+    background: #EDEFF5 !important;
     color: #0f172a !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid #cbd5e1 !important;
     border-radius: var(--radius-3d-pill) !important;
     box-shadow: var(--shadow-3d-btn-secondary) !important;
     font-weight: 600 !important;
@@ -602,20 +611,22 @@ html.dark .footer {
   }
 
   .btn-secondary:hover {
-    transform: translateY(-3px) scale(1.02) !important;
+    background: #ffffff !important;
+    border-color: #0f172a !important;
+    transform: translateY(-2.5px) scale(1.015) !important;
     box-shadow: var(--shadow-3d-btn-secondary-hover) !important;
   }
 
   .btn-secondary:active {
     transform: translateY(1.5px) scale(0.98) !important;
-    box-shadow: inset 0 1.5px 3px rgba(15, 28, 50, 0.12), 0 1px 2px rgba(15, 28, 50, 0.05) !important;
+    box-shadow: inset 0 1.5px 3px rgba(15, 28, 50, 0.10), 0 1px 2px rgba(15, 28, 50, 0.04) !important;
   }
 
   .theme-toggle-btn {
     border-radius: var(--radius-3d-pill) !important;
     box-shadow: var(--shadow-3d-micro) !important;
-    border: 1px solid rgba(255, 255, 255, 0.85) !important;
-    background: #ffffff !important;
+    border: 1px solid #d8dce8 !important;
+    background: #EDEFF5 !important;
   }
 
   html.dark .theme-toggle-btn {
@@ -624,7 +635,7 @@ html.dark .footer {
   }
 
   .theme-toggle-btn:hover {
-    transform: translateY(-2px) scale(1.08) !important;
+    transform: translateY(-2px) scale(1.06) !important;
     box-shadow: var(--shadow-3d-low) !important;
   }
 
@@ -634,13 +645,12 @@ html.dark .footer {
 
   /* Filter Pills */
   .filter-pill {
-    background: #ffffff !important;
+    background: #EDEFF5 !important;
     border: 1px solid #cbd5e1 !important;
     border-radius: var(--radius-3d-pill) !important;
     box-shadow: 
       inset 0 1px 0 #ffffff,
-      inset 0 -1.5px 0 rgba(15, 28, 50, 0.06),
-      0 3px 8px rgba(15, 28, 50, 0.06) !important;
+      0 1px 3px rgba(15, 28, 50, 0.04) !important;
     font-weight: 500 !important;
     color: #334155 !important;
   }
@@ -652,10 +662,10 @@ html.dark .footer {
   }
 
   .filter-pill:hover {
-    transform: translateY(-2.5px) !important;
+    transform: translateY(-2px) !important;
     box-shadow: 
       inset 0 1px 0 #ffffff,
-      0 8px 18px rgba(15, 28, 50, 0.12) !important;
+      0 6px 14px rgba(15, 28, 50, 0.10) !important;
     color: var(--color-ink) !important;
     border-color: var(--color-link) !important;
   }
@@ -680,10 +690,10 @@ html.dark .footer {
   .view-toggle {
     border-radius: 18px !important;
     box-shadow: 
-      inset 0 1.5px 3px rgba(15, 28, 50, 0.12),
+      inset 0 1.5px 3px rgba(15, 28, 50, 0.10),
       inset 0 -1px 0 #ffffff,
-      0 2px 6px rgba(15, 28, 50, 0.05) !important;
-    border: 1px solid rgba(15, 28, 50, 0.06) !important;
+      0 2px 5px rgba(15, 28, 50, 0.04) !important;
+    border: 1px solid #d8dce8 !important;
     background: #d8dce8 !important;
     padding: 4px !important;
   }
@@ -699,11 +709,10 @@ html.dark .footer {
   }
 
   .view-toggle-btn.active {
-    background: #ffffff !important;
+    background: #EDEFF5 !important;
     box-shadow: 
       inset 0 1px 0 #ffffff,
-      inset 0 -1px 0 rgba(15, 28, 50, 0.06),
-      0 3px 10px rgba(15, 28, 50, 0.15) !important;
+      0 2px 6px rgba(15, 28, 50, 0.10) !important;
     transform: translateY(-1px) !important;
     color: var(--color-link) !important;
   }
@@ -714,22 +723,23 @@ html.dark .footer {
   }
 
   .hero-quick-link:hover {
-    transform: translateY(-3px) scale(1.03) !important;
+    transform: translateY(-2.5px) scale(1.02) !important;
+    border-color: #cbd5e1 !important;
     box-shadow: 
       inset 0 1px 0 #ffffff,
-      0 8px 20px rgba(15, 28, 50, 0.14) !important;
+      0 6px 16px rgba(15, 28, 50, 0.10) !important;
     color: var(--color-link) !important;
   }
 
   /* ── 4. FORMS & INPUTS (3D ELEVATED) ── */
   .form-input {
-    background: #ffffff !important;
+    background: #EDEFF5 !important;
     border: 1.5px solid #cbd5e1 !important;
     border-radius: var(--radius-3d-input) !important;
     box-shadow: 
-      inset 0 1.5px 2px rgba(15, 28, 50, 0.04),
-      0 4px 14px rgba(15, 28, 50, 0.06),
-      0 1px 3px rgba(15, 28, 50, 0.04) !important;
+      inset 0 1.5px 2px rgba(15, 28, 50, 0.03),
+      0 3px 10px rgba(15, 28, 50, 0.05),
+      0 1px 2px rgba(15, 28, 50, 0.03) !important;
     color: var(--color-ink) !important;
   }
 
@@ -745,15 +755,15 @@ html.dark .footer {
   }
 
   .form-input:focus {
-    transform: translateY(-2px) !important;
+    transform: translateY(-1.5px) !important;
     border-color: var(--color-link) !important;
     box-shadow: var(--shadow-3d-focus) !important;
   }
 
   /* ── 5. ROADMAP TREE & TIMELINE NODES ── */
   .tree-section-header {
-    background: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    background: #EDEFF5 !important;
+    border: 1px solid #d8dce8 !important;
     border-left: 5px solid var(--color-link) !important;
     border-radius: var(--radius-3d-element) !important;
     box-shadow: var(--shadow-3d-low) !important;
@@ -766,8 +776,8 @@ html.dark .footer {
   }
 
   .tree-node-content {
-    background: linear-gradient(180deg, #ffffff 0%, #f9fbfd 100%) !important;
-    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+    background: #EDEFF5 !important;
+    border: 1px solid #d8dce8 !important;
     border-radius: var(--radius-3d-element) !important;
     box-shadow: var(--shadow-3d-low) !important;
   }
@@ -793,30 +803,31 @@ html.dark .footer {
   }
 
   .tree-node-content:hover {
-    transform: translateY(-5px) !important;
+    transform: translateY(-4px) !important;
+    border-color: #94a3b8 !important;
     box-shadow: var(--shadow-3d-card) !important;
   }
 
   .tree-node-check {
     border-radius: 8px !important;
-    border: 2px solid rgba(15, 28, 50, 0.22) !important;
+    border: 2px solid rgba(15, 28, 50, 0.20) !important;
     box-shadow: 
-      inset 0 1px 2px rgba(15, 28, 50, 0.12),
+      inset 0 1px 2px rgba(15, 28, 50, 0.10),
       0 1px 0 #ffffff !important;
     transition: transform 0.18s ease-out, border-color 0.18s ease !important;
   }
 
   .tree-node-check:hover {
-    transform: scale(1.15) !important;
+    transform: scale(1.12) !important;
     border-color: #0070f3 !important;
   }
 
   .subtopic-accordion {
     border-radius: var(--radius-3d-input) !important;
-    border: 1px solid rgba(255, 255, 255, 0.8) !important;
-    background: #f1f4fa !important;
+    border: 1px solid #d8dce8 !important;
+    background: #ffffff !important;
     box-shadow: 
-      inset 0 1px 2px rgba(15, 28, 50, 0.05),
+      inset 0 1px 2px rgba(15, 28, 50, 0.04),
       0 1px 0 #ffffff !important;
   }
 
@@ -827,13 +838,15 @@ html.dark .footer {
 
   .subtopic-accordion:hover {
     box-shadow: var(--shadow-3d-low) !important;
-    background: #ffffff !important;
+    background: #EDEFF5 !important;
+    border-color: #cbd5e1 !important;
   }
 
   .subtopic-accordion[open] {
     box-shadow: var(--shadow-3d-card) !important;
-    transform: translateY(-3px) !important;
-    background: #ffffff !important;
+    transform: translateY(-2px) !important;
+    background: #EDEFF5 !important;
+    border-color: #cbd5e1 !important;
   }
 
   html.dark .subtopic-accordion[open] {
@@ -848,14 +861,14 @@ html.dark .footer {
   }
 
   .tree-resource-link:hover {
-    transform: translateY(-2px) scale(1.03) !important;
-    box-shadow: 0 6px 16px rgba(0, 112, 243, 0.35) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: 0 4px 12px rgba(0, 112, 243, 0.35) !important;
   }
 
   /* Table of Contents Floating Panel */
   .toc-sidebar {
-    background: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.85) !important;
+    background: #EDEFF5 !important;
+    border: 1px solid #d8dce8 !important;
     border-radius: var(--radius-3d-card) !important;
     padding: 24px !important;
     box-shadow: var(--shadow-3d-panel) !important;
@@ -877,18 +890,18 @@ html.dark .footer {
 
   /* Floating progress shelf */
   .progress-bar-container {
-    box-shadow: 0 8px 24px rgba(15, 28, 50, 0.08) !important;
+    box-shadow: 0 4px 16px rgba(15, 28, 50, 0.06) !important;
     border-bottom: 1px solid var(--color-hairline) !important;
   }
 
   .progress-bar-track {
     border-radius: 9999px !important;
-    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.18) !important;
+    box-shadow: inset 0 1px 3px rgba(15, 23, 42, 0.12) !important;
   }
 
   .progress-bar-fill {
     border-radius: 9999px !important;
-    box-shadow: 0 0 16px rgba(6, 182, 212, 0.6) !important;
+    box-shadow: 0 0 14px rgba(6, 182, 212, 0.5) !important;
   }
 }
 
@@ -925,8 +938,9 @@ html.dark .footer {
   .feature-card,
   .card,
   .floating-form-card {
+    background: #EDEFF5 !important;
     border-radius: var(--radius-3d-card) !important;
-    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    border: 1px solid #d8dce8 !important;
     box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04) !important;
   }
 
@@ -943,7 +957,21 @@ html.dark .footer {
     transform: none !important;
   }
 
+  .btn-secondary {
+    background: #EDEFF5 !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+  }
+
+  .filter-pill {
+    background: #EDEFF5 !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+  }
+
   .form-input {
+    background: #EDEFF5 !important;
+    border: 1.5px solid #cbd5e1 !important;
     border-radius: var(--radius-3d-input) !important;
     box-shadow: none !important;
   }
@@ -958,31 +986,38 @@ html.dark .footer {
     border-radius: 0 !important;
     max-width: 100% !important;
     top: 0 !important;
+    background: #EDEFF5 !important;
+    border-bottom: 1px solid #d8dce8 !important;
     box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
   }
 
   .tree-node-content {
+    background: #EDEFF5 !important;
     border-radius: var(--radius-3d-element) !important;
-    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    border: 1px solid #d8dce8 !important;
     box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03) !important;
   }
 
   .subtopic-accordion {
+    background: #ffffff !important;
     border-radius: var(--radius-3d-input) !important;
+    border: 1px solid #d8dce8 !important;
     box-shadow: none !important;
   }
 
   .faq-item {
+    background: #EDEFF5 !important;
     border-radius: var(--radius-3d-element) !important;
-    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    border: 1px solid #d8dce8 !important;
     transform: none !important;
     box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
   }
 
   .hero-quick-link {
+    background: #EDEFF5 !important;
     border-radius: var(--radius-3d-pill) !important;
     box-shadow: none !important;
-    border: 1px solid rgba(15, 23, 42, 0.06) !important;
+    border: 1px solid #d8dce8 !important;
     transform: none !important;
   }
 }

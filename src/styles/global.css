@@ -11,9 +11,9 @@
    ================================================================ */
 
 @theme {
-  /* ── Colors (Harmonized for #e6e9f2 canvas) ── */
-  --color-canvas: #ffffff;
-  --color-canvas-soft: #e6e9f2;
+  /* ── Colors (Harmonized for #e3e6ef canvas) ── */
+  --color-canvas: #EDEFF5;
+  --color-canvas-soft: #e3e6ef;
   --color-canvas-soft-2: #d8dce8;
   --color-ink: #0f172a;
   --color-body: #334155;
@@ -667,8 +667,8 @@ html.dark .badge-programming-languages { background-color: #581c87; color: #e9d5
   padding-bottom: 80px;
   position: relative;
   overflow: hidden;
-  background-color: #e6e9f2;
-  background-image: linear-gradient(to bottom, rgba(230, 233, 242, 0) 70%, #e6e9f2 100%), url('/Hero/HeroBackground.png');
+  background-color: #e3e6ef;
+  background-image: linear-gradient(to bottom, rgba(227, 230, 239, 0) 70%, #e3e6ef 100%), url('/Hero/HeroBackground.png');
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
